@@ -238,7 +238,7 @@ const handleSubmit = async () => {
     // Validate form
     const isValid = await formRef.value?.validate();
     if (!isValid) {
-      throw new Error('Vul alstublieft alle verplichte velden correct in');
+      throw new Error('Vul alsjeblieft alle verplichte velden correct in');
     }
 
     // Add selected dates to SheetBest API
@@ -253,7 +253,7 @@ const handleSubmit = async () => {
       }
 
       // Add each date to SheetBest
-      const sheetBestUrl = 'https://api.sheetbest.com/sheets/821c7f96-b3a5-4916-b146-7aaee27c6076';
+      const sheetBestUrl = import.meta.env.VITE_SHEETBEST_API_URL;
       await Promise.all(dateRange.map(async (geboekte_datum) => {
         await fetch(sheetBestUrl, {
           method: 'POST',

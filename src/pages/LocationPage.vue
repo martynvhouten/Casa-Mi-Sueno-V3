@@ -11,7 +11,7 @@
           <div class="animate-fade-in-up text-center text-white">
             <h1 class="text-shadow q-mb-md font-playfair">De Omgeving</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Tussen bergen en zee
+              Ons stukje Costa Blanca
             </p>
           </div>
         </div>
@@ -23,10 +23,10 @@
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">L'Alfàs del Pi</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Casa Mi Sueño ligt in het charmante L'Alfàs del Pi, een authentiek Spaans dorp aan de Costa Blanca. 
+          Ons huis staat in L'Alfàs del Pi, een gezellig Spaans dorp aan de Costa Blanca. 
           De naam 'Alfàs' komt uit het Arabisch en betekent 'vruchtbare grond', terwijl 'Pi' verwijst naar 
-          de eeuwenoude pijnboom op het dorpsplein. Deze locatie biedt de perfecte mix van rust en 
-          bereikbaarheid van alle voorzieningen.
+          de oude pijnboom op het dorpsplein. We kozen deze plek omdat het een echt dorp is gebleven, 
+          waar je het authentieke Spaanse leven nog ervaart.
         </p>
       </div>
     </section>
@@ -36,17 +36,18 @@
       <div class="container">
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">De Directe Omgeving</h2>
+            <h2 class="font-playfair q-mb-lg">De Buurt</h2>
             <p class="text-body1 q-mb-lg">
               L'Alfàs del Pi is een levendig dorp waar traditioneel Spaans leven en moderne voorzieningen 
               samenkomen. Het dorpsplein met zijn terrasjes, de wekelijkse markt op vrijdag, en de 
-              lokale restaurants waar u heerlijke tapas kunt proeven, geven u het échte Spaanse gevoel.
+              lokale restaurants waar je heerlijke tapas kunt proeven, geven je het échte Spaanse gevoel. 
+              Dit zijn de plekken waar wij zelf ook graag komen.
             </p>
             <ul class="feature-list q-mb-xl">
               <li>Supermarkt op 5 minuten rijden</li>
               <li>Strand van Albir op 5 minuten met de auto</li>
               <li>Gezellig dorpscentrum met restaurants en winkels</li>
-              <li>Wekelijkse markt op vrijdag</li>
+              <li>Wekelijkse markt op vrijdag (onze favoriet!)</li>
               <li>Medische voorzieningen in de buurt</li>
               <li>La Nucia met sportfaciliteiten op 5 minuten</li>
               <li>Zondagsmarkt in La Nucia</li>
@@ -205,7 +206,7 @@
 </template>
 
 <script setup lang="ts">
-const API_KEY = 'AIzaSyBaHNX5xTRNRC5hZGxWSc3IJr3JqxRzenw';
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const ADDRESS = 'Carrer de les Petúnies 16, 03580 L\'Alfàs del Pi, Alicante, Spain';
 const ENCODED_ADDRESS = encodeURIComponent(ADDRESS);
 

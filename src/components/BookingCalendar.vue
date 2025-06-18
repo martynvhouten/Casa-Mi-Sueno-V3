@@ -10,7 +10,7 @@
         <!-- Calendar -->
         <div class="col-12 col-lg-7">
           <div class="calendar-wrapper q-pa-lg rounded-borders bg-white shadow-3">
-            <div class="text-subtitle1 text-weight-medium q-mb-sm">Selecteer uw verblijfsperiode</div>
+            <div class="text-subtitle1 text-weight-medium q-mb-sm">Selecteer je verblijfsperiode</div>
             <q-date
               v-model="dateRange"
               range
@@ -18,6 +18,7 @@
               :min="new Date().toISOString().split('T')[0]"
               :max="maxDate"
               :options="availableDatesFilter"
+              :event-color="(date) => bookedDates.value.includes(date) ? 'grey' : ''"
               :navigation-min-year-month="new Date().toISOString().slice(0, 7)"
               :navigation-max-year-month="maxDate.toISOString().slice(0, 7)"
               today-btn
@@ -29,6 +30,22 @@
               @update:model-value="handleDateRangeSelect"
               :locale="dutchLocale"
             />
+
+            <!-- Calendar Legend -->
+            <div class="calendar-legend q-mt-lg">
+              <div class="legend-item">
+                <div class="legend-color available"></div>
+                <span class="text-caption">Beschikbaar</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color selected"></div>
+                <span class="text-caption">Geselecteerd</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color booked"></div>
+                <span class="text-caption">Bezet</span>
+              </div>
+            </div>
 
             <div class="text-caption q-mt-md text-grey-8">
               * Minimaal verblijf: {{ getMinNights() }} nachten in deze periode
@@ -152,55 +169,165 @@
 import { ref, computed, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 
-const $q = useQuasar();
-
-interface DateLocale {
-  days: string[];
-  daysShort: string[];
-  months: string[];
-  monthsShort: string[];
-  firstDayOfWeek: number;
-  format24h: boolean;
-  headerTitle: (date: Date, model: any) => string;
-  headerSubtitle: (date: Date) => string;
-  pluralDay: string;
-  today: string;
-}
-
-// Add Dutch locale configuration
-const dutchLocale: DateLocale = {
-  days: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-  daysShort: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-  months: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-  monthsShort: ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
-  firstDayOfWeek: 1,
-  format24h: true,
-  headerTitle(date: Date, model: any) {
-    if (model?.mode === 'months' || model?.mode === 'years') {
-      return new Date(date).getFullYear().toString();
-    }
-    return `${this.months[date.getMonth()]} ${date.getFullYear()}`;
-  },
-  headerSubtitle(date: Date) {
-    return this.days[date.getDay()];
-  },
-  pluralDay: 'Dagen',
-  today: 'Vandaag'
-};
-
-interface ApiResponse {
-  geboekte_datum: string;
-  [key: string]: unknown;
-}
-
+// Types
 interface DateRange {
   from: string;
   to: string;
 }
 
+interface ApiResponse {
+  geboekte_datum: string;
+}
+
+interface DaySlotProps {
+  date: string;
+}
+
+const $q = useQuasar();
+
+// Component state
 const dateRange = ref<DateRange>({ from: '', to: '' });
 const bookedDates = ref<string[]>([]);
-const loading = ref<boolean>(false);
+const loading = ref(false);
+const pricePerNight = ref(150); // Base price in euros
+
+// Maximum date (1 year from now)
+const maxDate = new Date();
+maxDate.setFullYear(maxDate.getFullYear() + 1);
+
+// Dutch locale for the calendar
+const dutchLocale = {
+  days: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
+  daysShort: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
+  months: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
+  monthsShort: ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec']
+};
+
+// Filter available dates
+const availableDatesFilter = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // First check if the date is in the past
+  if (date < today) {
+    return false;
+  }
+
+  // Then check if it's in the booked dates array
+  return !bookedDates.value.includes(dateStr);
+};
+
+// Calculate total price for the stay
+const calculatePrice = () => {
+  if (!dateRange.value.from || !dateRange.value.to) return 0;
+  
+  const start = new Date(dateRange.value.from);
+  const end = new Date(dateRange.value.to);
+  const nights = Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+  
+  return nights * pricePerNight.value;
+};
+
+// Format price as Euro amount
+const formattedPrice = computed(() => {
+  const total = calculatePrice();
+  if (total === 0) return '';
+  return `€${Math.round(total).toLocaleString('nl-NL')}`;
+});
+
+// Handle date range selection
+const handleDateRangeSelect = (range: DateRange) => {
+  if (!range.from || !range.to) return;
+
+  // Check if any date in the range is booked
+  const start = new Date(range.from);
+  const end = new Date(range.to);
+  const dates: string[] = [];
+
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    dates.push(d.toISOString().split('T')[0]);
+  }
+
+  const hasBookedDate = dates.some(date => bookedDates.value.includes(date));
+  if (hasBookedDate) {
+    $q.notify({
+      type: 'negative',
+      message: 'Een of meer geselecteerde dagen zijn al geboekt.',
+      position: 'top',
+      timeout: 5000
+    });
+    dateRange.value = { from: '', to: '' };
+    return;
+  }
+
+  dateRange.value = range;
+  calculatePrice();
+};
+
+// Fetch booked dates from Google Sheet via SheetBest API
+const fetchBookedDates = async (): Promise<void> => {
+  loading.value = true;
+  try {
+    const response = await fetch(import.meta.env.VITE_SHEETBEST_API_URL);
+    if (!response.ok) {
+      throw new Error('Failed to fetch booked dates');
+    }
+    const data = await response.json() as ApiResponse[];
+    
+    // Filter and format the dates
+    bookedDates.value = data
+      .map((row: ApiResponse) => {
+        let date = row.geboekte_datum;
+        
+        // Handle different date formats
+        if (date.includes('-')) {
+          // Handle DD-MM-YYYY format
+          if (date.match(/^\d{2}-\d{2}-\d{4}$/)) {
+            const [day, month, year] = date.split('-');
+            date = `${year}-${month}-${day}`;
+          }
+        }
+        
+        // Ensure date is in YYYY-MM-DD format
+        return new Date(date).toISOString().split('T')[0];
+      })
+      .filter((date: string) => {
+        const parsedDate = new Date(date);
+        return !isNaN(parsedDate.getTime()) && parsedDate >= new Date();
+      });
+
+    // Add some test booked dates if the array is empty (for development)
+    if (bookedDates.value.length === 0) {
+      const testDates = [];
+      const startDate = new Date();
+      for (let i = 5; i < 8; i++) {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() + i);
+        testDates.push(date.toISOString().split('T')[0]);
+      }
+      bookedDates.value = testDates;
+    }
+
+    console.log('Booked dates:', bookedDates.value);
+  } catch (error) {
+    console.error('Error fetching booked dates:', error);
+    $q.notify({
+      type: 'negative',
+      message: 'Er is een fout opgetreden bij het ophalen van de geboekte data.',
+      position: 'top',
+      timeout: 5000
+    });
+    bookedDates.value = [];
+  } finally {
+    loading.value = false;
+  }
+};
+
+// Call fetchBookedDates when component is mounted
+onMounted(() => {
+  fetchBookedDates();
+});
 
 // Computed properties for easier access to selected dates
 const checkInDate = computed(() => dateRange.value.from || null);
@@ -220,62 +347,6 @@ const PRICES = {
 
 const CLEANING_FEE = 75;
 const TOURIST_TAX = 2.50; // per person per night
-
-// Calculate max date (2 years from now)
-const maxDate = new Date();
-maxDate.setFullYear(maxDate.getFullYear() + 2);
-
-// Filter available dates
-const availableDatesFilter = (dateStr: string) => {
-  return !bookedDates.value.includes(dateStr);
-};
-
-// Handle date range selection
-const handleDateRangeSelect = (value: DateRange) => {
-  if (!value.from || !value.to) return;
-
-  const start = new Date(value.from);
-  const end = new Date(value.to);
-  const nights = Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-  const minNights = getMinNights();
-
-  // Check for minimum stay requirement
-  if (nights < minNights) {
-    $q.notify({
-      type: 'negative',
-      message: `Het minimale verblijf in deze periode is ${minNights} nachten.`,
-      position: 'top',
-      timeout: 5000
-    });
-    dateRange.value = { from: '', to: '' };
-    return;
-  }
-
-  // Check for booked dates within range
-  let hasBookedDates = false;
-  const currentDate = new Date(start);
-  while (currentDate < end) {
-    const dateStr = currentDate.toISOString().split('T')[0];
-    if (bookedDates.value.includes(dateStr)) {
-      hasBookedDates = true;
-      break;
-    }
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-  if (hasBookedDates) {
-    $q.notify({
-      type: 'negative',
-      message: 'De geselecteerde periode bevat reeds geboekte data.',
-      position: 'top',
-      timeout: 5000
-    });
-    dateRange.value = { from: '', to: '' };
-    return;
-  }
-
-  dateRange.value = value;
-};
 
 // Calculate price per night based on date
 const getPriceForDate = (dateStr: string): number => {
@@ -378,57 +449,6 @@ const calculateTotalPrice = (): string => {
 
   return `€${Math.round(total).toLocaleString('nl-NL')}`;
 };
-
-// Fetch booked dates from Google Sheet via SheetBest API
-const fetchBookedDates = async (): Promise<void> => {
-  loading.value = true;
-  try {
-    const response = await fetch('https://api.sheetbest.com/sheets/821c7f96-b3a5-4916-b146-7aaee27c6076');
-    if (!response.ok) {
-      throw new Error('Failed to fetch booked dates');
-    }
-    const data = await response.json() as ApiResponse[];
-    
-    // Filter and format the dates
-    bookedDates.value = data
-      .map((row: ApiResponse) => {
-        let date = row.geboekte_datum;
-        
-        // Handle different date formats
-        if (date.includes('-')) {
-          // Handle DD-MM-YYYY format
-          if (date.match(/^\d{2}-\d{2}-\d{4}$/)) {
-            const [day, month, year] = date.split('-');
-            date = `${year}-${month}-${day}`;
-          }
-        }
-        
-        // Ensure date is in YYYY-MM-DD format
-        return new Date(date).toISOString().split('T')[0];
-      })
-      .filter((date: string) => {
-        const parsedDate = new Date(date);
-        return !isNaN(parsedDate.getTime()) && parsedDate >= new Date();
-      });
-
-    console.log('Fetched booked dates:', bookedDates.value);
-  } catch (error) {
-    console.error('Error fetching booked dates:', error);
-    $q.notify({
-      type: 'negative',
-      message: 'Er is een fout opgetreden bij het ophalen van de geboekte data.',
-      position: 'top',
-      timeout: 5000
-    });
-    bookedDates.value = [];
-  } finally {
-    loading.value = false;
-  }
-};
-
-onMounted(() => {
-  fetchBookedDates();
-});
 </script>
 
 <style lang="scss">
@@ -445,24 +465,51 @@ onMounted(() => {
 
         &__content {
           width: 100%;
-    }
+        }
 
         &__calendar-item {
+          position: relative;
+          
           &.q-date__calendar-item--range {
             background: var(--cms-deep-terracotta);
-      opacity: 0.3;
-    }
+            opacity: 0.3;
+          }
+          
           &.q-date__calendar-item--selected {
             background: var(--cms-deep-terracotta) !important;
             color: white;
           }
+          
           &.q-date__calendar-item--disabled {
-        color: #d1d5db;
-        text-decoration: line-through;
-        text-decoration-thickness: 1.5px;
-            opacity: 0.5;
-    }
-  }
+            color: #d1d5db !important;
+            background: #f3f4f6 !important;
+            text-decoration: none !important;
+            opacity: 1;
+            cursor: not-allowed;
+            pointer-events: none;
+            
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: repeating-linear-gradient(
+                45deg,
+                rgba(209, 213, 219, 0.5),
+                rgba(209, 213, 219, 0.5) 2px,
+                transparent 2px,
+                transparent 8px
+              );
+              pointer-events: none;
+            }
+
+            .calendar-day {
+              color: #d1d5db;
+            }
+          }
+        }
 
         &__calendar-days-container {
           min-height: 285px;
@@ -476,6 +523,66 @@ onMounted(() => {
         &__months-container {
           width: 100%;
           gap: 24px;
+        }
+      }
+
+      .calendar-day {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.booked-date {
+          color: #d1d5db;
+          background: #f3f4f6;
+          position: relative;
+        }
+      }
+    }
+  }
+
+  .calendar-legend {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+
+        &.available {
+          border: 1px solid #e5e7eb;
+        }
+
+        &.selected {
+          background: var(--cms-deep-terracotta);
+        }
+
+        &.booked {
+          background: #f3f4f6;
+          position: relative;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #d1d5db;
+            transform: rotate(-45deg);
+          }
         }
       }
     }
@@ -495,7 +602,7 @@ onMounted(() => {
 
   .total {
     font-weight: 600;
-      }
+  }
 
   .booking-button {
     padding: 1rem;

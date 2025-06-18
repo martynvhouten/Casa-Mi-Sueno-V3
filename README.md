@@ -29,7 +29,13 @@ cd casamisuenov3
 npm install
 ```
 
-3. Start de ontwikkelserver:
+3. Configureer environment variables:
+   - Kopieer `.env.example` naar `.env`
+   - Vul de juiste waarden in voor:
+     - `VITE_GOOGLE_MAPS_API_KEY`: Google Maps API key
+     - `VITE_SHEETBEST_API_URL`: SheetBest API URL
+
+4. Start de ontwikkelserver:
 ```bash
 npm run dev
 ```

@@ -11,7 +11,7 @@
           <div class="animate-fade-in-up">
             <h1 class="text-shadow q-mb-md font-playfair">Ons Verhaal</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Hoe een droom werkelijkheid werd
+              Van droom naar werkelijkheid
             </p>
           </div>
         </div>
@@ -25,13 +25,14 @@
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">Liefde op het eerste gezicht</h2>
             <p class="text-body1 q-mb-lg">
-              Het was tijdens een warme zomerdag in 2019 toen we voor het eerst door de straten van L'Alfàs del Pi wandelden. 
+              Het was tijdens een warme zomerdag in 2019 toen wij (Esther en Milco) voor het eerst door de straten van L'Alfàs del Pi wandelden. 
               De geur van jasmijn in de lucht, het geluid van krekels in de verte, en de vriendelijke 'hola' van voorbijgangers 
               maakten direct indruk.
             </p>
             <p class="text-body1 q-mb-lg">
               We waren al jaren verliefd op Spanje, maar deze plek voelde anders. Authentieker. Persoonlijker. 
-              Toen we Casa Mi Sueño voor het eerst zagen, wisten we het meteen: dit moest ons tweede thuis worden.
+              Toen we dit huis voor het eerst zagen, wisten we het meteen: hier wilden we onze tweede thuis maken. 
+              Een plek waar we met onze hond Marlo kunnen genieten van het Spaanse leven.
             </p>
           </div>
           <div class="col-12 col-md-6">
@@ -61,13 +62,13 @@
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">Meer dan een vakantiehuis</h2>
             <p class="text-body1 q-mb-lg">
-              We wilden geen standaard vakantiehuis creëren, maar een plek waar gasten zich direct thuis voelen. 
-              Elk detail in Casa Mi Sueño is met zorg uitgekozen - van de comfortabele loungebanken tot het 
-              handgemaakte servies uit Valencia.
+              Dit is geen standaard vakantiehuis, maar ons echte tweede thuis. Je vindt hier onze persoonlijke spullen, 
+              foto's aan de muur en onze favoriete kookboeken in de keuken. Als we er zelf niet zijn, delen we het 
+              graag met anderen die ook van deze fijne plek willen genieten.
             </p>
             <p class="text-body1 q-mb-lg">
-              De naam 'Casa Mi Sueño' - Huis van mijn Dromen - weerspiegelt precies wat we willen delen: 
-              een droomlocatie waar het mediterrane leven op zijn best ervaren kan worden.
+              De naam 'Casa Mi Sueño' - Huis van mijn Dromen - kwam vanzelf. Het is precies wat deze plek voor ons is: 
+              een droom die uitkwam, een eigen stukje Spanje waar we helemaal onszelf kunnen zijn.
             </p>
           </div>
         </div>
@@ -124,7 +125,7 @@
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Ervaar het zelf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
-          We nodigen u uit om Casa Mi Sueño te ontdekken en uw eigen Spaanse verhaal te schrijven.
+          We nodigen je uit om Casa Mi Sueño te ontdekken en jouw eigen Spaanse verhaal te schrijven.
         </p>
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
@@ -140,18 +141,18 @@
 const personalTouches = [
   {
     icon: 'home',
-    title: 'Huiselijke sfeer',
-    description: 'Elk detail is met zorg gekozen om een warme, uitnodigende sfeer te creëren'
+    title: 'Een echt thuis',
+    description: 'Geen strak gestyled vakantiehuis, maar een warm en persoonlijk familiehuis'
   },
   {
     icon: 'auto_stories',
-    title: 'Lokale tips',
-    description: 'Onze persoonlijke reisgids met insider tips en favoriete plekken in de omgeving'
+    title: 'Onze tips',
+    description: 'Een schriftje vol persoonlijke aanbevelingen voor de leukste plekjes in de buurt'
   },
   {
     icon: 'support_agent',
-    title: 'Persoonlijke service',
-    description: 'Altijd bereikbaar voor vragen en tips om uw verblijf nog aangenamer te maken'
+    title: 'Persoonlijk contact',
+    description: 'We helpen je graag met tips om je verblijf zo fijn mogelijk te maken'
   }
 ];
 </script>

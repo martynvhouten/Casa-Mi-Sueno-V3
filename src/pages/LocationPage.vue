@@ -84,7 +84,7 @@
                 <h3 class="font-playfair q-mb-md">Stranden & Kust</h3>
                 <p class="text-body1 q-mb-md">
                   Het kiezelstrand van Albir, met zijn gezellige boulevard en blauwe vlag, ligt op 
-                  slechts 5 minuten rijden. Voor zandstranden kunt u terecht in het nabijgelegen 
+                  slechts 5 minuten rijden. Voor zandstranden kun je terecht in het nabijgelegen 
                   Benidorm (15 minuten). De vuurtoren van Albir, bereikbaar via een mooie 
                   wandelroute door het natuurpark Sierra Helada, biedt prachtige uitzichten over de kust.
                 </p>
@@ -103,7 +103,7 @@
                 <h3 class="font-playfair q-mb-md">Bergen & Natuur</h3>
                 <p class="text-body1 q-mb-md">
                   De omgeving is perfect voor natuurliefhebbers. Het natuurpark Sierra Helada 
-                  biedt prachtige wandelroutes, en op 20 minuten rijden vindt u de spectaculaire 
+                  biedt prachtige wandelroutes, en op 20 minuten rijden vind je de spectaculaire 
                   watervallen van Algar. Het bergdorpje Guadalest, met zijn kasteel op de rots, 
                   is een must-see op 30 minuten rijden.
                 </p>
@@ -190,7 +190,7 @@
     <!-- Call to Action -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Plan uw verblijf</h2>
+        <h2 class="font-playfair q-mb-lg">Plan je verblijf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
           Ontdek zelf waarom de Costa Blanca één van de meest geliefde vakantiebestemmingen 
           van Europa is.

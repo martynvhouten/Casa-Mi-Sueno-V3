@@ -56,9 +56,14 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/PrivacyPage.vue') 
       },
       { 
-        path: 'terms', 
+        path: 'voorwaarden', 
         name: 'terms',
         component: () => import('pages/TermsPage.vue') 
+      },
+      { 
+        path: 'sitemap', 
+        name: 'sitemap',
+        component: () => import('pages/SitemapPage.vue') 
       }
     ]
   },

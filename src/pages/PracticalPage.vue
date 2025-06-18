@@ -11,7 +11,7 @@
           <div class="animate-fade-in-up">
             <h1 class="text-shadow q-mb-md font-playfair">Praktische Informatie</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Alles wat u moet weten voor een zorgeloos verblijf
+              Alles wat je moet weten voor een zorgeloos verblijf
             </p>
           </div>
         </div>
@@ -23,8 +23,8 @@
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Uw Verblijf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          We willen graag dat u zich direct thuis voelt in Casa Mi Sueño. Daarom hebben 
-          we alle praktische informatie voor u op een rijtje gezet.
+          We willen graag dat je je direct thuis voelt in Casa Mi Sueño. Daarom hebben 
+          we alle praktische informatie voor je op een rijtje gezet.
         </p>
       </div>
     </section>
@@ -72,7 +72,7 @@
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
             <div class="pricing-card q-pa-lg">
-              <h3 class="font-playfair q-mb-lg">Tarieven 2024</h3>
+              <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
               <div class="season-pricing q-mb-xl">
                 <div v-for="season in pricing" :key="season.period" class="season-row q-py-md">
                   <div class="row items-center justify-between">
@@ -119,8 +119,8 @@
               <div>
                 <h4 class="q-mb-md">Beschikbaarheid</h4>
                 <p class="text-body1 q-mb-lg">
-                  Bekijk de beschikbaarheid in onze kalender en reserveer direct uw verblijf. 
-                  Heeft u vragen? Neem gerust contact met ons op.
+                  Kijk in onze kalender wanneer we er niet zijn, dan kun je het huis huren. 
+                  Heb je vragen? We denken graag met je mee.
                 </p>
                 <q-btn
                   class="cms-btn cms-btn-primary full-width"
@@ -194,7 +194,7 @@
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Klaar om te boeken?</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
-          Heeft u nog vragen of wilt u direct reserveren? Neem contact met ons op.
+          Heb je nog vragen of wil je direct reserveren? Neem contact met ons op.
         </p>
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
@@ -221,12 +221,12 @@ const houseRules = [
   {
     icon: 'pets',
     title: 'Huisdieren welkom',
-    description: 'Huisdieren zijn van harte welkom. Laat het ons even weten als u uw huisdier meeneemt.'
+    description: 'Huisdieren zijn van harte welkom. Laat het ons even weten als je je huisdier meeneemt.'
   },
   {
     icon: 'volume_down',
     title: 'Respecteer de rust',
-    description: 'We vragen u rekening te houden met de buren en de siësta te respecteren.'
+    description: 'We vragen je rekening te houden met de buren en de siësta te respecteren.'
   }
 ];
 
@@ -297,23 +297,23 @@ const pricing = [
 const faqs = [
   {
     question: 'Hoe ver is het naar het strand?',
-    answer: 'Het strand van Albir ligt op 5 minuten rijden met de auto. Het zandstrand van Benidorm is met de auto in 15 minuten te bereiken.'
+    answer: 'Het strand van Albir ligt op 5 minuten rijden met de auto. Het zandstrand van Benidorm is met de auto in 15 minuten te bereiken. Wij gaan zelf meestal naar Albir, lekker rustig en met leuke strandtentjes.'
   },
   {
     question: 'Is het zwembad verwarmd?',
-    answer: 'Het zwembad is niet verwarmd, maar door het mediterrane klimaat is het water van mei tot oktober aangenaam van temperatuur. Het zwembad wordt wekelijks onderhouden.'
+    answer: 'Het zwembad is niet verwarmd, maar door het mediterrane klimaat is het water van mei tot oktober heerlijk van temperatuur. We laten het elke week schoonmaken.'
   },
   {
     question: 'Zijn er winkels in de buurt?',
-    answer: 'De dichtstbijzijnde supermarkt ligt op 5 minuten rijden. In het centrum van L\'Alfàs del Pi (5 min) vindt u diverse winkels en op vrijdag is er een lokale markt.'
+    answer: 'De dichtstbijzijnde supermarkt (Mercadona, onze favoriet) ligt op 5 minuten rijden. In het centrum van L\'Alfàs del Pi (5 min) vind je diverse winkels en op vrijdag is er een gezellige lokale markt.'
   },
   {
     question: 'Hoe werkt de airconditioning?',
-    answer: 'Alle slaapkamers en de woonkamer zijn voorzien van airconditioning die zowel kan koelen als verwarmen. De units zijn eenvoudig te bedienen met een afstandsbediening.'
+    answer: 'Alle slaapkamers en de woonkamer hebben airco die kan koelen en verwarmen. De bediening is simpel, we leggen het je uit in ons welkomstboekje.'
   },
   {
     question: 'Is er parkeergelegenheid?',
-    answer: 'Ja, er is een privé parkeerplaats voor 2 auto\'s op het omheinde terrein van het huis.'
+    answer: 'Ja, je kunt twee auto\'s kwijt op onze oprit. De straat is ook rustig, daar kun je altijd wel een plekje vinden.'
   }
 ];
 
@@ -321,7 +321,7 @@ const checkInInfo = {
   time: '16:00',
   checkout: '10:00',
   address: 'Carrer de les Petúnies 16, 03580 L\'Alfàs del Pi, Alicante, Spain',
-  instructions: 'Bij aankomst wordt u verwelkomd door onze lokale contactpersoon die u de sleutels overhandigt en een rondleiding geeft.'
+  instructions: 'Bij aankomst word je verwelkomd door onze buurvrouw Maria, die je de sleutels geeft en het huis laat zien. Ze spreekt Engels en Spaans en woont twee deuren verderop.'
 };
 </script>
 

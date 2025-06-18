@@ -208,7 +208,7 @@ const navigationItems = [
 // Footer Links
 const footerLinks = [
   { label: 'Privacy', route: '/privacy' },
-  { label: 'Voorwaarden', route: '/terms' },
+  { label: 'Voorwaarden', route: '/voorwaarden' },
   { label: 'Contact', route: '/contact' },
   { label: 'Sitemap', route: '/sitemap' }
 ];

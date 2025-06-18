@@ -266,7 +266,7 @@ const handleSubmit = async () => {
     // Show success message
     $q.notify({
       type: 'positive',
-      message: 'Bedankt voor uw bericht! We nemen zo spoedig mogelijk contact met u op.',
+      message: 'Bedankt voor je bericht! We nemen zo spoedig mogelijk contact met je op.',
       position: 'top',
       timeout: 5000
     });

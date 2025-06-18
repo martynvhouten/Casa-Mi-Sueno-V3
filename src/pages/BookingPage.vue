@@ -11,7 +11,7 @@
           <div class="animate-fade-in-up text-center text-white">
             <h1 class="text-shadow q-mb-md font-playfair">Reserveren</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Plan uw verblijf in ons familiehuis
+              Plan je verblijf in ons familiehuis
             </p>
           </div>
         </div>
@@ -21,9 +21,9 @@
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Boek uw vakantie</h2>
+        <h2 class="font-playfair q-mb-lg">Boek je vakantie</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Wilt u ook genieten van ons tweede thuis aan de Costa Blanca? 
+          Wil je ook genieten van ons tweede thuis aan de Costa Blanca? 
           Bekijk hieronder de beschikbaarheid en tarieven, en neem contact met ons op 
           voor een reservering.
         </p>
@@ -42,7 +42,7 @@
           <!-- Rates -->
           <div class="col-12 col-md-6">
             <div class="booking-card q-pa-lg">
-              <h3 class="font-playfair q-mb-lg">Tarieven 2024</h3>
+              <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
               
               <div class="season-rates">
                 <div class="season q-mb-lg">
@@ -67,9 +67,9 @@
                 </div>
 
                 <div class="season">
-                  <h4 class="text-h6 font-playfair q-mb-sm">Topseizoen</h4>
+                  <h4 class="text-h6 font-playfair q-mb-sm">Zomerperiode</h4>
                   <p class="text-body1 q-mb-sm">Juli & augustus</p>
-                  <p class="text-h5 text-terracotta q-mb-none">vanaf €275 per nacht</p>
+                  <p class="text-h5 text-terracotta q-mb-none">€275 per nacht</p>
                   <p class="text-caption q-mt-sm">Minimaal verblijf: 14 nachten</p>
                 </div>
               </div>
@@ -77,34 +77,34 @@
               <q-separator class="q-my-lg" />
 
               <div class="included-services q-mb-lg">
-                <h4 class="text-h6 font-playfair q-mb-md">Inbegrepen services</h4>
+                <h4 class="text-h6 font-playfair q-mb-md">Inbegrepen</h4>
                 <div class="row q-col-gutter-md">
                   <div class="col-12 col-sm-6">
                     <ul class="feature-list">
-                      <li>Professionele eindschoonmaak</li>
-                      <li>Luxe bed- en badlinnen</li>
-                      <li>Welkomstpakket bij aankomst</li>
-                      <li>Zwembadonderhoud 2x per week</li>
+                      <li>Eindschoonmaak</li>
+                      <li>Bed- en badlinnen</li>
+                      <li>Koffie, thee en basis voorraad</li>
+                      <li>Zwembadonderhoud</li>
                     </ul>
                   </div>
                   <div class="col-12 col-sm-6">
                     <ul class="feature-list">
-                      <li>Energiekosten & WiFi</li>
-                      <li>Wekelijkse tuinverzorging</li>
-                      <li>24/7 lokale ondersteuning</li>
-                      <li>Strandlakens en -parasols</li>
+                      <li>Gas, water, elektra & WiFi</li>
+                      <li>Tuinonderhoud</li>
+                      <li>Hulp van buurvrouw Maria</li>
+                      <li>Strandlakens</li>
                     </ul>
                   </div>
                 </div>
               </div>
 
               <div class="additional-costs">
-                <h4 class="text-h6 font-playfair q-mb-md">Aanvullende kosten</h4>
+                <h4 class="text-h6 font-playfair q-mb-md">Extra kosten</h4>
                 <ul class="feature-list">
-                  <li>Waarborg: €500 (wordt teruggestort)</li>
+                  <li>Borg: €500 (krijg je terug)</li>
                   <li>Toeristenbelasting: €2,50 p.p.p.n.</li>
-                  <li>Optionele tussentijdse schoonmaak: €75</li>
-                  <li>Huisdieren zijn van harte welkom (graag vooraf melden)</li>
+                  <li>Extra schoonmaak mogelijk: €75</li>
+                  <li>Huisdieren welkom (graag even overleggen)</li>
                 </ul>
               </div>
             </div>
@@ -113,30 +113,30 @@
           <!-- Booking Terms -->
           <div class="col-12 col-md-6">
             <div class="booking-card q-pa-lg">
-              <h3 class="font-playfair q-mb-lg">Voorwaarden</h3>
+              <h3 class="font-playfair q-mb-lg">Goed om te weten</h3>
               
               <ul class="feature-list q-mb-xl">
-                <li>Minimaal verblijf: 10-14 nachten (seizoensafhankelijk)</li>
+                <li>We verhuren meestal voor 10-14 nachten</li>
                 <li>Flexibele aankomst- en vertrekdagen</li>
-                <li>Inchecken vanaf 16:00 uur</li>
-                <li>Uitchecken voor 10:00 uur</li>
+                <li>Aankomst vanaf 16:00 uur</li>
+                <li>Vertrek voor 10:00 uur</li>
                 <li>Aanbetaling: 30% bij reservering</li>
-                <li>Restbetaling: 8 weken voor aankomst</li>
-                <li>Annuleringsverzekering aanbevolen</li>
-                <li>Maximaal 6 personen toegestaan</li>
+                <li>Rest: 8 weken voor aankomst</li>
+                <li>Annuleringsverzekering is handig</li>
+                <li>Maximaal 4 personen</li>
               </ul>
 
               <div class="early-booking q-pa-md bg-sand rounded-borders">
-                <h4 class="text-h6 font-playfair q-mb-sm">Early Booking Voordeel</h4>
+                <h4 class="text-h6 font-playfair q-mb-sm">Vroeg boeken loont</h4>
                 <p class="text-body2 q-mb-none">
-                  Boek minimaal 6 maanden vooruit en ontvang 10% korting op de huurprijs.
+                  Als je meer dan 6 maanden vooruit boekt, krijg je 10% korting.
                 </p>
               </div>
 
               <q-btn
                 class="cms-btn cms-btn-primary full-width q-py-sm q-mt-xl"
                 to="/contact"
-                label="Neem contact op voor beschikbaarheid"
+                label="Vraag naar beschikbaarheid"
               />
             </div>
           </div>
@@ -175,8 +175,8 @@
               <q-icon name="support_agent" size="48px" class="text-terracotta q-mb-md" />
               <h4 class="font-playfair q-mb-md">Persoonlijke Service</h4>
               <p class="text-body1">
-                We delen graag onze lokale tips en helpen u bij het plannen 
-                van uw verblijf.
+                We delen graag onze lokale tips en helpen je bij het plannen
+                van je verblijf.
               </p>
             </div>
           </div>
@@ -189,7 +189,7 @@
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Klaar om te boeken?</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
-          Heeft u nog vragen of wilt u direct reserveren? Neem contact met ons op.
+          Heb je nog vragen of wil je direct reserveren? Neem contact met ons op.
         </p>
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"

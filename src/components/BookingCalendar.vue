@@ -18,7 +18,8 @@
               :min="new Date().toISOString().split('T')[0]"
               :max="maxDate"
               :options="availableDatesFilter"
-              :event-color="(date) => bookedDates.value.includes(date) ? 'grey' : ''"
+              :events="bookedDates"
+              :event-color="() => 'grey-4'"
               :navigation-min-year-month="new Date().toISOString().slice(0, 7)"
               :navigation-max-year-month="maxDate.toISOString().slice(0, 7)"
               today-btn
@@ -146,9 +147,9 @@
             <template v-else>
               <div class="empty-state text-center q-pa-xl">
                 <q-icon name="calendar_today" size="64px" class="text-grey-5 q-mb-lg" />
-                <h6 class="text-h6 font-playfair q-mb-md">Selecteer uw data</h6>
-                <p class="text-grey-8">
-                  Selecteer uw check-in en check-out datum om de beschikbaarheid en totaalprijs te bekijken.
+                <h6 class="text-h6 font-playfair q-mb-md">Selecteer je data</h6>
+                <p class="text-body1 q-mb-lg">
+                  Selecteer je check-in en check-out datum om de beschikbaarheid en totaalprijs te bekijken.
                   Het minimale verblijf is {{ MIN_NIGHTS.default }} nachten, in juli en augustus {{ MIN_NIGHTS.peak }} nachten.
                 </p>
               </div>
@@ -177,10 +178,6 @@ interface DateRange {
 
 interface ApiResponse {
   geboekte_datum: string;
-}
-
-interface DaySlotProps {
-  date: string;
 }
 
 const $q = useQuasar();
@@ -229,13 +226,6 @@ const calculatePrice = () => {
   return nights * pricePerNight.value;
 };
 
-// Format price as Euro amount
-const formattedPrice = computed(() => {
-  const total = calculatePrice();
-  if (total === 0) return '';
-  return `€${Math.round(total).toLocaleString('nl-NL')}`;
-});
-
 // Handle date range selection
 const handleDateRangeSelect = (range: DateRange) => {
   if (!range.from || !range.to) return;
@@ -246,7 +236,7 @@ const handleDateRangeSelect = (range: DateRange) => {
   const dates: string[] = [];
 
   for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-    dates.push(d.toISOString().split('T')[0]);
+    dates.push(d.toISOString().split('T')[0].replace(/-/g, '/'));
   }
 
   const hasBookedDate = dates.some(date => bookedDates.value.includes(date));
@@ -289,8 +279,8 @@ const fetchBookedDates = async (): Promise<void> => {
           }
         }
         
-        // Ensure date is in YYYY-MM-DD format
-        return new Date(date).toISOString().split('T')[0];
+        // Ensure date is in YYYY/MM/DD format for q-date events
+        return new Date(date).toISOString().split('T')[0].replace(/-/g, '/');
       })
       .filter((date: string) => {
         const parsedDate = new Date(date);
@@ -304,7 +294,7 @@ const fetchBookedDates = async (): Promise<void> => {
       for (let i = 5; i < 8; i++) {
         const date = new Date(startDate);
         date.setDate(date.getDate() + i);
-        testDates.push(date.toISOString().split('T')[0]);
+        testDates.push(date.toISOString().split('T')[0].replace(/-/g, '/'));
       }
       bookedDates.value = testDates;
     }
@@ -470,6 +460,11 @@ const calculateTotalPrice = (): string => {
         &__calendar-item {
           position: relative;
           
+          &--event {
+            text-decoration: line-through;
+            opacity: 0.6;
+          }
+
           &.q-date__calendar-item--range {
             background: var(--cms-deep-terracotta);
             opacity: 0.3;

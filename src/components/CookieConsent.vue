@@ -23,7 +23,7 @@
           </div>
         </div>
         <p class="text-body1 q-mb-lg">
-          Wij gebruiken cookies om uw ervaring op onze website te verbeteren. 
+          Wij gebruiken cookies om je ervaring op onze website te verbeteren. 
           Sommige cookies zijn essentieel voor het functioneren van de site, 
           terwijl andere ons helpen de site te verbeteren.
         </p>

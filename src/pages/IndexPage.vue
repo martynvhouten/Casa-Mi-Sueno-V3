@@ -10,15 +10,15 @@
         <div class="hero-overlay"></div>
         <div class="hero-content text-center">
           <div class="animate-fade-in-up">
-            <h1 class="text-shadow q-mb-md font-playfair">Welkom in ons tweede thuis onder de Spaanse zon</h1>
+            <h1 class="text-shadow q-mb-md font-playfair">Welkom in ons Spaanse thuis</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Een gezellig familiehuis waar u zich direct thuis voelt
+              Een gezellig familiehuis waar je je snel thuis voelt
             </p>
             <q-btn
               unelevated
               class="hero-btn q-px-xl q-py-sm text-subtitle1"
               to="/reserveren"
-              label="Plan uw vakantie"
+              label="Bekijk wanneer we er niet zijn"
             />
           </div>
         </div>
@@ -28,12 +28,12 @@
     <!-- Introduction Section -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="q-mb-lg font-playfair">Ons verhaal</h2>
+        <h2 class="q-mb-lg font-playfair">Even voorstellen</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Casa Mi Sueño is ons tweede thuis aan de Costa Blanca – een plek waar we als familie 
-          verliefd werden op het mediterrane leven en de warme mensen. Als we er zelf niet zijn, 
-          delen we graag deze bijzondere plek met u, zodat ook u kunt ervaren wat het betekent 
-          om écht thuis te komen in Spanje.
+          Wij zijn Esther en Milco, en samen met onze hond Marlo hebben we hier ons tweede thuis gevonden. 
+          Casa Mi Sueño is onze plek om te ontspannen, te genieten van het mediterrane leven en de warme 
+          Spaanse cultuur. Als we er zelf niet zijn, delen we ons huis graag met anderen die ook van deze 
+          bijzondere plek willen genieten.
         </p>
       </div>
     </section>
@@ -145,15 +145,15 @@
     <!-- Call to Action -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="q-mb-lg font-playfair">Uw droomvakantie begint hier</h2>
+        <h2 class="q-mb-lg font-playfair">Kom ook genieten</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
-          Laat u meevoeren naar een plek waar het mediterrane leven op zijn mooist is. 
-          Waar elke dag begint met vogelgezang en eindigt met een spectaculaire zonsondergang.
+          Van ontbijt in de ochtendzon tot een verfrissende duik in het zwembad. 
+          Hier kun je echt even tot rust komen en het Spaanse leven ervaren.
         </p>
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
           to="/reserveren"
-          label="Plan uw verblijf"
+          label="Bekijk beschikbaarheid"
         />
       </div>
     </section>
@@ -164,34 +164,34 @@
 const features = [
   {
     image: '/images/Tuin_zwembad.jpg',
-    title: 'Een persoonlijk familiehuis',
-    description: 'Geen standaard verhuur, maar ons eigen tweede thuis waar we u graag verwelkomen als onze gast'
+    title: 'Ons tweede thuis',
+    description: 'Een echt familiehuis waar we zelf regelmatig zijn, en dat we graag delen als we er niet zijn'
   },
   {
     image: '/images/Tuin_mediterraans.jpg',
-    title: 'Mediterrane levensstijl',
-    description: 'Geniet van het buitenleven in onze verzorgde tuin met zwembad, diverse terrassen en buitenkeuken'
+    title: 'Leven in de buitenlucht',
+    description: 'Een fijne tuin met zwembad, verschillende terrassen en een gezellige buitenkeuken'
   },
   {
     image: '/images/Omgeving/Albir_panorama.jpg',
-    title: 'Perfecte locatie',
-    description: 'Ideaal gelegen tussen de bergen en de zee, op loopafstand van het strand en alle voorzieningen'
+    title: 'Fijne locatie',
+    description: 'Rustig gelegen tussen de bergen en de zee, dichtbij strand en alle voorzieningen'
   }
 ];
 
 const guestReviews = [
   {
-    text: "Het voelde direct als thuiskomen. De persoonlijke touch en de warme inrichting maken dit huis zo bijzonder. We komen zeker terug!",
+    text: "Het voelt echt als een thuis, niet als een vakantiehuis. De persoonlijke details en de relaxte sfeer maken het extra bijzonder.",
     author: "Familie de Vries",
     date: "Augustus 2023"
   },
   {
-    text: "De tuin is een oase van rust. Heerlijk om 's ochtends bij het zwembad te ontbijten met uitzicht op de bergen.",
+    text: "Heerlijk om 's ochtends in de tuin te ontbijten. De tips van Esther en Milco hebben ons naar de leukste plekjes in de buurt gebracht.",
     author: "Peter en Anna",
     date: "Juni 2023"
   },
   {
-    text: "Perfect gelegen om de Costa Blanca te verkennen. Alle tips van de eigenaren waren goud waard!",
+    text: "Een ideale uitvalsbasis om de Costa Blanca te verkennen. Het schriftje met persoonlijke aanbevelingen was goud waard!",
     author: "Mark en Lisa",
     date: "September 2023"
   }
@@ -201,17 +201,17 @@ const locationHighlights = [
   {
     icon: 'beach_access',
     title: 'Strand & Zee',
-    description: 'Op 15 minuten wandelen naar het strand van Albir met zijn gezellige boulevard'
+    description: 'Het strand van Albir met zijn gezellige boulevard ligt op 15 minuten wandelen'
   },
   {
     icon: 'landscape',
     title: 'Bergen & Natuur',
-    description: 'Omringd door de Sierra Helada met prachtige wandel- en fietsroutes'
+    description: 'Omringd door de Sierra Helada met mooie wandel- en fietsroutes'
   },
   {
     icon: 'restaurant',
-    title: 'Cultuur & Culinair',
-    description: 'Nabij authentieke dorpjes en de beste restaurants van de Costa Blanca'
+    title: 'Dorpsleven',
+    description: 'Gezellige dorpjes en leuke restaurantjes in de buurt'
   }
 ];
 </script>

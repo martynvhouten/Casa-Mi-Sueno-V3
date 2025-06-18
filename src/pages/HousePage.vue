@@ -11,7 +11,7 @@
           <div class="animate-fade-in-up">
             <h1 class="text-shadow q-mb-md font-playfair">Het Huis</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Een thuis waar comfort en stijl samenkomen
+              Een gezellig thuis in Spanje
             </p>
           </div>
         </div>
@@ -21,11 +21,11 @@
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Bienvenidos a Casa Mi Sueño</h2>
+        <h2 class="font-playfair q-mb-lg">Welkom bij ons thuis</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Ons vakantiehuis is een gezellige Spaanse villa waar comfort en authenticiteit samenkomen. 
-          Met twee slaapkamers, een heerlijke tuin met zwembad en alle praktische voorzieningen 
-          voor een ontspannen verblijf, is dit de perfecte uitvalsbasis voor uw Spaanse avontuur.
+          Casa Mi Sueño is ons tweede thuis aan de Costa Blanca, een plek waar we tot rust komen
+          en dat we delen met anderen als we er niet zijn. Met twee gastenslaapkamers, twee badkamers, een fijne tuin
+          en een verkoelend zwembad is het de perfecte uitvalsbasis voor een ontspannen vakantie.
         </p>
       </div>
     </section>
@@ -76,10 +76,9 @@
                 />
               </div>
               <div class="q-pa-lg">
-                <h3 class="font-playfair q-mb-md">Slaapkamer met Eigen Badkamer</h3>
+                <h3 class="font-playfair q-mb-md">Hoofdslaapkamer met Eigen Badkamer</h3>
                 <p class="text-body1 q-mb-md">
-                  Een ruime, lichte slaapkamer met directe toegang tot een eigen badkamer. 
-                  Het comfortabele tweepersoonsbed en de rustige ligging zorgen voor een goede nachtrust.
+                  Een ruime, lichte slaapkamer met directe toegang tot een eigen badkamer. Deze comfortabele kamer is perfect voor een ontspannen verblijf.
                 </p>
                 <ul class="feature-list">
                   <li>Tweepersoonsbed</li>
@@ -101,7 +100,7 @@
               <div class="q-pa-lg">
                 <h3 class="font-playfair q-mb-md">Tweede Slaapkamer</h3>
                 <p class="text-body1 q-mb-md">
-                  Een comfortabele tweede slaapkamer met tweepersoonsbed, perfect voor familie of vrienden.
+                  Een comfortabele tweede slaapkamer met tweepersoonsbed, met toegang tot de familie badkamer. Perfect voor familie of vrienden.
                 </p>
                 <ul class="feature-list">
                   <li>Tweepersoonsbed</li>

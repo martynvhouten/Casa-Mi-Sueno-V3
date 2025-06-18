@@ -21,9 +21,9 @@
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Heeft u een vraag?</h2>
-        <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Wij helpen u graag verder met al uw vragen over ons familiehuis. 
+        <h2 class="font-playfair q-mb-lg">Heb je een vraag?</h2>
+        <p class="text-body1 q-mb-xl">
+          Wij helpen je graag verder met al je vragen over ons familiehuis. 
           Vul het contactformulier in of neem direct contact met ons op.
         </p>
       </div>

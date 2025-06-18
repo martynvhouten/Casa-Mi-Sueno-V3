@@ -226,17 +226,17 @@ const interiorPhotos = [
 ];
 
 const bedroomPhotos = [
-  { src: '/images/Slaapkamer1_vooraanzicht.jpg', caption: 'Hoofdslaapkamer' },
-  { src: '/images/Slaapkamer1_bed.jpg', caption: 'Comfortabel tweepersoonsbed' },
+  { src: '/images/Slaapkamer1_vooraanzicht.jpg', caption: 'Hoofdslaapkamer met eigen badkamer' },
+  { src: '/images/Slaapkamer1_bed.jpg', caption: 'Comfortabel tweepersoonsbed in hoofdslaapkamer' },
   { src: '/images/Slaapkamer1_zijaanzicht.jpg', caption: 'Zijkant hoofdslaapkamer' },
-  { src: '/images/Slaapkamer2.jpg', caption: 'Tweede slaapkamer' },
-  { src: '/images/Slaapkamer2_bed.jpg', caption: 'Tweepersoonsbed tweede slaapkamer' },
-  { src: '/images/Slaapkamer2_kussens.jpg', caption: 'Sfeervolle inrichting' }
+  { src: '/images/Slaapkamer2.jpg', caption: 'Tweede gastenslaapkamer' },
+  { src: '/images/Slaapkamer2_bed.jpg', caption: 'Tweepersoonsbed in tweede slaapkamer' },
+  { src: '/images/Slaapkamer2_kussens.jpg', caption: 'Sfeervolle inrichting tweede slaapkamer' }
 ];
 
 const bathroomPhotos = [
-  { src: '/images/Badkamer.jpg', caption: 'Moderne badkamer met douche' },
-  { src: '/images/Badkamer2.jpg', caption: 'Tweede badkamer' }
+  { src: '/images/Badkamer.jpg', caption: 'En-suite badkamer hoofdslaapkamer' },
+  { src: '/images/Badkamer2.jpg', caption: 'Familie badkamer' }
 ];
 
 const exteriorPhotos = [

@@ -23,9 +23,9 @@
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Welkom in Casa Mi Sueño</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Laat u inspireren door deze foto's van ons familiehuis en zijn mediterrane omgeving. 
-          Van de gezellige woonkamer tot het zonnige terras - hier krijgt u een goede indruk 
-          van wat u kunt verwachten.
+          Laat je inspireren door deze foto's van ons familiehuis en zijn mediterrane omgeving. 
+          Van de gezellige woonkamer tot het zonnige terras - hier krijg je een goede indruk 
+          van wat je kunt verwachten.
         </p>
       </div>
     </section>
@@ -40,10 +40,10 @@
     <!-- Call to Action -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Plan uw verblijf</h2>
+        <h2 class="font-playfair q-mb-lg">Plan je verblijf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
-          Wilt u ook genieten van deze prachtige plek? Neem contact met ons op voor 
-          beschikbaarheid en reserveringen.
+          Wil je ook genieten van deze prachtige plek? Neem contact met ons op voor 
+          beschikbaarheid en prijzen.
         </p>
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"

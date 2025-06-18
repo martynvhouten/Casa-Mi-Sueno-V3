@@ -12,6 +12,11 @@ export default {
     directions: 'Routebeschrijving',
     privacy: 'Privacy & Cookies'
   },
+  error404: {
+    title: 'Pagina niet gevonden',
+    description: 'Sorry, de pagina die je zoekt bestaat niet of is verplaatst.',
+    goHome: 'Terug naar home'
+  },
   home: {
     hero: {
       title: 'Casa Mi Sueño',

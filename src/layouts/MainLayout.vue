@@ -106,6 +106,8 @@
       </router-view>
     </q-page-container>
 
+    <WhatsAppWidget />
+
     <!-- Footer -->
     <q-footer class="bg-sand text-dark">
       <div class="container q-py-xl">
@@ -122,11 +124,6 @@
               <q-item>
                 <q-item-section>
                   <q-item-label>03580 L'Alfàs del Pi, Alicante, Spain</q-item-label>
-                </q-item-section>
-              </q-item>
-              <q-item clickable tag="a" href="mailto:esversteeg@hotmail.com">
-                <q-item-section>
-                  <q-item-label>esversteeg@hotmail.com</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item clickable tag="a" href="tel:+31683645489">
@@ -187,8 +184,12 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useQuasar } from 'quasar';
+import WhatsAppWidget from '../components/WhatsAppWidget.vue';
+import { WHATSAPP_CONFIG } from '../utils/whatsapp';
 
 const route = useRoute();
+const $q = useQuasar();
 const rightDrawerOpen = ref(false);
 const isScrolled = ref(false);
 
@@ -215,9 +216,11 @@ const footerLinks = [
 
 // Social Media Links
 const socialLinks = [
-  { icon: 'fab fa-facebook', link: 'https://facebook.com/' },
   { icon: 'fab fa-instagram', link: 'https://instagram.com/' },
-  { icon: 'fab fa-whatsapp', link: 'https://wa.me/31683645489' }
+  { 
+    icon: 'fab fa-whatsapp', 
+    link: WHATSAPP_CONFIG.getWhatsAppUrl($q.platform.is.mobile)
+  }
 ];
 
 // Scroll handler

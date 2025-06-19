@@ -19,7 +19,7 @@
     </section>
 
     <!-- Our Story Section -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container">
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
@@ -48,7 +48,7 @@
     </section>
 
     <!-- Vision Section -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
@@ -76,7 +76,7 @@
     </section>
 
     <!-- Personal Touch Section -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container">
         <h2 class="text-center font-playfair q-mb-xl">Onze persoonlijke touch</h2>
         <div class="row q-col-gutter-lg">
@@ -92,7 +92,7 @@
     </section>
 
     <!-- Local Life Section -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
@@ -121,7 +121,7 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Ervaar het zelf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">

@@ -9,16 +9,17 @@
       >
         <div class="hero-overlay"></div>
         <div class="hero-content text-center">
-          <div class="animate-fade-in-up">
-            <h1 class="text-shadow q-mb-md font-playfair">Welkom in ons Spaanse thuis</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
+          <div class="animate-fade-in-up container">
+            <h1 class="text-white text-shadow q-mb-md font-playfair text-weight-medium">Welkom in ons Spaanse thuis</h1>
+            <p class="text-white text-h5 text-shadow q-mb-xl font-poppins text-weight-light">
               Een gezellig familiehuis waar je je snel thuis voelt
             </p>
             <q-btn
               unelevated
+              color="primary"
               class="hero-btn q-px-xl q-py-sm text-subtitle1"
               to="/reserveren"
-              label="Bekijk wanneer we er niet zijn"
+              label="Bekijk beschikbaarheid"
             />
           </div>
         </div>
@@ -82,7 +83,7 @@
             <div class="cms-card">
               <div class="cms-img-container" style="height: 400px;">
                 <q-img
-                  src="/images/Woonkamer.jpg"
+                  src="/images/Woonkamer_zithoek.jpg"
                   class="cms-img"
                 >
                   <div class="absolute-bottom text-center" style="background: rgba(0,0,0,0.6)">
@@ -216,11 +217,12 @@ const locationHighlights = [
 ];
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .hero-section {
   position: relative;
-  height: 90vh;
-  min-height: 700px;
+  height: 75vh;
+  min-height: 600px;
+  max-height: 800px;
 }
 
 .hero-overlay {
@@ -232,8 +234,8 @@ const locationHighlights = [
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.6)
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.5)
   );
 }
 
@@ -246,45 +248,45 @@ const locationHighlights = [
   padding: 0 var(--spacing-xl);
   position: relative;
   z-index: 1;
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 600px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .text-h5 {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
 }
 
-.hero-content .animate-fade-in-up {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+.hero-btn {
+  font-weight: 500;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
 }
 
-.hero-content h1 {
-  font-size: 4.5rem;
-  line-height: 1.2;
-  margin-bottom: var(--spacing-lg);
-  width: 100%;
-  text-align: center;
-}
-
-.hero-content p {
-  width: 100%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 600px;
+:deep(.q-img__content) {
+  background: none;
 }
 
 .text-shadow {
   text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero-btn {
-  background: linear-gradient(135deg, var(--cms-deep-terracotta), var(--cms-light-terracotta));
-  color: white;
-  font-weight: 500;
-  border-radius: var(--radius-lg);
-  transition: all 0.3s ease;
-}
-
-.hero-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(209, 122, 82, 0.3);
 }
 
 /* Zoom effect for background image */

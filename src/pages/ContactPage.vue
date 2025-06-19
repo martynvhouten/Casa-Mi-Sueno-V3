@@ -41,43 +41,45 @@
           <!-- Contact Info -->
           <div class="col-12 col-md-4">
             <div class="contact-info q-pa-lg">
-              <h3 class="font-playfair q-mb-lg">Direct Contact</h3>
+              <h3 class="font-playfair q-mb-lg text-h4">Direct Contact</h3>
               
-              <div class="q-mb-lg">
-                <h4 class="text-h6 font-playfair q-mb-sm">Email</h4>
-                <a href="mailto:esversteeg@hotmail.com" class="text-body1 text-dark">
-                  esversteeg@hotmail.com
-                </a>
-              </div>
-
-              <div class="q-mb-lg">
-                <h4 class="text-h6 font-playfair q-mb-sm">Telefoon</h4>
+              <div class="contact-item q-mb-md">
+                <div class="contact-icon q-mb-sm">
+                  <q-icon name="phone" size="24px" color="primary" />
+                </div>
+                <h4 class="text-h6 font-playfair q-mb-xs">Telefoon</h4>
                 <a href="tel:+31683645489" class="text-body1 text-dark">
                   06 - 8364 5489 (Netherlands)
                 </a>
-                <p class="text-body2 q-mt-sm">WhatsApp beschikbaar</p>
+                <p class="text-body2 q-mt-xs text-grey-8">WhatsApp beschikbaar</p>
               </div>
 
-              <div class="q-mb-lg">
-                <h4 class="text-h6 font-playfair q-mb-sm">Adres</h4>
+              <div class="contact-item q-mb-md">
+                <div class="contact-icon q-mb-sm">
+                  <q-icon name="place" size="24px" color="primary" />
+                </div>
+                <h4 class="text-h6 font-playfair q-mb-xs">Adres</h4>
                 <p class="text-body1 q-mb-none">Carrer de les Petúnies 16</p>
                 <p class="text-body1 q-mb-none">03580 L'Alfàs del Pi</p>
                 <p class="text-body1">Alicante, Spain</p>
               </div>
 
-              <div>
-                <h4 class="text-h6 font-playfair q-mb-sm">Direct Boeken</h4>
-                <p class="text-body1">Direct boeken bij de eigenaren</p>
+              <div class="contact-item q-mb-md">
+                <div class="contact-icon q-mb-sm">
+                  <q-icon name="calendar_today" size="24px" color="primary" />
+                </div>
+                <h4 class="text-h6 font-playfair q-mb-xs">Beschikbaarheid</h4>
+                <p class="text-body1">Bekijk de kalender en reserveer direct</p>
               </div>
 
-              <div>
-                <h4 class="text-h6 font-playfair q-mb-sm">Volg ons</h4>
-                <div class="row q-gutter-sm">
-                  <a href="#" target="_blank" rel="noopener noreferrer" class="text-dark">
-                    <q-icon name="fab fa-facebook" size="24px" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" class="text-dark">
-                    <q-icon name="fab fa-instagram" size="24px" />
+              <div class="contact-item">
+                <div class="contact-icon q-mb-sm">
+                  <q-icon name="public" size="24px" color="primary" />
+                </div>
+                <h4 class="text-h6 font-playfair q-mb-xs">Volg ons</h4>
+                <div class="row q-gutter-md">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <q-icon name="fab fa-instagram" size="28px" />
                   </a>
                 </div>
               </div>
@@ -93,19 +95,56 @@
 import ContactForm from '../components/ContactForm.vue';
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .contact-info {
   background: var(--cms-sand);
   border-radius: var(--radius-lg);
   height: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.contact-item {
+  position: relative;
+  padding-left: 0;
+}
+
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .contact-info a {
   text-decoration: none;
   transition: color 0.3s ease;
+  display: inline-block;
+  
+  &:hover {
+    color: var(--cms-deep-terracotta) !important;
+  }
 }
 
-.contact-info a:hover {
-  color: var(--cms-deep-terracotta) !important;
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cms-gray-800);
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--cms-deep-terracotta);
+    transform: translateY(-1px);
+  }
 }
 </style> 

@@ -19,7 +19,7 @@
     </section>
 
     <!-- Introduction -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Welkom in Casa Mi Sueño</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
@@ -31,14 +31,14 @@
     </section>
 
     <!-- Photo Gallery -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container">
         <PhotoGallery />
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Plan je verblijf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">

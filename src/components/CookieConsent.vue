@@ -2,16 +2,15 @@
   <q-dialog
     v-model="showConsent"
     persistent
-    position="bottom"
     seamless
-    transition-show="slide-up"
-    transition-hide="slide-down"
+    transition-show="scale"
+    transition-hide="scale"
   >
     <q-card class="cookie-consent bg-white">
       <q-card-section>
         <div class="row items-center q-mb-md">
           <div class="col">
-            <div class="text-h6">Cookie Voorkeuren</div>
+            <div class="text-h6 text-weight-bold text-primary">Cookie Instellingen</div>
           </div>
           <div class="col-auto">
             <q-btn
@@ -19,22 +18,24 @@
               round
               icon="close"
               @click="acceptAll"
+              color="grey-7"
             />
           </div>
         </div>
-        <p class="text-body1 q-mb-lg">
-          Wij gebruiken cookies om je ervaring op onze website te verbeteren. 
-          Sommige cookies zijn essentieel voor het functioneren van de site, 
-          terwijl andere ons helpen de site te verbeteren.
+        <p class="text-body1 q-mb-lg text-grey-8">
+          Om je de best mogelijke ervaring te bieden, maken wij gebruik van cookies. 
+          Deze helpen ons om de website te laten functioneren, de veiligheid te waarborgen 
+          en onze diensten te verbeteren. Je kunt hieronder je voorkeuren aanpassen.
         </p>
         
         <div class="q-gutter-y-md">
           <!-- Essential Cookies -->
           <q-item tag="label" class="rounded-borders">
             <q-item-section>
-              <q-item-label>Essentiële Cookies</q-item-label>
-              <q-item-label caption>
-                Noodzakelijk voor het functioneren van de website. Deze kunnen niet worden uitgeschakeld.
+              <q-item-label class="text-weight-medium">Essentiële Cookies</q-item-label>
+              <q-item-label caption class="text-grey-7">
+                Deze cookies zijn noodzakelijk voor het functioneren van de website en kunnen niet worden uitgeschakeld.
+                Ze worden alleen gebruikt om basisfuncties mogelijk te maken.
               </q-item-label>
             </q-item-section>
             <q-item-section side>
@@ -49,9 +50,10 @@
           <!-- Analytics Cookies -->
           <q-item tag="label" class="rounded-borders cursor-pointer">
             <q-item-section>
-              <q-item-label>Analytics Cookies</q-item-label>
-              <q-item-label caption>
-                Helpen ons te begrijpen hoe bezoekers onze website gebruiken.
+              <q-item-label class="text-weight-medium">Analytics Cookies</q-item-label>
+              <q-item-label caption class="text-grey-7">
+                Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken, 
+                zodat we de gebruikerservaring kunnen verbeteren. Alle gegevens worden anoniem verzameld.
               </q-item-label>
             </q-item-section>
             <q-item-section side>
@@ -64,10 +66,10 @@
         </div>
       </q-card-section>
 
-      <q-card-actions align="right" class="bg-white q-pa-md">
+      <q-card-actions align="right" class="bg-white q-pa-md q-gutter-sm">
         <q-btn
-          flat
-          label="Voorkeuren Opslaan"
+          outline
+          label="Alleen Essentieel"
           color="primary"
           @click="savePreferences"
           class="q-px-md"
@@ -77,7 +79,7 @@
           label="Alles Accepteren"
           color="primary"
           @click="acceptAll"
-          class="q-px-md q-ml-sm"
+          class="q-px-md"
         />
       </q-card-actions>
     </q-card>
@@ -156,20 +158,29 @@ onMounted(() => {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
   .q-item {
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     padding: 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 
     &:hover {
       background: #f9fafb;
+      border-color: rgba(0, 0, 0, 0.12);
     }
   }
 
+  .q-btn {
+    font-weight: 500;
+    min-width: 140px;
+  }
+
   @media (max-width: 599px) {
-    max-width: none;
-    margin: 0;
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
 </style> 

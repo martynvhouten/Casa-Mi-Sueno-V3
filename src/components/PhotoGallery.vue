@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-gallery section">
+  <div class="photo-gallery">
     <div class="container">
       <!-- Gallery Navigation -->
       <div class="q-mb-xl">
@@ -32,16 +32,20 @@
             <div
               v-for="(photo, index) in allPhotos"
               :key="index"
-              class="cms-card cursor-pointer"
+              class="cms-card cursor-pointer gallery-item"
               @click="openLightbox(allPhotos, index)"
             >
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   :src="photo.src"
                   class="cms-img"
+                  loading="eager"
+                  fit="cover"
+                  no-spinner
+                  no-transition
                 >
-                  <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
-                    <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
+                  <div class="absolute-bottom text-center" style="background: rgba(0,0,0,0.7); backdrop-filter: blur(4px)">
+                    <p class="text-subtitle1 text-white q-mb-none q-pa-sm">{{ photo.caption }}</p>
                   </div>
                 </q-img>
               </div>
@@ -89,6 +93,10 @@
                 <q-img
                   :src="photo.src"
                   class="cms-img"
+                  loading="eager"
+                  fit="cover"
+                  no-spinner
+                  no-transition
                 >
                   <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
                     <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
@@ -111,6 +119,10 @@
                 <q-img
                   :src="photo.src"
                   class="cms-img"
+                  loading="eager"
+                  fit="cover"
+                  no-spinner
+                  no-transition
                 >
                   <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
                     <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
@@ -133,6 +145,10 @@
                 <q-img
                   :src="photo.src"
                   class="cms-img"
+                  loading="eager"
+                  fit="cover"
+                  no-spinner
+                  no-transition
                 >
                   <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
                     <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
@@ -295,34 +311,74 @@ const openLightbox = (photoSet: any[], index: number) => {
 }
 </style>
 
-<style lang="scss">
-.lightbox-trigger {
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
+<style lang="scss" scoped>
+.photo-gallery {
+  background: transparent !important;
 
-.q-carousel {
-  &__slide {
+  :deep(.section) {
+    background: transparent !important;
+  }
+
+  .cms-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .gallery-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    background: transparent;
+    will-change: transform;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .cms-img-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: var(--cms-gray-100);
+  }
+
+  .cms-img {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    will-change: transform;
+
+    :deep(img) {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.01); /* Prevent white edges during transform */
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  .q-tab-panels {
+    background: transparent;
+  }
+
+  .q-tab-panel {
     padding: 0;
   }
-  
-  &__navigation {
-    .q-btn {
-      opacity: 0.7;
-      &:hover {
-        opacity: 1;
-      }
-    }
+
+  .q-tabs {
+    background: transparent;
   }
 }
 
-.q-dialog__inner {
-  &--maximized {
-    > div {
-      border-radius: 0;
-    }
+// Make sure lightbox images maintain aspect ratio
+.q-dialog .q-img {
+  img {
+    object-fit: contain;
   }
 }
 </style> 

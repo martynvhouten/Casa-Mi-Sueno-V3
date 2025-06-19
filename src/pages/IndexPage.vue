@@ -44,8 +44,8 @@
     <section class="section bg-white">
       <div class="container">
         <div class="cms-grid cms-grid-3">
-          <div v-for="feature in features" :key="feature.title" class="cms-card q-pa-lg text-center">
-            <div class="cms-img-container q-mb-lg" style="height: 250px;">
+          <div v-for="feature in features" :key="feature.title" class="cms-card q-pa-md text-center">
+            <div class="cms-img-container q-mb-lg" style="height: 200px;">
               <q-img
                 :src="feature.image"
                 class="cms-img"
@@ -62,7 +62,7 @@
     <section class="section bg-sand">
       <div class="container text-center">
         <h2 class="q-mb-xl font-playfair">Wat onze gasten zeggen</h2>
-        <div class="row q-col-gutter-xl justify-center">
+        <div class="row q-col-gutter-lg justify-center">
           <div v-for="review in guestReviews" :key="review.author" class="col-12 col-md-4">
             <div class="review-card q-pa-lg">
               <q-icon name="format_quote" size="48px" class="text-terracotta q-mb-md" />
@@ -79,10 +79,10 @@
     <section class="section bg-white">
       <div class="container">
         <h2 class="text-center q-mb-xl font-playfair">Een thuis in Spanje</h2>
-        <div class="row q-col-gutter-xl">
+        <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
             <div class="cms-card">
-              <div class="cms-img-container" style="height: 400px;">
+              <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Woonkamer_zithoek.jpg"
                   class="cms-img"
@@ -97,7 +97,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="cms-card">
-              <div class="cms-img-container" style="height: 400px;">
+              <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Tuin_mediterraans.jpg"
                   class="cms-img"
@@ -222,8 +222,13 @@ const locationHighlights = [
 .hero-section {
   position: relative;
   height: 75vh;
-  min-height: 600px;
+  min-height: 500px;
   max-height: 800px;
+  
+  @media (max-width: 768px) {
+    height: 60vh;
+    min-height: 400px;
+  }
 }
 
 .hero-overlay {
@@ -246,27 +251,20 @@ const locationHighlights = [
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--spacing-xl);
+  padding: 0 var(--spacing-lg);
   position: relative;
-  z-index: 1;
-
-  h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-
-    @media (max-width: 600px) {
-      font-size: 2.5rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 var(--spacing-md);
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-  }
-
-  .text-h5 {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    
+    .text-h5 {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -442,5 +440,31 @@ const locationHighlights = [
 
 .location-card:hover {
   transform: translateY(-4px);
+}
+
+.cms-img-container {
+  @media (max-width: 768px) {
+    height: 200px !important;
+  }
+}
+
+.location-card,
+.review-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+.cms-card {
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    margin-bottom: var(--spacing-md);
+  }
 }
 </style> 

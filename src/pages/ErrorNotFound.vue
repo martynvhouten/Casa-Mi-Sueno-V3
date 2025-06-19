@@ -1,25 +1,14 @@
 <template>
-  <div class="fullscreen bg-blue-1 text-blue-10 flex flex-center">
+  <div class="fullscreen bg-secondary text-dark flex flex-center">
     <div class="text-center">
-      <div style="font-size: 8rem" class="text-blue-8">
-        404
-      </div>
-
-      <div class="text-h2 text-blue-9 q-mb-md">
-        {{ t('error404.title') }}
-      </div>
-
-      <div class="text-h5 text-blue-8 q-mb-xl">
-        {{ t('error404.description') }}
-      </div>
-
+      <div class="text-h2 font-playfair q-mb-md">{{ t('error404.title') }}</div>
+      <div class="text-h5 q-mb-xl">{{ t('error404.description') }}</div>
       <q-btn
-        color="blue-8"
-        text-color="white"
+        color="primary"
         unelevated
-        to="/"
+        :to="{ name: 'home' }"
         :label="t('error404.goHome')"
-        no-caps
+        class="q-px-xl q-py-sm"
       />
     </div>
   </div>
@@ -32,7 +21,6 @@ const { t } = useI18n();
 
 <style scoped>
 .fullscreen {
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 </style> 

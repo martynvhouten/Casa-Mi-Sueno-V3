@@ -82,17 +82,17 @@
 
           <q-separator spaced />
 
-          <q-item to="/booking" clickable v-ripple>
+          <q-item :to="{ name: 'booking' }" clickable v-ripple>
             <q-item-section>
-          <q-btn
-            unelevated
+              <q-btn
+                unelevated
                 color="primary"
-            label="Reserveren"
+                label="Reserveren"
                 class="full-width"
-          />
+              />
             </q-item-section>
-        </q-item>
-      </q-list>
+          </q-item>
+        </q-list>
       </q-scroll-area>
     </q-drawer>
 

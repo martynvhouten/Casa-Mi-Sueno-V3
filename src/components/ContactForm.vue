@@ -309,4 +309,27 @@ const handleSubmit = async () => {
     border-radius: 8px;
   }
 }
+</style>
+
+<style scoped>
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.q-field {
+  margin-bottom: 1.5rem;
+}
+
+:deep(.q-field__label) {
+  padding-left: 2.5rem;
+}
+
+:deep(.q-field__control) {
+  padding-left: 0.5rem;
+}
+
+:deep(.q-field__prepend) {
+  padding-right: 0.5rem;
+}
 </style> 

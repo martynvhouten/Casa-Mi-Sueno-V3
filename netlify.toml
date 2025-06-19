@@ -10,7 +10,7 @@
   to = "/index.html"
   status = 200
 
-[[functions]]
+[functions]
   directory = "netlify/functions"
 
 # Redirect /sitemap.xml to our sitemap function

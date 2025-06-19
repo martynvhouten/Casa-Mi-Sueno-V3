@@ -1,5 +1,18 @@
-import routes from '../router/routes';
-import { RouteRecordRaw } from 'vue-router';
+// Define static routes for sitemap generation
+const staticRoutes = [
+  { path: '/' },
+  { path: '/over-ons' },
+  { path: '/het-huis' },
+  { path: '/buiten' },
+  { path: '/omgeving' },
+  { path: '/fotos' },
+  { path: '/praktisch' },
+  { path: '/contact' },
+  { path: '/reserveren' },
+  { path: '/privacy' },
+  { path: '/voorwaarden' },
+  { path: '/sitemap' }
+];
 
 interface SitemapUrl {
   loc: string;
@@ -13,29 +26,13 @@ const BASE_URL = 'https://casamisueno.es';
 export const generateSitemap = (): string => {
   const urls: SitemapUrl[] = [];
   
-  // Add static routes from vue-router
-  routes.forEach((route: RouteRecordRaw) => {
-    if (route.path && !route.path.includes(':') && !route.path.includes('*')) {
-      // Handle nested routes
-      if (route.children) {
-        route.children.forEach((child: RouteRecordRaw) => {
-          const fullPath = child.path ? `${route.path}${child.path === '' ? '' : `/${child.path}`}` : route.path;
-          if (fullPath && !fullPath.includes(':') && !fullPath.includes('*')) {
-            urls.push({
-              loc: `${BASE_URL}${fullPath}`,
-              changefreq: getChangeFreq(fullPath),
-              priority: getPriority(fullPath)
-            });
-          }
-        });
-      } else {
-        urls.push({
-          loc: `${BASE_URL}${route.path}`,
-          changefreq: getChangeFreq(route.path),
-          priority: getPriority(route.path)
-        });
-      }
-    }
+  // Add static routes
+  staticRoutes.forEach((route) => {
+    urls.push({
+      loc: `${BASE_URL}${route.path}`,
+      changefreq: getChangeFreq(route.path),
+      priority: getPriority(route.path)
+    });
   });
 
   return generateXml(urls);
@@ -46,7 +43,6 @@ const getChangeFreq = (path: string): string => {
     case '/':
       return 'weekly';
     case '/reserveren':
-    case '/beschikbaarheid':
       return 'daily';
     default:
       return 'monthly';

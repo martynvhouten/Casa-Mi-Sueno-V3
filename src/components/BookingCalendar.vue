@@ -150,7 +150,7 @@ onMounted(() => {
   fetchBookedDates();
 });
 
-// Computed properties and other methods
+// Computed properties for check-in and check-out dates
 const checkInDate = computed(() => dateRange.value?.from || null);
 const checkOutDate = computed(() => dateRange.value?.to || null);
 

@@ -1,4 +1,5 @@
 {
+  // TypeScript configuration for Casa Mi Sueño V3
   "extends": "@quasar/app-vite/tsconfig-preset",
   "compilerOptions": {
     "baseUrl": ".",

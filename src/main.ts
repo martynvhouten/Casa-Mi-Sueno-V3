@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
-import { Quasar } from 'quasar';
-import { SetupCalendar } from 'v-calendar';
+import { Quasar, Dialog, Notify, Loading } from 'quasar';
+import { setupCalendar } from 'v-calendar';
 import quasarIconSet from 'quasar/icon-set/material-icons-outlined';
 import '@quasar/extras/material-icons/material-icons.css';
 import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
@@ -23,35 +23,33 @@ const app = createApp(App);
 
 app.use(Quasar, {
   plugins: {
-    Dialog: true,
-    Notify: true,
-    Loading: true
+    Dialog,
+    Notify,
+    Loading
   },
   iconSet: quasarIconSet,
   config: {
     brand: {
       primary: '#D17A52',
-      secondary: '#E8A07E',
-      accent: '#A8D8EA',
-      dark: '#333333'
+      secondary: '#F5EDE7',
+      accent: '#D17A52',
+      dark: '#1D1D1D'
     }
   }
 });
 
 app.use(router);
 app.use(i18n);
-app.use(SetupCalendar, {});
+app.use(setupCalendar, {});
 
 // Register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('ServiceWorker registration successful');
-      })
-      .catch(err => {
-        console.log('ServiceWorker registration failed: ', err);
-      });
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered:', registration);
+    }).catch(error => {
+      console.log('SW registration failed:', error);
+    });
   });
 }
 

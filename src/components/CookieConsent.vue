@@ -8,7 +8,7 @@
   >
     <q-card class="cookie-consent bg-white">
       <q-card-section>
-        <div class="row items-center q-mb-md">
+        <div class="row items-center q-mb-sm">
           <div class="col">
             <div class="text-h6 text-weight-bold text-primary">Cookie Instellingen</div>
           </div>
@@ -22,13 +22,13 @@
             />
           </div>
         </div>
-        <p class="text-body1 q-mb-lg text-grey-8">
+        <p class="text-body1 q-mb-md text-grey-8">
           Om je de best mogelijke ervaring te bieden, maken wij gebruik van cookies. 
           Deze helpen ons om de website te laten functioneren, de veiligheid te waarborgen 
           en onze diensten te verbeteren. Je kunt hieronder je voorkeuren aanpassen.
         </p>
         
-        <div class="q-gutter-y-md">
+        <div class="q-gutter-y-sm">
           <!-- Essential Cookies -->
           <q-item tag="label" class="rounded-borders">
             <q-item-section>
@@ -66,20 +66,20 @@
         </div>
       </q-card-section>
 
-      <q-card-actions align="right" class="bg-white q-pa-md q-gutter-sm">
+      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm' : 'row q-gutter-sm justify-end'" class="bg-white q-pa-md">
         <q-btn
           outline
           label="Alleen Essentieel"
           color="primary"
           @click="savePreferences"
-          class="q-px-md"
+          class="full-width-btn"
         />
         <q-btn
           unelevated
           label="Alles Accepteren"
           color="primary"
           @click="acceptAll"
-          class="q-px-md"
+          class="full-width-btn"
         />
       </q-card-actions>
     </q-card>
@@ -163,7 +163,7 @@ onMounted(() => {
 
   .q-item {
     border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 16px;
+    padding: 12px;
     border-radius: 8px;
     transition: all 0.2s ease;
 
@@ -175,12 +175,44 @@ onMounted(() => {
 
   .q-btn {
     font-weight: 500;
-    min-width: 140px;
+  }
+
+  .full-width-btn {
+    @media (max-width: 599px) {
+      width: 100%;
+    }
+    @media (min-width: 600px) {
+      min-width: 140px;
+    }
   }
 
   @media (max-width: 599px) {
-    max-width: 90%;
-    margin: 0 auto;
+    max-width: 95%;
+    margin: 16px auto;
+    
+    .q-card-section {
+      padding: 16px;
+    }
+    
+    .q-card-actions {
+      padding: 16px;
+    }
+    
+    .text-h6 {
+      font-size: 1.25rem;
+    }
+    
+    .text-body1 {
+      font-size: 0.875rem;
+    }
+    
+    .q-item-label {
+      font-size: 0.875rem;
+      
+      &.caption {
+        font-size: 0.75rem;
+      }
+    }
   }
 }
 </style> 

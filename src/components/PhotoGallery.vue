@@ -36,18 +36,11 @@
               @click="openLightbox(allPhotos, index)"
             >
               <div class="cms-img-container" style="height: 300px;">
-                <q-img
-                  :src="photo.src"
-                  class="cms-img"
-                  loading="eager"
-                  fit="cover"
-                  no-spinner
-                  no-transition
-                >
-                  <div class="absolute-bottom text-center" style="background: rgba(0,0,0,0.7); backdrop-filter: blur(4px)">
-                    <p class="text-subtitle1 text-white q-mb-none q-pa-sm">{{ photo.caption }}</p>
-                  </div>
-                </q-img>
+                <picture>
+                  <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                  <source :srcset="photo.src" :type="getImageType(photo.src)">
+                  <img :src="photo.src" :alt="photo.caption" class="cms-img">
+                </picture>
               </div>
             </div>
           </div>
@@ -72,6 +65,11 @@
                   <template v-slot:loading>
                     <q-spinner-dots color="cms-deep-terracotta" />
                   </template>
+                  <picture>
+                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source :srcset="photo.src" :type="getImageType(photo.src)">
+                    <img :src="photo.src" :alt="photo.caption" class="cms-img">
+                  </picture>
                   <div class="absolute-bottom text-subtitle1 text-center" style="background: rgba(0,0,0,0.7); padding: 8px">
                     <span class="text-white">{{ photo.caption }}</span>
                   </div>
@@ -242,7 +240,7 @@ const interiorPhotos = [
 ];
 
 const bedroomPhotos = [
-  { src: '/images/Slaapkamer1_vooraanzicht.jpg', caption: 'Hoofdslaapkamer met eigen badkamer' },
+  { src: '/images/Slaapkamer1_vooraanzicht.jpg', caption: 'Slaapkamer met badkamer ernaast' },
   { src: '/images/Slaapkamer1_bed.jpg', caption: 'Comfortabel tweepersoonsbed in hoofdslaapkamer' },
   { src: '/images/Slaapkamer1_zijaanzicht.jpg', caption: 'Zijkant hoofdslaapkamer' },
   { src: '/images/Slaapkamer2.jpg', caption: 'Tweede gastenslaapkamer' },
@@ -251,13 +249,13 @@ const bedroomPhotos = [
 ];
 
 const bathroomPhotos = [
-  { src: '/images/Badkamer.jpg', caption: 'En-suite badkamer hoofdslaapkamer' },
-  { src: '/images/Badkamer2.jpg', caption: 'Familie badkamer' }
+  { src: '/images/Badkamer.jpg', caption: 'Badkamer naast slaapkamer' },
+  { src: '/images/Badkamer2.jpg', caption: 'Badkamer in de hal' }
 ];
 
 const exteriorPhotos = [
   { src: '/images/Zwembadkant_volledig.jpg', caption: 'Volledig zicht op het zwembad' },
-  { src: '/images/Tuin_zwembad.jpg', caption: 'Verwarmd zwembad' },
+  { src: '/images/Tuin_zwembad.jpg', caption: 'Het zwembad' },
   { src: '/images/Tuin_zwembad-douche.jpg', caption: 'Zwembad met buitendouche' },
   { src: '/images/Tuin_mediterraans.jpg', caption: 'Mediterrane tuin' },
   { src: '/images/Tuin_planten.jpg', caption: 'Weelderige mediterrane beplanting' },
@@ -279,6 +277,23 @@ const allPhotos = computed(() => [
   ...bathroomPhotos,
   ...exteriorPhotos
 ]);
+
+const getWebPPath = (src: string): string => {
+  return src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+};
+
+const getImageType = (src: string): string => {
+  const ext = src.split('.').pop()?.toLowerCase();
+  switch (ext) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    default:
+      return 'image/jpeg';
+  }
+};
 
 const openLightbox = (photoSet: any[], index: number) => {
   currentPhotoSet.value = photoSet;

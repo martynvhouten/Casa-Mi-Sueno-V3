@@ -21,10 +21,11 @@
     <!-- Introduction -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Uw Verblijf</h2>
+        <h2 class="font-playfair q-mb-lg">Je Verblijf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          We willen graag dat je je direct thuis voelt in Casa Mi Sueño. Daarom hebben 
-          we alle praktische informatie voor je op een rijtje gezet.
+          We willen graag dat je je direct thuis voelt in Casa Mi Sueño. Het is een rustige plek 
+          voor gasten die, net als wij, houden van authenticiteit en ontspanning. Hieronder vind je 
+          alle praktische informatie voor een zorgeloos verblijf.
         </p>
       </div>
     </section>
@@ -97,8 +98,8 @@
                   <li>Tuinverzorging</li>
                   <li>24/7 lokale ondersteuning</li>
                 </ul>
-                <p class="text-caption">* Minimaal verblijf 10-14 nachten (seizoensafhankelijk)</p>
-                <p class="text-caption">* Early booking korting: 10% bij boeking > 6 maanden vooruit</p>
+                <p class="text-caption">* Minimaal verblijf: 5-7 nachten (seizoensafhankelijk)</p>
+                <p class="text-caption">* Langere verblijven (3+ weken): vraag naar speciale tarieven</p>
               </div>
             </div>
           </div>
@@ -108,24 +109,33 @@
               <div class="q-mb-xl">
                 <h4 class="q-mb-md">Voorwaarden</h4>
                 <ul class="feature-list">
-                  <li>Minimaal verblijf: 10-14 nachten</li>
-                  <li>Flexibele aankomst- en vertrekdagen</li>
+                  <li>Minimaal verblijf laag/middenseizoen: 5 nachten</li>
+                  <li>Minimaal verblijf hoogseizoen: 7 nachten</li>
+                  <li>Geen korte weekendverblijven mogelijk</li>
                   <li>Aanbetaling: 30% bij boeking</li>
                   <li>Restbetaling: 8 weken voor aankomst</li>
-                  <li>Waarborg: €500 (wordt teruggestort)</li>
+                  <li>Waarborg: €500 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
                   <li>Toeristenbelasting: €2,50 p.p.p.n.</li>
                 </ul>
               </div>
-              <div>
-                <h4 class="q-mb-md">Beschikbaarheid</h4>
+              <div class="q-mb-xl">
+                <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
                 <p class="text-body1 q-mb-lg">
-                  Kijk in onze kalender wanneer we er niet zijn, dan kun je het huis huren. 
-                  Heb je vragen? We denken graag met je mee.
+                  Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
+                  We verhuren graag aan koppels, families of kleine groepen vrienden die onze liefde 
+                  voor deze bijzondere plek delen. Het is geen feestlocatie of plek voor korte weekendverblijven.
+                </p>
+              </div>
+              <div>
+                <h4 class="q-mb-md">Langer verblijf?</h4>
+                <p class="text-body1 q-mb-lg">
+                  Wil je langer blijven dan drie weken? Neem dan even contact met ons op. 
+                  We kijken graag samen naar een passend tarief.
                 </p>
                 <q-btn
                   class="cms-btn cms-btn-primary full-width"
                   to="/contact"
-                  label="Controleer beschikbaarheid"
+                  label="Neem contact op"
                 />
               </div>
             </div>
@@ -142,15 +152,14 @@
           <div class="col-12 col-md-8">
             <q-list>
               <q-expansion-item
-                v-for="faq in faqs"
-                :key="faq.question"
-                :label="faq.question"
-                header-class="text-h6"
-                class="q-mb-md bg-white rounded-borders"
+                v-for="(item, index) in faqItems"
+                :key="index"
+                :label="item.question"
+                header-class="text-primary"
               >
                 <q-card>
                   <q-card-section>
-                    {{ faq.answer }}
+                    {{ item.answer }}
                   </q-card-section>
                 </q-card>
               </q-expansion-item>
@@ -207,11 +216,13 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 const houseRules = [
   {
     icon: 'group',
     title: 'Maximaal 4 personen',
-    description: 'Het huis is ingericht en geschikt voor maximaal 4 personen.'
+    description: 'Perfect voor koppels, families of kleine groepen vrienden die van rust houden.'
   },
   {
     icon: 'smoke_free',
@@ -219,14 +230,14 @@ const houseRules = [
     description: 'Roken is niet toegestaan in het huis. Buiten roken kan op het terras.'
   },
   {
-    icon: 'pets',
-    title: 'Huisdieren welkom',
-    description: 'Huisdieren zijn van harte welkom. Laat het ons even weten als je je huisdier meeneemt.'
+    icon: 'block',
+    title: 'Geen feesten',
+    description: 'We verhuren niet voor feesten of evenementen. Respecteer de rust van de buurt.'
   },
   {
-    icon: 'volume_down',
-    title: 'Respecteer de rust',
-    description: 'We vragen je rekening te houden met de buren en de siësta te respecteren.'
+    icon: 'pets',
+    title: 'Huisdieren welkom',
+    description: 'Huisdieren zijn van harte welkom. Laat het ons even weten bij de boeking.'
   }
 ];
 
@@ -236,7 +247,7 @@ const facilities = [
     title: 'Binnen',
     items: [
       'Volledig uitgeruste keuken met gasfornuis',
-      'Smart TV met Nederlandse zenders',
+      'Smart TV met streaming mogelijkheden',
       'Gratis WiFi',
       'Airconditioning in alle kamers',
       'Wasmachine en droger',
@@ -258,15 +269,15 @@ const facilities = [
     ]
   },
   {
-    icon: 'cleaning_services',
+    icon: 'support_agent',
     title: 'Service',
     items: [
-      'Eindschoonmaak inbegrepen',
-      'Bedlinnen en handdoeken aanwezig',
+      'Professionele eindschoonmaak',
+      'Bed- en badlinnen inbegrepen',
+      'Strandlakens beschikbaar',
+      'Lokale contactpersoon voor sleuteloverdracht',
       'Wekelijks zwembadonderhoud',
-      'Tuinonderhoud',
-      'Optionele tussentijdse schoonmaak',
-      'Contactpersoon in de buurt'
+      'Tuinonderhoud'
     ]
   }
 ];
@@ -275,54 +286,79 @@ const pricing = [
   {
     name: 'Laagseizoen',
     period: 'November t/m maart',
-    price: 'vanaf €165 per nacht'
+    price: '€145 per nacht'
   },
   {
     name: 'Middenseizoen',
     period: 'April, mei & oktober',
-    price: 'vanaf €195 per nacht'
+    price: '€175 per nacht'
   },
   {
     name: 'Hoogseizoen',
-    period: 'Juni & september',
-    price: 'vanaf €225 per nacht'
-  },
-  {
-    name: 'Topseizoen',
-    period: 'Juli & augustus',
-    price: 'vanaf €275 per nacht'
+    period: 'Juni t/m september',
+    price: '€210 per nacht'
   }
 ];
 
-const faqs = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: FaqItem[] = [
   {
-    question: 'Hoe ver is het naar het strand?',
-    answer: 'Het strand van Albir ligt op 5 minuten rijden met de auto. Het zandstrand van Benidorm is met de auto in 15 minuten te bereiken. Wij gaan zelf meestal naar Albir, lekker rustig en met leuke strandtentjes.'
+    question: 'Wat zijn de aankomst- en vertrektijden?',
+    answer: 'Aankomst is mogelijk vanaf 16:00 uur, vertrek voor 10:00 uur. In overleg zijn andere tijden mogelijk.'
   },
   {
-    question: 'Is het zwembad verwarmd?',
-    answer: 'Het zwembad is niet verwarmd, maar door het mediterrane klimaat is het water van mei tot oktober heerlijk van temperatuur. We laten het elke week schoonmaken.'
+    question: 'Is er WiFi beschikbaar?',
+    answer: 'Ja, er is gratis WiFi beschikbaar in het hele huis en in de tuin.'
   },
   {
-    question: 'Zijn er winkels in de buurt?',
-    answer: 'De dichtstbijzijnde supermarkt (Mercadona, onze favoriet) ligt op 5 minuten rijden. In het centrum van L\'Alfàs del Pi (5 min) vind je diverse winkels en op vrijdag is er een gezellige lokale markt.'
+    question: 'Is het zwembad het hele jaar door beschikbaar?',
+    answer: 'Het zwembad is het hele jaar door beschikbaar, maar is niet verwarmd. In de zomermaanden heeft het water een aangename temperatuur. In voor- en najaar kan het water frisser zijn, en in de winter is het te koud om te zwemmen.'
   },
   {
-    question: 'Hoe werkt de airconditioning?',
-    answer: 'Alle slaapkamers en de woonkamer hebben airco die kan koelen en verwarmen. De bediening is simpel, we leggen het je uit in ons welkomstboekje.'
+    question: 'Zijn huisdieren welkom?',
+    answer: 'Ja, huisdieren zijn van harte welkom! We vragen je wel om dit bij de boeking te vermelden, zodat we eventuele specifieke wensen kunnen bespreken. We houden van dieren en begrijpen dat ze deel uitmaken van je gezin.'
   },
   {
     question: 'Is er parkeergelegenheid?',
-    answer: 'Ja, je kunt twee auto\'s kwijt op onze oprit. De straat is ook rustig, daar kun je altijd wel een plekje vinden.'
+    answer: 'Ja, er is gratis parkeergelegenheid op eigen terrein voor meerdere auto\'s.'
+  },
+  {
+    question: 'Moet ik een borg betalen?',
+    answer: 'We vragen een borg van €500, die we na je verblijf terugstorten als alles in goede orde is achtergelaten. De borg ontvang je binnen 5-7 werkdagen na vertrek terug op je rekening. Dit geeft ons de tijd om het huis te controleren en eventuele kleine problemen op te lossen.'
   }
 ];
 
 const checkInInfo = {
   time: '16:00',
   checkout: '10:00',
-  address: 'Carrer de les Petúnies 16, 03580 L\'Alfàs del Pi, Alicante, Spain',
-  instructions: 'Bij aankomst word je verwelkomd door onze buurvrouw Maria, die je de sleutels geeft en het huis laat zien. Ze spreekt Engels en Spaans en woont twee deuren verderop.'
+  address: 'Het exacte adres ontvang je bij de bevestiging van je boeking',
+  instructions: 'Bij aankomst ontvang je de sleutels van onze lokale contactpersoon. Zij regelt de sleuteloverdracht en spreekt Engels en Spaans.'
 };
+
+onMounted(() => {
+  // Add FAQ Schema
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqItems.map(item => ({
+      '@type': 'Question',
+      'name': item.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': item.answer
+      }
+    }))
+  };
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.text = JSON.stringify(faqSchema);
+  document.head.appendChild(script);
+});
 </script>
 
 <style scoped>
@@ -396,5 +432,13 @@ const checkInInfo = {
   .q-expansion-item {
     margin-bottom: 1rem;
   }
+}
+
+.q-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
 }
 </style> 

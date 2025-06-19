@@ -34,31 +34,27 @@
     <!-- Local Area -->
     <section class="section bg-sand">
       <div class="container">
-        <div class="row q-col-gutter-xl">
+        <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">De Buurt</h2>
             <p class="text-body1 q-mb-lg">
-              L'Alfàs del Pi is een levendig dorp waar traditioneel Spaans leven en moderne voorzieningen 
-              samenkomen. Het dorpsplein met zijn terrasjes, de wekelijkse markt op vrijdag, en de 
-              lokale restaurants waar je heerlijke tapas kunt proeven, geven je het échte Spaanse gevoel. 
-              Dit zijn de plekken waar wij zelf ook graag komen.
+              L'Alfàs del Pi is een authentiek Spaans dorp met een internationale flair. 
+              Het heeft alle voorzieningen die je nodig hebt, maar heeft zijn dorpse karakter 
+              behouden. De gezellige terrasjes, lokale restaurants waar je heerlijke tapas 
+              kunt proeven, geven je het échte Spaanse gevoel.
             </p>
             <ul class="feature-list q-mb-xl">
-              <li>Supermarkt op 5 minuten rijden</li>
-              <li>Strand van Albir op 5 minuten met de auto</li>
-              <li>Gezellig dorpscentrum met restaurants en winkels</li>
-              <li>Wekelijkse markt op vrijdag (onze favoriet!)</li>
+              <li>Supermarkten op 5 minuten</li>
+              <li>Restaurants op loopafstand</li>
+              <li>Strand op 15 minuten lopen</li>
               <li>Medische voorzieningen in de buurt</li>
-              <li>La Nucia met sportfaciliteiten op 5 minuten</li>
-              <li>Zondagsmarkt in La Nucia</li>
-              <li>Benidorm met zandstranden op 15 minuten</li>
-              <li>Pretparken Terra Mítica en Aqualandia nabij</li>
+              <li>Wekelijkse markt in het dorp</li>
             </ul>
           </div>
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Omgeving/Albir_boulevard.jpg"
+                src="/images/Omgeving/Casco_antiguo.jpg"
                 class="cms-img rounded-borders"
               />
             </div>

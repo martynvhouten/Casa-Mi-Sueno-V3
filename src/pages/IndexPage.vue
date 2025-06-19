@@ -31,10 +31,11 @@
       <div class="container text-center">
         <h2 class="q-mb-lg font-playfair">Even voorstellen</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Wij zijn Esther en Milco, en samen met onze hond Marlo hebben we hier ons tweede thuis gevonden. 
-          Casa Mi Sueño is onze plek om te ontspannen, te genieten van het mediterrane leven en de warme 
-          Spaanse cultuur. Als we er zelf niet zijn, delen we ons huis graag met anderen die ook van deze 
-          bijzondere plek willen genieten.
+          Wij zijn Esther en Milco, en samen hebben we hier ons tweede thuis gevonden. 
+          Casa Mi Sueño is onze plek om te ontspannen en te genieten van het mediterrane leven en de warme 
+          Spaanse cultuur. Soms zijn we hier samen met de hele familie, en onze kinderen komen er ook regelmatig met vrienden. 
+          We delen ons huis graag met gasten die, net als wij, houden van rust en de authentieke Spaanse sfeer, 
+          en die ons huis met dezelfde zorg en respect behandelen als wij dat doen.
         </p>
       </div>
     </section>
@@ -166,7 +167,7 @@ const features = [
   {
     image: '/images/Tuin_zwembad.jpg',
     title: 'Ons tweede thuis',
-    description: 'Een echt familiehuis waar we zelf regelmatig zijn, en dat we graag delen als we er niet zijn'
+    description: 'Een persoonlijk huis voor gasten die houden van rust, natuur en een warme, huiselijke sfeer'
   },
   {
     image: '/images/Tuin_mediterraans.jpg',
@@ -176,23 +177,23 @@ const features = [
   {
     image: '/images/Omgeving/Albir_panorama.jpg',
     title: 'Fijne locatie',
-    description: 'Rustig gelegen tussen de bergen en de zee, dichtbij strand en alle voorzieningen'
+    description: 'Rustig gelegen tussen de bergen en de zee, perfect voor natuurliefhebbers en rustzoekers'
   }
 ];
 
 const guestReviews = [
   {
-    text: "Het voelt echt als een thuis, niet als een vakantiehuis. De persoonlijke details en de relaxte sfeer maken het extra bijzonder.",
+    text: "Het voelt echt als een thuis, niet als een vakantiehuis. De persoonlijke details en de rustige sfeer maken het extra bijzonder.",
     author: "Familie de Vries",
     date: "Augustus 2023"
   },
   {
-    text: "Heerlijk om 's ochtends in de tuin te ontbijten. De tips van Esther en Milco hebben ons naar de leukste plekjes in de buurt gebracht.",
+    text: "Een heerlijke plek om tot rust te komen. De tips van Esther en Milco hebben ons naar de mooiste plekjes in de natuur gebracht.",
     author: "Peter en Anna",
     date: "Juni 2023"
   },
   {
-    text: "Een ideale uitvalsbasis om de Costa Blanca te verkennen. Het schriftje met persoonlijke aanbevelingen was goud waard!",
+    text: "De perfecte uitvalsbasis voor wie van rust en authenticiteit houdt. We hebben genoten van de lange avonden in de tuin.",
     author: "Mark en Lisa",
     date: "September 2023"
   }

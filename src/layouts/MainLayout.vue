@@ -5,7 +5,10 @@
       <q-toolbar class="container q-py-md">
         <!-- Logo -->
         <router-link to="/" class="text-inherit no-decoration logo-link">
-          <h1 class="font-playfair text-h4 q-my-none">Casa Mi Sueño</h1>
+          <div class="logo-container">
+            <h1 class="font-playfair text-h4 q-my-none">Casa Mi Sueño</h1>
+            <div class="logo-decoration"></div>
+          </div>
         </router-link>
 
         <q-space />
@@ -131,12 +134,26 @@
                   <q-item-label>06 - 8364 5489 (Netherlands)</q-item-label>
                 </q-item-section>
               </q-item>
+              <q-item 
+                clickable 
+                tag="a" 
+                :href="WHATSAPP_CONFIG.getWhatsAppUrl($q.platform.is.mobile)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <q-item-section>
+                  <q-item-label>
+                    <q-icon name="fab fa-whatsapp" size="18px" class="q-mr-sm" />
+                    WhatsApp
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
             </q-list>
           </div>
 
           <!-- Quick Links -->
           <div class="col-12 col-md-4">
-            <h4 class="font-playfair q-mb-md">Snelle Links</h4>
+            <h4 class="font-playfair q-mb-md">Menu</h4>
             <q-list dense>
               <q-item
                 v-for="item in footerLinks"
@@ -216,11 +233,7 @@ const footerLinks = [
 
 // Social Media Links
 const socialLinks = [
-  { icon: 'fab fa-instagram', link: 'https://instagram.com/' },
-  { 
-    icon: 'fab fa-whatsapp', 
-    link: WHATSAPP_CONFIG.getWhatsAppUrl($q.platform.is.mobile)
-  }
+  { icon: 'fab fa-instagram', link: 'https://instagram.com/' }
 ];
 
 // Scroll handler
@@ -291,5 +304,42 @@ onUnmounted(() => {
       color: var(--q-primary);
     }
   }
+}
+
+.logo-container {
+  position: relative;
+  padding: 4px 0;
+}
+
+.logo-decoration {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60%;
+  height: 2px;
+  background: var(--cms-deep-terracotta);
+  transform-origin: left;
+  animation: expand 0.6s ease-out forwards;
+}
+
+@keyframes expand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.logo-link {
+  transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.85;
+}
+
+.logo-link:hover .logo-decoration {
+  animation: expand 0.6s ease-out forwards;
 }
 </style> 

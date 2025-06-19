@@ -113,7 +113,7 @@ const savePreferences = () => {
   
   $q.notify({
     type: 'positive',
-    message: 'Uw cookie voorkeuren zijn opgeslagen',
+    message: 'Je cookie voorkeuren zijn opgeslagen',
     position: 'top',
     timeout: 2000
   });

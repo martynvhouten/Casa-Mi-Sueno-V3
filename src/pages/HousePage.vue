@@ -43,8 +43,8 @@
               te bereiden.
             </p>
             <ul class="feature-list q-mb-xl">
-              <li>Smart TV met Nederlandse en internationale zenders</li>
-              <li>Comfortabele zithoek</li>
+              <li>Ruime woonkamer met comfortabele zithoek</li>
+              <li>Smart TV met streaming mogelijkheden</li>
               <li>Volledig uitgeruste keuken met gasfornuis</li>
               <li>Vaatwasser en alle keukenapparatuur</li>
               <li>Wasmachine en droger</li>
@@ -76,14 +76,14 @@
                 />
               </div>
               <div class="q-pa-lg">
-                <h3 class="font-playfair q-mb-md">Hoofdslaapkamer met Eigen Badkamer</h3>
+                <h3 class="font-playfair q-mb-md">Slaapkamer met Badkamer</h3>
                 <p class="text-body1 q-mb-md">
-                  Een ruime, lichte slaapkamer met directe toegang tot een eigen badkamer. Deze comfortabele kamer is perfect voor een ontspannen verblijf.
+                  Een ruime, lichte slaapkamer met een badkamer ernaast. Deze comfortabele kamer biedt een fijne plek om tot rust te komen.
                 </p>
                 <ul class="feature-list">
-                  <li>Tweepersoonsbed</li>
-                  <li>Eigen badkamer</li>
-                  <li>Ruime kledingkast</li>
+                  <li>Comfortabel tweepersoonsbed</li>
+                  <li>Kledingkast</li>
+                  <li>Badkamer naast de kamer</li>
                   <li>Airconditioning</li>
                 </ul>
               </div>
@@ -100,13 +100,13 @@
               <div class="q-pa-lg">
                 <h3 class="font-playfair q-mb-md">Tweede Slaapkamer</h3>
                 <p class="text-body1 q-mb-md">
-                  Een comfortabele tweede slaapkamer met tweepersoonsbed, met toegang tot de familie badkamer. Perfect voor familie of vrienden.
+                  Een comfortabele tweede slaapkamer met tweepersoonsbed, met een badkamer in de hal ernaast. Perfect voor familie of vrienden.
                 </p>
                 <ul class="feature-list">
-                  <li>Tweepersoonsbed</li>
-                  <li>Ruime kledingkast</li>
+                  <li>Comfortabel tweepersoonsbed</li>
+                  <li>Kledingkast</li>
+                  <li>Badkamer in de hal</li>
                   <li>Airconditioning</li>
-                  <li>Uitzicht op de tuin</li>
                 </ul>
               </div>
             </div>
@@ -220,24 +220,24 @@
 const bathrooms = [
   {
     image: '/images/Badkamer.jpg',
-    title: 'Master Badkamer',
-    description: 'Luxe en-suite badkamer met dubbele wastafel en inloopdouche',
+    title: 'Badkamer bij Slaapkamer',
+    description: 'Praktische badkamer met douche, wastafel en toilet, gelegen naast de slaapkamer',
     features: [
-      'Ruime inloopdouche',
-      'Dubbele wastafel',
-      'Vloerverwarming',
-      'Design sanitair'
+      'Inloopdouche',
+      'Wastafel',
+      'Toilet',
+      'Handdoeken inbegrepen'
     ]
   },
   {
     image: '/images/Badkamer2.jpg',
-    title: 'Familie Badkamer',
-    description: 'Ruime badkamer met bad/douche combinatie en veel opbergruimte',
+    title: 'Badkamer in de Hal',
+    description: 'Functionele badkamer met douche, wastafel en toilet, gelegen in de hal',
     features: [
-      'Bad/douche combinatie',
-      'Dubbele wastafel',
-      'Vloerverwarming',
-      'Ruime opbergkasten'
+      'Douche',
+      'Wastafel',
+      'Toilet',
+      'Handdoeken inbegrepen'
     ]
   }
 ];

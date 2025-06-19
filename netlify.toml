@@ -8,4 +8,13 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
+  status = 200
+
+[[functions]]
+  directory = "netlify/functions"
+
+# Redirect /sitemap.xml to our sitemap function
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
   status = 200 

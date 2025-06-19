@@ -21,24 +21,32 @@
     <!-- Our Story Section -->
     <section class="section bg-white">
       <div class="container">
-        <div class="row q-col-gutter-xl">
+        <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">Liefde op het eerste gezicht</h2>
             <p class="text-body1 q-mb-lg">
-              Het was tijdens een warme zomerdag in 2019 toen wij (Esther en Milco) voor het eerst door de straten van L'Alfàs del Pi wandelden. 
-              De geur van jasmijn in de lucht, het geluid van krekels in de verte, en de vriendelijke 'hola' van voorbijgangers 
-              maakten direct indruk.
+              Het was liefde op het eerste gezicht toen we dit vakantiehuis zagen. De mediterrane tuin, 
+              het privézwembad en de ruime veranda spraken direct tot onze verbeelding. We zagen 
+              onszelf al zitten: 's ochtends ontbijten in de tuin, middagjes bij het zwembad, en 
+              's avonds gezellig barbecueën.
             </p>
-            <p class="text-body1 q-mb-lg">
-              We waren al jaren verliefd op Spanje, maar deze plek voelde anders. Authentieker. Persoonlijker. 
-              Toen we dit huis voor het eerst zagen, wisten we het meteen: hier wilden we onze tweede thuis maken. 
-              Een plek waar we met onze hond Marlo kunnen genieten van het Spaanse leven.
+            <p class="text-body1 q-mb-xl">
+              We hebben het vakantiehuis met veel zorg ingericht zodat je je direct thuis voelt. 
+              De ruime woonkamer, volledig uitgeruste keuken en comfortabele slaapkamers 
+              bieden alles wat je nodig hebt voor een ontspannen vakantie.
             </p>
+            <q-btn
+              color="primary"
+              :to="{ name: 'house' }"
+              class="q-px-xl"
+              unelevated
+              label="Bekijk het vakantiehuis"
+            />
           </div>
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_zithoek.jpg"
+                src="/images/Tuin_vanaf_veranda.jpg"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -63,8 +71,9 @@
             <h2 class="font-playfair q-mb-lg">Meer dan een vakantiehuis</h2>
             <p class="text-body1 q-mb-lg">
               Dit is geen standaard vakantiehuis, maar ons echte tweede thuis. Je vindt hier onze persoonlijke spullen, 
-              foto's aan de muur en onze favoriete kookboeken in de keuken. Als we er zelf niet zijn, delen we het 
-              graag met anderen die ook van deze fijne plek willen genieten.
+              foto's aan de muur en onze favoriete kookboeken in de keuken. Het is een plek waar we helemaal onszelf kunnen zijn, 
+              waar we soms met de hele familie samen zijn, en waar onze kinderen zich ook thuis voelen als ze er met vrienden zijn. 
+              Als we er zelf niet zijn, delen we het graag met anderen die ook van deze fijne plek willen genieten.
             </p>
             <p class="text-body1 q-mb-lg">
               De naam 'Casa Mi Sueño' - Huis van mijn Dromen - kwam vanzelf. Het is precies wat deze plek voor ons is: 
@@ -103,8 +112,8 @@
               tapasbarretjes waar alleen locals komen.
             </p>
             <p class="text-body1 q-mb-lg">
-              Al deze ontdekkingen delen we graag met onze gasten. In het huis vindt u onze persoonlijke reisgids 
-              met favoriete restaurants, mooiste wandelroutes en tips voor dagtrips die u niet in reguliere 
+              Al deze ontdekkingen delen we graag met onze gasten. In het huis vind je onze persoonlijke tips 
+              met favoriete restaurants, mooiste wandelroutes en suggesties voor dagtrips die je niet in reguliere 
               reisgidsen tegenkomt.
             </p>
           </div>
@@ -130,7 +139,7 @@
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
           to="/het-huis"
-          label="Bekijk de villa"
+          label="Bekijk het vakantiehuis"
         />
       </div>
     </section>
@@ -142,12 +151,12 @@ const personalTouches = [
   {
     icon: 'home',
     title: 'Een echt thuis',
-    description: 'Geen strak gestyled vakantiehuis, maar een warm en persoonlijk familiehuis'
+    description: 'Geen strak gestyled vakantiehuis, maar een warm en persoonlijk huis waar je je direct thuis voelt'
   },
   {
-    icon: 'auto_stories',
+    icon: 'travel_explore',
     title: 'Onze tips',
-    description: 'Een schriftje vol persoonlijke aanbevelingen voor de leukste plekjes in de buurt'
+    description: 'We delen graag onze favoriete plekken en activiteiten in de omgeving met je'
   },
   {
     icon: 'support_agent',

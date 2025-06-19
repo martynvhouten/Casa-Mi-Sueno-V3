@@ -1,6 +1,6 @@
 # Casa Mi Sueño Website
 
-Een moderne website voor Casa Mi Sueño, een luxe vakantievilla aan de Costa Blanca in Spanje.
+Een moderne website voor Casa Mi Sueño, een luxe vakantiehuis aan de Costa Blanca in Spanje.
 
 ## Technische Stack
 

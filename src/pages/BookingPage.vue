@@ -24,8 +24,8 @@
         <h2 class="font-playfair q-mb-lg">Boek je vakantie</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
           Wil je ook genieten van ons tweede thuis aan de Costa Blanca? 
-          Bekijk hieronder de beschikbaarheid en tarieven, en neem contact met ons op 
-          voor een reservering.
+          Casa Mi Sueño is een rustige plek voor gasten die, net als wij, houden van authenticiteit en rust.
+          We verhuren alleen aan gasten die ons huis met dezelfde zorg en respect behandelen als wij.
         </p>
       </div>
     </section>
@@ -48,33 +48,34 @@
                 <div class="season q-mb-lg">
                   <h4 class="text-h6 font-playfair q-mb-sm">Laagseizoen</h4>
                   <p class="text-body1 q-mb-sm">November t/m maart</p>
-                  <p class="text-h5 text-terracotta q-mb-none">vanaf €165 per nacht</p>
-                  <p class="text-caption q-mt-sm">Minimaal verblijf: 10 nachten</p>
+                  <p class="text-h5 text-terracotta q-mb-none">€145 per nacht</p>
+                  <p class="text-caption q-mt-sm">Minimaal verblijf: 5 nachten</p>
                 </div>
 
                 <div class="season q-mb-lg">
                   <h4 class="text-h6 font-playfair q-mb-sm">Middenseizoen</h4>
                   <p class="text-body1 q-mb-sm">April, mei & oktober</p>
-                  <p class="text-h5 text-terracotta q-mb-none">vanaf €195 per nacht</p>
-                  <p class="text-caption q-mt-sm">Minimaal verblijf: 10 nachten</p>
-                </div>
-
-                <div class="season q-mb-lg">
-                  <h4 class="text-h6 font-playfair q-mb-sm">Hoogseizoen</h4>
-                  <p class="text-body1 q-mb-sm">Juni & september</p>
-                  <p class="text-h5 text-terracotta q-mb-none">vanaf €225 per nacht</p>
-                  <p class="text-caption q-mt-sm">Minimaal verblijf: 10 nachten</p>
+                  <p class="text-h5 text-terracotta q-mb-none">€175 per nacht</p>
+                  <p class="text-caption q-mt-sm">Minimaal verblijf: 5 nachten</p>
                 </div>
 
                 <div class="season">
-                  <h4 class="text-h6 font-playfair q-mb-sm">Zomerperiode</h4>
-                  <p class="text-body1 q-mb-sm">Juli & augustus</p>
-                  <p class="text-h5 text-terracotta q-mb-none">€275 per nacht</p>
-                  <p class="text-caption q-mt-sm">Minimaal verblijf: 14 nachten</p>
+                  <h4 class="text-h6 font-playfair q-mb-sm">Hoogseizoen</h4>
+                  <p class="text-body1 q-mb-sm">Juni t/m september</p>
+                  <p class="text-h5 text-terracotta q-mb-none">€210 per nacht</p>
+                  <p class="text-caption q-mt-sm">Minimaal verblijf: 7 nachten</p>
                 </div>
               </div>
 
               <q-separator class="q-my-lg" />
+
+              <div class="long-stay q-mb-lg bg-sand rounded-borders q-pa-md">
+                <h4 class="text-h6 font-playfair q-mb-sm">Langer verblijf</h4>
+                <p class="text-body2 q-mb-none">
+                  Wil je langer blijven dan drie weken? Neem dan even contact met ons op. 
+                  We kijken graag samen naar een passend tarief.
+                </p>
+              </div>
 
               <div class="included-services q-mb-lg">
                 <h4 class="text-h6 font-playfair q-mb-md">Inbegrepen</h4>
@@ -91,7 +92,7 @@
                     <ul class="feature-list">
                       <li>Gas, water, elektra & WiFi</li>
                       <li>Tuinonderhoud</li>
-                      <li>Hulp van buurvrouw Maria</li>
+                      <li>Lokale contactpersoon</li>
                       <li>Strandlakens</li>
                     </ul>
                   </div>
@@ -116,20 +117,32 @@
               <h3 class="font-playfair q-mb-lg">Goed om te weten</h3>
               
               <ul class="feature-list q-mb-xl">
-                <li>We verhuren meestal voor 10-14 nachten</li>
-                <li>Flexibele aankomst- en vertrekdagen</li>
+                <li>Minimaal verblijf: 5-7 nachten (zie tarieven)</li>
+                <li>Geen korte weekendverblijven mogelijk</li>
                 <li>Aankomst vanaf 16:00 uur</li>
                 <li>Vertrek voor 10:00 uur</li>
                 <li>Aanbetaling: 30% bij reservering</li>
                 <li>Rest: 8 weken voor aankomst</li>
                 <li>Annuleringsverzekering is handig</li>
+                <li>Perfect voor koppels en families</li>
                 <li>Maximaal 4 personen</li>
+                <li>Geen feesten of evenementen</li>
               </ul>
 
               <div class="early-booking q-pa-md bg-sand rounded-borders">
-                <h4 class="text-h6 font-playfair q-mb-sm">Vroeg boeken loont</h4>
+                <h4 class="text-h6 font-playfair q-mb-sm">Voor wie is Casa Mi Sueño?</h4>
                 <p class="text-body2 q-mb-none">
-                  Als je meer dan 6 maanden vooruit boekt, krijg je 10% korting.
+                  Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
+                  We verhuren graag aan koppels, families of kleine groepen vrienden die onze liefde 
+                  voor deze bijzondere plek delen.
+                </p>
+              </div>
+
+              <div class="security-deposit q-pa-md bg-sand rounded-borders q-mt-md">
+                <h4 class="text-h6 font-playfair q-mb-sm">Borg</h4>
+                <p class="text-body2 q-mb-none">
+                  We vragen een borg van €500, die we na je verblijf terugstorten als alles in goede orde is achtergelaten. 
+                  De borg ontvang je binnen 5-7 werkdagen na vertrek terug op je rekening.
                 </p>
               </div>
 
@@ -162,10 +175,10 @@
           <div class="col-12 col-md-4">
             <div class="text-center">
               <q-icon name="groups" size="48px" class="text-terracotta q-mb-md" />
-              <h4 class="font-playfair q-mb-md">Voor Families</h4>
+              <h4 class="font-playfair q-mb-md">Voor Rustzoekers</h4>
               <p class="text-body1">
-                Ons huis is perfect voor families. We hebben kinderbedjes en 
-                kinderstoelen beschikbaar op aanvraag.
+                Ons huis is perfect voor wie houdt van rust en authenticiteit. 
+                Ideaal voor koppels, families of kleine groepen vrienden.
               </p>
             </div>
           </div>
@@ -176,7 +189,7 @@
               <h4 class="font-playfair q-mb-md">Persoonlijke Service</h4>
               <p class="text-body1">
                 We delen graag onze lokale tips en helpen je bij het plannen
-                van je verblijf.
+                van je verblijf. Voel je thuis in ons huis.
               </p>
             </div>
           </div>

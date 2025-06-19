@@ -32,7 +32,7 @@ export default {
         title: 'Zwembad',
         description: 'Een heerlijk zwembad in de tuin, met uitzicht op de bergen en de Middellandse Zee'
       },
-      villa: {
+      house: {
         title: 'Ruim huis',
         description: 'Een gezellig familiehuis met twee gastenslaapkamers, twee badkamers en een complete keuken'
       },
@@ -61,5 +61,9 @@ export default {
     links: {
       title: 'Links'
     }
+  },
+  facilities: {
+    title: 'Faciliteiten',
+    description: 'Een gezellig familiehuis met twee gastenslaapkamers, twee badkamers en een complete keuken'
   }
 }; 

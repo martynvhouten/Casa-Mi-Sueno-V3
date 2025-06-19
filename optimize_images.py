@@ -1,36 +1,55 @@
-from PIL import Image
 import os
+from PIL import Image
+import glob
 
-def optimize_image(input_path, output_path, max_width=1920):
-    with Image.open(input_path) as img:
-        # Convert RGBA to RGB if necessary
-        if img.mode in ('RGBA', 'LA'):
-            background = Image.new('RGB', img.size, (255, 255, 255))
-            background.paste(img, mask=img.split()[-1])
-            img = background
+def optimize_image(image_path, quality=85):
+    """Optimize an image and create a WebP version."""
+    try:
+        # Open image
+        img = Image.open(image_path)
         
-        # Calculate new height maintaining aspect ratio
-        width_percent = (max_width / float(img.size[0]))
-        new_height = int((float(img.size[1]) * float(width_percent)))
+        # Get original format
+        original_format = img.format
         
-        # Only resize if image is larger than max_width
-        if img.size[0] > max_width:
-            img = img.resize((max_width, new_height), Image.Resampling.LANCZOS)
+        # Create output paths
+        filename = os.path.splitext(image_path)[0]
+        optimized_path = f"{filename}.{original_format.lower()}"
+        webp_path = f"{filename}.webp"
         
-        # Save with optimized settings
-        img.save(output_path, 'JPEG', quality=80, optimize=True)
+        # Save optimized original format
+        img.save(optimized_path, 
+                original_format,
+                quality=quality, 
+                optimize=True)
+        
+        # Save WebP version
+        img.save(webp_path, 
+                'WEBP',
+                quality=quality, 
+                optimize=True)
+        
+        print(f"Optimized: {image_path}")
+        print(f"Created WebP: {webp_path}")
+        
+    except Exception as e:
+        print(f"Error processing {image_path}: {str(e)}")
 
-if __name__ == "__main__":
-    # Define the image mappings
-    image_mappings = {
-        "public/images/Omgeving/Villajoyosa.jpeg": "public/images/Omgeving/villajoyosa_colorful_houses.jpg"
-    }
+def process_directory(directory):
+    """Process all images in a directory and its subdirectories."""
+    # Get all image files
+    image_patterns = ['*.jpg', '*.jpeg', '*.png']
+    image_files = []
+    
+    for pattern in image_patterns:
+        image_files.extend(glob.glob(os.path.join(directory, '**', pattern), recursive=True))
+    
+    print(f"Found {len(image_files)} images to process")
     
     # Process each image
-    for input_path, output_path in image_mappings.items():
-        if os.path.exists(input_path):
-            print(f"Optimizing {input_path} -> {output_path}")
-            optimize_image(input_path, output_path)
-            print(f"Optimization complete for {output_path}")
-        else:
-            print(f"Warning: {input_path} not found") 
+    for image_path in image_files:
+        optimize_image(image_path)
+
+if __name__ == "__main__":
+    # Process images in the public/images directory
+    image_dir = os.path.join('public', 'images')
+    process_directory(image_dir) 

@@ -34,7 +34,7 @@
               <ul class="q-mb-lg">
                 <li>De woning is geschikt voor maximaal 4 personen</li>
                 <li>Roken is niet toegestaan in de woning</li>
-                <li>Huisdieren zijn niet toegestaan</li>
+                <li>Huisdieren zijn welkom na overleg bij de boeking</li>
                 <li>De huurder dient de woning netjes en schoon te houden</li>
                 <li>Schade dient direct te worden gemeld</li>
               </ul>

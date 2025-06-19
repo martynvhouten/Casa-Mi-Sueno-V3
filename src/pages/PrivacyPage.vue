@@ -26,8 +26,8 @@
               <h2 class="font-playfair q-mb-md">3. Waarvoor gebruiken wij jouw gegevens?</h2>
               <p class="q-mb-md">Wij gebruiken jouw gegevens voor:</p>
               <ul class="q-mb-lg">
-                <li>Het verwerken en bevestigen van uw reservering</li>
-                <li>Het versturen van belangrijke informatie over uw verblijf</li>
+                <li>Het verwerken en bevestigen van je reservering</li>
+                <li>Het versturen van belangrijke informatie over je verblijf</li>
                 <li>Het afhandelen van betalingen</li>
                 <li>Het voldoen aan wettelijke verplichtingen</li>
                 <li>Het verbeteren van onze dienstverlening</li>

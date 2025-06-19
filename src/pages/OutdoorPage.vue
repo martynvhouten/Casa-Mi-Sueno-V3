@@ -37,9 +37,9 @@
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">Het Zwembad</h2>
             <p class="text-body1 q-mb-lg">
-              Het ruime ronde zwembad is een heerlijke verkoeling op warme dagen. Het zwembad 
-              is diep genoeg voor een verfrissende duik en wordt wekelijks onderhouden voor 
-              optimaal zwemplezier. De buitendouche is perfect voor een snelle verfrissing.
+              Het ruime ronde zwembad is een heerlijke verkoeling op warme dagen. Het zwembad
+              wordt wekelijks onderhouden en is niet verwarmd. In de zomermaanden heeft het water 
+              een aangename temperatuur voor een verfrissende duik. De buitendouche is perfect voor een snelle verfrissing.
             </p>
             <ul class="feature-list q-mb-xl">
               <li>Ruim rond zwembad</li>

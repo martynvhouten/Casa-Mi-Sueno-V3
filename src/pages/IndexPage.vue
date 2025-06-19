@@ -43,16 +43,18 @@
     <!-- Features Section -->
     <section class="section bg-white">
       <div class="container">
-        <div class="cms-grid cms-grid-3">
-          <div v-for="feature in features" :key="feature.title" class="cms-card q-pa-md text-center">
-            <div class="cms-img-container q-mb-lg" style="height: 200px;">
-              <q-img
-                :src="feature.image"
-                class="cms-img"
-              />
+        <div class="row q-col-gutter-lg">
+          <div v-for="feature in features" :key="feature.title" class="col-12 col-md-4">
+            <div class="cms-card q-pa-md text-center">
+              <div class="cms-img-container q-mb-lg" style="height: 200px;">
+                <q-img
+                  :src="feature.image"
+                  class="cms-img"
+                />
+              </div>
+              <h3 class="q-mb-md font-playfair">{{ feature.title }}</h3>
+              <p class="text-grey-8">{{ feature.description }}</p>
             </div>
-            <h3 class="q-mb-md font-playfair">{{ feature.title }}</h3>
-            <p class="text-grey-8">{{ feature.description }}</p>
           </div>
         </div>
       </div>

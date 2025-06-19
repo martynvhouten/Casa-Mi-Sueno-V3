@@ -116,21 +116,21 @@
       <div class="container q-py-xl">
         <div class="row q-col-gutter-xl">
           <!-- Contact Info -->
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-4 text-center text-md-left">
             <h4 class="font-playfair q-mb-md">Contact</h4>
             <q-list dense>
               <q-item>
-                <q-item-section>
+                <q-item-section class="text-center text-md-left">
                   <q-item-label>Carrer de les Petúnies 16</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
-                <q-item-section>
+                <q-item-section class="text-center text-md-left">
                   <q-item-label>03580 L'Alfàs del Pi, Alicante, Spain</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item clickable tag="a" href="tel:+31683645489">
-                <q-item-section>
+                <q-item-section class="text-center text-md-left">
                   <q-item-label>06 - 8364 5489 (Netherlands)</q-item-label>
                 </q-item-section>
               </q-item>
@@ -141,7 +141,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <q-item-section>
+                <q-item-section class="text-center text-md-left">
                   <q-item-label>
                     <q-icon name="fab fa-whatsapp" size="18px" class="q-mr-sm" />
                     WhatsApp
@@ -152,7 +152,7 @@
           </div>
 
           <!-- Quick Links -->
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-4 text-center text-md-left">
             <h4 class="font-playfair q-mb-md">Menu</h4>
             <q-list dense>
               <q-item
@@ -161,7 +161,7 @@
                 :to="item.route"
                 clickable
               >
-                <q-item-section>
+                <q-item-section class="text-center text-md-left">
                   <q-item-label>{{ item.label }}</q-item-label>
                 </q-item-section>
               </q-item>
@@ -169,9 +169,9 @@
           </div>
 
           <!-- Social Media -->
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-4 text-center">
             <h4 class="font-playfair q-mb-md">Volg Ons</h4>
-            <div class="row q-gutter-sm">
+            <div class="row justify-center justify-md-start q-gutter-sm">
               <q-btn
                 v-for="social in socialLinks"
                 :key="social.icon"
@@ -308,38 +308,44 @@ onUnmounted(() => {
 
 .logo-container {
   position: relative;
-  padding: 4px 0;
-}
-
-.logo-decoration {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 60%;
-  height: 2px;
-  background: var(--cms-deep-terracotta);
-  transform-origin: left;
-  animation: expand 0.6s ease-out forwards;
-}
-
-@keyframes expand {
-  from {
-    transform: scaleX(0);
+  padding-bottom: 8px;
+  
+  .logo-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background-color: var(--cms-deep-terracotta);
+    transition: width 0.3s ease;
   }
-  to {
-    transform: scaleX(1);
+  
+  &:hover .logo-decoration {
+    width: 100%;
   }
 }
 
 .logo-link {
-  transition: opacity 0.3s ease;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-.logo-link:hover {
-  opacity: 0.85;
-}
-
-.logo-link:hover .logo-decoration {
-  animation: expand 0.6s ease-out forwards;
+@media (max-width: 768px) {
+  .q-footer {
+    .q-item {
+      min-height: 32px;
+      padding: 4px 0;
+      justify-content: center;
+    }
+    
+    .q-list {
+      padding: 0;
+    }
+    
+    h4 {
+      font-size: 1.25rem;
+    }
+  }
 }
 </style> 

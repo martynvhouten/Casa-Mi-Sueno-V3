@@ -118,7 +118,6 @@ const savePreferences = () => {
 
   if (analyticsCookies.value) {
     // Initialize analytics here if needed
-    console.log('Analytics cookies accepted');
   }
 };
 

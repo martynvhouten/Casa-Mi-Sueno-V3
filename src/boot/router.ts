@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
 export default boot(({ router }) => {
   // Handle navigation errors
   router.onError((error) => {
+    // eslint-disable-next-line no-console
     console.error('Navigation error:', error);
   });
 

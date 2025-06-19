@@ -6,11 +6,11 @@
       </div>
 
       <div class="text-h2 text-blue-9 q-mb-md">
-        {{ $t('error404.title') }}
+        {{ t('error404.title') }}
       </div>
 
       <div class="text-h5 text-blue-8 q-mb-xl">
-        {{ $t('error404.description') }}
+        {{ t('error404.description') }}
       </div>
 
       <q-btn
@@ -18,7 +18,7 @@
         text-color="white"
         unelevated
         to="/"
-        :label="$t('error404.goHome')"
+        :label="t('error404.goHome')"
         no-caps
       />
     </div>

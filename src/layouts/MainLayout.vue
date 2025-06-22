@@ -199,7 +199,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useQuasar } from 'quasar';
 import WhatsAppWidget from '../components/WhatsAppWidget.vue';
@@ -210,7 +210,11 @@ const $q = useQuasar();
 const rightDrawerOpen = ref(false);
 const isScrolled = ref(false);
 
-const currentRoute = computed(() => route.path);
+const currentRoute = ref(route.path);
+
+watch(() => route.path, (newPath) => {
+  currentRoute.value = newPath;
+});
 
 // Navigation Items
 const navigationItems = [

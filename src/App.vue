@@ -32,7 +32,7 @@ const getMetaTitle = () => {
     case '/contact':
       return 'Contact - Casa Mi Sueño | Vakantiehuis Spanje';
     case '/reserveren':
-      return 'Reserveren - Casa Mi Sueño | Boek Direct';
+      return 'Reserveren - Casa Mi Sueño | Plan je verblijf';
     case 'about':
       return 'Ontdek het verhaal achter Casa Mi Sueño en waarom we dit stukje Spanje en ons vakantiehuis met je willen delen.';
     case 'practical':

@@ -1,16 +1,13 @@
 import { createApp } from 'vue';
 import { Quasar, Dialog, Notify, Loading } from 'quasar';
-import { setupCalendar } from 'v-calendar';
 import quasarIconSet from 'quasar/icon-set/material-icons-outlined';
+import VCalendar from 'v-calendar';
 import '@quasar/extras/material-icons/material-icons.css';
 import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/fontawesome-v6/fontawesome-v6.css';
 import 'quasar/src/css/index.sass';
 import 'quasar/dist/quasar.css';
 import './styles/quasar-variables.sass';
-
-// Import v-calendar styles
-import 'v-calendar/style.css';
 
 // Import app css
 import './css/app.css';
@@ -20,6 +17,8 @@ import router from './router';
 import i18n from './i18n';
 
 const app = createApp(App);
+
+app.use(VCalendar, {});
 
 app.use(Quasar, {
   plugins: {
@@ -40,7 +39,6 @@ app.use(Quasar, {
 
 app.use(router);
 app.use(i18n);
-app.use(setupCalendar, {});
 
 // Register service worker
 if ('serviceWorker' in navigator) {

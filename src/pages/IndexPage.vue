@@ -157,7 +157,7 @@
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
           to="/reserveren"
-          label="Bekijk beschikbaarheid"
+          label="Plan je verblijf"
         />
       </div>
     </section>

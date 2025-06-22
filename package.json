@@ -16,13 +16,14 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@quasar/extras": "^1.16.9",
+    "@vuepic/vue-datepicker": "^11.0.2",
     "@vueuse/core": "^10.7.2",
     "axios": "^1.6.7",
     "quasar": "^2.14.3",
-    "v-calendar": "^3.1.2",
     "vue": "^3.4.15",
     "vue-i18n": "^9.9.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue-screen-utils": "^1.0.0-beta.13"
   },
   "devDependencies": {
     "@netlify/functions": "^4.1.6",

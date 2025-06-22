@@ -179,7 +179,7 @@
                 />
               </div>
               <div class="q-pa-lg">
-                <h3 class="font-playfair q-mb-md">Veranda & BBQ</h3>
+                <h3 class="font-playfair q-mb-md text-center">Veranda & BBQ</h3>
                 <p class="text-body1 q-mb-md">
                   De overdekte veranda is perfect voor buitenmaaltijden. De keramische Bastard BBQ 
                   staat klaar voor heerlijke barbecues. De omheinde tuin biedt privacy en heeft 

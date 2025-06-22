@@ -66,7 +66,7 @@
         </div>
       </q-card-section>
 
-      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm' : 'row q-gutter-sm justify-end'" class="bg-white q-pa-md">
+      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm text-center' : 'row q-gutter-sm justify-end'" class="bg-white q-pa-md">
         <q-btn
           outline
           label="Alleen Essentieel"

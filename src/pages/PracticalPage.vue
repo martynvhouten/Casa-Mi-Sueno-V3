@@ -55,7 +55,7 @@
             <div class="facility-card q-pa-lg">
               <div class="text-center q-mb-lg">
                 <q-icon :name="facility.icon" size="48px" class="text-terracotta q-mb-md" />
-                <h3 class="font-playfair">{{ facility.title }}</h3>
+                <h3 class="font-playfair text-center">{{ facility.title }}</h3>
               </div>
               <ul class="feature-list">
                 <li v-for="item in facility.items" :key="item">{{ item }}</li>

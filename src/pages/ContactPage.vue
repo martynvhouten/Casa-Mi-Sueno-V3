@@ -41,7 +41,7 @@
           <!-- Contact Info -->
           <div class="col-12 col-md-4">
             <div class="contact-card">
-              <h3 class="font-playfair q-mb-lg text-h4">Direct Contact</h3>
+              <h3 class="font-playfair q-mb-lg text-h4 text-center">Direct Contact</h3>
               
               <div class="contact-item">
                 <q-icon name="phone" size="24px" color="primary" />
@@ -61,14 +61,6 @@
                   <p class="text-body1 q-mb-none">Carrer de les Petúnies 16</p>
                   <p class="text-body1 q-mb-none">03580 L'Alfàs del Pi</p>
                   <p class="text-body1">Alicante, Spain</p>
-                </div>
-              </div>
-
-              <div class="contact-item">
-                <q-icon name="calendar_today" size="24px" color="primary" />
-                <div class="contact-content">
-                  <h4 class="text-h6 font-playfair">Beschikbaarheid</h4>
-                  <p class="text-body1">Bekijk de kalender en reserveer direct</p>
                 </div>
               </div>
 

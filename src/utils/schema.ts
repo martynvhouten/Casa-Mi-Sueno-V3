@@ -56,9 +56,7 @@ export const generateVacationRentalSchema = (): SchemaData => {
       'minValue': '1',
       'maxValue': '6'
     },
-    'petsAllowed': false,
-    'availabilityStarts': new Date().toISOString(),
-    'availabilityEnds': new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString()
+    'petsAllowed': false
   };
 };
 

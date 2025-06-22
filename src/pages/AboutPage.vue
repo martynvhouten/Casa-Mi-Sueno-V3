@@ -105,7 +105,7 @@
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">Het lokale leven</h2>
+            <h2 class="font-playfair q-mb-lg text-center">Het lokale leven</h2>
             <p class="text-body1 q-mb-lg">
               L'Alfàs del Pi is een bijzondere mix van authentiek Spaans leven en internationale gezelligheid. 
               In de loop der jaren hebben we de mooiste plekjes ontdekt - van verborgen stranden tot de beste 

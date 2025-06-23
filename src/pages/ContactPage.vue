@@ -9,9 +9,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <div class="animate-fade-in-up text-center text-white">
-            <h1 class="text-shadow q-mb-md font-playfair">Contact</h1>
+            <h1 class="text-shadow q-mb-md font-playfair">{{ isBookingInquiry ? 'Boekingsaanvraag' : 'Contact' }}</h1>
             <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Neem contact met ons op
+              {{ isBookingInquiry ? 'Plan je verblijf in ons familiehuis' : 'Neem contact met ons op' }}
             </p>
           </div>
         </div>
@@ -21,10 +21,11 @@
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Heb je een vraag?</h2>
+        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'Boek je verblijf' : 'Heb je een vraag?' }}</h2>
         <p class="text-body1 q-mb-xl">
-          Wij helpen je graag verder met al je vragen over ons familiehuis. 
-          Vul het contactformulier in of neem direct contact met ons op.
+          {{ isBookingInquiry 
+            ? 'Vul het formulier in om je verblijf aan te vragen. We nemen zo snel mogelijk contact met je op.' 
+            : 'Wij helpen je graag verder met al je vragen over ons familiehuis. Vul het contactformulier in of neem direct contact met ons op.' }}
         </p>
       </div>
     </section>
@@ -84,10 +85,57 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import ContactForm from '../components/ContactForm.vue';
+
+const route = useRoute();
+
+const isBookingInquiry = computed(() => {
+  return route.query.from !== undefined || route.query.to !== undefined;
+});
 </script>
 
 <style lang="scss" scoped>
+.hero-section {
+  height: 400px;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.bg-sand {
+  background: var(--cms-sand);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .contact-card {
   background: var(--cms-sand);
   border-radius: 16px;
@@ -156,5 +204,9 @@ a {
       transform: translateY(-2px);
     }
   }
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 </style> 

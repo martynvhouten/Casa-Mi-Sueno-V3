@@ -5,15 +5,27 @@
       <q-img
         src="/images/Tuin_zwembad.jpg"
         class="absolute-full"
-        style="min-height: 400px"
+        style="min-height: 600px"
       >
-        <div class="absolute-full bg-black" style="opacity: 0.4"></div>
-        <div class="absolute-full flex flex-center column">
-          <div class="text-center text-white">
-            <h1 class="text-h2 font-playfair q-mb-md">Reserveren</h1>
-            <p class="text-h5 q-mb-xl font-poppins">
-              Plan je verblijf in ons familiehuis
+        <div class="absolute-full bg-gradient" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))"></div>
+        <div class="absolute-full flex flex-center column q-px-md">
+          <div class="text-center text-white" style="max-width: 800px;">
+            <h1 class="text-h2 font-playfair q-mb-xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4); line-height: 1.3;">
+              Reserveer je Verblijf
+            </h1>
+            <p class="text-h5 q-mb-xl font-poppins" style="max-width: 700px; margin: 0 auto; line-height: 1.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); opacity: 0.95;">
+              Plan je perfecte vakantie in ons mediterrane familiehuis met privézwembad en geniet van een onvergetelijk verblijf in l'Alfàs del Pi
             </p>
+            <q-btn
+              color="white"
+              text-color="primary"
+              label="Bekijk Beschikbaarheid"
+              class="q-px-xl q-py-md text-subtitle1"
+              size="lg"
+              unelevated
+              @click="scrollToCalendar"
+              style="border-radius: 12px; font-weight: 500;"
+            />
           </div>
         </div>
       </q-img>
@@ -23,11 +35,36 @@
     <section class="section bg-sand">
       <div class="container q-pa-xl text-center">
         <div class="row justify-center">
-          <div class="col-12 col-md-8">
-            <h2 class="text-h3 font-playfair q-mb-lg">Boek je vakantie</h2>
-            <p class="text-h6 text-grey-8">
-              Selecteer je gewenste data in de kalender hieronder. We verhuren alleen aan gasten die ons huis met dezelfde zorg en respect behandelen als wij.
+          <div class="col-12 col-md-10 col-lg-8">
+            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Welkom in Casa Mi Sueño</h2>
+            <p class="text-h6 text-grey-8" style="line-height: 1.8; max-width: 800px; margin: 0 auto;">
+              Ontdek de perfecte balans tussen comfort en authenticiteit in ons zorgvuldig onderhouden vakantiehuis. 
+              We verhuren alleen aan gasten die ons huis met dezelfde zorg en respect behandelen als wij. 
+              Selecteer hieronder je gewenste data en begin je droomvakantie te plannen.
             </p>
+            <div class="row justify-center q-mt-xl q-col-gutter-md">
+              <div class="col-12 col-sm-4">
+                <div class="feature-highlight">
+                  <q-icon name="villa" size="32px" color="terracotta" class="q-mb-sm" />
+                  <h6 class="text-subtitle1 q-mb-xs">Authentiek Vakantiehuis</h6>
+                  <p class="text-body2">Met alle moderne comfort</p>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="feature-highlight">
+                  <q-icon name="pool" size="32px" color="terracotta" class="q-mb-sm" />
+                  <h6 class="text-subtitle1 q-mb-xs">Privé Zwembad</h6>
+                  <p class="text-body2">Perfect voor verkoeling</p>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="feature-highlight">
+                  <q-icon name="groups" size="32px" color="terracotta" class="q-mb-sm" />
+                  <h6 class="text-subtitle1 q-mb-xs">Tot 4 Personen</h6>
+                  <p class="text-body2">Ideaal voor families</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -39,57 +76,60 @@
         <div class="row q-col-gutter-xl">
           <!-- Calendar -->
           <div class="col-12 col-lg-8">
-            <div v-if="loading" class="text-center">
-              <q-spinner-dots color="primary" size="40px" />
-              <p>Beschikbaarheid laden...</p>
-            </div>
-            <div v-else class="calendar-container">
-              <Datepicker
-                v-model="dates"
-                :key="columns"
-                range
-                inline
-                auto-apply
-                multi-calendars
-                :min-date="today"
-                :disabled-dates="bookedDates"
-                :enable-time-picker="false"
-                :columns="columns"
-                locale="nl"
-                :dark="false"
-                :clearable="false"
-                format="dd MMMM yyyy"
-                class="airbnb-style-calendar"
-                @update:model-value="handleDateSelect"
-                :month-change-on-scroll="false"
-                :preset-ranges="false"
-                :flow="['calendar']"
-                :partial-range="false"
-                :prevent-min-max-navigation="false"
-                :disable-date="isDateDisabled"
-                :calendar-cell-class-name="(cell: CalendarCell) => isDateDisabled(cell.value) ? 'dp__disabled' : ''"
-              />
-              <div class="calendar-legend q-mt-md">
-                <div class="legend-item">
-                  <span class="legend-color today-dot"></span>
-                  <span>Vandaag</span>
-                </div>
-                <div class="legend-item">
-                  <span class="legend-color selected-range"></span>
-                  <span>Geselecteerd</span>
-                </div>
-                <div class="legend-item">
-                  <span class="legend-color booked-day-legend"></span>
-                  <span>Geboekt</span>
-                </div>
+            <div class="calendar-wrapper bg-white rounded-borders q-pa-lg">
+              <h3 class="text-h4 font-playfair q-mb-lg text-center">Selecteer je Data</h3>
+              <div v-if="loading" class="text-center q-pa-xl">
+                <q-spinner-dots color="primary" size="40px" />
+                <p class="text-subtitle1 q-mt-sm">Beschikbaarheid laden...</p>
               </div>
-              <div v-if="showLongStayMessage" class="long-stay-message q-mt-md">
-                <q-banner class="bg-accent text-white" style="background: rgba(38, 70, 83, 0.9) !important">
-                  <template v-slot:avatar>
-                    <q-icon name="info" color="white" />
-                  </template>
-                  <span class="text-weight-medium">Voor verblijven langer dan 3 weken maken we graag een speciale prijsafspraak. Neem gerust contact op.</span>
-                </q-banner>
+              <div v-else class="calendar-container">
+                <Datepicker
+                  v-model="dates"
+                  :key="columns"
+                  range
+                  inline
+                  auto-apply
+                  multi-calendars
+                  :min-date="today"
+                  :disabled-dates="bookedDates"
+                  :enable-time-picker="false"
+                  :columns="columns"
+                  locale="nl"
+                  :dark="false"
+                  :clearable="false"
+                  format="dd MMMM yyyy"
+                  class="airbnb-style-calendar"
+                  @update:model-value="handleDateSelect"
+                  :month-change-on-scroll="false"
+                  :preset-ranges="false"
+                  :flow="['calendar']"
+                  :partial-range="false"
+                  :prevent-min-max-navigation="false"
+                  :disable-date="isDateDisabled"
+                  :calendar-cell-class-name="(cell: CalendarCell) => isDateDisabled(cell.value) ? 'dp__disabled' : ''"
+                />
+                <div class="calendar-legend q-mt-lg">
+                  <div class="legend-item">
+                    <span class="legend-color today-dot"></span>
+                    <span class="text-subtitle2">Vandaag</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color selected-range"></span>
+                    <span class="text-subtitle2">Geselecteerd</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color booked-day-legend"></span>
+                    <span class="text-subtitle2">Geboekt</span>
+                  </div>
+                </div>
+                <div v-if="showLongStayMessage" class="long-stay-message q-mt-lg">
+                  <q-banner class="bg-accent text-white" style="background: rgba(38, 70, 83, 0.9) !important; border-radius: 8px;">
+                    <template v-slot:avatar>
+                      <q-icon name="info" color="white" />
+                    </template>
+                    <span class="text-weight-medium">Voor verblijven langer dan 3 weken maken we graag een speciale prijsafspraak. Neem gerust contact op.</span>
+                  </q-banner>
+                </div>
               </div>
             </div>
           </div>
@@ -97,49 +137,55 @@
           <!-- Cost Summary -->
           <div class="col-12 col-lg-4">
             <div class="cost-summary-card" v-if="priceDetails">
-              <h4 class="text-h6 font-playfair q-mb-md">Kostenoverzicht</h4>
+              <h4 class="text-h5 font-playfair q-mb-lg">Kostenoverzicht</h4>
               
               <!-- Base Price -->
-              <div class="price-row q-mb-sm">
-                <span>Basis prijs per nacht</span>
-                <span class="text-weight-medium">€{{ priceDetails.pricePerNight.toLocaleString('nl-NL') }}</span>
+              <div class="price-row q-mb-md">
+                <span class="text-subtitle1">Basis prijs per nacht</span>
+                <span class="text-subtitle1 text-weight-medium">€{{ priceDetails.pricePerNight.toLocaleString('nl-NL') }}</span>
               </div>
               
               <!-- Number of Nights -->
-              <div class="price-row q-mb-sm">
-                <span>Aantal nachten</span>
-                <span class="text-weight-medium">{{ priceDetails.totalNights }}</span>
+              <div class="price-row q-mb-md">
+                <span class="text-subtitle1">Aantal nachten</span>
+                <span class="text-subtitle1 text-weight-medium">{{ priceDetails.totalNights }}</span>
               </div>
 
               <!-- Base Total -->
-              <div class="price-row q-mb-sm">
-                <span>Subtotaal</span>
-                <span class="text-weight-medium">€{{ priceDetails.basePrice.toLocaleString('nl-NL') }}</span>
+              <div class="price-row q-mb-md">
+                <span class="text-subtitle1">Subtotaal</span>
+                <span class="text-subtitle1 text-weight-medium">€{{ priceDetails.basePrice.toLocaleString('nl-NL') }}</span>
               </div>
 
               <!-- Short Stay Surcharge if applicable -->
-              <div v-if="priceDetails.shortStaySurcharge > 0" class="price-row q-mb-sm">
-                <span>Toeslag kort verblijf</span>
-                <span class="text-weight-medium">€{{ priceDetails.shortStaySurcharge.toLocaleString('nl-NL') }}</span>
+              <div v-if="priceDetails.shortStaySurcharge > 0" class="price-row q-mb-md">
+                <span class="text-subtitle1">Toeslag kort verblijf</span>
+                <span class="text-subtitle1 text-weight-medium">€{{ priceDetails.shortStaySurcharge.toLocaleString('nl-NL') }}</span>
               </div>
 
               <!-- Total -->
-              <div class="price-row total-row q-mt-md q-pb-md">
-                <span class="text-weight-bold">Totaal</span>
-                <span class="text-weight-bold text-h6">€{{ priceDetails.totalPrice.toLocaleString('nl-NL') }}</span>
+              <div class="price-row total-row q-mt-lg q-pb-lg">
+                <span class="text-h6 text-weight-bold">Totaal</span>
+                <span class="text-h6 text-weight-bold text-primary">€{{ priceDetails.totalPrice.toLocaleString('nl-NL') }}</span>
               </div>
 
               <q-btn
                 color="primary"
                 :label="`Reserveer voor €${priceDetails.totalPrice.toLocaleString('nl-NL')}`"
-                class="full-width q-mt-md"
+                class="full-width q-mt-lg"
                 @click="goToContact"
                 unelevated
+                size="lg"
               />
+              
+              <div class="text-caption text-grey-7 text-center q-mt-sm">
+                * Exclusief borg (€500) en toeristenbelasting
+              </div>
             </div>
-            <div v-else class="cost-summary-card text-center text-grey-7">
-              <h4 class="text-h6 font-playfair q-mb-sm">Selecteer data</h4>
-              <p>Kies je in- en uitcheckdatums om de prijs te zien.</p>
+            <div v-else class="cost-summary-card text-center">
+              <q-icon name="event" size="48px" color="grey-4" class="q-mb-md" />
+              <h4 class="text-h6 font-playfair q-mb-sm">Selecteer je Data</h4>
+              <p class="text-body1 text-grey-7">Kies je in- en uitcheckdatum in de kalender om de totaalprijs te zien.</p>
             </div>
           </div>
         </div>
@@ -153,13 +199,17 @@
           <!-- Important Information -->
           <div class="col-12 col-md-6">
             <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl">Goed om te weten</h3>
+              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Goed om te Weten</h3>
               <div class="row q-col-gutter-lg">
                 <div class="col-12">
-                  <div v-for="(info, index) in importantInfo" :key="index" class="feature-item q-mb-md">
-                    <div class="row items-center">
-                      <q-icon name="arrow_right" color="terracotta" size="sm" class="q-mr-sm" />
-                      <span class="text-subtitle1">{{ info }}</span>
+                  <div v-for="(info, index) in importantInfo" :key="index" class="feature-item q-mb-lg">
+                    <div class="row items-center no-wrap">
+                      <div class="col-auto">
+                        <q-icon name="check_circle" color="terracotta" size="24px" class="q-mr-md" />
+                      </div>
+                      <div class="col">
+                        <span class="text-subtitle1 text-weight-medium">{{ info }}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -170,18 +220,28 @@
           <!-- For Who -->
           <div class="col-12 col-md-6">
             <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl">Voor wie is Casa Mi Sueño?</h3>
-              <p class="text-subtitle1 q-mb-xl">
+              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Voor wie is Casa Mi Sueño?</h3>
+              <p class="text-subtitle1 q-mb-xl" style="line-height: 1.8;">
                 Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
                 We verhuren graag aan koppels, families of kleine groepen vrienden die onze liefde 
                 voor deze bijzondere plek delen.
               </p>
-              <div class="bg-sand rounded-borders q-pa-lg">
-                <h4 class="text-h6 font-playfair q-mb-md">Borg</h4>
-                <p class="text-body1 q-mb-none">
-                  We vragen een borg van €500, die we na je verblijf terugstorten als alles in goede orde is achtergelaten. 
-                  De borg ontvang je binnen 5-7 werkdagen na vertrek terug op je rekening.
-                </p>
+              <div class="bg-sand rounded-borders q-pa-xl" style="border: 1px solid rgba(0,0,0,0.05);">
+                <div class="row items-center q-col-gutter-lg">
+                  <div class="col-auto">
+                    <q-icon name="security" color="terracotta" size="48px" />
+                  </div>
+                  <div class="col">
+                    <h4 class="text-h6 font-playfair q-mb-md">Borg & Betalingen</h4>
+                    <p class="text-body1 q-mb-sm">
+                      • Borg: €500 (teruggestort binnen 5-7 werkdagen na vertrek)
+                    </p>
+                    <p class="text-body1 q-mb-none">
+                      • Aanbetaling: 30% bij reservering<br>
+                      • Restbetaling: 8 weken voor aankomst
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -196,21 +256,29 @@
           <!-- Included Services -->
           <div class="col-12 col-md-6">
             <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl">Inbegrepen Services</h3>
-              <div class="row q-col-gutter-lg">
+              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Inbegrepen Services</h3>
+              <div class="row q-col-gutter-xl">
                 <div class="col-12 col-sm-6">
-                  <div v-for="(service, index) in includedServices.slice(0, 4)" :key="index" class="feature-item q-mb-md">
-                    <div class="row items-center">
-                      <q-icon name="check_circle" color="positive" size="sm" class="q-mr-sm" />
-                      <span class="text-subtitle1">{{ service }}</span>
+                  <div v-for="(service, index) in includedServices.slice(0, 4)" :key="index" class="feature-item q-mb-lg">
+                    <div class="row items-center no-wrap">
+                      <div class="col-auto">
+                        <q-icon name="check_circle" color="positive" size="24px" class="q-mr-md" />
+                      </div>
+                      <div class="col">
+                        <span class="text-subtitle1 text-weight-medium">{{ service }}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-12 col-sm-6">
-                  <div v-for="(service, index) in includedServices.slice(4)" :key="index" class="feature-item q-mb-md">
-                    <div class="row items-center">
-                      <q-icon name="check_circle" color="positive" size="sm" class="q-mr-sm" />
-                      <span class="text-subtitle1">{{ service }}</span>
+                  <div v-for="(service, index) in includedServices.slice(4)" :key="index" class="feature-item q-mb-lg">
+                    <div class="row items-center no-wrap">
+                      <div class="col-auto">
+                        <q-icon name="check_circle" color="positive" size="24px" class="q-mr-md" />
+                      </div>
+                      <div class="col">
+                        <span class="text-subtitle1 text-weight-medium">{{ service }}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -221,13 +289,17 @@
           <!-- Additional Costs -->
           <div class="col-12 col-md-6">
             <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl">Extra Kosten</h3>
+              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Extra Kosten</h3>
               <div class="row q-col-gutter-lg">
                 <div class="col-12">
-                  <div v-for="(cost, index) in additionalCosts" :key="index" class="feature-item q-mb-md">
-                    <div class="row items-center">
-                      <q-icon name="info" color="terracotta" size="sm" class="q-mr-sm" />
-                      <span class="text-subtitle1">{{ cost }}</span>
+                  <div v-for="(cost, index) in additionalCosts" :key="index" class="feature-item q-mb-lg">
+                    <div class="row items-center no-wrap">
+                      <div class="col-auto">
+                        <q-icon name="info" color="terracotta" size="24px" class="q-mr-md" />
+                      </div>
+                      <div class="col">
+                        <span class="text-subtitle1 text-weight-medium">{{ cost }}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -243,10 +315,12 @@
       <div class="container q-pa-xl">
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-4">
-            <div class="text-center">
-              <q-icon name="support_agent" size="48px" color="terracotta" class="q-mb-md" />
+            <div class="text-center feature-box">
+              <div class="icon-wrapper q-mb-lg">
+                <q-icon name="support_agent" size="48px" color="terracotta" />
+              </div>
               <h4 class="text-h5 font-playfair q-mb-md">Persoonlijke Service</h4>
-              <p class="text-body1">
+              <p class="text-body1 text-grey-8" style="line-height: 1.6;">
                 We delen graag onze lokale tips en helpen je bij het plannen
                 van je verblijf. Voel je thuis in ons huis.
               </p>
@@ -254,10 +328,12 @@
           </div>
 
           <div class="col-12 col-md-4">
-            <div class="text-center">
-              <q-icon name="groups" size="48px" color="terracotta" class="q-mb-md" />
+            <div class="text-center feature-box">
+              <div class="icon-wrapper q-mb-lg">
+                <q-icon name="groups" size="48px" color="terracotta" />
+              </div>
               <h4 class="text-h5 font-playfair q-mb-md">Voor Rustzoekers</h4>
-              <p class="text-body1">
+              <p class="text-body1 text-grey-8" style="line-height: 1.6;">
                 Ons huis is perfect voor wie houdt van rust en authenticiteit. 
                 Ideaal voor koppels, families of kleine groepen vrienden.
               </p>
@@ -265,10 +341,12 @@
           </div>
 
           <div class="col-12 col-md-4">
-            <div class="text-center">
-              <q-icon name="home" size="48px" color="terracotta" class="q-mb-md" />
+            <div class="text-center feature-box">
+              <div class="icon-wrapper q-mb-lg">
+                <q-icon name="home" size="48px" color="terracotta" />
+              </div>
               <h4 class="text-h5 font-playfair q-mb-md">Comfortabel Verblijf</h4>
-              <p class="text-body1">
+              <p class="text-body1 text-grey-8" style="line-height: 1.6;">
                 Geniet van alle comfort en voorzieningen die ons huis te bieden heeft.
                 We zorgen ervoor dat het je aan niets ontbreekt.
               </p>
@@ -278,22 +356,22 @@
       </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="section bg-white">
-      <div class="container q-pa-xl text-center">
-        <div class="row justify-center">
-          <div class="col-12 col-md-8">
-            <h2 class="text-h3 font-playfair q-mb-lg">Klaar om te boeken?</h2>
-            <p class="text-h6 text-grey-8 q-mb-xl">
-              Heb je nog vragen of wil je direct reserveren? Neem contact met ons op.
+    <!-- Combined Call to Action & Contact Form -->
+    <section id="contact-form" class="section bg-white">
+      <div class="container q-pa-xl">
+        <div class="row justify-center q-mb-xl">
+          <div class="col-12 col-md-8 text-center">
+            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Klaar om te Boeken?</h2>
+            <p class="text-h6 text-grey-8" style="line-height: 1.6;">
+              Vul het formulier hieronder in en we helpen je graag verder met het plannen van je droomvakantie.
             </p>
-            <q-btn
-              class="q-px-xl q-py-sm text-subtitle1"
-              color="terracotta"
-              to="/contact"
-              label="Neem contact op"
-              unelevated
-            />
+          </div>
+        </div>
+        <div class="row justify-center">
+          <div class="col-12 col-md-10">
+            <div class="contact-form-wrapper">
+              <ContactForm :selected-dates="dates" />
+            </div>
           </div>
         </div>
       </div>
@@ -309,6 +387,7 @@ import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 import { fetchBookedDates } from '../utils/googleSheets';
 import type { BookedDate } from '../utils/googleSheets';
+import ContactForm from '../components/ContactForm.vue';
 
 const router = useRouter();
 const $q = useQuasar();
@@ -532,15 +611,36 @@ const priceDetails = computed(() => {
 });
 
 const goToContact = () => {
-  if (!selectedRange.value.start || !selectedRange.value.end) return;
+  if (!dates.value?.[0] || !dates.value?.[1]) {
+    $q.notify({
+      type: 'warning',
+      message: 'Selecteer eerst je gewenste verblijfsdata'
+    });
+    return;
+  }
 
-  const from = selectedRange.value.start.toISOString().split('T')[0];
-  const to = selectedRange.value.end.toISOString().split('T')[0];
+  // Format dates for URL in a more readable way
+  const formatDateForUrl = (date: Date) => {
+    return date.toISOString().split('T')[0]; // Returns YYYY-MM-DD
+  };
 
+  // Navigate to contact form with dates
   router.push({
-    name: 'contact',
-    query: { from, to }
+    name: 'booking',
+    hash: '#contact-form',
+    query: {
+      from: formatDateForUrl(dates.value[0]),
+      to: formatDateForUrl(dates.value[1])
+    }
   });
+
+  // Scroll to contact form
+  setTimeout(() => {
+    const element = document.getElementById('contact-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 100);
 };
 
 const includedServices = [
@@ -573,16 +673,25 @@ const importantInfo = [
   'Maximaal 4 personen',
   'Geen feesten of evenementen'
 ];
+
+// Add scrollToCalendar function
+const scrollToCalendar = () => {
+  const calendarElement = document.querySelector('.calendar-container');
+  if (calendarElement) {
+    calendarElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
 </script>
 
 <style lang="scss">
 .hero-section {
-  height: 400px;
+  height: 500px;
   position: relative;
+  overflow: hidden;
 }
 
 .section {
-  padding: 4rem 0;
+  padding: 5rem 0;
   margin: 0;
 }
 
@@ -595,10 +704,15 @@ const importantInfo = [
   margin: 0 auto;
 }
 
+.calendar-wrapper {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+}
+
 .calendar-container {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 2rem;
   
   .airbnb-style-calendar {
     width: 100%;
@@ -613,7 +727,6 @@ const importantInfo = [
   display: flex;
   justify-content: flex-start;
   gap: 1.5rem;
-  margin-top: 1.5rem;
   padding: 1rem;
   background: #f8f8f8;
   border-radius: 8px;
@@ -623,7 +736,7 @@ const importantInfo = [
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #555;
 }
 
@@ -651,9 +764,10 @@ const importantInfo = [
 
 .cost-summary-card {
   padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  background: white;
   position: sticky;
   top: 2rem;
 }
@@ -676,8 +790,57 @@ const importantInfo = [
   overflow: hidden;
 }
 
+.feature-card {
+  height: 100%;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.feature-box {
+  padding: 2rem;
+  height: 100%;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .icon-wrapper {
+    background: rgba(231, 111, 81, 0.1);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+.feature-highlight {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
 // Responsive styles
 @media (max-width: 1023px) {
+  .section {
+    padding: 3rem 0;
+  }
+
   .calendar-container {
     margin-right: 0;
   }
@@ -691,5 +854,31 @@ const importantInfo = [
     position: static;
     margin-top: 2rem;
   }
+
+  .feature-box {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .hero-section {
+    height: 400px;
+  }
+
+  .section {
+    padding: 2rem 0;
+  }
+
+  .feature-card {
+    padding: 1.5rem !important;
+  }
+}
+
+.contact-form-wrapper {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
 }
 </style> 

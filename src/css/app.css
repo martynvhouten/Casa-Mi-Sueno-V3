@@ -25,16 +25,20 @@
   --font-body: 'Poppins', sans-serif;
   
   /* Font Sizes */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
+  --text-xs: 0.8rem;      /* 12.8px */
+  --text-sm: 0.9rem;      /* 14.4px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.5rem;     /* 40px */
+  --text-5xl: 3.25rem;    /* 52px */
+  --text-6xl: 4rem;       /* 64px */
+  
+  /* Subtitle Sizes */
+  --subtitle-1: 1.125rem;  /* 18px */
+  --subtitle-2: 1rem;      /* 16px */
   
   /* Line Heights */
   --leading-none: 1;
@@ -99,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { 
-  font-size: var(--text-6xl);
+  font-size: var(--text-5xl);
   letter-spacing: var(--tracking-tighter);
 }
 
@@ -113,36 +117,33 @@ h3 {
 
 h4 { 
   font-size: var(--text-2xl);
-  font-family: var(--font-subheading);
+  font-family: var(--font-heading);
   font-weight: 500;
 }
 
 h5 { 
   font-size: var(--text-xl);
-  font-family: var(--font-subheading);
+  font-family: var(--font-heading);
   font-weight: 500;
 }
 
 h6 { 
   font-size: var(--text-lg);
-  font-family: var(--font-subheading);
+  font-family: var(--font-heading);
   font-weight: 500;
 }
 
 /* Responsive Typography */
 @media (max-width: 768px) {
-  :root {
-    --text-6xl: 2rem;
-    --text-5xl: 1.875rem;
-    --text-4xl: 1.75rem;
-    --text-3xl: 1.5rem;
-    --text-2xl: 1.25rem;
-    --text-xl: 1.125rem;
-    --text-lg: 1rem;
-  }
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+  h4 { font-size: var(--text-xl); }
+  h5 { font-size: var(--text-lg); }
+  h6 { font-size: var(--text-base); }
   
   body {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
   }
 
   .text-body1,
@@ -162,6 +163,19 @@ h6 {
 }
 
 /* Text Styles */
+.text-subtitle1,
+.text-h6 {
+  font-size: var(--subtitle-1);
+  line-height: var(--leading-relaxed);
+  font-weight: 500;
+}
+
+.text-subtitle2 {
+  font-size: var(--subtitle-2);
+  line-height: var(--leading-normal);
+  font-weight: 500;
+}
+
 .text-body1,
 p {
   font-size: var(--text-lg);
@@ -602,4 +616,25 @@ body {
 
 .zoom-effect:hover {
   transform: scale(1.1);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .text-subtitle1,
+  .text-h6 {
+    font-size: 1rem;  /* 16px on mobile */
+  }
+
+  .text-subtitle2 {
+    font-size: 0.9375rem;  /* 15px on mobile */
+  }
+
+  .text-body1,
+  p {
+    font-size: var(--text-base);
+  }
+
+  .text-body2 {
+    font-size: var(--text-sm);
+  }
 } 

@@ -1,49 +1,52 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useQuasar } from 'quasar';
 import { useScreens } from 'vue-screen-utils';
+import { fetchBookedDates, BookedDate } from '../utils/googleSheets';
 
-interface BookedDate {
-  geboekte_datum: string;
-}
+const props = defineProps<{
+  modelValue: [Date | null, Date | null];
+}>();
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: [Date | null, Date | null]): void;
+}>();
 
 const $q = useQuasar();
-
-const selectedRange = ref<[Date | null, Date | null]>([null, null]);
 const bookedDates = ref<Date[]>([]);
 const loading = ref(true);
+const localDates = ref<[Date | null, Date | null]>([null, null]);
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-const fetchBookedDates = async () => {
+// Format date consistently across components
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('nl-NL', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+};
+
+const fetchBookedDatesFromSheet = async () => {
   loading.value = true;
   try {
-    // This is a placeholder for your actual API endpoint
-    // const response = await fetch(import.meta.env.VITE_SHEETBEST_API_URL);
-    // if (!response.ok) throw new Error('Failed to fetch booked dates');
-    // const data = await response.json() as BookedDate[];
+    const dates = await fetchBookedDates();
     
-    // MOCK DATA
-    const mockData: BookedDate[] = [
-      { geboekte_datum: new Date(new Date().setDate(today.getDate() + 5)).toISOString().split('T')[0] },
-      { geboekte_datum: new Date(new Date().setDate(today.getDate() + 6)).toISOString().split('T')[0] },
-      { geboekte_datum: new Date(new Date().setDate(today.getDate() + 10)).toISOString().split('T')[0] },
-    ];
+    if (!dates.length) {
+      console.warn('No dates returned from sheet');
+      return;
+    }
     
-    bookedDates.value = mockData
-      .map(row => {
-        if (!row.geboekte_datum) return null;
-        if (/^\d{2}-\d{2}-\d{4}$/.test(row.geboekte_datum)) {
-          const [day, month, year] = row.geboekte_datum.split('-');
-          return new Date(`${year}-${month}-${day}`);
-        }
-        return new Date(row.geboekte_datum);
-      })
-      .filter((date): date is Date => date !== null && !isNaN(date.getTime()));
-
+    // Convert to Date objects and normalize to local midnight
+    bookedDates.value = dates.map((d: BookedDate) => {
+      const date = new Date(d.geboekte_datum);
+      // Convert UTC date to a local date at midnight to avoid timezone-off-by-one errors
+      return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+    });
   } catch (error) {
     console.error('Error fetching booked dates:', error);
     $q.notify({
@@ -64,6 +67,8 @@ const isDateDisabled = (date: Date) => {
 
 // Handle date selection
 const handleDateSelect = (dates: [Date | null, Date | null]) => {
+  localDates.value = dates;
+  
   if (dates[0] && dates[1]) {
     // Check if any date in the range is disabled
     const start = new Date(dates[0]);
@@ -80,11 +85,37 @@ const handleDateSelect = (dates: [Date | null, Date | null]) => {
         message: 'Een of meer geselecteerde data zijn niet beschikbaar.',
         position: 'top',
       });
-      selectedRange.value = [null, null];
+      localDates.value = [null, null];
+      emit('update:modelValue', [null, null]);
+      return;
+    }
+
+    // Validate minimum stay requirements
+    const nights = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+    const isHighSeason = start.getMonth() >= 4 && start.getMonth() <= 8; // May through September
+
+    if (isHighSeason && nights < 10) {
+      $q.notify({
+        type: 'warning',
+        message: 'Minimaal 10 nachten verblijf in het hoogseizoen.',
+        position: 'top',
+      });
+      localDates.value = [null, null];
+      emit('update:modelValue', [null, null]);
+      return;
+    } else if (!isHighSeason && nights < 5) {
+      $q.notify({
+        type: 'warning',
+        message: 'Minimaal 5 nachten verblijf.',
+        position: 'top',
+      });
+      localDates.value = [null, null];
+      emit('update:modelValue', [null, null]);
       return;
     }
   }
-  selectedRange.value = dates;
+  
+  emit('update:modelValue', dates);
 };
 
 // Responsive layout
@@ -97,7 +128,14 @@ const { mapCurrent } = useScreens({
 
 const columns = mapCurrent({ lg: 2 }, 1);
 
-onMounted(fetchBookedDates);
+watch(() => props.modelValue, (newValue) => {
+  localDates.value = newValue;
+}, { deep: true });
+
+onMounted(() => {
+  localDates.value = props.modelValue;
+  fetchBookedDatesFromSheet();
+});
 </script>
 
 <template>
@@ -108,24 +146,25 @@ onMounted(fetchBookedDates);
     </div>
     <div v-else>
       <Datepicker
-        v-model="selectedRange"
+        :model-value="(localDates as any)"
+        @update:model-value="handleDateSelect"
         range
-        :min-date="new Date()"
+        :min-date="today"
         :disabled-dates="bookedDates"
         :enable-time-picker="false"
         :columns="columns"
         locale="nl"
         auto-apply
         :clearable="false"
-        text-input
-        :format="{ month: 'long', year: 'numeric', weekday: 'short' }"
+        format="dd MMMM yyyy"
         class="airbnb-style-calendar"
-        @update:model-value="handleDateSelect"
-        :preview-format="(date) => new Date(date).toLocaleDateString('nl-NL', { 
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        })"
+        :preview-format="(date: Date) => formatDate(date)"
+        :month-change-on-scroll="false"
+        :preset-ranges="false"
+        :flow="['calendar']"
+        :partial-range="false"
+        :prevent-min-max-navigation="false"
+        :disable-date="isDateDisabled"
       />
       <div class="calendar-legend">
         <div class="legend-item">

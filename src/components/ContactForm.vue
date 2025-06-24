@@ -12,6 +12,7 @@
       @submit="handleSubmit"
       class="form-container"
       ref="formRef"
+      aria-label="Contact formulier"
     >
       <div class="form-grid">
         <!-- Selected Dates Display (Booking Only) -->
@@ -47,17 +48,15 @@
               <q-input
                 v-model="form.name"
                 label="Naam"
-                :rules="[
-                  val => !!val || 'Naam is verplicht',
-                  val => val.length >= 2 || 'Naam moet minimaal 2 karakters bevatten'
-                ]"
+                :rules="nameRules"
                 lazy-rules
                 outlined
                 class="modern-input"
                 :disable="loading"
+                aria-required="true"
               >
                 <template v-slot:prepend>
-                  <q-icon name="person" color="primary" />
+                  <q-icon name="person" color="primary" aria-hidden="true" />
                 </template>
               </q-input>
             </div>
@@ -68,17 +67,15 @@
                 v-model="form.email"
                 label="E-mail"
                 type="email"
-                :rules="[
-                  val => !!val || 'E-mail is verplicht',
-                  val => /^[^@]+@[^@]+\.[^@]+$/.test(val) || 'Ongeldig e-mailadres'
-                ]"
+                :rules="emailRules"
                 lazy-rules
                 outlined
                 class="modern-input"
                 :disable="loading"
+                aria-required="true"
               >
                 <template v-slot:prepend>
-                  <q-icon name="email" color="primary" />
+                  <q-icon name="email" color="primary" aria-hidden="true" />
                 </template>
               </q-input>
             </div>
@@ -89,9 +86,7 @@
                 v-model="form.phone"
                 label="Telefoonnummer"
                 type="tel"
-                :rules="[
-                  val => !val || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(val) || 'Ongeldig telefoonnummer'
-                ]"
+                :rules="phoneRules"
                 mask="(+##) ### ### ####"
                 outlined
                 class="modern-input"
@@ -109,10 +104,7 @@
                 v-model="form.guests"
                 label="Aantal gasten"
                 type="number"
-                :rules="[
-                  val => !!val || 'Aantal gasten is verplicht',
-                  val => val > 0 && val <= 4 || 'Maximaal 4 gasten toegestaan'
-                ]"
+                :rules="guestsRules"
                 min="1"
                 max="4"
                 outlined
@@ -132,10 +124,7 @@
                 :label="isBookingInquiry ? 'Extra wensen of opmerkingen' : 'Je bericht'"
                 type="textarea"
                 rows="4"
-                :rules="[
-                  val => !!val || 'Bericht is verplicht',
-                  val => val.length >= 10 || 'Bericht moet minimaal 10 karakters bevatten'
-                ]"
+                :rules="messageRules"
                 lazy-rules
                 outlined
                 class="modern-input"
@@ -150,15 +139,15 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="col-12 text-center q-mt-xl">
+        <div class="col-12 text-center q-mt-xl q-mb-xl">
           <q-btn
             type="submit"
-            :label="isBookingInquiry ? 'Verstuur Aanvraag' : 'Verstuur Bericht'"
+            :label="isBookingInquiry ? 'Verstuur aanvraag' : 'Verstuur bericht'"
             color="primary"
             :loading="loading"
-            size="lg"
+            class="cms-btn cms-btn-cta"
+            :aria-label="loading ? 'Bezig met versturen...' : (isBookingInquiry ? 'Verstuur Aanvraag' : 'Verstuur Bericht')"
             unelevated
-            class="submit-button"
           >
             <template v-slot:loading>
               <q-spinner-dots />
@@ -191,7 +180,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
 import { useQuasar, QForm } from 'quasar';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
+import DOMPurify from 'dompurify';
 
 interface FormData {
   name: string;
@@ -201,12 +191,16 @@ interface FormData {
   guests?: number;
 }
 
+interface ValidationError {
+  field: string;
+  message: string;
+}
+
 const props = defineProps<{
   selectedDates?: [Date, Date] | []
 }>();
 
 const route = useRoute();
-const router = useRouter();
 const $q = useQuasar();
 
 const loading = ref(false);
@@ -214,13 +208,7 @@ const formRef = ref<QForm | null>(null);
 const internalDates = ref<[Date | null, Date | null]>([null, null]);
 const isBookingInquiry = computed(() => route.name === 'booking');
 const showSuccessDialog = ref(false);
-
-// Watch for changes in the selectedDates prop
-watch(() => props.selectedDates, (newDates) => {
-  if (newDates && newDates.length === 2) {
-    internalDates.value = newDates;
-  }
-}, { immediate: true });
+const validationErrors = ref<ValidationError[]>([]);
 
 // Form data
 const form = ref<FormData>({
@@ -231,45 +219,69 @@ const form = ref<FormData>({
   guests: undefined
 });
 
-// Format date for display
-const formatDate = (date: Date): string => {
-  return date.toLocaleDateString('nl-NL', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
+// Validation rules
+const nameRules = [
+  (val: string) => !!val.trim() || 'Naam is verplicht',
+  (val: string) => val.trim().length >= 2 || 'Naam moet minimaal 2 karakters bevatten',
+  (val: string) => /^[a-zA-ZÀ-ÿ\s'-]+$/.test(val.trim()) || 'Naam mag alleen letters bevatten'
+];
+
+const emailRules = [
+  (val: string) => !!val.trim() || 'E-mail is verplicht',
+  (val: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()) || 'Ongeldig e-mailadres'
+];
+
+const phoneRules = [
+  (val: string) => !val || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(val.trim()) || 'Ongeldig telefoonnummer'
+];
+
+const messageRules = [
+  (val: string) => !!val.trim() || 'Bericht is verplicht',
+  (val: string) => val.trim().length >= 10 || 'Bericht moet minimaal 10 karakters bevatten',
+  (val: string) => val.trim().length <= 1000 || 'Bericht mag maximaal 1000 karakters bevatten'
+];
+
+const guestsRules = [
+  (val: number) => (isBookingInquiry.value ? !!val : true) || 'Aantal gasten is verplicht',
+  (val: number) => (isBookingInquiry.value ? val > 0 && val <= 4 : true) || 'Maximaal 4 gasten toegestaan'
+];
+
+// Sanitize input
+const sanitizeInput = (input: string): string => {
+  return DOMPurify.sanitize(input.trim(), {
+    ALLOWED_TAGS: [],
+    ALLOWED_ATTR: []
   });
 };
 
-// Initialize form with route query params if they exist
-onMounted(() => {
-  if (isBookingInquiry.value && route.query.from && route.query.to) {
-    try {
-      const fromDate = new Date(route.query.from as string);
-      const toDate = new Date(route.query.to as string);
-      
-      // Only set dates if they are valid
-      if (!isNaN(fromDate.getTime()) && !isNaN(toDate.getTime())) {
-        internalDates.value = [fromDate, toDate];
-      } else {
-        // If dates are invalid, redirect back to booking page
-        router.push({ name: 'booking' });
-      }
-    } catch (error) {
-      console.error('Error parsing dates:', error);
-      // If there's an error parsing dates, redirect back to booking page
-      router.push({ name: 'booking' });
-    }
-  }
-});
-
+// Handle form submission
 const handleSubmit = async () => {
+  validationErrors.value = [];
+  loading.value = true;
+
   try {
-    loading.value = true;
-    
     // Validate form
     const isValid = await formRef.value?.validate();
+    
     if (!isValid) {
-      throw new Error('Vul alsjeblieft alle verplichte velden correct in');
+      throw new Error('Validatie mislukt');
+    }
+
+    // Sanitize all inputs
+    const sanitizedForm = {
+      name: sanitizeInput(form.value.name),
+      email: sanitizeInput(form.value.email),
+      phone: sanitizeInput(form.value.phone),
+      message: sanitizeInput(form.value.message),
+      guests: form.value.guests
+    };
+
+    // Additional validation
+    if (sanitizedForm.name !== form.value.name ||
+        sanitizedForm.email !== form.value.email ||
+        sanitizedForm.phone !== form.value.phone ||
+        sanitizedForm.message !== form.value.message) {
+      throw new Error('Ongeldige karakters gedetecteerd');
     }
 
     // Validate dates for booking inquiries
@@ -288,11 +300,11 @@ const handleSubmit = async () => {
         'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
       },
       body: JSON.stringify({
-        name: form.value.name,
-        email: form.value.email,
-        phone: form.value.phone || undefined,
-        message: form.value.message,
-        numberOfGuests: form.value.guests,
+        name: sanitizedForm.name,
+        email: sanitizedForm.email,
+        phone: sanitizedForm.phone || undefined,
+        message: sanitizedForm.message,
+        numberOfGuests: sanitizedForm.guests,
         startDate: internalDates.value[0],
         endDate: internalDates.value[1]
       })
@@ -305,7 +317,7 @@ const handleSubmit = async () => {
 
     // Show success message
     showSuccessDialog.value = true;
-
+    
     // Reset form
     form.value = {
       name: '',
@@ -317,16 +329,49 @@ const handleSubmit = async () => {
     internalDates.value = [null, null];
     formRef.value?.resetValidation();
 
-  } catch (error: any) {
+  } catch (error: Error | unknown) {
+    console.error('Error sending form:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Er is een onverwachte fout opgetreden';
     $q.notify({
       type: 'negative',
-      message: error.message || 'Er is een fout opgetreden',
-      position: 'top',
+      message: errorMessage,
+      position: 'top'
     });
-  } finally {
     loading.value = false;
   }
 };
+
+// Watch for changes in the selectedDates prop
+watch(() => props.selectedDates, (newDates) => {
+  if (newDates && newDates.length === 2) {
+    internalDates.value = newDates;
+  }
+}, { immediate: true });
+
+// Format date for display
+const formatDate = (date: Date): string => {
+  return date.toLocaleDateString('nl-NL', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+};
+
+onMounted(() => {
+  // Initialize form with route query params if they exist
+  if (isBookingInquiry.value && route.query.from && route.query.to) {
+    try {
+      const fromDate = new Date(route.query.from as string);
+      const toDate = new Date(route.query.to as string);
+      
+      if (!isNaN(fromDate.getTime()) && !isNaN(toDate.getTime())) {
+        internalDates.value = [fromDate, toDate];
+      }
+    } catch (error) {
+      console.error('Error parsing dates from URL:', error);
+    }
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -408,21 +453,6 @@ const handleSubmit = async () => {
   }
 }
 
-.submit-button {
-  min-width: 200px;
-  border-radius: 12px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  
-  &:not(:disabled) {
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    }
-  }
-}
-
 .thank-you-card {
   border-radius: 16px;
   max-width: 400px;
@@ -451,5 +481,25 @@ const handleSubmit = async () => {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+// Add focus styles
+:deep(.q-field__native),
+:deep(.q-field__control) {
+  &:focus-visible {
+    outline: 3px solid var(--q-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Error state styling
+:deep(.q-field--error) {
+  .q-field__bottom {
+    padding: 8px 12px;
+    background: rgba(211, 47, 47, 0.1);
+    border-radius: 0 0 8px 8px;
+    color: #d32f2f;
+    font-weight: 500;
+  }
 }
 </style> 

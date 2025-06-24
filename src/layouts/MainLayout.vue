@@ -1,20 +1,33 @@
 <template>
   <q-layout view="lHh Lpr lff">
+    <!-- Skip to Content Link -->
+    <a 
+      href="#main-content" 
+      class="skip-to-content"
+      @click.prevent="scrollToContent"
+    >
+      Spring naar inhoud
+    </a>
+
     <!-- Header -->
     <q-header class="bg-white text-dark" :elevated="isScrolled">
       <q-toolbar class="container q-py-md">
         <!-- Logo -->
-        <router-link to="/" class="text-inherit no-decoration logo-link">
+        <router-link 
+          to="/" 
+          class="text-inherit no-decoration logo-link"
+          aria-label="Casa Mi Sueño - Ga naar homepage"
+        >
           <div class="logo-container">
             <h1 class="font-playfair text-h4 q-my-none">Casa Mi Sueño</h1>
-            <div class="logo-decoration"></div>
+            <div class="logo-decoration" aria-hidden="true"></div>
           </div>
         </router-link>
 
         <q-space />
 
         <!-- Desktop Navigation -->
-        <div class="gt-sm row items-center no-wrap">
+        <nav class="gt-sm row items-center no-wrap" aria-label="Hoofdnavigatie">
           <q-tabs
             v-model="currentRoute"
             inline-label
@@ -24,23 +37,26 @@
             active-color="primary"
             indicator-color="primary"
             class="q-mr-md"
+            role="navigation"
           >
             <q-route-tab
-            v-for="item in navigationItems"
-            :key="item.label"
-            :to="item.route"
+              v-for="item in navigationItems"
+              :key="item.label"
+              :to="item.route"
               :label="item.label"
               :name="item.route"
+              :aria-label="item.label"
             />
           </q-tabs>
           <q-btn
             unelevated
             color="primary"
-            :to="{ name: 'booking' }"
+            :to="{ name: 'booking', replace: true }"
             label="Reserveren"
-            class="q-px-md"
+            class="cms-btn cms-btn-primary q-ma-none"
+            aria-label="Ga naar reserveringspagina"
           />
-        </div>
+        </nav>
 
         <!-- Mobile Menu Button -->
         <q-btn
@@ -48,7 +64,7 @@
           dense
           round
           icon="menu"
-          aria-label="Menu"
+          aria-label="Menu openen"
           class="lt-md"
           @click="rightDrawerOpen = !rightDrawerOpen"
         />
@@ -63,6 +79,7 @@
       :width="280"
       :breakpoint="1024"
       class="bg-white"
+      aria-label="Mobiel menu"
     >
       <q-scroll-area class="fit">
         <q-list padding>
@@ -82,13 +99,13 @@
 
           <q-separator spaced />
 
-          <q-item :to="{ name: 'booking' }" clickable v-ripple>
+          <q-item :to="{ name: 'booking', replace: true }" clickable v-ripple>
             <q-item-section>
               <q-btn
                 unelevated
                 color="primary"
                 label="Reserveren"
-                class="full-width"
+                class="cms-btn cms-btn-primary full-width"
               />
             </q-item-section>
           </q-item>
@@ -98,15 +115,17 @@
 
     <!-- Page Content -->
     <q-page-container>
-      <router-view v-slot="{ Component }">
-        <transition
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
-          mode="out-in"
-        >
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <main id="main-content">
+        <router-view v-slot="{ Component }">
+          <transition
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+            mode="out-in"
+          >
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      </main>
     </q-page-container>
 
     <WhatsAppWidget />
@@ -204,6 +223,7 @@ import { useRoute } from 'vue-router';
 import { useQuasar } from 'quasar';
 import WhatsAppWidget from '../components/WhatsAppWidget.vue';
 import { WHATSAPP_CONFIG } from '../utils/whatsapp';
+import { setupVacationRentalSchema } from 'src/utils/schema';
 
 const route = useRoute();
 const $q = useQuasar();
@@ -247,12 +267,22 @@ const handleScroll = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Check initial scroll position
+  handleScroll();
+  
+  // Initialize structured data
+  setupVacationRentalSchema();
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
+
+// Add scroll to content function
+const scrollToContent = () => {
+  const mainContent = document.getElementById('main-content');
+  mainContent?.focus();
+  mainContent?.scrollIntoView({ behavior: 'smooth' });
+};
 </script>
 
 <style lang="scss">
@@ -312,21 +342,18 @@ onUnmounted(() => {
 
 .logo-container {
   position: relative;
-  padding-bottom: 8px;
-  
-  .logo-decoration {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60%;
-    height: 2px;
-    background-color: var(--cms-deep-terracotta);
-    transition: width 0.3s ease;
-  }
-  
-  &:hover .logo-decoration {
-    width: 100%;
-  }
+  display: inline-block;
+  padding-bottom: 8px; /* Space for the decoration */
+}
+
+.logo-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background-color: var(--cms-light-terracotta);
+  border-radius: 2px;
 }
 
 .logo-link {
@@ -351,5 +378,46 @@ onUnmounted(() => {
       font-size: 1.25rem;
     }
   }
+}
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -999;
+  background-color: var(--cms-deep-terracotta);
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  z-index: 9999;
+}
+
+// Enhance focus styles
+:focus-visible {
+  outline: 3px solid var(--q-primary);
+  outline-offset: 2px;
+}
+
+// Remove focus ring from elements that don't need it
+.q-tab:focus {
+  outline: none;
+}
+
+.q-tab:focus-visible {
+  outline: 3px solid var(--q-primary);
+  outline-offset: -3px;
 }
 </style> 

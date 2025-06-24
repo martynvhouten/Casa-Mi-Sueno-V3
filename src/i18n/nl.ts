@@ -8,9 +8,9 @@ export default {
     contact: 'Contact',
     location: 'Locatie',
     testimonials: 'Ervaringen',
-    practicalInfo: 'Praktische Informatie',
+    practicalInfo: 'Praktische informatie',
     directions: 'Routebeschrijving',
-    privacy: 'Privacy & Cookies'
+    privacy: 'Privacy & cookies'
   },
   error404: {
     title: 'Pagina niet gevonden',
@@ -48,7 +48,7 @@ export default {
         description: 'Helder water en een gezellige boulevard op 10 minuten rijden'
       },
       altea: {
-        title: 'Oude Stad Altea',
+        title: 'Oude stad Altea',
         description: 'Sfeervol wit dorpje met leuke restaurants en winkeltjes'
       }
     }

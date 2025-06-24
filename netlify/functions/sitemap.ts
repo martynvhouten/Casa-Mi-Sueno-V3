@@ -24,7 +24,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     const headers: Headers = {
       'Content-Type': 'application/xml',
       'Cache-Control': 'public, max-age=86400', // Cache for 24 hours
-      'Access-Control-Allow-Origin': 'https://casamisueno.es',
+      'Access-Control-Allow-Origin': 'https://casamisueno.nl',
       'Access-Control-Allow-Methods': 'GET',
       'X-Content-Type-Options': 'nosniff'
     };

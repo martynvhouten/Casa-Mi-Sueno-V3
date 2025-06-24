@@ -1,22 +1,12 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Tuin_veranda.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <div class="animate-fade-in-up text-center text-white">
-            <h1 class="text-shadow q-mb-md font-playfair">{{ isBookingInquiry ? 'Boekingsaanvraag' : 'Contact' }}</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              {{ isBookingInquiry ? 'Plan je verblijf in ons familiehuis' : 'Neem contact met ons op' }}
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Tuin_veranda.jpg"
+      alt-text="De veranda van het vakantiehuis"
+      :title="isBookingInquiry ? 'Boekingsaanvraag' : 'Contact'"
+      :subtitle="isBookingInquiry ? 'Plan je verblijf in ons familiehuis' : 'Neem contact met ons op'"
+    />
 
     <!-- Introduction -->
     <section class="section bg-sand">
@@ -44,7 +34,7 @@
           <!-- Contact Info -->
           <div class="col-12 col-md-4">
             <div class="contact-card">
-              <h3 class="font-playfair q-mb-lg text-h4 text-center">Direct Contact</h3>
+              <h3 class="font-playfair q-mb-lg text-h4 text-center">Direct contact</h3>
               
               <div class="contact-item">
                 <q-icon name="phone" size="24px" color="primary" />
@@ -70,7 +60,7 @@
               <div class="contact-item">
                 <q-icon name="public" size="24px" color="primary" />
                 <div class="contact-content">
-                  <h4 class="text-h6 font-playfair">Social Media</h4>
+                  <h4 class="text-h6 font-playfair">Social media</h4>
                   <div class="social-links">
                     <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
                       <q-icon name="fab fa-instagram" size="24px" />
@@ -90,6 +80,7 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import ContactForm from '../components/ContactForm.vue';
+import HeroSection from 'src/components/HeroSection.vue';
 
 const route = useRoute();
 
@@ -99,31 +90,6 @@ const isBookingInquiry = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.hero-section {
-  height: 400px;
-  position: relative;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.hero-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .section {
   padding: 5rem 0;
   transition: background-color 0.3s ease;

@@ -1,27 +1,17 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Veranda2.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content text-center">
-          <div class="animate-fade-in-up">
-            <h1 class="text-shadow q-mb-md font-playfair">Praktische Informatie</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Alles wat je moet weten voor een zorgeloos verblijf
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Veranda2.jpg"
+      alt-text="De veranda van het vakantiehuis"
+      title="Praktische informatie"
+      subtitle="Alles wat je moet weten voor een zorgeloos verblijf"
+    />
 
     <!-- Introduction -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Je Verblijf</h2>
+        <h2 class="font-playfair q-mb-lg">Je verblijf</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
           We willen graag dat je je direct thuis voelt in Casa Mi Sueño. Het is een rustige plek 
           voor gasten die, net als wij, houden van authenticiteit en ontspanning. Hieronder vind je 
@@ -175,23 +165,58 @@
         <h2 class="text-center font-playfair q-mb-xl">Aankomst & Vertrek</h2>
         <div class="row justify-center">
           <div class="col-12 col-md-8">
-            <div class="text-center q-mb-xl">
-              <div class="row q-col-gutter-lg">
-                <div class="col-6">
-                  <h4 class="font-playfair q-mb-sm">Check-in vanaf</h4>
-                  <p class="text-h5 text-terracotta">{{ checkInInfo.time }}</p>
+            <div class="arrival-card q-pa-xl bg-white rounded-borders">
+              <!-- Times -->
+              <div class="row q-col-gutter-xl q-mb-xl">
+                <div class="col-12 col-sm-6">
+                  <div class="text-center">
+                    <q-icon name="flight_takeoff" size="32px" class="text-terracotta q-mb-md" />
+                    <h4 class="font-playfair q-mb-sm">Aankomst vanaf</h4>
+                    <p class="text-h5 text-terracotta q-mb-none">{{ checkInInfo.time }}</p>
+                  </div>
                 </div>
-                <div class="col-6">
-                  <h4 class="font-playfair q-mb-sm">Check-out voor</h4>
-                  <p class="text-h5 text-terracotta">{{ checkInInfo.checkout }}</p>
+                <div class="col-12 col-sm-6">
+                  <div class="text-center">
+                    <q-icon name="flight_land" size="32px" class="text-terracotta q-mb-md" />
+                    <h4 class="font-playfair q-mb-sm">Vertrek voor</h4>
+                    <p class="text-h5 text-terracotta q-mb-none">{{ checkInInfo.checkout }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="text-center">
-              <h4 class="font-playfair q-mb-md">Adres</h4>
-              <p class="text-body1 q-mb-xl">{{ checkInInfo.address }}</p>
-              <h4 class="font-playfair q-mb-md">Aankomstinstructies</h4>
-              <p class="text-body1">{{ checkInInfo.instructions }}</p>
+
+              <!-- Address -->
+              <div class="text-center q-mb-xl">
+                <q-icon name="place" size="32px" class="text-terracotta q-mb-md" />
+                <h4 class="font-playfair q-mb-md">Adres</h4>
+                <p class="text-body1 q-mb-none" style="white-space: pre-line">{{ checkInInfo.address }}</p>
+                <div class="row justify-center q-gutter-md q-mt-md">
+                  <q-btn
+                    flat
+                    color="primary"
+                    icon="map"
+                    label="Open in Google Maps"
+                    href="https://maps.google.com/?q=Calle+Petunias+16+L'Alfàs+del+Pi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                  <q-btn
+                    flat
+                    color="primary"
+                    icon="map"
+                    label="Open in Apple Maps"
+                    href="https://maps.apple.com/?q=Carrer+de+les+Petúnies+16,+L'Alfàs+del+Pi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                </div>
+              </div>
+
+              <!-- Instructions -->
+              <div class="text-center">
+                <q-icon name="info" size="32px" class="text-terracotta q-mb-md" />
+                <h4 class="font-playfair q-mb-md">Aankomstinstructies</h4>
+                <p class="text-body1">{{ checkInInfo.instructions }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -217,6 +242,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
+import HeroSection from 'src/components/HeroSection.vue';
 
 const houseRules = [
   {
@@ -335,8 +361,8 @@ const faqItems: FaqItem[] = [
 const checkInInfo = {
   time: '16:00',
   checkout: '10:00',
-  address: 'Het exacte adres ontvang je bij de bevestiging van je boeking',
-  instructions: 'Bij aankomst ontvang je de sleutels van onze lokale contactpersoon. Zij regelt de sleuteloverdracht en spreekt Engels en Spaans.'
+  address: 'Carrer de les Petúnies 16\n03580 L\'Alfàs del Pi\nAlicante, Spanje',
+  instructions: 'Bij aankomst word je welkom geheten door onze lokale contactpersoon. Zij spreekt Engels en Spaans, regelt de sleuteloverdracht en geeft je een korte rondleiding door het huis. Ze legt uit hoe alles werkt en beantwoordt al je vragen.'
 };
 
 onMounted(() => {
@@ -362,50 +388,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.hero-section {
-  position: relative;
-  height: 60vh;
-  min-height: 500px;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-}
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  color: white;
-  z-index: 1;
-}
-
-.feature-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.feature-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--q-dark);
-}
-
-.feature-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--cms-deep-terracotta);
-}
-
 .facility-card,
 .pricing-card,
 .booking-info,
@@ -440,5 +422,14 @@ onMounted(() => {
   align-items: center;
   width: 48px;
   height: 48px;
+}
+
+.arrival-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.text-body1 {
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 </style> 

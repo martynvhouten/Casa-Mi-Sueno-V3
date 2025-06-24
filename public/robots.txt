@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://casamisueno.es/sitemap.xml
+Sitemap: https://casamisueno.nl/sitemap.xml
 
 # Prevent indexing of admin or private areas if they exist in the future
 Disallow: /admin/

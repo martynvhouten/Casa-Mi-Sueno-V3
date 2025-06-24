@@ -28,19 +28,33 @@
         transition-next="fade"
       >
         <q-tab-panel name="all" class="q-pa-none">
-          <div class="cms-grid cms-grid-3">
+          <div class="row q-col-gutter-md">
             <div
               v-for="(photo, index) in allPhotos"
               :key="index"
-              class="cms-card cursor-pointer gallery-item"
-              @click="openLightbox(allPhotos, index)"
+              class="col-12 col-sm-6 col-md-4 q-mb-md"
             >
-              <div class="cms-img-container" style="height: 300px;">
-                <picture>
-                  <source :srcset="getWebPPath(photo.src)" type="image/webp">
-                  <source :srcset="photo.src" :type="getImageType(photo.src)">
-                  <img :src="photo.src" :alt="photo.caption" class="cms-img">
-                </picture>
+              <div 
+                class="cms-card cursor-pointer"
+                @click="openLightbox(allPhotos, index)"
+              >
+                <div class="cms-img-container">
+                  <picture>
+                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source :srcset="photo.src" :type="getImageType(photo.src)">
+                    <img 
+                      :src="photo.src" 
+                      :alt="photo.caption" 
+                      class="grid-img"
+                      loading="lazy"
+                      decoding="async"
+                      :fetchpriority="index < 4 ? 'high' : 'low'"
+                    >
+                  </picture>
+                  <div class="image-overlay">
+                    <div class="image-caption">{{ photo.caption }}</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -53,105 +67,126 @@
               :key="index"
               class="col-12 col-sm-6 col-md-4 q-mb-md"
             >
-              <q-card class="cursor-pointer" @click="openLightbox(interiorPhotos, index)">
-                <q-img
-                  :src="photo.src"
-                  :ratio="4/3"
-                  spinner-color="cms-deep-terracotta"
-                  spinner-size="82px"
-                  class="rounded-borders"
-                  img-class="lightbox-trigger"
-                >
-                  <template v-slot:loading>
-                    <q-spinner-dots color="cms-deep-terracotta" />
-                  </template>
+              <div 
+                class="cms-card cursor-pointer"
+                @click="openLightbox(interiorPhotos, index)"
+              >
+                <div class="cms-img-container">
                   <picture>
                     <source :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
-                    <img :src="photo.src" :alt="photo.caption" class="cms-img">
+                    <img 
+                      :src="photo.src" 
+                      :alt="photo.caption" 
+                      class="grid-img"
+                      loading="lazy"
+                      decoding="async"
+                      :fetchpriority="index < 4 ? 'high' : 'low'"
+                    >
                   </picture>
-                  <div class="absolute-bottom text-subtitle1 text-center" style="background: rgba(0,0,0,0.7); padding: 8px">
-                    <span class="text-white">{{ photo.caption }}</span>
+                  <div class="image-overlay">
+                    <div class="image-caption">{{ photo.caption }}</div>
                   </div>
-                </q-img>
-              </q-card>
+                </div>
+              </div>
             </div>
           </div>
         </q-tab-panel>
 
         <q-tab-panel name="exterior" class="q-pa-none">
-          <div class="cms-grid cms-grid-3">
+          <div class="row q-col-gutter-md">
             <div
               v-for="(photo, index) in exteriorPhotos"
               :key="index"
-              class="cms-card cursor-pointer"
-              @click="openLightbox(exteriorPhotos, index)"
+              class="col-12 col-sm-6 col-md-4 q-mb-md"
             >
-              <div class="cms-img-container" style="height: 300px;">
-                <q-img
-                  :src="photo.src"
-                  class="cms-img"
-                  loading="eager"
-                  fit="cover"
-                  no-spinner
-                  no-transition
-                >
-                  <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
-                    <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
+              <div 
+                class="cms-card cursor-pointer"
+                @click="openLightbox(exteriorPhotos, index)"
+              >
+                <div class="cms-img-container">
+                  <picture>
+                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source :srcset="photo.src" :type="getImageType(photo.src)">
+                    <img 
+                      :src="photo.src" 
+                      :alt="photo.caption" 
+                      class="grid-img"
+                      loading="lazy"
+                      decoding="async"
+                      :fetchpriority="index < 4 ? 'high' : 'low'"
+                    >
+                  </picture>
+                  <div class="image-overlay">
+                    <div class="image-caption">{{ photo.caption }}</div>
                   </div>
-                </q-img>
+                </div>
               </div>
             </div>
           </div>
         </q-tab-panel>
 
         <q-tab-panel name="bedrooms" class="q-pa-none">
-          <div class="cms-grid cms-grid-3">
+          <div class="row q-col-gutter-md">
             <div
               v-for="(photo, index) in bedroomPhotos"
               :key="index"
-              class="cms-card cursor-pointer"
-              @click="openLightbox(bedroomPhotos, index)"
+              class="col-12 col-sm-6 col-md-4 q-mb-md"
             >
-              <div class="cms-img-container" style="height: 300px;">
-                <q-img
-                  :src="photo.src"
-                  class="cms-img"
-                  loading="eager"
-                  fit="cover"
-                  no-spinner
-                  no-transition
-                >
-                  <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
-                    <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
+              <div 
+                class="cms-card cursor-pointer"
+                @click="openLightbox(bedroomPhotos, index)"
+              >
+                <div class="cms-img-container">
+                  <picture>
+                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source :srcset="photo.src" :type="getImageType(photo.src)">
+                    <img 
+                      :src="photo.src" 
+                      :alt="photo.caption" 
+                      class="grid-img"
+                      loading="lazy"
+                      decoding="async"
+                      :fetchpriority="index < 4 ? 'high' : 'low'"
+                    >
+                  </picture>
+                  <div class="image-overlay">
+                    <div class="image-caption">{{ photo.caption }}</div>
                   </div>
-                </q-img>
+                </div>
               </div>
             </div>
           </div>
         </q-tab-panel>
 
         <q-tab-panel name="bathrooms" class="q-pa-none">
-          <div class="cms-grid cms-grid-3">
+          <div class="row q-col-gutter-md">
             <div
               v-for="(photo, index) in bathroomPhotos"
               :key="index"
-              class="cms-card cursor-pointer"
-              @click="openLightbox(bathroomPhotos, index)"
+              class="col-12 col-sm-6 col-md-4 q-mb-md"
             >
-              <div class="cms-img-container" style="height: 300px;">
-                <q-img
-                  :src="photo.src"
-                  class="cms-img"
-                  loading="eager"
-                  fit="cover"
-                  no-spinner
-                  no-transition
-                >
-                  <div class="absolute-bottom text-center bg-black" style="background: rgba(0,0,0,0.6)">
-                    <p class="text-subtitle1 text-white q-mb-none">{{ photo.caption }}</p>
+              <div 
+                class="cms-card cursor-pointer"
+                @click="openLightbox(bathroomPhotos, index)"
+              >
+                <div class="cms-img-container">
+                  <picture>
+                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source :srcset="photo.src" :type="getImageType(photo.src)">
+                    <img 
+                      :src="photo.src" 
+                      :alt="photo.caption" 
+                      class="grid-img"
+                      loading="lazy"
+                      decoding="async"
+                      :fetchpriority="index < 4 ? 'high' : 'low'"
+                    >
+                  </picture>
+                  <div class="image-overlay">
+                    <div class="image-caption">{{ photo.caption }}</div>
                   </div>
-                </q-img>
+                </div>
               </div>
             </div>
           </div>
@@ -321,25 +356,88 @@ const handleDialogHide = () => {
 
 <style scoped>
 .photo-gallery {
-  background-color: var(--cms-off-white);
+  width: 100%;
 }
 
-/* Fade Transitions */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+.cms-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 1.5rem;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.cms-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .cms-img-container {
-    height: 250px !important;
-  }
+.cms-card:hover {
+  transform: scale(1.02);
+}
+
+.cms-img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.grid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+  padding: 2rem 1rem 0.75rem;
+}
+
+.image-caption {
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+:deep(.q-img) {
+  height: 100%;
+}
+
+:deep(.q-img__content) {
+  border-radius: 8px;
+}
+
+:deep(.q-img__content > div) {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Lightbox styles */
+:deep(.q-dialog__inner--maximized) {
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-img {
+  max-height: 90vh;
+  max-width: 90vw;
+  object-fit: contain;
 }
 </style>
 

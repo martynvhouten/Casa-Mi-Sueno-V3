@@ -1,22 +1,12 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Omgeving/Albir_panorama.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <div class="animate-fade-in-up text-center text-white">
-            <h1 class="text-shadow q-mb-md font-playfair">De Omgeving</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Ons stukje Costa Blanca
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Omgeving/Albir_panorama.jpg"
+      alt-text="Panorama uitzicht van Albir"
+      title="De omgeving"
+      subtitle="Ons stukje Costa Blanca"
+    />
 
     <!-- Introduction -->
     <section class="section bg-white">
@@ -36,7 +26,7 @@
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">De Buurt</h2>
+            <h2 class="font-playfair q-mb-lg">De buurt</h2>
             <p class="text-body1 q-mb-lg">
               L'Alfàs del Pi is een authentiek Spaans dorp met een internationale flair. 
               Het heeft alle voorzieningen die je nodig hebt, maar heeft zijn dorpse karakter 
@@ -66,7 +56,7 @@
     <!-- Beaches & Nature -->
     <section class="section bg-white">
       <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Tussen Strand en Bergen</h2>
+        <h2 class="text-center font-playfair q-mb-xl">Tussen strand en bergen</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
             <div class="location-card q-pa-none">
@@ -113,7 +103,7 @@
     <!-- Cultural Highlights -->
     <section class="section bg-sand">
       <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Culturele Hoogtepunten</h2>
+        <h2 class="text-center font-playfair q-mb-xl">Culturele hoogtepunten</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-4" v-for="highlight in culturalHighlights" :key="highlight.title">
             <div class="location-card q-pa-none">
@@ -139,7 +129,7 @@
     <!-- Practical Info -->
     <section class="section bg-white">
       <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Praktische Informatie</h2>
+        <h2 class="text-center font-playfair q-mb-xl">Praktische informatie</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-3" v-for="info in practicalInfo" :key="info.title">
             <div class="text-center">
@@ -157,7 +147,7 @@
     <!-- Map Section -->
     <section class="section bg-sand">
       <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Onze Locatie</h2>
+        <h2 class="text-center font-playfair q-mb-xl">Onze locatie</h2>
         <div class="row justify-center">
           <div class="col-12 col-md-10">
             <div class="map-container q-mb-lg">
@@ -202,11 +192,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import HeroSection from 'src/components/HeroSection.vue';
+
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-const ADDRESS = 'Carrer de les Petúnies 16, 03580 L\'Alfàs del Pi, Alicante, Spain';
+const ADDRESS = 'Calle Petunias 16, 03580 L\'Alfàs del Pi, Alicante, Spain';
 const ENCODED_ADDRESS = encodeURIComponent(ADDRESS);
 
-const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${ENCODED_ADDRESS}&zoom=15`;
+const mapUrl = ref(
+  `https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${ENCODED_ADDRESS}&zoom=15`
+);
 
 const openInGoogleMaps = () => {
   window.open(`https://www.google.com/maps/search/?api=1&query=${ENCODED_ADDRESS}`, '_blank');

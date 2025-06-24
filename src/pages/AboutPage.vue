@@ -1,53 +1,52 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Tuin_vanaf_veranda.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content text-center">
-          <div class="animate-fade-in-up">
-            <h1 class="text-shadow q-mb-md font-playfair">Ons Verhaal</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Van droom naar werkelijkheid
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Tuin_vanaf_veranda.jpg"
+      alt-text="Uitzicht op de tuin vanaf de veranda"
+      title="Over ons"
+      subtitle="Welkom in ons Spaanse thuis aan de Costa Blanca"
+    />
 
     <!-- Our Story Section -->
     <section class="section bg-white">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">Liefde op het eerste gezicht</h2>
+            <h2 class="font-playfair q-mb-lg">Een droom die werkelijkheid werd</h2>
             <p class="text-body1 q-mb-lg">
-              Het was liefde op het eerste gezicht toen we dit vakantiehuis zagen. De mediterrane tuin, 
-              het privézwembad en de ruime veranda spraken direct tot onze verbeelding. We zagen 
-              onszelf al zitten: 's ochtends ontbijten in de tuin, middagjes bij het zwembad, en 
-              's avonds gezellig barbecueën.
+              We waren direct enthousiast toen we dit huis voor het eerst zagen. De mediterrane tuin 
+              en de ruime veranda waren precies wat we zochten. Later hebben we zelf het zwembad 
+              laten aanleggen om er een complete vakantie-ervaring van te maken. Een fijne plek om 
+              te ontspannen en tijd door te brengen met familie en vrienden.
             </p>
             <p class="text-body1 q-mb-xl">
-              We hebben het vakantiehuis met veel zorg ingericht zodat je je direct thuis voelt. 
-              De ruime woonkamer, volledig uitgeruste keuken en comfortabele slaapkamers 
-              bieden alles wat je nodig hebt voor een ontspannen vakantie.
+              We hebben Casa Mi Sueño zo ingericht dat het alle comfort biedt die je tijdens je vakantie 
+              nodig hebt. Van een goed uitgeruste keuken tot comfortabele ligbedden bij het zwembad. 
+              Het is een plek waar je je snel thuis voelt.
             </p>
-            <q-btn
-              color="primary"
-              :to="{ name: 'house' }"
-              class="q-px-xl"
-              unelevated
-              label="Bekijk het vakantiehuis"
-            />
+            <div class="text-center hide-on-mobile">
+              <q-btn
+                class="cms-btn cms-btn-primary"
+                to="/het-huis"
+                label="Bekijk het vakantiehuis"
+              />
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Tuin_vanaf_veranda.jpg"
                 class="cms-img rounded-borders"
+              />
+            </div>
+          </div>
+          <div class="col-12 show-on-mobile q-mt-md">
+            <div class="text-center">
+              <q-btn
+                class="cms-btn cms-btn-primary"
+                to="/het-huis"
+                label="Bekijk het vakantiehuis"
               />
             </div>
           </div>
@@ -68,16 +67,15 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">Meer dan een vakantiehuis</h2>
+            <h2 class="font-playfair q-mb-lg">Een plek met karakter</h2>
             <p class="text-body1 q-mb-lg">
-              Dit is geen standaard vakantiehuis, maar ons echte tweede thuis. Je vindt hier onze persoonlijke spullen, 
-              foto's aan de muur en onze favoriete kookboeken in de keuken. Het is een plek waar we helemaal onszelf kunnen zijn, 
-              waar we soms met de hele familie samen zijn, en waar onze kinderen zich ook thuis voelen als ze er met vrienden zijn. 
-              Als we er zelf niet zijn, delen we het graag met anderen die ook van deze fijne plek willen genieten.
+              Casa Mi Sueño is geen standaard vakantiehuis. Je vindt hier een persoonlijke inrichting 
+              met een goed uitgeruste keuken, een gezellige woonkamer en comfortabele slaapkamers. Het 
+              is een huis waar je echt kunt ontspannen en genieten van het Spaanse leven.
             </p>
             <p class="text-body1 q-mb-lg">
-              De naam 'Casa Mi Sueño' - Huis van mijn Dromen - kwam vanzelf. Het is precies wat deze plek voor ons is: 
-              een droom die uitkwam, een eigen stukje Spanje waar we helemaal onszelf kunnen zijn.
+              We hebben het huis Casa Mi Sueño genoemd omdat het voor ons de perfecte plek is geworden: 
+              een fijn vakantiehuis onder de Spaanse zon dat we graag delen met onze gasten.
             </p>
           </div>
         </div>
@@ -105,16 +103,18 @@
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg text-center">Het lokale leven</h2>
+            <h2 class="font-playfair q-mb-lg text-center">Het echte Spaanse leven</h2>
             <p class="text-body1 q-mb-lg">
-              L'Alfàs del Pi is een bijzondere mix van authentiek Spaans leven en internationale gezelligheid. 
-              In de loop der jaren hebben we de mooiste plekjes ontdekt - van verborgen stranden tot de beste 
-              tapasbarretjes waar alleen locals komen.
+              L'Alfàs del Pi heeft ons hart gestolen met zijn unieke karakter. Het is een plek waar het authentieke 
+              Spaanse dorpsleven hand in hand gaat met internationale invloeden. Op de lokale markt ruik je verse 
+              kruiden en fruit, terwijl je in de gezellige bars zowel Spaanse families als internationale bewoners 
+              tegenkomt.
             </p>
             <p class="text-body1 q-mb-lg">
-              Al deze ontdekkingen delen we graag met onze gasten. In het huis vind je onze persoonlijke tips 
-              met favoriete restaurants, mooiste wandelroutes en suggesties voor dagtrips die je niet in reguliere 
-              reisgidsen tegenkomt.
+              Door de jaren heen hebben we alle verborgen parels van de omgeving ontdekt. Van de beste paella bij 
+              het strand tot pittoreske bergdorpjes en prachtige wandelroutes. We delen graag onze favoriete plekken 
+              en lokale tips met onze gasten, zodat je de Costa Blanca kunt ervaren zoals wij die hebben leren kennen: 
+              authentiek, veelzijdig en verrassend.
             </p>
           </div>
           <div class="col-12 col-md-6">
@@ -132,12 +132,13 @@
     <!-- Call to Action -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Ervaar het zelf</h2>
+        <h2 class="font-playfair q-mb-lg">Schrijf je eigen verhaal</h2>
         <p class="text-h6 text-grey-8 q-mx-auto q-mb-xl" style="max-width: 800px;">
-          We nodigen je uit om Casa Mi Sueño te ontdekken en jouw eigen Spaanse verhaal te schrijven.
+          We nodigen je uit om Casa Mi Sueño te ontdekken en je eigen mediterrane avontuur te beginnen. 
+          Laat je verrassen door de charme van ons tweede thuis en de schoonheid van de Costa Blanca.
         </p>
         <q-btn
-          class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
+          class="cms-btn cms-btn-cta"
           to="/het-huis"
           label="Bekijk het vakantiehuis"
         />
@@ -147,21 +148,23 @@
 </template>
 
 <script setup lang="ts">
+import HeroSection from 'src/components/HeroSection.vue';
+
 const personalTouches = [
   {
     icon: 'home',
     title: 'Een echt thuis',
-    description: 'Geen strak gestyled vakantiehuis, maar een warm en persoonlijk huis waar je je direct thuis voelt'
+    description: 'Geen standaard vakantiehuis, maar een warm en persoonlijk thuis met karakter waar je je direct welkom voelt'
   },
   {
     icon: 'travel_explore',
-    title: 'Onze tips',
-    description: 'We delen graag onze favoriete plekken en activiteiten in de omgeving met je'
+    title: 'Lokale ervaring',
+    description: 'We delen onze insider tips over verborgen stranden, authentieke restaurants en de mooiste plekjes in de omgeving'
   },
   {
     icon: 'support_agent',
-    title: 'Persoonlijk contact',
-    description: 'We helpen je graag met tips om je verblijf zo fijn mogelijk te maken'
+    title: 'Persoonlijke aandacht',
+    description: 'Van een warm welkom tot tips tijdens je verblijf - we zorgen ervoor dat je niets tekort komt'
   }
 ];
 </script>
@@ -214,5 +217,17 @@ const personalTouches = [
 
 .cms-img:hover {
   transform: scale(1.02);
+}
+
+@media (min-width: 1024px) {
+  .show-on-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hide-on-mobile {
+    display: none;
+  }
 }
 </style> 

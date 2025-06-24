@@ -10,7 +10,7 @@
       <q-card-section>
         <div class="row items-center q-mb-sm">
           <div class="col">
-            <div class="text-h6 text-weight-bold text-primary">Cookie Instellingen</div>
+            <div class="text-h6 text-weight-bold text-primary">Cookie instellingen</div>
           </div>
           <div class="col-auto">
             <q-btn

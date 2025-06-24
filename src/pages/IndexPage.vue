@@ -115,7 +115,7 @@
         </div>
         <div class="text-center q-mt-xl">
           <q-btn
-            class="cms-btn cms-btn-primary"
+            class="cms-btn cms-btn-primary q-mt-lg"
             to="/het-huis"
             label="Ontdek meer"
           />
@@ -138,7 +138,7 @@
         </div>
         <div class="text-center q-mt-xl">
           <q-btn
-            class="cms-btn cms-btn-primary"
+            class="cms-btn cms-btn-primary q-mt-lg"
             to="/omgeving"
             label="Verken de omgeving"
           />
@@ -155,7 +155,7 @@
           Hier kun je echt even tot rust komen en het Spaanse leven ervaren.
         </p>
         <q-btn
-          class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
+          class="cms-btn cms-btn-cta"
           to="/reserveren"
           label="Plan je verblijf"
         />
@@ -223,14 +223,8 @@ const locationHighlights = [
 <style lang="scss" scoped>
 .hero-section {
   position: relative;
-  height: 75vh;
+  height: 60vh;
   min-height: 500px;
-  max-height: 800px;
-  
-  @media (max-width: 768px) {
-    height: 60vh;
-    min-height: 400px;
-  }
 }
 
 .hero-overlay {
@@ -402,8 +396,8 @@ const locationHighlights = [
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .hero-section {
-    height: 80vh;
-    min-height: 600px;
+    height: 60vh;
+    min-height: 500px;
   }
   
   .hero-content h1 {

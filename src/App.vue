@@ -8,7 +8,7 @@ import { onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import CookieConsent from './components/CookieConsent.vue';
 import { setMetaTags } from './utils/meta';
-import { generateVacationRentalSchema, generateLocalBusinessSchema, injectSchemaMarkup } from './utils/schema';
+import { setupVacationRentalSchema } from './utils/schema';
 import { preloadCriticalResources } from './utils/preload';
 
 const route = useRoute();
@@ -83,7 +83,7 @@ const updateMetaTags = () => {
   const meta = {
     title: getMetaTitle(),
     description: getMetaDescription(),
-    url: `https://casamisueno.es${route.path}`
+    url: `https://casamisueno.nl${route.path}`
   };
   setMetaTags(meta);
 };
@@ -96,8 +96,7 @@ watch(() => route.path, () => {
 // Initialize on mount
 onMounted(() => {
   // Add schema markup
-  injectSchemaMarkup(generateVacationRentalSchema());
-  injectSchemaMarkup(generateLocalBusinessSchema());
+  setupVacationRentalSchema();
   
   // Preload critical resources
   preloadCriticalResources();
@@ -105,6 +104,6 @@ onMounted(() => {
 </script>
 
 <style>
-@import './styles/global.css';
+@import './css/global.css';
 /* All layout styles are handled by Quasar's layout component and app.css */
 </style> 

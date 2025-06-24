@@ -1,22 +1,12 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Tuin_zwembad.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content text-center">
-          <div class="animate-fade-in-up">
-            <h1 class="text-shadow q-mb-md font-playfair">Buiten Leven</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Geniet van het mediterrane leven
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Tuin_zwembad.jpg"
+      alt-text="Zwembad en tuin van het vakantiehuis"
+      title="Buiten leven"
+      subtitle="Geniet van het mediterrane leven"
+    />
 
     <!-- Introduction -->
     <section class="section bg-sand">
@@ -35,7 +25,7 @@
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">Het Zwembad</h2>
+            <h2 class="font-playfair q-mb-lg">Het zwembad</h2>
             <p class="text-body1 q-mb-lg">
               Het ruime ronde zwembad is een heerlijke verkoeling op warme dagen. Het zwembad
               wordt wekelijks onderhouden en is niet verwarmd. In de zomermaanden heeft het water 
@@ -74,7 +64,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">De Veranda</h2>
+            <h2 class="font-playfair q-mb-lg">De veranda</h2>
             <p class="text-body1 q-mb-lg">
               De overdekte veranda is een heerlijke plek om te ontbijten, te lunchen of 
               's avonds te dineren. Het is een ideale schaduwplek voor de warme middaguren 
@@ -95,7 +85,7 @@
     <!-- Garden Areas -->
     <section class="section bg-white">
       <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">De Tuin</h2>
+        <h2 class="text-center font-playfair q-mb-xl">De tuin</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-4" v-for="area in gardenAreas" :key="area.title">
             <div class="garden-card q-pa-none">
@@ -167,10 +157,12 @@
 </template>
 
 <script setup lang="ts">
+import HeroSection from 'src/components/HeroSection.vue';
+
 const gardenAreas = [
   {
     image: '/images/Tuin_mediterraans.jpg',
-    title: 'Mediterrane Tuin',
+    title: 'Mediterrane tuin',
     description: 'Een verzorgde tuin met mediterrane beplanting die schaduw en kleur biedt',
     features: [
       'Diverse mediterrane planten',
@@ -192,7 +184,7 @@ const gardenAreas = [
   },
   {
     image: '/images/Tuin_eetgedeelte.jpg',
-    title: 'Praktische Indeling',
+    title: 'Praktische indeling',
     description: 'De tuin is praktisch ingedeeld met ruimte voor parkeren en ontspanning',
     features: [
       'Parkeerplaats voor 2 auto\'s',
@@ -205,50 +197,6 @@ const gardenAreas = [
 </script>
 
 <style scoped>
-.hero-section {
-  position: relative;
-  height: 60vh;
-  min-height: 500px;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-}
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  color: white;
-  z-index: 1;
-}
-
-.feature-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.feature-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--q-dark);
-}
-
-.feature-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--cms-deep-terracotta);
-}
-
 .garden-card {
   background: white;
   border-radius: 8px;

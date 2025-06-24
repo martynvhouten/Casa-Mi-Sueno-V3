@@ -1,27 +1,17 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Woonkamer_tafel_stoelen.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content text-center">
-          <div class="animate-fade-in-up">
-            <h1 class="text-shadow q-mb-md font-playfair">Het Huis</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Een gezellig thuis in Spanje
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Woonkamer_tafel_stoelen.jpg"
+      alt-text="Eettafel en stoelen in de woonkamer"
+      title="Het huis"
+      subtitle="Een gezellig thuis in Spanje"
+    />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Ontdek Ons Mediterrane Thuis</h2>
+        <h2 class="font-playfair q-mb-lg">Ontdek ons mediterrane thuis</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
           Casa Mi Sueño is een karakteristiek Spaans vakantiehuis waar comfort en authenticiteit samenkomen.
           Met twee ruime slaapkamers, moderne badkamers, een volledig uitgeruste keuken en een prachtige tuin
@@ -38,7 +28,7 @@
             <h2 class="font-playfair q-mb-lg">Woonruimtes</h2>
             <p class="text-body1 q-mb-lg">
               De lichte woonkamer biedt een comfortabele plek om te ontspannen, met grote ramen 
-              die uitkijken op de tuin. De open keuken is volledig ingericht met een gasfornuis, 
+              die uitkijken op de tuin. De keuken is volledig ingericht met een gasfornuis, 
               conventionele oven, vaatwasser en alle benodigde apparatuur om heerlijke maaltijden 
               te bereiden.
             </p>
@@ -76,7 +66,7 @@
                 />
               </div>
               <div class="q-pa-lg">
-                <h3 class="font-playfair q-mb-md">Slaapkamer met Badkamer</h3>
+                <h3 class="font-playfair q-mb-md">Slaapkamer met badkamer</h3>
                 <p class="text-body1 q-mb-md">
                   Een ruime, lichte slaapkamer met een badkamer ernaast. Deze comfortabele kamer biedt een fijne plek om tot rust te komen.
                 </p>
@@ -98,7 +88,7 @@
                 />
               </div>
               <div class="q-pa-lg">
-                <h3 class="font-playfair q-mb-md">Tweede Slaapkamer</h3>
+                <h3 class="font-playfair q-mb-md">Tweede slaapkamer</h3>
                 <p class="text-body1 q-mb-md">
                   Een comfortabele tweede slaapkamer met tweepersoonsbed, met een badkamer in de hal ernaast. Perfect voor familie of vrienden.
                 </p>
@@ -217,10 +207,12 @@
 </template>
 
 <script setup lang="ts">
+import HeroSection from 'src/components/HeroSection.vue';
+
 const bathrooms = [
   {
     image: '/images/Badkamer.jpg',
-    title: 'Badkamer bij Slaapkamer',
+    title: 'Badkamer bij slaapkamer',
     description: 'Praktische badkamer met douche, wastafel en toilet, gelegen naast de slaapkamer',
     features: [
       'Inloopdouche',
@@ -231,7 +223,7 @@ const bathrooms = [
   },
   {
     image: '/images/Badkamer2.jpg',
-    title: 'Badkamer in de Hal',
+    title: 'Badkamer in de hal',
     description: 'Functionele badkamer met douche, wastafel en toilet, gelegen in de hal',
     features: [
       'Douche',
@@ -244,52 +236,9 @@ const bathrooms = [
 </script>
 
 <style scoped>
-.hero-section {
-  position: relative;
-  height: 60vh;
-  min-height: 500px;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-}
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  color: white;
-  z-index: 1;
-}
-
-.feature-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.feature-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--q-dark);
-}
-
-.feature-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--cms-deep-terracotta);
-}
-
 .bedroom-card,
-.bathroom-card {
+.bathroom-card,
+.outdoor-card {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);

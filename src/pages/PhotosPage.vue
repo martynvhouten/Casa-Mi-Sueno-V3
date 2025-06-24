@@ -1,22 +1,12 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Tuin_mediterraans.jpg"
-        class="absolute-full"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <div class="animate-fade-in-up text-center text-white">
-            <h1 class="text-shadow q-mb-md font-playfair">Fotogalerij</h1>
-            <p class="text-h5 text-shadow q-mb-xl font-poppins">
-              Ontdek ons tweede thuis in beeld
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Tuin_mediterraans.jpg"
+      alt-text="Mediterrane tuin van het vakantiehuis"
+      title="Fotogalerij"
+      subtitle="Ontdek ons tweede thuis in beeld"
+    />
 
     <!-- Introduction -->
     <section class="section bg-white">
@@ -57,4 +47,5 @@
 
 <script setup lang="ts">
 import PhotoGallery from '../components/PhotoGallery.vue';
+import HeroSection from 'src/components/HeroSection.vue';
 </script> 

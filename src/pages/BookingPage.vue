@@ -1,32 +1,19 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section relative">
-      <q-img
-        src="/images/Tuin_zwembad.jpg"
-        class="absolute-full"
-        style="min-height: 600px"
-      >
-        <div class="absolute-full bg-gradient" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))"></div>
-        <div class="absolute-full flex flex-center column q-px-md">
-          <div class="text-center text-white" style="max-width: 800px;">
-            <h1 class="text-h2 font-playfair q-mb-xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4); line-height: 1.3;">
-              Reserveer je Verblijf
-            </h1>
-            <p class="text-h5 q-mb-none font-poppins" style="max-width: 700px; margin: 0 auto; line-height: 1.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); opacity: 0.95;">
-              Plan je perfecte vakantie in ons mediterrane familiehuis met privézwembad en geniet van een onvergetelijk verblijf in l'Alfàs del Pi
-            </p>
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Tuin_zwembad.jpg"
+      alt-text="Zwembad en tuin van het vakantiehuis"
+      title="Reserveer je verblijf"
+      subtitle="Plan je perfecte vakantie in ons mediterrane familiehuis met privézwembad en geniet van een onvergetelijk verblijf in l'Alfàs del Pi"
+    />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container q-pa-xl">
         <div class="row justify-center q-col-gutter-xl">
           <div class="col-12 col-md-10 col-lg-8 text-center">
-            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Plan je Verblijf</h2>
+            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Plan je verblijf</h2>
             <p class="text-h6 text-grey-8" style="line-height: 1.8; max-width: 800px; margin: 0 auto;">
               Kies je ideale vakantieperiode in ons mediterrane vakantiehuis. We hanteren eerlijke prijzen en 
               een persoonlijke benadering. Bekijk direct de beschikbaarheid en tarieven.
@@ -36,36 +23,36 @@
 
         <div class="row justify-center q-mt-xl q-col-gutter-lg">
           <div class="col-12 col-sm-6 col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
+            <div class="intro-feature-card">
+              <div class="feature-icon bg-primary">
                 <q-icon name="calendar_today" size="32px" color="white" />
               </div>
               <div class="feature-content">
-                <h6 class="text-h6 q-mb-sm font-playfair">Flexibele Data</h6>
+                <h6 class="text-h6 q-mb-sm font-playfair text-primary">Flexibele data</h6>
                 <p class="text-body1 text-grey-8 q-mb-none">Minimaal verblijf van 5-7 nachten. Aankomst vanaf 16:00 uur, vertrek voor 10:00 uur.</p>
               </div>
             </div>
           </div>
           
           <div class="col-12 col-sm-6 col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
+            <div class="intro-feature-card">
+              <div class="feature-icon bg-primary">
                 <q-icon name="euro" size="32px" color="white" />
               </div>
               <div class="feature-content">
-                <h6 class="text-h6 q-mb-sm font-playfair">Transparante Prijzen</h6>
+                <h6 class="text-h6 q-mb-sm font-playfair text-primary">Transparante prijzen</h6>
                 <p class="text-body1 text-grey-8 q-mb-none">Duidelijke tarieven inclusief eindschoonmaak, linnen en alle voorzieningen. Geen verborgen kosten.</p>
               </div>
             </div>
           </div>
           
           <div class="col-12 col-sm-6 col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
+            <div class="intro-feature-card">
+              <div class="feature-icon bg-primary">
                 <q-icon name="support_agent" size="32px" color="white" />
               </div>
               <div class="feature-content">
-                <h6 class="text-h6 q-mb-sm font-playfair">Persoonlijke Service</h6>
+                <h6 class="text-h6 q-mb-sm font-playfair text-primary">Persoonlijke service</h6>
                 <p class="text-body1 text-grey-8 q-mb-none">Direct contact met ons als eigenaren en een lokale contactpersoon voor tijdens je verblijf.</p>
               </div>
             </div>
@@ -82,8 +69,8 @@
         <div class="row q-col-gutter-xl">
           <!-- Calendar -->
           <div class="col-12 col-lg-8">
-            <div class="calendar-wrapper bg-white rounded-borders q-pa-lg">
-              <h3 class="text-h4 font-playfair q-mb-lg text-center">Selecteer je Data</h3>
+            <div class="calendar-wrapper" :class="{ 'mobile': isMobile }">
+              <h3 class="text-h4 font-playfair q-mb-lg text-center">Selecteer je data</h3>
               <div v-if="loading" class="text-center q-pa-xl">
                 <q-spinner-dots color="primary" size="40px" />
                 <p class="text-subtitle1 q-mt-sm">Beschikbaarheid laden...</p>
@@ -91,15 +78,14 @@
               <div v-else class="calendar-container">
                 <Datepicker
                   v-model="dates"
-                  :key="columns"
                   range
                   inline
                   auto-apply
-                  multi-calendars
+                  :multi-calendars="!isMobile"
                   :min-date="today"
                   :disabled-dates="bookedDates"
                   :enable-time-picker="false"
-                  :columns="columns"
+                  :columns="calendarColumns"
                   locale="nl"
                   :dark="false"
                   :clearable="false"
@@ -178,7 +164,7 @@
               <q-btn
                 color="primary"
                 :label="`Reserveer voor €${priceDetails.totalPrice.toLocaleString('nl-NL')}`"
-                class="full-width q-mt-lg"
+                class="cms-btn cms-btn-cta full-width q-mt-lg"
                 @click="goToContact"
                 unelevated
                 size="lg"
@@ -190,7 +176,7 @@
             </div>
             <div v-else class="cost-summary-card text-center">
               <q-icon name="event" size="48px" color="grey-4" class="q-mb-md" />
-              <h4 class="text-h6 font-playfair q-mb-sm">Selecteer je Data</h4>
+              <h4 class="text-h6 font-playfair q-mb-sm">Selecteer je data</h4>
               <p class="text-body1 text-grey-7">Kies je in- en uitcheckdatum in de kalender om de totaalprijs te zien.</p>
             </div>
           </div>
@@ -204,17 +190,17 @@
         <div class="row q-col-gutter-xl">
           <!-- Important Information -->
           <div class="col-12 col-md-6">
-            <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Goed om te Weten</h3>
+            <div class="feature-card">
+              <h3 class="text-h4 font-playfair text-primary">Goed om te weten</h3>
               <div class="row q-col-gutter-lg">
                 <div class="col-12">
-                  <div v-for="(info, index) in importantInfo" :key="index" class="feature-item q-mb-lg">
+                  <div v-for="(info, index) in importantInfo" :key="index" class="feature-item">
                     <div class="row items-center no-wrap">
                       <div class="col-auto">
-                        <q-icon name="check_circle" color="terracotta" size="24px" class="q-mr-md" />
+                        <q-icon name="check_circle" color="terracotta" size="20px" />
                       </div>
                       <div class="col">
-                        <span class="text-subtitle1 text-weight-medium">{{ info }}</span>
+                        <span class="text-weight-medium">{{ info }}</span>
                       </div>
                     </div>
                   </div>
@@ -225,8 +211,8 @@
 
           <!-- For Who -->
           <div class="col-12 col-md-6">
-            <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Voor wie is Casa Mi Sueño?</h3>
+            <div class="feature-card">
+              <h3 class="text-h4 font-playfair text-primary">Voor wie is Casa Mi Sueño?</h3>
               <p class="text-subtitle1 q-mb-xl" style="line-height: 1.8;">
                 Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
                 We verhuren graag aan koppels, families of kleine groepen vrienden die onze liefde 
@@ -238,7 +224,7 @@
                     <q-icon name="security" color="terracotta" size="48px" />
                   </div>
                   <div class="col">
-                    <h4 class="text-h6 font-playfair q-mb-md">Borg & Betalingen</h4>
+                    <h4 class="text-h6 font-playfair q-mb-md">Borg & betalingen</h4>
                     <p class="text-body1 q-mb-sm">
                       • Borg: €500 (teruggestort binnen 5-7 werkdagen na vertrek)
                     </p>
@@ -261,29 +247,29 @@
         <div class="row q-col-gutter-xl">
           <!-- Included Services -->
           <div class="col-12 col-md-6">
-            <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Inbegrepen Services</h3>
+            <div class="feature-card">
+              <h3 class="text-h4 font-playfair text-primary">Inbegrepen services</h3>
               <div class="row q-col-gutter-xl">
                 <div class="col-12 col-sm-6">
-                  <div v-for="(service, index) in includedServices.slice(0, 4)" :key="index" class="feature-item q-mb-lg">
+                  <div v-for="(service, index) in includedServices.slice(0, 4)" :key="index" class="feature-item">
                     <div class="row items-center no-wrap">
                       <div class="col-auto">
-                        <q-icon name="check_circle" color="positive" size="24px" class="q-mr-md" />
+                        <q-icon name="check_circle" color="positive" size="20px" />
                       </div>
                       <div class="col">
-                        <span class="text-subtitle1 text-weight-medium">{{ service }}</span>
+                        <span class="text-weight-medium">{{ service }}</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-12 col-sm-6">
-                  <div v-for="(service, index) in includedServices.slice(4)" :key="index" class="feature-item q-mb-lg">
+                  <div v-for="(service, index) in includedServices.slice(4)" :key="index" class="feature-item">
                     <div class="row items-center no-wrap">
                       <div class="col-auto">
-                        <q-icon name="check_circle" color="positive" size="24px" class="q-mr-md" />
+                        <q-icon name="check_circle" color="positive" size="20px" />
                       </div>
                       <div class="col">
-                        <span class="text-subtitle1 text-weight-medium">{{ service }}</span>
+                        <span class="text-weight-medium">{{ service }}</span>
                       </div>
                     </div>
                   </div>
@@ -294,17 +280,17 @@
 
           <!-- Additional Costs -->
           <div class="col-12 col-md-6">
-            <div class="feature-card q-pa-xl bg-white rounded-borders">
-              <h3 class="text-h4 font-playfair q-mb-xl text-primary">Extra Kosten</h3>
+            <div class="feature-card">
+              <h3 class="text-h4 font-playfair text-primary">Extra kosten</h3>
               <div class="row q-col-gutter-lg">
                 <div class="col-12">
-                  <div v-for="(cost, index) in additionalCosts" :key="index" class="feature-item q-mb-lg">
+                  <div v-for="(cost, index) in additionalCosts" :key="index" class="feature-item">
                     <div class="row items-center no-wrap">
                       <div class="col-auto">
-                        <q-icon name="info" color="terracotta" size="24px" class="q-mr-md" />
+                        <q-icon name="info" color="terracotta" size="20px" />
                       </div>
                       <div class="col">
-                        <span class="text-subtitle1 text-weight-medium">{{ cost }}</span>
+                        <span class="text-weight-medium">{{ cost }}</span>
                       </div>
                     </div>
                   </div>
@@ -325,7 +311,7 @@
               <div class="icon-wrapper q-mb-lg">
                 <q-icon name="support_agent" size="48px" color="terracotta" />
               </div>
-              <h4 class="text-h5 font-playfair q-mb-md">Persoonlijke Service</h4>
+              <h4 class="text-h5 font-playfair q-mb-md">Persoonlijke service</h4>
               <p class="text-body1 text-grey-8" style="line-height: 1.6;">
                 We delen graag onze lokale tips en helpen je bij het plannen
                 van je verblijf. Voel je thuis in ons huis.
@@ -338,7 +324,7 @@
               <div class="icon-wrapper q-mb-lg">
                 <q-icon name="groups" size="48px" color="terracotta" />
               </div>
-              <h4 class="text-h5 font-playfair q-mb-md">Voor Rustzoekers</h4>
+              <h4 class="text-h5 font-playfair q-mb-md">Voor rustzoekers</h4>
               <p class="text-body1 text-grey-8" style="line-height: 1.6;">
                 Ons huis is perfect voor wie houdt van rust en authenticiteit. 
                 Ideaal voor koppels, families of kleine groepen vrienden.
@@ -351,7 +337,7 @@
               <div class="icon-wrapper q-mb-lg">
                 <q-icon name="home" size="48px" color="terracotta" />
               </div>
-              <h4 class="text-h5 font-playfair q-mb-md">Comfortabel Verblijf</h4>
+              <h4 class="text-h5 font-playfair q-mb-md">Comfortabel verblijf</h4>
               <p class="text-body1 text-grey-8" style="line-height: 1.6;">
                 Geniet van alle comfort en voorzieningen die ons huis te bieden heeft.
                 We zorgen ervoor dat het je aan niets ontbreekt.
@@ -362,21 +348,58 @@
       </div>
     </section>
 
-    <!-- Combined Call to Action & Contact Form -->
-    <section id="contact-form" class="section bg-white">
+    <!-- Call to Action Section -->
+    <section class="section bg-white">
       <div class="container q-pa-xl">
+        <!-- Show this when no dates are selected -->
+        <div v-if="!dates.length" class="row justify-center q-mb-xl">
+          <div class="col-12 col-md-8 text-center">
+            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Plan je verblijf</h2>
+            <p class="text-h6 text-grey-8" style="line-height: 1.6;">
+              Selecteer je gewenste data in de kalender hierboven om de beschikbaarheid en prijzen te bekijken.
+            </p>
+            <q-btn
+              flat
+              color="primary"
+              class="q-mt-md"
+              icon="arrow_upward"
+              label="Bekijk kalender"
+              @click="scrollToCalendar"
+            />
+          </div>
+        </div>
+
+        <!-- Show booking form when dates are selected -->
+        <div v-else>
         <div class="row justify-center q-mb-xl">
           <div class="col-12 col-md-8 text-center">
-            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Klaar om te Boeken?</h2>
+              <h2 class="text-h3 font-playfair q-mb-lg text-primary">Klaar om te boeken?</h2>
             <p class="text-h6 text-grey-8" style="line-height: 1.6;">
               Vul het formulier hieronder in en we helpen je graag verder met het plannen van je droomvakantie.
             </p>
+              <div class="selected-dates q-mt-md">
+                <q-chip
+                  color="primary"
+                  text-color="white"
+                  icon="event"
+                >
+                  {{ formatDateRange(dates[0], dates[1]) }}
+                </q-chip>
+                <q-chip
+                  color="accent"
+                  text-color="white"
+                  icon="euro"
+                >
+                  {{ priceDetails ? `€${priceDetails.totalPrice.toLocaleString('nl-NL')}` : '' }}
+                </q-chip>
+              </div>
           </div>
         </div>
         <div class="row justify-center">
           <div class="col-12 col-md-10">
             <div class="contact-form-wrapper">
               <ContactForm :selected-dates="dates" />
+              </div>
             </div>
           </div>
         </div>
@@ -390,13 +413,27 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { useQuasar } from 'quasar';
-import { useRouter } from 'vue-router';
 import { fetchBookedDates } from '../utils/googleSheets';
 import type { BookedDate } from '../utils/googleSheets';
 import ContactForm from '../components/ContactForm.vue';
+import HeroSection from 'src/components/HeroSection.vue';
 
-const router = useRouter();
 const $q = useQuasar();
+
+// Add date formatting function
+const formatDateRange = (start: Date, end: Date): string => {
+  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+  const startStr = start.toLocaleDateString('nl-NL', options);
+  const endStr = end.toLocaleDateString('nl-NL', options);
+  return `${startStr} - ${endStr}`;
+};
+
+const scrollToCalendar = () => {
+  const element = document.querySelector('.calendar-wrapper');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
 
 interface DateRange {
   start: Date | null;
@@ -421,7 +458,8 @@ const dates = ref<[Date, Date] | []>([]);
 const bookedDates = ref<Date[]>([]);
 const loading = ref(true);
 const showLongStayMessage = ref(false);
-const columns = computed(() => ($q.screen.gt.sm ? 2 : 1));
+const isMobile = computed(() => $q.screen.lt.sm);
+const calendarColumns = computed(() => isMobile.value ? 1 : 2);
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -508,7 +546,11 @@ const fetchBookedDatesFromSheet = async () => {
     const dates = await fetchBookedDates();
     
     if (!dates.length) {
-      console.warn('No dates returned from sheet');
+      $q.notify({
+        type: 'warning',
+        message: 'Geen beschikbaarheidsdata gevonden.',
+        position: 'top',
+      });
       return;
     }
     
@@ -522,10 +564,9 @@ const fetchBookedDatesFromSheet = async () => {
     
     bookedDates.value = processedDates;
   } catch (error) {
-    console.error('Error in fetchBookedDatesFromSheet:', error);
     $q.notify({
       type: 'negative',
-      message: 'Fout bij ophalen van geboekte data.',
+      message: 'Fout bij ophalen van geboekte data. Probeer het later opnieuw.',
       position: 'top',
     });
   } finally {
@@ -599,6 +640,14 @@ const handleDateSelect = (newDates: [Date, Date] | []) => {
     // Check for long stay message
     const priceDetails = calculatePriceDetails(start, end);
     showLongStayMessage.value = priceDetails.isLongStay;
+
+    // Show success notification with price
+    $q.notify({
+      type: 'positive',
+      message: `Prijs voor ${formatDateRange(start, end)}: €${priceDetails.totalPrice.toLocaleString('nl-NL')}`,
+      position: 'top',
+      timeout: 3000
+    });
   } else {
     selectedRange.value = { start: null, end: null };
     showLongStayMessage.value = false;
@@ -625,28 +674,11 @@ const goToContact = () => {
     return;
   }
 
-  // Format dates for URL in a more readable way
-  const formatDateForUrl = (date: Date) => {
-    return date.toISOString().split('T')[0]; // Returns YYYY-MM-DD
-  };
-
-  // Navigate to contact form with dates
-  router.push({
-    name: 'booking',
-    hash: '#contact-form',
-    query: {
-      from: formatDateForUrl(dates.value[0]),
-      to: formatDateForUrl(dates.value[1])
-    }
-  });
-
   // Scroll to contact form
-  setTimeout(() => {
     const element = document.getElementById('contact-form');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, 100);
 };
 
 const includedServices = [
@@ -681,11 +713,29 @@ const importantInfo = [
 ];
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .hero-section {
-  height: 500px;
   position: relative;
-  overflow: hidden;
+  height: 60vh;
+  min-height: 500px;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 1;
 }
 
 .section {
@@ -703,60 +753,291 @@ const importantInfo = [
 }
 
 .calendar-wrapper {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  border: 1px solid #e9ecef;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  
+  &.mobile {
+    padding: 1rem;
+    background-color: white;
+    box-shadow: none;
+    
+    .calendar-container {
+      padding: 0;
+      background-color: transparent;
+      
+      :deep(.dp__calendar_header) {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      
+      :deep(.dp__month_year_row) {
+        margin: 8px 0 16px;
+        padding: 8px;
+        
+        button {
+          font-size: 1rem;
+        }
+      }
+      
+      :deep(.dp__cell_inner) {
+        font-size: 0.9rem;
+      }
+    }
+    
+    .calendar-legend {
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      justify-content: flex-start;
+      
+      .legend-item {
+        font-size: 0.9rem;
+        
+        .legend-color {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
 }
 
 .calendar-container {
   width: 100%;
-  overflow: hidden;
-  
-  .airbnb-style-calendar {
-    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    
+    :deep(.dp__main) {
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      
+      @media (max-width: 599px) {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    
+    :deep(.dp__calendar_wrap) {
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      display: flex;
+      gap: 1rem;
+      
+      @media (max-width: 599px) {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    
+    :deep(.dp__calendar) {
+      flex: 1;
+      min-width: 0;
+      
+      @media (max-width: 599px) {
+        width: 100% !important;
+      }
+    }
     
     :deep(.dp__instance_calendar) {
       width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    :deep(.dp__month_year_row) {
+      width: 100% !important;
+    }
+
+    :deep(.dp__calendar_header) {
+      width: 100% !important;
+    }
+
+    :deep(.dp__calendar_row) {
+      width: 100% !important;
+      justify-content: space-between;
+      padding: 0 0.5rem;
+      margin: 0;
+      
+      @media (max-width: 599px) {
+        padding: 0 0.25rem;
+      }
+    }
+
+    :deep(.dp__calendar_item) {
+      flex: 1;
+  display: flex;
+      justify-content: center;
+      min-width: auto;
+      padding: 0;
+      margin: 2px;
+      
+      @media (max-width: 599px) {
+        margin: 1px;
+      }
+    }
+  }
+}
+
+.airbnb-style-calendar {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  --dp-font-family: inherit;
+  --dp-border-radius: 12px;
+  --dp-cell-border-radius: 50%;
+  --dp-day-width: 40px;
+  --dp-day-height: 40px;
+  --dp-row-margin: 8px 0;
+  --dp-selected-date-color: #fff;
+  --dp-selected-date-bg-color: var(--q-primary);
+  --dp-hover-color: var(--q-primary);
+  --dp-hover-bg-color: rgba(var(--q-primary-rgb), 0.1);
+  --dp-disabled-color: #ffffff;
+  --dp-disabled-color-text: #ffffff;
+  --dp-disabled-bg-color: #ff6b6b;
+  --dp-primary-color: var(--q-primary);
+  --dp-menu-border-radius: 12px;
+  --dp-border-color: #e0e0e0;
+  --dp-menu-min-width: none;
+  --dp-menu-max-width: none;
+  background-color: #ffffff;
+  
+  @media (max-width: 599px) {
+    --dp-day-width: 35px;
+    --dp-day-height: 35px;
+  }
+  
+  :deep(.dp__calendar_header) {
+    padding: 12px 24px;
+    font-weight: 600;
+    color: var(--q-primary);
+    font-size: 1rem;
+    background-color: rgba(var(--q-primary-rgb), 0.03);
+    margin-bottom: 1rem;
+  border-radius: 8px;
+}
+  
+  :deep(.dp__month_year_row) {
+    margin: 16px 0 24px;
+    padding: 0 16px;
+    background-color: rgba(var(--q-primary-rgb), 0.02);
+    border-radius: 8px;
+    padding: 0.5rem;
+
+    button {
+      font-weight: 600;
+      color: var(--q-primary);
+      font-size: 1.1rem;
+    }
+  }
+
+  :deep(.dp__today) {
+    border: 2px solid var(--q-primary);
+    font-weight: 600;
+    background-color: rgba(var(--q-primary-rgb), 0.05);
+    
+    &:hover {
+      background-color: rgba(var(--q-primary-rgb), 0.1);
+    }
+  }
+
+  :deep(.dp__cell_inner) {
+    font-weight: 500;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(var(--q-primary-rgb), 0.1);
+      transform: scale(1.1);
+    }
+  }
+
+  :deep(.dp__range_start),
+  :deep(.dp__range_end) {
+    background-color: var(--q-primary) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(var(--q-primary-rgb), 0.3);
+    
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  :deep(.dp__range_between) {
+    background-color: rgba(var(--q-primary-rgb), 0.1) !important;
+    color: var(--q-primary) !important;
+    font-weight: 500;
+    
+    &:hover {
+      background-color: rgba(var(--q-primary-rgb), 0.15) !important;
     }
   }
 }
 
 .calendar-legend {
   display: flex;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  padding: 1rem;
-  background: #f8f8f8;
-  border-radius: 8px;
-}
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(var(--q-primary-rgb), 0.03);
+  border-radius: 12px;
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #555;
-}
+    gap: 0.75rem;
 
 .legend-color {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
 
   &.today-dot {
-    border: 2px solid #e76f51;
-    background-color: transparent;
+        border: 2.5px solid var(--q-primary);
+        background: transparent;
   }
 
   &.selected-range {
-    background-color: #e76f51;
-    border: none;
+        background-color: var(--q-primary);
   }
 
   &.booked-day-legend {
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
+        background-color: var(--dp-disabled-bg-color);
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 140%;
+          height: 2px;
+          background-color: rgba(255, 255, 255, 0.5);
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+
+    span {
+      font-weight: 500;
+      color: var(--q-primary);
+    }
   }
 }
 
@@ -788,64 +1069,141 @@ const importantInfo = [
   overflow: hidden;
 }
 
-.feature-card {
+.intro-feature-card {
   background: white;
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-
-    .feature-icon {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(var(--cms-deep-terracotta-rgb), 0.2);
-    }
-  }
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
-  background: var(--cms-deep-terracotta);
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(var(--cms-deep-terracotta-rgb), 0.15);
+    
+    .q-icon {
+      font-size: 24px;
+    }
+    
+    &:hover {
+      transform: scale(1.1);
+    }
 }
 
 .feature-content {
   flex: 1;
   
   h6 {
-    color: var(--cms-gray-900);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
     transition: color 0.3s ease;
-  }
-  
-  p {
-    line-height: 1.6;
+      line-height: 1.4;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+      color: var(--q-dark);
+    }
   }
 }
 
-.feature-highlight {
-  padding: 1.5rem;
+.feature-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
   height: 100%;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    margin-bottom: 2rem;
+  }
+
+  .feature-item {
+    margin-bottom: 1.25rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .row {
+      align-items: center;
+    }
+
+    .q-icon {
+      margin-right: 1rem;
+      font-size: 20px;
+    }
+
+    span {
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+  }
+
+  // Adjust text size in the "Voor wie" section
+  p.text-subtitle1 {
+    font-size: 0.95rem;
+  }
+
+  // Adjust text in the payment info box
+  .bg-sand {
+    p.text-body1 {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.feature-box {
+  padding: 2rem;
+  height: 100%;
+  transition: all 0.3s ease;
+
+  .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-4px);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  h4 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--q-dark);
+    line-height: 1.6;
+    margin: 0;
   }
 }
 
@@ -883,8 +1241,31 @@ const importantInfo = [
     padding: 3rem 0;
   }
 
-  .feature-card {
-    padding: 1.5rem !important;
+  .intro-feature-card {
+    padding: 1.25rem;
+    gap: 0.875rem;
+    
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 10px;
+      
+      .q-icon {
+        font-size: 20px;
+      }
+    }
+    
+    .feature-content {
+      h6 {
+        font-size: 1rem;
+        margin-bottom: 0.375rem;
+      }
+      
+      p {
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 
@@ -894,5 +1275,19 @@ const importantInfo = [
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
   overflow: hidden;
+}
+
+.bg-light-beige {
+  background-color: #fcf9f6;  // Lighter than sand color for better distinction
+}
+
+.selected-dates {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  
+  .q-chip {
+    font-size: 1rem;
+  }
 }
 </style> 

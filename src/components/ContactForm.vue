@@ -2,11 +2,9 @@
   <div class="contact-form-section">
     <!-- Modern Header -->
     <div class="text-center q-mb-xl">
-      <h2 class="text-h4 font-playfair q-mb-md">{{ isBookingInquiry ? 'Plan je verblijf' : 'Neem contact op' }}</h2>
-      <p class="text-subtitle1 text-grey-8 max-w-lg mx-auto">
-        {{ isBookingInquiry 
-          ? 'Laat ons weten wanneer je wilt komen en we zorgen ervoor dat alles perfect geregeld is voor je verblijf.'
-          : 'Heb je vragen over ons vakantiehuis? We helpen je graag verder.' }}
+      <h2 class="text-h4 font-playfair q-mb-md">{{ isBookingInquiry ? 'Plan je verblijf' : 'Contactformulier' }}</h2>
+      <p class="text-subtitle1 text-grey-8 max-w-lg mx-auto" v-if="isBookingInquiry">
+        Laat ons weten wanneer je wilt komen en we zorgen ervoor dat alles perfect geregeld is voor je verblijf.
       </p>
     </div>
 
@@ -333,110 +331,125 @@ const handleSubmit = async () => {
 
 <style lang="scss" scoped>
 .contact-form-section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+  .modern-input {
+    .q-field__control {
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      background: var(--cms-sand);
 
-.form-container {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      &:hover {
+        background: var(--cms-sand-light);
+      }
+
+      &:focus-within {
+        border-color: var(--cms-deep-terracotta);
+        background: white;
+      }
+    }
+
+    .q-field__label {
+      font-weight: 500;
+    }
+
+    .q-icon {
+      transition: color 0.2s ease;
+    }
+
+    &:focus-within {
+      .q-icon {
+        color: var(--cms-deep-terracotta) !important;
+      }
+    }
+  }
 }
 
 .form-grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.modern-input {
-  :deep(.q-field__control) {
-    border-radius: 8px;
-    min-height: 56px;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: var(--q-primary);
-    }
-  }
-
-  :deep(.q-field__label) {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #495057;
-  }
-
-  :deep(.q-field--focused) {
-    .q-field__control {
-      border-color: var(--q-primary);
-      box-shadow: 0 0 0 4px rgba(0, 83, 179, 0.1);
-    }
-  }
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .selected-dates-card {
-  background: #f8f9fa;
+  background: var(--cms-sand-light);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid #e9ecef;
-}
+  border: 2px solid var(--cms-sand);
+  transition: all 0.2s ease;
 
-.date-display {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  &:hover {
+    border-color: var(--cms-deep-terracotta);
+  }
 
-  .date-info {
-    .label {
-      font-size: 0.85rem;
-      color: #6c757d;
-      margin-bottom: 0.25rem;
+  .date-display {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
     }
 
-    .date {
-      font-weight: 500;
-      color: #212529;
+    .date-info {
+      .label {
+        font-size: 0.875rem;
+        color: var(--cms-gray-600);
+        margin-bottom: 0.25rem;
+      }
+
+      .date {
+        font-weight: 500;
+        color: var(--cms-gray-900);
+      }
     }
   }
 }
 
 .submit-button {
   min-width: 200px;
+  border-radius: 12px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  border-radius: 8px;
-  padding: 12px 32px;
-  transition: transform 0.2s ease;
-
-  &:not(:disabled):hover {
-    transform: translateY(-2px);
+  transition: all 0.3s ease;
+  
+  &:not(:disabled) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
   }
 }
 
 .thank-you-card {
   border-radius: 16px;
   max-width: 400px;
-  padding: 2rem;
+  padding: 1rem;
+
+  .q-icon {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
 }
 
-// Responsive adjustments
-@media (max-width: 599px) {
-  .contact-form-section {
-    padding: 1rem;
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
-  .form-container {
-    padding: 1.5rem;
-  }
+.max-w-lg {
+  max-width: 32rem;
+}
 
-  .date-display {
-    margin-bottom: 1rem;
-  }
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 </style> 

@@ -21,11 +21,11 @@
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'Boek je verblijf' : 'Heb je een vraag?' }}</h2>
+        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'Boek je verblijf' : 'Hoe kunnen we je helpen?' }}</h2>
         <p class="text-body1 q-mb-xl">
           {{ isBookingInquiry 
             ? 'Vul het formulier in om je verblijf aan te vragen. We nemen zo snel mogelijk contact met je op.' 
-            : 'Wij helpen je graag verder met al je vragen over ons familiehuis. Vul het contactformulier in of neem direct contact met ons op.' }}
+            : 'Of je nu een vraag hebt of meer informatie wilt, we helpen je graag verder. Gebruik onderstaand formulier of neem direct contact met ons op.' }}
         </p>
       </div>
     </section>
@@ -36,7 +36,9 @@
         <div class="row q-col-gutter-xl">
           <!-- Contact Form -->
           <div class="col-12 col-md-8">
-            <ContactForm />
+            <div class="contact-form-wrapper">
+              <ContactForm />
+            </div>
           </div>
 
           <!-- Contact Info -->
@@ -48,29 +50,29 @@
                 <q-icon name="phone" size="24px" color="primary" />
                 <div class="contact-content">
                   <h4 class="text-h6 font-playfair">Telefoon</h4>
-                  <a href="tel:+31683645489" class="text-body1 text-dark">
-                    06 - 8364 5489 (Netherlands)
+                  <a href="tel:+31683645489" class="text-body1 text-dark hover-primary">
+                    +31 6 8364 5489
                   </a>
-                  <p class="text-caption text-grey-8">WhatsApp beschikbaar</p>
+                  <p class="text-caption text-grey-8">Ook bereikbaar via WhatsApp</p>
                 </div>
               </div>
 
               <div class="contact-item">
                 <q-icon name="place" size="24px" color="primary" />
                 <div class="contact-content">
-                  <h4 class="text-h6 font-playfair">Adres</h4>
+                  <h4 class="text-h6 font-playfair">Locatie</h4>
                   <p class="text-body1 q-mb-none">Carrer de les Petúnies 16</p>
                   <p class="text-body1 q-mb-none">03580 L'Alfàs del Pi</p>
-                  <p class="text-body1">Alicante, Spain</p>
+                  <p class="text-body1">Alicante, Spanje</p>
                 </div>
               </div>
 
               <div class="contact-item">
                 <q-icon name="public" size="24px" color="primary" />
                 <div class="contact-content">
-                  <h4 class="text-h6 font-playfair">Volg ons</h4>
+                  <h4 class="text-h6 font-playfair">Social Media</h4>
                   <div class="social-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
                       <q-icon name="fab fa-instagram" size="24px" />
                     </a>
                   </div>
@@ -123,7 +125,8 @@ const isBookingInquiry = computed(() => {
 }
 
 .section {
-  padding: 4rem 0;
+  padding: 5rem 0;
+  transition: background-color 0.3s ease;
 }
 
 .bg-sand {
@@ -133,28 +136,42 @@ const isBookingInquiry = computed(() => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+}
+
+.contact-form-wrapper {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .contact-card {
   background: var(--cms-sand);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 2.5rem;
   height: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.1);
   }
 }
 
 .contact-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
   &:last-child {
     border-bottom: none;
@@ -163,9 +180,15 @@ const isBookingInquiry = computed(() => {
 
   .q-icon {
     background: white;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
   }
 }
 
@@ -173,40 +196,69 @@ const isBookingInquiry = computed(() => {
   flex: 1;
 
   h4 {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.75rem;
+    color: var(--cms-gray-900);
   }
 
   p {
     margin: 0;
+    color: var(--cms-gray-700);
   }
 }
 
 a {
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   
   &:hover {
     color: var(--cms-deep-terracotta);
   }
 }
 
+.hover-primary:hover {
+  color: var(--cms-deep-terracotta);
+}
+
 .social-links {
   display: flex;
   gap: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+}
 
-  a {
-    color: var(--cms-gray-800);
-    transition: all 0.2s ease;
+.social-link {
+  color: var(--cms-gray-800);
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
-    &:hover {
-      color: var(--cms-deep-terracotta);
-      transform: translateY(-2px);
-    }
+  &:hover {
+    color: var(--cms-deep-terracotta);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 }
 
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 </style> 

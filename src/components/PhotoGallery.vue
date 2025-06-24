@@ -166,6 +166,11 @@
         maximized
         transition-show="fade"
         transition-hide="fade"
+        @show="handleDialogShow"
+        @hide="handleDialogHide"
+        no-route-dismiss
+        no-refocus
+        seamless
       >
         <q-card class="bg-black full-height">
           <!-- Close Button -->
@@ -299,6 +304,18 @@ const openLightbox = (photoSet: any[], index: number) => {
   currentPhotoSet.value = photoSet;
   lightboxSlide.value = index;
   lightboxOpen.value = true;
+};
+
+const handleDialogShow = () => {
+  if (typeof window !== 'undefined') {
+    window.document.body.style.overflow = 'hidden';
+  }
+};
+
+const handleDialogHide = () => {
+  if (typeof window !== 'undefined') {
+    window.document.body.style.overflow = '';
+  }
 };
 </script>
 

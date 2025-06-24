@@ -13,19 +13,9 @@
             <h1 class="text-h2 font-playfair q-mb-xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4); line-height: 1.3;">
               Reserveer je Verblijf
             </h1>
-            <p class="text-h5 q-mb-xl font-poppins" style="max-width: 700px; margin: 0 auto; line-height: 1.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); opacity: 0.95;">
+            <p class="text-h5 q-mb-none font-poppins" style="max-width: 700px; margin: 0 auto; line-height: 1.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); opacity: 0.95;">
               Plan je perfecte vakantie in ons mediterrane familiehuis met privézwembad en geniet van een onvergetelijk verblijf in l'Alfàs del Pi
             </p>
-            <q-btn
-              color="white"
-              text-color="primary"
-              label="Bekijk Beschikbaarheid"
-              class="q-px-xl q-py-md text-subtitle1"
-              size="lg"
-              unelevated
-              @click="scrollToCalendar"
-              style="border-radius: 12px; font-weight: 500;"
-            />
           </div>
         </div>
       </q-img>
@@ -33,40 +23,56 @@
 
     <!-- Introduction -->
     <section class="section bg-sand">
-      <div class="container q-pa-xl text-center">
-        <div class="row justify-center">
-          <div class="col-12 col-md-10 col-lg-8">
-            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Welkom in Casa Mi Sueño</h2>
+      <div class="container q-pa-xl">
+        <div class="row justify-center q-col-gutter-xl">
+          <div class="col-12 col-md-10 col-lg-8 text-center">
+            <h2 class="text-h3 font-playfair q-mb-lg text-primary">Plan je Verblijf</h2>
             <p class="text-h6 text-grey-8" style="line-height: 1.8; max-width: 800px; margin: 0 auto;">
-              Ontdek de perfecte balans tussen comfort en authenticiteit in ons zorgvuldig onderhouden vakantiehuis. 
-              We verhuren alleen aan gasten die ons huis met dezelfde zorg en respect behandelen als wij. 
-              Selecteer hieronder je gewenste data en begin je droomvakantie te plannen.
+              Kies je ideale vakantieperiode in ons mediterrane vakantiehuis. We hanteren eerlijke prijzen en 
+              een persoonlijke benadering. Bekijk direct de beschikbaarheid en tarieven.
             </p>
-            <div class="row justify-center q-mt-xl q-col-gutter-md">
-              <div class="col-12 col-sm-4">
-                <div class="feature-highlight">
-                  <q-icon name="villa" size="32px" color="terracotta" class="q-mb-sm" />
-                  <h6 class="text-subtitle1 q-mb-xs">Authentiek Vakantiehuis</h6>
-                  <p class="text-body2">Met alle moderne comfort</p>
-                </div>
+          </div>
+        </div>
+
+        <div class="row justify-center q-mt-xl q-col-gutter-lg">
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <q-icon name="calendar_today" size="32px" color="white" />
               </div>
-              <div class="col-12 col-sm-4">
-                <div class="feature-highlight">
-                  <q-icon name="pool" size="32px" color="terracotta" class="q-mb-sm" />
-                  <h6 class="text-subtitle1 q-mb-xs">Privé Zwembad</h6>
-                  <p class="text-body2">Perfect voor verkoeling</p>
-                </div>
+              <div class="feature-content">
+                <h6 class="text-h6 q-mb-sm font-playfair">Flexibele Data</h6>
+                <p class="text-body1 text-grey-8 q-mb-none">Minimaal verblijf van 5-7 nachten. Aankomst vanaf 16:00 uur, vertrek voor 10:00 uur.</p>
               </div>
-              <div class="col-12 col-sm-4">
-                <div class="feature-highlight">
-                  <q-icon name="groups" size="32px" color="terracotta" class="q-mb-sm" />
-                  <h6 class="text-subtitle1 q-mb-xs">Tot 4 Personen</h6>
-                  <p class="text-body2">Ideaal voor families</p>
-                </div>
+            </div>
+          </div>
+          
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <q-icon name="euro" size="32px" color="white" />
+              </div>
+              <div class="feature-content">
+                <h6 class="text-h6 q-mb-sm font-playfair">Transparante Prijzen</h6>
+                <p class="text-body1 text-grey-8 q-mb-none">Duidelijke tarieven inclusief eindschoonmaak, linnen en alle voorzieningen. Geen verborgen kosten.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <q-icon name="support_agent" size="32px" color="white" />
+              </div>
+              <div class="feature-content">
+                <h6 class="text-h6 q-mb-sm font-playfair">Persoonlijke Service</h6>
+                <p class="text-body1 text-grey-8 q-mb-none">Direct contact met ons als eigenaren en een lokale contactpersoon voor tijdens je verblijf.</p>
               </div>
             </div>
           </div>
         </div>
+
+
       </div>
     </section>
 
@@ -673,14 +679,6 @@ const importantInfo = [
   'Maximaal 4 personen',
   'Geen feesten of evenementen'
 ];
-
-// Add scrollToCalendar function
-const scrollToCalendar = () => {
-  const calendarElement = document.querySelector('.calendar-container');
-  if (calendarElement) {
-    calendarElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-};
 </script>
 
 <style lang="scss">
@@ -791,34 +789,50 @@ const scrollToCalendar = () => {
 }
 
 .feature-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
   height: 100%;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e9ecef;
-  transition: transform 0.3s ease;
-
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  
   &:hover {
     transform: translateY(-4px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+
+    .feature-icon {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(var(--cms-deep-terracotta-rgb), 0.2);
+    }
   }
 }
 
-.feature-box {
-  padding: 2rem;
-  height: 100%;
-  transition: transform 0.3s ease;
+.feature-icon {
+  background: var(--cms-deep-terracotta);
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(var(--cms-deep-terracotta-rgb), 0.15);
+}
 
-  &:hover {
-    transform: translateY(-4px);
+.feature-content {
+  flex: 1;
+  
+  h6 {
+    color: var(--cms-gray-900);
+    transition: color 0.3s ease;
   }
-
-  .icon-wrapper {
-    background: rgba(231, 111, 81, 0.1);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+  
+  p {
+    line-height: 1.6;
   }
 }
 
@@ -866,7 +880,7 @@ const scrollToCalendar = () => {
   }
 
   .section {
-    padding: 2rem 0;
+    padding: 3rem 0;
   }
 
   .feature-card {

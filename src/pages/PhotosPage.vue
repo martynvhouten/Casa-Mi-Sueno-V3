@@ -21,11 +21,11 @@
     <!-- Introduction -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Welkom in Casa Mi Sueño</h2>
+        <h2 class="font-playfair q-mb-lg">Beleef het Alvast</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Laat je inspireren door deze foto's van ons familiehuis en zijn mediterrane omgeving. 
-          Van de gezellige woonkamer tot het zonnige terras - hier krijg je een goede indruk 
-          van wat je kunt verwachten.
+          Duik in onze fotogalerij en ervaar de sfeer van Casa Mi Sueño. Van de gezellige woonkamer 
+          tot het zonnige terras en het verfrissende zwembad - elk beeld vertelt een verhaal van 
+          ontspanning en mediterraan leven.
         </p>
       </div>
     </section>

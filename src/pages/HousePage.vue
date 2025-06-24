@@ -21,11 +21,11 @@
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Welkom bij ons thuis</h2>
+        <h2 class="font-playfair q-mb-lg">Ontdek Ons Mediterrane Thuis</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Casa Mi Sueño is ons tweede thuis aan de Costa Blanca, een plek waar we tot rust komen
-          en dat we delen met anderen als we er niet zijn. Met twee gastenslaapkamers, twee badkamers, een fijne tuin
-          en een verkoelend zwembad is het de perfecte uitvalsbasis voor een ontspannen vakantie.
+          Casa Mi Sueño is een karakteristiek Spaans vakantiehuis waar comfort en authenticiteit samenkomen.
+          Met twee ruime slaapkamers, moderne badkamers, een volledig uitgeruste keuken en een prachtige tuin
+          met privézwembad biedt het alles voor een onvergetelijk verblijf aan de Costa Blanca.
         </p>
       </div>
     </section>

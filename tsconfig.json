@@ -16,6 +16,24 @@
     "paths": {
       "src/*": [
         "src/*"
+      ],
+      "app/*": [
+        "*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "layouts/*": [
+        "src/layouts/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "boot/*": [
+        "src/boot/*"
       ]
     },
     "lib": [
@@ -26,7 +44,9 @@
     ],
     "types": [
       "vite/client",
-      "node"
+      "node",
+      "@quasar/app-vite",
+      "vue-i18n"
     ]
   },
   "include": [
@@ -37,6 +57,7 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    ".quasar"
   ]
 } 

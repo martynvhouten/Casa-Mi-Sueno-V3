@@ -66,9 +66,6 @@ export interface PriceDetails {
   totalNights: number;
   basePrice: number;
   cleaningFee: number;
-  discount: {
-    percentage: number;
-    amount: number;
-  };
+  shortStaySurcharge?: number;
   totalPrice: number;
 } 

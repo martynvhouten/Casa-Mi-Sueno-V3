@@ -4,18 +4,19 @@
     <HeroSection
       image="/images/Woonkamer_tafel_stoelen.jpg"
       alt-text="Eettafel en stoelen in de woonkamer"
-      title="Het huis"
-      subtitle="Een gezellig thuis in Spanje"
+      title="Ons tweede thuis"
+      subtitle="Waar comfort en karakter elkaar ontmoeten"
     />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Ontdek ons mediterrane thuis</h2>
+        <h2 class="font-playfair q-mb-lg">Meer dan vier muren</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Casa Mi Sueño is een karakteristiek Spaans vakantiehuis waar comfort en authenticiteit samenkomen.
-          Met twee ruime slaapkamers, moderne badkamers, een volledig uitgeruste keuken en een prachtige tuin
-          met privézwembad biedt het alles voor een onvergetelijk verblijf aan de Costa Blanca.
+          Casa Mi Sueño voelt niet als een vakantiehuis - het voelt als thuiskomen. Elke kamer heeft zijn 
+          eigen verhaal, elke hoek is met liefde ingericht. Van de gezellige woonkamer waar je 's avonds 
+          ontspant tot het zwembad waar je overdag afkoelt. Dit is niet zomaar een huis; dit is de plek 
+          waar mooie herinneringen ontstaan.
         </p>
       </div>
     </section>

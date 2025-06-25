@@ -118,10 +118,33 @@ defineProps({
   z-index: 2;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.hero-content > div {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.hero-content h1 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.hero-content p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
 }
 
 .text-sand {
@@ -152,6 +175,55 @@ defineProps({
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .hero-content > div {
+    padding: 0 0.5rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 1.125rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1rem 0.5rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  .hero-content p {
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+  }
+}
+
+/* Ensure no horizontal overflow */
+@media (max-width: 320px) {
+  .hero-content h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem !important;
   }
 }
 </style> 

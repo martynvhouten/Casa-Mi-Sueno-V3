@@ -4,18 +4,19 @@
     <HeroSection
       image="/images/Tuin_zwembad.jpg"
       alt-text="Zwembad en tuin van het vakantiehuis"
-      title="Buiten leven"
-      subtitle="Geniet van het mediterrane leven"
+      title="Hier leef je écht"
+      subtitle="Waar elke dag voelt als vakantie"
     />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">La Vida Mediterránea</h2>
+        <h2 class="font-playfair q-mb-lg">Ontbijt in de zon, diner onder de sterren</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          In Spanje speelt het leven zich buiten af. De tuin van Casa Mi Sueño is daarom 
-          ingericht als een verlengstuk van het huis, met verschillende plekken om te 
-          ontspannen, te eten en te genieten van het perfecte klimaat.
+          Hier begrijp je pas waarom Spanjaarden zo van het buitenleven houden. Je dag begint met 
+          koffie op de veranda, gaat over in luie middagen bij het zwembad, en eindigt met een barbecue 
+          terwijl de zon ondergaat. Dit is niet gewoon een tuin - dit is jouw privé-oase waar tijd 
+          even stilstaat en je gewoon kunt zijn.
         </p>
       </div>
     </section>

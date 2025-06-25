@@ -1,45 +1,27 @@
 <template>
   <!-- Introduction -->
   <section class="section bg-sand">
-    <div class="container q-pa-xl">
-      <div class="row justify-center q-col-gutter-xl">
+    <div class="container">
+      <div class="row justify-center">
         <div class="col-12 col-md-10 col-lg-8 text-center">
-          <h2 class="text-h5 font-playfair q-mb-lg text-primary">Plan je verblijf</h2>
-          <p class="text-body1 text-grey-8" style="line-height: 1.8; max-width: 800px; margin: 0 auto;">
-            Kies je ideale vakantieperiode in ons mediterrane vakantiehuis. We hanteren eerlijke prijzen en 
-            een persoonlijke benadering. Bekijk direct de beschikbaarheid en tarieven.
+          <h2 class="text-h3 font-playfair q-mb-lg text-primary">Kies je ideale periode</h2>
+          <p class="text-h6 text-grey-8 q-mb-xl" style="line-height: 1.6; max-width: 600px; margin: 0 auto;">
+            Bekijk direct de beschikbaarheid en tarieven. Selecteer je aankomst- en vertrekdatum om te beginnen.
           </p>
-        </div>
-      </div>
-
-      <div class="row justify-center q-mt-xl q-col-gutter-lg">
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="intro-feature-card">
-            <q-icon name="schedule" color="terracotta" size="32px" class="q-mb-md" />
-            <h3 class="text-subtitle1 font-playfair q-mb-md">Check-in & Check-out</h3>
-            <p class="text-body2 text-grey-8 q-mb-none">Aankomst vanaf 16:00 uur, vertrek voor 10:00 uur. In het hoogseizoen (jul-aug) alleen aankomst op zaterdag.</p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="intro-feature-card">
-            <q-icon name="date_range" color="terracotta" size="32px" class="q-mb-md" />
-            <h3 class="text-subtitle1 font-playfair q-mb-md">Minimaal verblijf</h3>
-            <p class="text-body2 text-grey-8 q-mb-none">
-              Hoogseizoen (jul-aug): 7 nachten, za-za<br>
-              Middenseizoen (apr-jun, sep): 5 nachten<br>
-              Laagseizoen (okt-mrt): 3 nachten
-            </p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="intro-feature-card">
-            <q-icon name="euro" color="terracotta" size="32px" class="q-mb-md" />
-            <h3 class="text-subtitle1 font-playfair q-mb-md">Prijzen & Kortingen</h3>
-            <p class="text-body2 text-grey-8 q-mb-none">
-              Weekkorting: 5% vanaf 7 nachten<br>
-              Maandkorting: 15% vanaf 28 nachten<br>
-              Eindschoonmaak: €150
-            </p>
+          
+          <div class="booking-highlights">
+            <div class="highlight-item">
+              <q-icon name="pool" color="terracotta" size="20px" />
+              <span>Privé zwembad</span>
+            </div>
+            <div class="highlight-item">
+              <q-icon name="location_on" color="terracotta" size="20px" />
+              <span>L'Alfàs del Pi</span>
+            </div>
+            <div class="highlight-item">
+              <q-icon name="groups" color="terracotta" size="20px" />
+              <span>Tot 4 personen</span>
+            </div>
           </div>
         </div>
       </div>
@@ -52,18 +34,62 @@
 </script>
 
 <style lang="scss" scoped>
-.intro-feature-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  text-align: center;
-  height: 100%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+.section {
+  padding: 3rem 0;
+}
+
+.booking-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cms-gray-800);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    background: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  span {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 0;
+  }
+  
+  .booking-highlights {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .highlight-item {
+    padding: 0.4rem 0.8rem;
+    
+    span {
+      font-size: 0.85rem;
+    }
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
   }
 }
 </style> 

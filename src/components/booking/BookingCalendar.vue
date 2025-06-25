@@ -1,8 +1,13 @@
 <template>
   <div class="calendar-wrapper" :class="{ 'mobile': isMobile }">
+    <!-- Live region for screen reader announcements -->
+    <div aria-live="polite" aria-atomic="true" class="sr-only">
+      {{ calendarAnnouncement }}
+    </div>
+    
     <h3 class="text-h4 font-playfair q-mb-lg text-center">Selecteer je data</h3>
     <div v-if="loading" class="text-center q-pa-xl">
-      <q-spinner-dots color="primary" size="40px" />
+      <div class="branded-calendar-spinner"></div>
       <p class="text-subtitle1 q-mt-sm">Beschikbaarheid laden...</p>
     </div>
     <div v-else class="calendar-container">
@@ -115,6 +120,7 @@ const emit = defineEmits(['update:modelValue', 'long-stay']);
 const dates = ref<Date[] | null>(props.modelValue);
 const loading = ref(true);
 const bookedDates = ref<string[]>([]);
+const calendarAnnouncement = ref('');
 const $q = useQuasar();
 
 const isMobile = computed(() => $q.screen.lt.md);
@@ -204,9 +210,33 @@ const showLongStayMessage = computed(() => {
   return diffDays > 28;
 });
 
+// Watch for date changes and announce to screen readers
+watch(dates, (newDates) => {
+  if (newDates && newDates.length === 2) {
+    const formatDate = (date: Date) => new Intl.DateTimeFormat('nl-NL', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(date);
+    
+    const diffTime = Math.abs(newDates[1].getTime() - newDates[0].getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    calendarAnnouncement.value = `Geselecteerd: ${formatDate(newDates[0])} tot ${formatDate(newDates[1])}, ${diffDays} nachten`;
+  } else if (newDates && newDates.length === 1) {
+    const formatDate = (date: Date) => new Intl.DateTimeFormat('nl-NL', {
+      day: 'numeric',
+      month: 'long'
+    }).format(date);
+    
+    calendarAnnouncement.value = `Aankomstdatum geselecteerd: ${formatDate(newDates[0])}. Selecteer nu je vertrekdatum.`;
+  }
+}, { immediate: true });
+
 watch(showLongStayMessage, (isLongStay) => {
   if (isLongStay) {
     emit('long-stay');
+    calendarAnnouncement.value = 'Verblijf langer dan 4 weken geselecteerd. Voor speciale prijzen neem contact op.';
   }
 });
 
@@ -224,6 +254,7 @@ const handleDateSelect = (modelData: Date[] | null) => {
     const diffDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     
     if (diffDays < config.minNights) {
+      calendarAnnouncement.value = `Minimum verblijf van ${config.minNights} nachten niet behaald. Selecteer een langere periode.`;
       $q.notify({
         type: 'warning',
         message: `In ${config.name.toLowerCase()} geldt een minimum verblijf van ${config.minNights} nachten.`,
@@ -239,10 +270,13 @@ const handleDateSelect = (modelData: Date[] | null) => {
 
 onMounted(async () => {
   try {
+    calendarAnnouncement.value = 'Beschikbaarheid wordt geladen...';
     const fetchedBookedDates = await fetchBookedDates();
     bookedDates.value = fetchedBookedDates.map(d => d.geboekte_datum.toISOString().split('T')[0]);
+    calendarAnnouncement.value = 'Kalender geladen. Selecteer je aankomst- en vertrekdatum.';
   } catch (error) {
     console.error('Failed to load booked dates:', error);
+    calendarAnnouncement.value = 'Fout bij laden van beschikbaarheid. Probeer het later opnieuw.';
     $q.notify({
       type: 'negative',
       message: 'Kon de beschikbaarheid niet laden. Probeer het later opnieuw.'
@@ -291,6 +325,13 @@ onMounted(async () => {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+    
+    @media (max-width: 768px) {
+      gap: 1rem;
+      .legend-item {
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 
@@ -393,5 +434,32 @@ onMounted(async () => {
   :deep(.q-chip) {
     font-size: 0.9rem;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Branded loading spinner for calendar
+.branded-calendar-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--cms-sand);
+  border-radius: 50%;
+  border-top-color: var(--cms-deep-terracotta);
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 </style> 

@@ -4,11 +4,39 @@
     <HeroSection
       image="/images/Tuin_zwembad.jpg"
       alt-text="Zwembad en tuin van het vakantiehuis"
-      title="Reserveer je verblijf"
-      subtitle="Plan je perfecte vakantie in ons mediterrane familiehuis met privézwembad en geniet van een onvergetelijk verblijf in l'Alfàs del Pi"
+      title="Jouw mediterrane ontsnapping"
+      subtitle="Rust, zon en privézwembad in het hart van de Costa Blanca"
     />
 
     <BookingIntro />
+
+    <!-- Progress Indicator -->
+    <section class="section bg-white q-py-md">
+      <div class="container">
+        <div class="booking-progress">
+          <div class="progress-step" :class="{ 'active': currentStep >= 1, 'completed': currentStep > 1 }">
+            <div class="step-icon">
+              <q-icon :name="currentStep > 1 ? 'check' : 'event'" />
+            </div>
+            <span class="step-label">Selecteer data</span>
+          </div>
+          <div class="progress-connector" :class="{ 'active': currentStep > 1 }"></div>
+          <div class="progress-step" :class="{ 'active': currentStep >= 2, 'completed': currentStep > 2 }">
+            <div class="step-icon">
+              <q-icon :name="currentStep > 2 ? 'check' : 'euro'" />
+            </div>
+            <span class="step-label">Bekijk prijs</span>
+          </div>
+          <div class="progress-connector" :class="{ 'active': currentStep > 2 }"></div>
+          <div class="progress-step" :class="{ 'active': currentStep >= 3, 'completed': currentStep > 3 }">
+            <div class="step-icon">
+              <q-icon :name="currentStep > 3 ? 'check' : 'edit'" />
+            </div>
+            <span class="step-label">Bevestig boeking</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section bg-white">
       <div class="container">
@@ -23,9 +51,25 @@
       </div>
     </section>
 
+    <!-- Collapsible Info & Services Section -->
     <section class="section bg-sand">
       <div class="container">
-        <InfoAndServices />
+        <div class="info-services-toggle">
+          <q-btn
+            flat
+            no-caps
+            :icon="showInfoServices ? 'expand_less' : 'expand_more'"
+            :label="showInfoServices ? 'Verberg aanvullende informatie' : 'Bekijk aanvullende informatie'"
+            class="full-width text-primary"
+            @click="showInfoServices = !showInfoServices"
+            size="lg"
+          />
+        </div>
+        <q-slide-transition>
+          <div v-show="showInfoServices">
+            <InfoAndServices />
+          </div>
+        </q-slide-transition>
       </div>
     </section>
 
@@ -47,6 +91,7 @@
               :price-details="priceDetails"
               :selected-dates="selectedDates"
               @booking-submitted="handleBookingSubmitted"
+              @form-active="handleFormActive"
             />
           </div>
         </div>
@@ -71,8 +116,19 @@ const $q = useQuasar();
 const router = useRouter();
 const selectedDates = ref<Date[] | null>(null);
 const showBookingForm = ref(false);
+const showInfoServices = ref(false);
+const formIsActive = ref(false);
 const bookingFormRef = ref<InstanceType<typeof BookingForm> | null>(null);
 const bookingFormSection = ref<HTMLElement | null>(null);
+
+// Progress tracking
+const currentStep = computed(() => {
+  if (!selectedDates.value || selectedDates.value.length !== 2) return 1;
+  if (!priceDetails.value) return 1;
+  // Only advance to step 3 when the form is actually visible and being used
+  if (formIsActive.value && (selectedDates.value && selectedDates.value.length === 2)) return 3;
+  return 2;
+});
 
 enum Season {
   High = 'high',
@@ -120,16 +176,6 @@ function getSeason(date: Date): Season {
   return Season.Low;
 }
 
-function calculateDiscount(nights: number): { percentage: number; amount: number } {
-  if (nights >= 28) {
-    return { percentage: 15, amount: 0 }; // Amount will be calculated after base price
-  }
-  if (nights >= 7) {
-    return { percentage: 5, amount: 0 }; // Amount will be calculated after base price
-  }
-  return { percentage: 0, amount: 0 };
-}
-
 function calculatePrice(startDate: Date, endDate: Date): PriceDetails | null {
   if (!startDate || !endDate) return null;
 
@@ -143,22 +189,14 @@ function calculatePrice(startDate: Date, endDate: Date): PriceDetails | null {
   const pricePerNight = config.basePrice;
   const basePrice = totalNights * pricePerNight;
   
-  // Calculate discount
-  const discount = calculateDiscount(totalNights);
-  const discountAmount = Math.round((basePrice * discount.percentage) / 100);
-  
   // Calculate total
-  const totalPrice = basePrice - discountAmount + CLEANING_FEE;
+  const totalPrice = basePrice + CLEANING_FEE;
 
   return {
     pricePerNight,
     totalNights,
     basePrice,
     cleaningFee: CLEANING_FEE,
-    discount: {
-      percentage: discount.percentage,
-      amount: discountAmount
-    },
     totalPrice
   };
 }
@@ -186,42 +224,103 @@ const scrollToBookingForm = () => {
   }, 100);
 };
 
+const handleFormActive = () => {
+  formIsActive.value = true;
+};
+
 const handleBookingSubmitted = () => {
   showBookingForm.value = false;
+  formIsActive.value = false;
   selectedDates.value = null;
 };
 
 // Reset booking form when dates change
 watch(selectedDates, () => {
   showBookingForm.value = false;
+  formIsActive.value = false;
 });
 </script>
 
 <style lang="scss" scoped>
-.section {
-  padding: 4rem 0;
-}
-
-.container {
-  max-width: 1200px;
+.booking-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem 0;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    
+    .progress-connector {
+      display: none;
+    }
+  }
 }
 
-.booking-placeholder {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  min-height: 200px;
+.progress-step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.completed {
+    opacity: 1;
+    
+    .step-icon {
+      background: var(--cms-olive);
+      color: white;
+    }
+  }
+
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--cms-gray-200);
+    color: var(--cms-gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  &.active .step-icon {
+    background: var(--cms-deep-terracotta);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cms-gray-800);
+  }
 }
 
-@media (max-width: 599px) {
-  .section {
-    padding: 2rem 0;
+.progress-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--cms-gray-200);
+  margin: 0 1rem;
+  transition: all 0.3s ease;
+
+  &.active {
+    background: var(--cms-deep-terracotta);
   }
+}
+
+.info-services-toggle {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 </style> 

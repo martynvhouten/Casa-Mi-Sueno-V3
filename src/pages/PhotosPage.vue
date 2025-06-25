@@ -4,18 +4,18 @@
     <HeroSection
       image="/images/Tuin_mediterraans.jpg"
       alt-text="Mediterrane tuin van het vakantiehuis"
-      title="Fotogalerij"
-      subtitle="Ontdek ons tweede thuis in beeld"
+      title="Ons verhaal in beeld"
+      subtitle="Elke foto vertelt een verhaal van puur geluk"
     />
 
     <!-- Introduction -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Beleef het Alvast</h2>
+        <h2 class="font-playfair q-mb-lg">Zie je het al voor je?</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Duik in onze fotogalerij en ervaar de sfeer van Casa Mi Sueño. Van de gezellige woonkamer 
-          tot het zonnige terras en het verfrissende zwembad - elk beeld vertelt een verhaal van 
-          ontspanning en mediterraan leven.
+          Elke foto hier vertelt een stukje van ons verhaal. De ochtendkoffie op de veranda, 
+          het eerste duikje in het zwembad, de lange avonden onder de sterren. Dit zijn niet 
+          zomaar plaatjes - dit zijn momenten van puur geluk die we graag met jou willen delen.
         </p>
       </div>
     </section>

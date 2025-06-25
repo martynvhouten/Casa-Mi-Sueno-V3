@@ -20,16 +20,6 @@
       <span class="text-body2 text-weight-medium">€{{ priceDetails.basePrice.toLocaleString('nl-NL') }}</span>
     </div>
 
-    <!-- Discount if applicable -->
-    <div v-if="priceDetails.discount.percentage > 0" class="price-row q-mb-sm">
-      <span class="text-body2">
-        Korting ({{ priceDetails.discount.percentage }}% voor {{ priceDetails.totalNights }}+ nachten)
-      </span>
-      <span class="text-body2 text-weight-medium text-negative">
-        -€{{ priceDetails.discount.amount.toLocaleString('nl-NL') }}
-      </span>
-    </div>
-
     <!-- Cleaning Fee -->
     <div class="price-row q-mb-sm">
       <span class="text-body2">Eindschoonmaak</span>

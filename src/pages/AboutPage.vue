@@ -4,8 +4,8 @@
     <HeroSection
       image="/images/Tuin_vanaf_veranda.jpg"
       alt-text="Uitzicht op de tuin vanaf de veranda"
-      title="Over ons"
-      subtitle="Welkom in ons Spaanse thuis aan de Costa Blanca"
+      title="Dit zijn wij"
+      subtitle="Esther & Milco - jullie gastvrouw en gastheer"
     />
 
     <!-- Our Story Section -->

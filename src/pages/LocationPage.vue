@@ -4,19 +4,19 @@
     <HeroSection
       image="/images/Omgeving/Albir_panorama.jpg"
       alt-text="Panorama uitzicht van Albir"
-      title="De omgeving"
-      subtitle="Ons stukje Costa Blanca"
+      title="Ons stukje paradijs"
+      subtitle="Ontdek waarom we hier ons hart verloren"
     />
 
     <!-- Introduction -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">L'Alfàs del Pi</h2>
+        <h2 class="font-playfair q-mb-lg">Verliefd op L'Alfàs del Pi</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Ons huis staat in L'Alfàs del Pi, een gezellig Spaans dorp aan de Costa Blanca. 
-          De naam 'Alfàs' komt uit het Arabisch en betekent 'vruchtbare grond', terwijl 'Pi' verwijst naar 
-          de oude pijnboom op het dorpsplein. We kozen deze plek omdat het een echt dorp is gebleven, 
-          waar je het authentieke Spaanse leven nog ervaart.
+          Er zijn plekken die je raken zonder dat je weet waarom. L'Alfàs del Pi is zo'n plek. 
+          Niet te toeristisch, niet te afgelegen - precies goed. Hier proef je nog het echte Spanje, 
+          terwijl je alle comfort van moderne voorzieningen hebt. Na jaren hier te komen, kennen we 
+          alle geheime plekjes. En die delen we graag met jou.
         </p>
       </div>
     </section>

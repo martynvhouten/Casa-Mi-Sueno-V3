@@ -4,8 +4,8 @@
     <HeroSection
       image="/images/Tuin_zwembad.jpg"
       alt-text="Zwembad en tuin van Casa Mi Sueño"
-      title="Welkom in ons Spaanse thuis"
-      subtitle="Een gezellig familiehuis waar je je snel thuis voelt"
+      title="Waar dromen werkelijkheid worden"
+      subtitle="Jouw mediterrane verhaal begint hier"
     >
       <template #extra>
         <q-btn
@@ -20,13 +20,12 @@
     <!-- Introduction Section -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="q-mb-lg font-playfair">Even voorstellen</h2>
+        <h2 class="q-mb-lg font-playfair">Hallo! Wij zijn Esther en Milco</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Wij zijn Esther en Milco, en samen hebben we hier ons tweede thuis gevonden. 
-          Casa Mi Sueño is onze plek om te ontspannen en te genieten van het mediterrane leven en de warme 
-          Spaanse cultuur. Soms zijn we hier samen met de hele familie, en onze kinderen komen er ook regelmatig met vrienden. 
-          We delen ons huis graag met gasten die, net als wij, houden van rust en de authentieke Spaanse sfeer, 
-          en die ons huis met dezelfde zorg en respect behandelen als wij dat doen.
+          Toen we dit huis vonden, wisten we het meteen: dit is het. Ons tweede thuis waar we onze 
+          liefde voor Spanje en het mediterrane leven delen. Casa Mi Sueño is meer dan een vakantiehuis - 
+          het is de plek waar we rust vinden, waar onze volwassen kinderen ook graag komen met hun vrienden, en waar 
+          elke dag voelt als een kleine vakantie. Nu nodigen we jou uit om onze droom te delen.
         </p>
       </div>
     </section>

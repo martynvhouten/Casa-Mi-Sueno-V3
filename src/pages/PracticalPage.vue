@@ -4,18 +4,18 @@
     <HeroSection
       image="/images/Veranda2.jpg"
       alt-text="De veranda van het vakantiehuis"
-      title="Praktische informatie"
-      subtitle="Alles wat je moet weten voor een zorgeloos verblijf"
+      title="Alles geregeld"
+      subtitle="Zodat jij je nergens zorgen over hoeft te maken"
     />
 
     <!-- Introduction -->
     <section class="section bg-white">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Je verblijf</h2>
+        <h2 class="font-playfair q-mb-lg">Wij denken graag vooruit</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          We willen graag dat je je direct thuis voelt in Casa Mi Sueño. Het is een rustige plek 
-          voor gasten die, net als wij, houden van authenticiteit en ontspanning. Hieronder vind je 
-          alle praktische informatie voor een zorgeloos verblijf.
+          Vakantie hoort zorgeloos te zijn. Daarom hebben we alles zo geregeld dat je vanaf 
+          het moment dat je aankomt kunt genieten. Van je aankomst tot je vertrek - we zorgen 
+          ervoor dat alles klaarstaat, zodat jij je volledig kunt ontspannen in ons tweede thuis.
         </p>
       </div>
     </section>

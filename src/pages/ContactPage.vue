@@ -4,18 +4,18 @@
     <HeroSection
       image="/images/Tuin_veranda.jpg"
       alt-text="De veranda van het vakantiehuis"
-      :title="isBookingInquiry ? 'Boekingsaanvraag' : 'Contact'"
-      :subtitle="isBookingInquiry ? 'Plan je verblijf in ons familiehuis' : 'Neem contact met ons op'"
+      :title="isBookingInquiry ? 'Heb je vragen over je verblijf?' : 'Laten we kennis maken'"
+      :subtitle="isBookingInquiry ? 'We helpen je graag met al je vragen over Casa Mi Sueño' : 'Persoonlijk contact voor een persoonlijke ervaring'"
     />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'Boek je verblijf' : 'Hoe kunnen we je helpen?' }}</h2>
-        <p class="text-body1 q-mb-xl">
+        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'We zijn er voor je' : 'Zeg maar gewoon hallo' }}</h2>
+        <p class="text-body1 q-mb-xl" style="max-width: 600px; margin: 0 auto;">
           {{ isBookingInquiry 
-            ? 'Vul het formulier in om je verblijf aan te vragen. We nemen zo snel mogelijk contact met je op.' 
-            : 'Of je nu een vraag hebt of meer informatie wilt, we helpen je graag verder. Gebruik onderstaand formulier of neem direct contact met ons op.' }}
+            ? 'Twijfel je nog over data, heb je speciale wensen of gewoon een vraag? Stuur ons een berichtje en we zorgen dat alles perfect geregeld wordt.' 
+            : 'Nieuwsgierig naar Casa Mi Sueño? Wil je meer weten over de omgeving? Of heb je gewoon een vraag? We horen graag van je!' }}
         </p>
       </div>
     </section>

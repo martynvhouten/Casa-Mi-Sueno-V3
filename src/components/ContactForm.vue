@@ -170,7 +170,12 @@
           </p>
         </q-card-section>
         <q-card-actions align="center">
-          <q-btn flat label="Sluiten" color="primary" v-close-popup />
+          <q-btn
+            class="cms-btn cms-btn-outline"
+            label="Sluiten"
+            color="primary"
+            v-close-popup
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>

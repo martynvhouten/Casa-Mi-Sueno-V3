@@ -230,7 +230,9 @@ p, .text-body1 {
   cursor: pointer;
   letter-spacing: 0.5px;
   text-transform: none;
-  min-height: 40px;
+  min-height: 48px;
+  min-width: 160px;
+  font-size: var(--text-base);
 }
 
 .cms-btn-primary {
@@ -248,19 +250,18 @@ p, .text-body1 {
 .cms-btn-secondary {
   background: var(--cms-sand) !important;
   color: var(--cms-deep-terracotta) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .cms-btn-secondary:hover {
-  background: var(--cms-sand-light) !important;
+  background: var(--cms-gray-100) !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .cms-btn-outline {
-  background: transparent !important;
+  border: 2px solid var(--cms-deep-terracotta) !important;
   color: var(--cms-deep-terracotta) !important;
-  border: 2px solid var(--cms-deep-terracotta);
+  background: transparent !important;
 }
 
 .cms-btn-outline:hover {
@@ -270,37 +271,21 @@ p, .text-body1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Button Sizes */
-.cms-btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  min-height: 48px;
-}
-
-.cms-btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  min-height: 32px;
-}
-
-/* Special Buttons */
 .cms-btn-cta {
   background: var(--cms-deep-terracotta) !important;
   color: white !important;
-  box-shadow: 0 4px 16px rgba(231, 111, 81, 0.3);
-  font-weight: 600;
+  font-size: var(--text-lg);
+  min-width: 200px;
   padding: 1rem 2rem;
-  font-size: 1.125rem;
-  min-height: 48px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cms-btn-cta:hover {
   background: var(--cms-light-terracotta) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Disabled State */
 .cms-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -494,6 +479,18 @@ p, .text-body1 {
 
   .text-body2 {
     font-size: var(--text-sm);
+  }
+
+  .cms-btn {
+    min-width: 140px;
+    padding: 0.5rem 1rem;
+    font-size: var(--text-sm);
+  }
+
+  .cms-btn-cta {
+    min-width: 180px;
+    padding: 0.75rem 1.5rem;
+    font-size: var(--text-base);
   }
 }
 

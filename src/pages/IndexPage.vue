@@ -1,30 +1,21 @@
 <template>
   <q-page>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <q-img
-        src="/images/Tuin_zwembad.jpg"
-        class="absolute-full"
-        :class="{ 'zoom-effect': true }"
-      >
-        <div class="hero-overlay"></div>
-        <div class="hero-content text-center">
-          <div class="animate-fade-in-up container">
-            <h1 class="text-white text-shadow q-mb-md font-playfair text-weight-medium">Welkom in ons Spaanse thuis</h1>
-            <p class="text-white text-h5 text-shadow q-mb-xl font-poppins text-weight-light">
-              Een gezellig familiehuis waar je je snel thuis voelt
-            </p>
-            <q-btn
-              unelevated
-              color="primary"
-              class="hero-btn q-px-xl q-py-sm text-subtitle1"
-              to="/reserveren"
-              label="Bekijk beschikbaarheid"
-            />
-          </div>
-        </div>
-      </q-img>
-    </section>
+    <HeroSection
+      image="/images/Tuin_zwembad.jpg"
+      alt-text="Zwembad en tuin van Casa Mi Sueño"
+      title="Welkom in ons Spaanse thuis"
+      subtitle="Een gezellig familiehuis waar je je snel thuis voelt"
+    >
+      <template #extra>
+        <q-btn
+          flat
+          class="cms-btn cms-btn-cta q-mt-xl"
+          to="/reserveren"
+          label="Bekijk beschikbaarheid"
+        />
+      </template>
+    </HeroSection>
 
     <!-- Introduction Section -->
     <section class="section bg-sand">
@@ -89,9 +80,9 @@
                   src="/images/Woonkamer_zithoek.jpg"
                   class="cms-img"
                 >
-                  <div class="absolute-bottom text-center" style="background: rgba(0,0,0,0.6)">
-                    <h4 class="text-white q-mb-sm font-playfair">Binnen</h4>
-                    <p class="text-white q-mb-none">Ruime, lichte leefruimtes met alle comfort</p>
+                  <div class="absolute-bottom text-center image-overlay">
+                    <h4 class="text-white q-ma-none font-playfair">Binnen</h4>
+                    <p class="text-white q-ma-none text-caption">Ruime, lichte leefruimtes met alle comfort</p>
                   </div>
                 </q-img>
               </div>
@@ -104,9 +95,9 @@
                   src="/images/Tuin_mediterraans.jpg"
                   class="cms-img"
                 >
-                  <div class="absolute-bottom text-center" style="background: rgba(0,0,0,0.6)">
-                    <h4 class="text-white q-mb-sm font-playfair">Buiten</h4>
-                    <p class="text-white q-mb-none">Mediterrane tuin met diverse zithoeken</p>
+                  <div class="absolute-bottom text-center image-overlay">
+                    <h4 class="text-white q-ma-none font-playfair">Buiten</h4>
+                    <p class="text-white q-ma-none text-caption">Mediterrane tuin met diverse zithoeken</p>
                   </div>
                 </q-img>
               </div>
@@ -165,6 +156,8 @@
 </template>
 
 <script setup lang="ts">
+import HeroSection from 'src/components/HeroSection.vue';
+
 const features = [
   {
     image: '/images/Tuin_zwembad.jpg',
@@ -462,5 +455,10 @@ const locationHighlights = [
   @media (max-width: 768px) {
     margin-bottom: var(--spacing-md);
   }
+}
+
+.image-overlay {
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+  padding: 8px;
 }
 </style> 

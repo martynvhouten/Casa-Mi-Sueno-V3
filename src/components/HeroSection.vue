@@ -14,6 +14,7 @@
         <div class="animate-fade-in-up">
           <h1 class="text-h2 font-playfair text-sand text-shadow-strong q-mb-md">{{ title }}</h1>
           <p v-if="subtitle" class="text-h5 text-shadow-light text-accent">{{ subtitle }}</p>
+          <slot name="extra"></slot>
         </div>
       </div>
     </q-img>

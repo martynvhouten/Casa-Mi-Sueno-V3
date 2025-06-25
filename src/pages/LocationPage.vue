@@ -183,8 +183,8 @@
         </p>
         <q-btn
           class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
-          to="/contact"
-          label="Neem contact op"
+          :to="{ name: 'booking' }"
+          label="Reserveer nu"
         />
       </div>
     </section>

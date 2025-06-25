@@ -59,4 +59,16 @@ export interface Database {
       [_ in never]: never
     }
   }
+}
+
+export interface PriceDetails {
+  pricePerNight: number;
+  totalNights: number;
+  basePrice: number;
+  cleaningFee: number;
+  discount: {
+    percentage: number;
+    amount: number;
+  };
+  totalPrice: number;
 } 

@@ -53,7 +53,7 @@
             color="primary"
             :to="{ name: 'booking', replace: true }"
             label="Reserveren"
-            class="cms-btn cms-btn-primary q-ma-none"
+            class="cms-btn cms-btn-primary"
             aria-label="Ga naar reserveringspagina"
           />
         </nav>
@@ -201,6 +201,7 @@
                 flat
                 :icon="social.icon"
                 color="dark"
+                class="social-btn"
               />
             </div>
           </div>
@@ -354,11 +355,20 @@ const scrollToContent = () => {
   height: 3px;
   background-color: var(--cms-light-terracotta);
   border-radius: 2px;
+  transform-origin: left;
+  transform: scaleX(0.7);
+  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 .logo-link {
   &:hover {
     text-decoration: none;
+    
+    .logo-decoration {
+      transform: scaleX(1);
+      opacity: 1;
+    }
   }
 }
 
@@ -419,5 +429,18 @@ const scrollToContent = () => {
 .q-tab:focus-visible {
   outline: 3px solid var(--q-primary);
   outline-offset: -3px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--cms-deep-terracotta);
+    color: white;
+    transform: translateY(-2px);
+  }
 }
 </style> 

@@ -1,26 +1,44 @@
 <template>
-  <div class="fullscreen bg-secondary text-dark flex flex-center">
-    <div class="text-center">
-      <div class="text-h2 font-playfair q-mb-md">{{ t('error404.title') }}</div>
-      <div class="text-h5 q-mb-xl">{{ t('error404.description') }}</div>
-      <q-btn
-        color="primary"
-        unelevated
-        :to="{ name: 'home' }"
-        :label="t('error404.goHome')"
-        class="q-px-xl q-py-sm"
-      />
-    </div>
-  </div>
+  <q-page>
+    <HeroSection
+      image="/images/Tuin_planten2.jpg"
+      alt-text="De mediterrane tuin van Casa Mi Sueño"
+      title="Pagina niet gevonden"
+      subtitle="De pagina die je zoekt bestaat niet"
+    />
+
+    <section class="section bg-white">
+      <div class="container text-center">
+        <div class="text-body2">
+          <p class="q-mb-xl">
+            De pagina die je probeert te bezoeken bestaat niet of is verplaatst.
+            Gebruik het menu om naar een andere pagina te navigeren of ga terug naar de homepagina.
+          </p>
+          <q-btn
+            to="/"
+            color="primary"
+            label="Terug naar home"
+            class="q-px-xl"
+            unelevated
+          />
+        </div>
+      </div>
+    </section>
+  </q-page>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+import HeroSection from 'src/components/HeroSection.vue';
 </script>
 
-<style scoped>
-.fullscreen {
-  min-height: 100vh;
+<style lang="scss" scoped>
+.section {
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 </style> 

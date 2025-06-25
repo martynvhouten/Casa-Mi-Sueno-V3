@@ -137,23 +137,34 @@
     <!-- FAQ -->
     <section class="section bg-white">
       <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Veelgestelde Vragen</h2>
+        <div class="text-center q-mb-xl">
+          <h2 class="font-playfair q-mb-md">Veelgestelde Vragen</h2>
+          <p class="text-subtitle1 text-grey-8" style="max-width: 600px; margin: 0 auto;">
+            Antwoorden op de meest gestelde vragen over je verblijf in Casa Mi Sueño
+          </p>
+        </div>
         <div class="row justify-center">
-          <div class="col-12 col-md-8">
-            <q-list>
-              <q-expansion-item
-                v-for="(item, index) in faqItems"
-                :key="index"
-                :label="item.question"
-                header-class="text-primary"
-              >
-                <q-card>
-                  <q-card-section>
-                    {{ item.answer }}
-                  </q-card-section>
-                </q-card>
-              </q-expansion-item>
-            </q-list>
+          <div class="col-12 col-md-10 col-lg-8">
+            <div class="faq-categories">
+              <div v-for="(category, index) in faqCategories" :key="index" class="q-mb-xl">
+                <h3 class="text-h5 font-playfair q-mb-lg text-primary">{{ category.title }}</h3>
+                <q-list padding class="rounded-borders">
+                  <q-expansion-item
+                    v-for="(item, itemIndex) in category.items"
+                    :key="itemIndex"
+                    expand-separator
+                    :label="item.question"
+                    header-class="text-subtitle1 text-weight-medium"
+                  >
+                    <q-card>
+                      <q-card-section class="text-body1">
+                        <div class="text-body1" v-html="item.answer"></div>
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+                </q-list>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -241,31 +252,31 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import HeroSection from 'src/components/HeroSection.vue';
 
-const houseRules = [
+const houseRules = ref([
   {
-    icon: 'group',
-    title: 'Maximaal 4 personen',
-    description: 'Perfect voor koppels, families of kleine groepen vrienden die van rust houden.'
-  },
-  {
-    icon: 'smoke_free',
-    title: 'Niet roken',
-    description: 'Roken is niet toegestaan in het huis. Buiten roken kan op het terras.'
-  },
-  {
-    icon: 'block',
-    title: 'Geen feesten',
-    description: 'We verhuren niet voor feesten of evenementen. Respecteer de rust van de buurt.'
+    icon: 'family_restroom',
+    title: 'Gezinsvriendelijk',
+    description: 'Perfect voor families en kleine groepen tot 6 personen'
   },
   {
     icon: 'pets',
     title: 'Huisdieren welkom',
-    description: 'Huisdieren zijn van harte welkom. Laat het ons even weten bij de boeking.'
+    description: 'Huisdieren zijn toegestaan in overleg'
+  },
+  {
+    icon: 'smoke_free',
+    title: 'Rookvrij binnen',
+    description: 'Roken is alleen buiten toegestaan'
+  },
+  {
+    icon: 'volume_off',
+    title: 'Rustige omgeving',
+    description: 'Geen feesten of luide muziek voor de rust van onze buren'
   }
-];
+]);
 
 const facilities = [
   {
@@ -308,55 +319,89 @@ const facilities = [
   }
 ];
 
-const pricing = [
+const pricing = ref([
   {
-    name: 'Laagseizoen',
-    period: 'November t/m maart',
-    price: '€145 per nacht'
+    name: 'Hoogseizoen',
+    period: 'Juli - Augustus',
+    price: '€220 per nacht'
   },
   {
     name: 'Middenseizoen',
-    period: 'April, mei & oktober',
-    price: '€175 per nacht'
+    period: 'April - Juni, September',
+    price: '€180 per nacht'
   },
   {
-    name: 'Hoogseizoen',
-    period: 'Juni t/m september',
-    price: '€210 per nacht'
+    name: 'Laagseizoen',
+    period: 'Oktober - Maart',
+    price: '€150 per nacht'
   }
-];
+]);
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-const faqItems: FaqItem[] = [
+const faqCategories = ref([
   {
-    question: 'Wat zijn de aankomst- en vertrektijden?',
-    answer: 'Aankomst is mogelijk vanaf 16:00 uur, vertrek voor 10:00 uur. In overleg zijn andere tijden mogelijk.'
+    title: 'Verblijf & Voorzieningen',
+    items: [
+      {
+        question: 'Zijn huisdieren toegestaan?',
+        answer: 'Ja, huisdieren zijn welkom in Casa Mi Sueño. Laat het ons wel even weten bij je boeking zodat we hier rekening mee kunnen houden.'
+      },
+      {
+        question: 'Wat zijn de in- en uitchecktijden?',
+        answer: 'Je kunt inchecken vanaf 16:00 uur. Op de dag van vertrek vragen we je om uiterlijk 10:00 uur uit te checken, zodat we voldoende tijd hebben om het huis voor te bereiden voor de volgende gasten.'
+      },
+      {
+        question: 'Is het huis geschikt voor kinderen?',
+        answer: 'Ja, Casa Mi Sueño is zeer geschikt voor families met kinderen. We hebben diverse voorzieningen zoals kinderstoelen en een kinderbed (op aanvraag). Houd er wel rekening mee dat het zwembad geen apart kindergedeelte heeft en niet is omheind. Ouderlijk toezicht is daarom noodzakelijk.'
+      },
+      {
+        question: 'Zijn handdoeken en beddengoed inbegrepen?',
+        answer: 'Ja, alle bed- en badlinnen is inbegrepen in de huurprijs. Dit omvat:<br>• Luxe beddengoed<br>• Badhanddoeken<br>• Badlakens voor bij het zwembad<br>• Keukenlinnen'
+      },
+      {
+        question: 'Is er airconditioning aanwezig?',
+        answer: 'Ja, alle slaapkamers en de woonkamer zijn voorzien van airconditioning. Deze kan zowel voor koeling als verwarming worden gebruikt.'
+      }
+    ]
   },
   {
-    question: 'Is er WiFi beschikbaar?',
-    answer: 'Ja, er is gratis WiFi beschikbaar in het hele huis en in de tuin.'
+    title: 'Praktische Informatie',
+    items: [
+      {
+        question: 'Is er parkeergelegenheid?',
+        answer: 'Ja, er is een eigen, afgesloten parkeerplaats op het terrein met ruimte voor twee auto\'s. De parkeerplaats bevindt zich direct bij het huis.'
+      },
+      {
+        question: 'Is er WiFi beschikbaar?',
+        answer: 'Ja, er is gratis WiFi beschikbaar in het hele huis en in de tuin. De verbinding is snel en stabiel, geschikt voor streamen en videobellen.'
+      },
+      {
+        question: 'Hoe werkt de sleuteloverdracht?',
+        answer: 'Bij aankomst word je persoonlijk ontvangen door onze lokale beheerder. Deze zal je rondleiden door het huis en uitleg geven over alle voorzieningen. Bij vertrek lever je de sleutels weer in bij de beheerder.'
+      },
+      {
+        question: 'Is er een wasmachine aanwezig?',
+        answer: 'Ja, er is een wasmachine beschikbaar voor gebruik tijdens je verblijf. We voorzien ook in wasmiddel en een droogrek.'
+      }
+    ]
   },
   {
-    question: 'Is het zwembad het hele jaar door beschikbaar?',
-    answer: 'Het zwembad is het hele jaar door beschikbaar, maar is niet verwarmd. In de zomermaanden heeft het water een aangename temperatuur. In voor- en najaar kan het water frisser zijn, en in de winter is het te koud om te zwemmen.'
-  },
-  {
-    question: 'Zijn huisdieren welkom?',
-    answer: 'Ja, huisdieren zijn van harte welkom! We vragen je wel om dit bij de boeking te vermelden, zodat we eventuele specifieke wensen kunnen bespreken. We houden van dieren en begrijpen dat ze deel uitmaken van je gezin.'
-  },
-  {
-    question: 'Is er parkeergelegenheid?',
-    answer: 'Ja, er is gratis parkeergelegenheid op eigen terrein voor meerdere auto\'s.'
-  },
-  {
-    question: 'Moet ik een borg betalen?',
-    answer: 'We vragen een borg van €500, die we na je verblijf terugstorten als alles in goede orde is achtergelaten. De borg ontvang je binnen 5-7 werkdagen na vertrek terug op je rekening. Dit geeft ons de tijd om het huis te controleren en eventuele kleine problemen op te lossen.'
+    title: 'Boeken & Betalen',
+    items: [
+      {
+        question: 'Hoe werkt de betaling?',
+        answer: 'De betaling verloopt in twee delen:<br>• 30% aanbetaling bij reservering<br>• Resterende 70% uiterlijk 8 weken voor aankomst<br><br>Daarnaast vragen we een borg van €500, die binnen 5-7 werkdagen na vertrek wordt teruggestort.'
+      },
+      {
+        question: 'Wat is het minimale verblijf?',
+        answer: 'Het minimale verblijf is afhankelijk van het seizoen:<br>• Laag- en middenseizoen: 5 nachten<br>• Hoogseizoen: 7 nachten<br><br>Voor langere verblijven (3+ weken) kunnen we een speciaal tarief aanbieden.'
+      },
+      {
+        question: 'Welke kosten zijn inbegrepen in de huurprijs?',
+        answer: 'In de huurprijs zijn inbegrepen:<br>• Eindschoonmaak<br>• Bed- en badlinnen<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud<br>• Tuinverzorging<br><br>Niet inbegrepen is de toeristenbelasting (€2,50 p.p.p.n.).'
+      }
+    ]
   }
-];
+]);
 
 const checkInInfo = {
   time: '16:00',
@@ -370,12 +415,12 @@ onMounted(() => {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    'mainEntity': faqItems.map(item => ({
+    'mainEntity': faqCategories.value.map(category => ({
       '@type': 'Question',
-      'name': item.question,
+      'name': category.title,
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': item.answer
+        'text': category.items.map(item => item.answer).join('<br>')
       }
     }))
   };
@@ -410,9 +455,29 @@ onMounted(() => {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.faq-list {
-  .q-expansion-item {
-    margin-bottom: 1rem;
+.faq-categories {
+  :deep(.q-expansion-item) {
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    background: white;
+    
+    &:hover {
+      border-color: var(--cms-terracotta);
+    }
+    
+    .q-expansion-item__container {
+      border-radius: 8px;
+    }
+    
+    .q-item {
+      padding: 1rem 1.5rem;
+    }
+    
+    .q-card {
+      box-shadow: none;
+      background: #f8f9fa;
+    }
   }
 }
 

@@ -166,6 +166,14 @@
                 icon="place"
                 label="Open in Google Maps"
                 @click="openInGoogleMaps"
+                class="q-mr-md"
+              />
+              <q-btn
+                outline
+                color="primary"
+                icon="place"
+                label="Open in Apple Maps"
+                @click="openInAppleMaps"
               />
             </div>
           </div>
@@ -205,6 +213,10 @@ const mapUrl = ref(
 
 const openInGoogleMaps = () => {
   window.open(`https://www.google.com/maps/search/?api=1&query=${ENCODED_ADDRESS}`, '_blank');
+};
+
+const openInAppleMaps = () => {
+  window.open(`https://maps.apple.com/?q=Carrer+de+les+Petúnies+16,+L'Alfàs+del+Pi`, '_blank');
 };
 
 const culturalHighlights = [

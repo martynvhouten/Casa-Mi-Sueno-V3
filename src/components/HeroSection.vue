@@ -13,7 +13,7 @@
       <div class="hero-content text-center">
         <div class="animate-fade-in-up">
           <h1 class="text-h2 font-playfair text-sand text-shadow-strong q-mb-md">{{ title }}</h1>
-          <p v-if="subtitle" class="text-h5 text-shadow-light text-accent">{{ subtitle }}</p>
+          <p v-if="subtitle" class="text-h5 text-shadow-light text-sand">{{ subtitle }}</p>
           <slot name="extra"></slot>
         </div>
       </div>
@@ -80,7 +80,7 @@ defineProps({
     rgba(250, 243, 224, 0.1) 0%,
     rgba(244, 162, 97, 0.3) 30%,
     rgba(231, 111, 81, 0.5) 60%,
-    rgba(42, 157, 143, 0.7) 100%
+    rgba(139, 90, 60, 0.7) 100%
   );
   z-index: 1;
 }

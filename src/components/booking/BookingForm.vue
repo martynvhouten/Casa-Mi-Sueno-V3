@@ -203,23 +203,74 @@
         </div>
 
         <!-- Price Summary -->
-        <div class="form-section q-mb-xl" v-if="priceDetails">
+        <div class="form-section q-mb-xl" v-if="priceDetailsWithTax">
           <h4 class="text-h6 font-playfair q-mb-lg">Prijsoverzicht</h4>
           <div class="price-summary bg-sand q-pa-lg rounded-borders">
+            <!-- Season Badge -->
+            <div class="season-badge q-mb-md text-center">
+              <q-chip
+                :color="getSeasonColor(priceDetailsWithTax.season)"
+                text-color="white"
+                icon="schedule"
+                size="sm"
+              >
+                {{ getSeasonName(priceDetailsWithTax.season) }}
+              </q-chip>
+            </div>
+            
             <div class="price-row q-mb-sm">
-              <span>Verblijf ({{ priceDetails.totalNights }} nachten)</span>
-              <span>€{{ priceDetails.basePrice.toLocaleString('nl-NL') }}</span>
+              <span>Verblijf ({{ priceDetailsWithTax.totalNights }} nachten)</span>
+              <span>€{{ calculateOriginalPrice().toLocaleString('nl-NL') }}</span>
             </div>
-            <div v-if="priceDetails.shortStaySurcharge > 0" class="price-row q-mb-sm">
-              <span>Toeslag kort verblijf</span>
-              <span>€{{ priceDetails.shortStaySurcharge.toLocaleString('nl-NL') }}</span>
+            
+            <!-- Discount (if applicable) -->
+            <div v-if="priceDetailsWithTax.discount" class="price-row q-mb-sm discount-row">
+              <span class="text-positive">
+                <q-icon name="percent" size="sm" class="q-mr-xs" />
+                Korting {{ priceDetailsWithTax.discount.reason }} ({{ priceDetailsWithTax.discount.percentage }}%)
+              </span>
+              <span class="text-positive">-€{{ priceDetailsWithTax.discount.amount.toLocaleString('nl-NL') }}</span>
             </div>
+            
+            <!-- Discounted Subtotal -->
+            <div class="price-row q-mb-sm" v-if="priceDetailsWithTax.discount">
+              <span>Subtotaal na korting</span>
+              <span>€{{ priceDetailsWithTax.basePrice.toLocaleString('nl-NL') }}</span>
+            </div>
+            
+            <!-- Cleaning Fee -->
+            <div class="price-row q-mb-sm">
+              <span>Eindschoonmaak</span>
+              <span>€{{ priceDetailsWithTax.cleaningFee.toLocaleString('nl-NL') }}</span>
+            </div>
+
+            <!-- Subtotal without tourist tax -->
+            <div class="price-row q-mb-sm" v-if="priceDetailsWithTax.touristTax">
+              <span class="text-weight-medium">Subtotaal</span>
+              <span class="text-weight-medium">€{{ priceDetailsWithTax.totalPrice.toLocaleString('nl-NL') }}</span>
+            </div>
+
+            <!-- Tourist Tax -->
+            <div v-if="priceDetailsWithTax.touristTax" class="price-row q-mb-sm tourist-tax-row">
+              <span>
+                <q-icon name="location_city" size="sm" class="q-mr-xs" />
+                Toeristenbelasting ({{ priceDetailsWithTax.touristTax.totalGuests }} {{ priceDetailsWithTax.touristTax.totalGuests === 1 ? 'persoon' : 'personen' }})
+              </span>
+              <span>€{{ priceDetailsWithTax.touristTax.totalAmount.toLocaleString('nl-NL') }}</span>
+            </div>
+            
             <div class="price-row total-row q-mt-md">
               <span class="text-weight-bold">Totaal</span>
-              <span class="text-weight-bold">€{{ priceDetails.totalPrice.toLocaleString('nl-NL') }}</span>
+              <span class="text-weight-bold text-primary">€{{ (priceDetailsWithTax.totalPriceWithTax || priceDetailsWithTax.totalPrice).toLocaleString('nl-NL') }}</span>
             </div>
             <div class="text-caption text-grey-7 q-mt-sm">
-              * Exclusief borg (€500) en toeristenbelasting
+              <div v-if="priceDetailsWithTax.touristTax">
+                * Borg (€{{ priceDetailsWithTax.securityDeposit.toLocaleString('nl-NL') }}) wordt bij aankomst betaald<br>
+                * Toeristenbelasting wordt ter plaatse in contanten betaald
+              </div>
+              <div v-else>
+                * Exclusief borg (€{{ priceDetailsWithTax.securityDeposit.toLocaleString('nl-NL') }}) en toeristenbelasting (€2,50 p.p.p.n.)
+              </div>
             </div>
           </div>
         </div>
@@ -346,6 +397,60 @@ const handleFormInteraction = () => {
 };
 
 const formIsActive = ref(false);
+
+// Helper functions for pricing display
+const getSeasonColor = (season: 'low' | 'mid' | 'high' | 'holiday'): string => {
+  switch (season) {
+    case 'low': return 'blue-grey';
+    case 'mid': return 'orange';
+    case 'high': return 'red';
+    case 'holiday': return 'purple';
+    default: return 'primary';
+  }
+};
+
+const getSeasonName = (season: 'low' | 'mid' | 'high' | 'holiday'): string => {
+  switch (season) {
+    case 'low': return 'Laagseizoen';
+    case 'mid': return 'Middenseizoen';
+    case 'high': return 'Hoogseizoen';
+    case 'holiday': return 'Vakantieperiode';
+    default: return '';
+  }
+};
+
+const calculateOriginalPrice = (): number => {
+  if (!props.priceDetails) return 0;
+  
+  if (props.priceDetails.discount) {
+    return props.priceDetails.basePrice + props.priceDetails.discount.amount;
+  }
+  return props.priceDetails.basePrice;
+};
+
+// Calculate price details with guest count for tourist tax
+const priceDetailsWithTax = computed(() => {
+  if (!props.priceDetails || !props.selectedDates || props.selectedDates.length !== 2) return props.priceDetails;
+  
+  // Import the calculation function - for now, recreate the tourist tax calculation
+  const TOURIST_TAX_PER_PERSON_PER_NIGHT = 2.50;
+  const guests = totalGuests.value;
+  
+  if (guests > 0) {
+    const touristTaxAmount = guests * props.priceDetails.totalNights * TOURIST_TAX_PER_PERSON_PER_NIGHT;
+    return {
+      ...props.priceDetails,
+      touristTax: {
+        perPersonPerNight: TOURIST_TAX_PER_PERSON_PER_NIGHT,
+        totalGuests: guests,
+        totalAmount: touristTaxAmount
+      },
+      totalPriceWithTax: props.priceDetails.totalPrice + touristTaxAmount
+    };
+  }
+  
+  return props.priceDetails;
+});
 
 // Simplified validation rules (individual field validation only)
 const adultValidationRules = [
@@ -533,6 +638,21 @@ defineExpose({
   justify-content: space-between;
   align-items: center;
   padding: 0.25rem 0;
+}
+
+.discount-row {
+  background: rgba(76, 175, 80, 0.1);
+  margin: 0.5rem -1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+.tourist-tax-row {
+  background: rgba(74, 144, 226, 0.05);
+  margin: 0.5rem -1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(74, 144, 226, 0.1);
 }
 
 .total-row {

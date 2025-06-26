@@ -5,7 +5,7 @@
       image="/images/Tuin_vanaf_veranda.jpg"
       alt-text="Uitzicht op de tuin vanaf de veranda"
       title="Dit zijn wij"
-      subtitle="Esther & Milco - jullie gastvrouw en gastheer"
+      subtitle="Esther & Milco - eigenaren van Casa Mi Sueño"
     />
 
     <!-- Our Story Section -->

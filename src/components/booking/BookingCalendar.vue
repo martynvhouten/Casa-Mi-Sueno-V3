@@ -58,14 +58,7 @@
           <span class="text-subtitle2">Geboekt</span>
         </div>
       </div>
-      <div v-if="showLongStayMessage" class="long-stay-message q-mt-lg">
-        <q-banner class="bg-accent text-white" style="background: rgba(38, 70, 83, 0.9) !important; border-radius: 8px;">
-          <template v-slot:avatar>
-            <q-icon name="info" color="white" />
-          </template>
-          <span class="text-weight-medium">Voor verblijven langer dan 4 weken maken we graag een speciale prijsafspraak. Neem gerust contact op.</span>
-        </q-banner>
-      </div>
+
     </div>
   </div>
 </template>
@@ -84,32 +77,132 @@ interface CalendarCell {
 enum Season {
   High = 'high',
   Mid = 'mid',
-  Low = 'low'
+  Low = 'low',
+  Holiday = 'holiday'
 }
 
 interface SeasonConfig {
   minNights: number;
-  requiresSaturday: boolean;
   name: string;
 }
 
 const seasonConfigs: Record<Season, SeasonConfig> = {
   [Season.High]: {
     minNights: 7,
-    requiresSaturday: true,
     name: 'Hoogseizoen'
   },
   [Season.Mid]: {
     minNights: 5,
-    requiresSaturday: false,
     name: 'Middenseizoen'
   },
   [Season.Low]: {
-    minNights: 3,
-    requiresSaturday: false,
+    minNights: 7,
     name: 'Laagseizoen'
+  },
+  [Season.Holiday]: {
+    minNights: 7,
+    name: 'Vakantieperiode'
   }
 };
+
+// Holiday periods (Christmas, New Year's, Easter)
+const holidayPeriods = [
+  // Christmas/New Year period
+  { start: new Date(2024, 11, 20), end: new Date(2025, 0, 6) }, // Dec 20 - Jan 6
+  { start: new Date(2025, 11, 20), end: new Date(2026, 0, 6) }, // Dec 20 - Jan 6
+  // Easter periods (approximate - would need to be updated yearly)
+  { start: new Date(2024, 2, 25), end: new Date(2024, 3, 8) }, // Easter 2024
+  { start: new Date(2025, 3, 14), end: new Date(2025, 3, 28) }, // Easter 2025
+];
+
+function isHolidayPeriod(date: Date): boolean {
+  return holidayPeriods.some(period => 
+    date >= period.start && date <= period.end
+  );
+}
+
+function getSeason(date: Date): Season {
+  // Check for holiday periods first
+  if (isHolidayPeriod(date)) {
+    return Season.Holiday;
+  }
+
+  const month = date.getMonth();
+  
+  // High season: June, July, August, September
+  if (month >= 5 && month <= 8) {
+    return Season.High;
+  }
+  
+  // Mid season: March, April, May, October
+  if ((month >= 2 && month <= 4) || month === 9) {
+    return Season.Mid;
+  }
+  
+  // Low season: January, February, November, December
+  return Season.Low;
+}
+
+const currentSeason = computed(() => getSeason(new Date()));
+
+const currentSeasonInfo = computed(() => {
+  const config = seasonConfigs[currentSeason.value];
+  return `${config.name}: minimaal ${config.minNights} nachten`;
+});
+
+function isDateDisabled(date: Date): boolean {
+  const dateString = date.toISOString().split('T')[0];
+  
+  // Check if date is booked
+  if (bookedDates.value.includes(dateString)) {
+    return true;
+  }
+
+  // If it's a potential check-in date, no special restrictions for check-in days
+  if (!dates.value || dates.value.length === 0) {
+    return false;
+  }
+
+  // If start date is selected, enforce minimum stay
+  if (dates.value.length === 1) {
+    const startDate = dates.value[0];
+    const season = getSeason(startDate);
+    const config = seasonConfigs[season];
+    
+    const diffDays = Math.ceil((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < config.minNights) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function getCellClassName(cell: CalendarCell): string {
+  if (isDateDisabled(cell.value)) {
+    return 'dp__disabled';
+  }
+  return '';
+}
+
+const showLongStayMessage = computed(() => {
+  if (!dates.value || dates.value.length !== 2) return false;
+  const totalNights = Math.ceil((dates.value[1].getTime() - dates.value[0].getTime()) / (1000 * 60 * 60 * 24));
+  return totalNights > 21;
+});
+
+function handleDateSelect(value: Date[] | null) {
+  dates.value = value;
+  emit('update:modelValue', value);
+  
+  if (value && value.length === 2) {
+    const totalNights = Math.ceil((value[1].getTime() - value[0].getTime()) / (1000 * 60 * 60 * 24));
+    if (totalNights > 21) {
+      emit('long-stay');
+    }
+  }
+}
 
 const props = defineProps<{
   modelValue: Date[] | null;
@@ -126,89 +219,6 @@ const $q = useQuasar();
 const isMobile = computed(() => $q.screen.lt.md);
 const today = computed(() => new Date());
 const calendarColumns = computed(() => (isMobile.value ? 1 : 2));
-
-function getSeason(date: Date): Season {
-  const month = date.getMonth();
-  // High season: July and August
-  if (month >= 6 && month <= 7) {
-    return Season.High;
-  }
-  // Mid season: April-June, September
-  if ((month >= 3 && month <= 5) || month === 8) {
-    return Season.Mid;
-  }
-  // Low season: October-March
-  return Season.Low;
-}
-
-const currentSeason = computed(() => getSeason(new Date()));
-
-const currentSeasonInfo = computed(() => {
-  const config = seasonConfigs[currentSeason.value];
-  let info = `${config.name}: minimaal ${config.minNights} nachten`;
-  if (config.requiresSaturday) {
-    info += ', aankomst op zaterdag';
-  }
-  return info;
-});
-
-function isValidCheckInDay(date: Date): boolean {
-  const season = getSeason(date);
-  if (season === Season.High) {
-    return date.getDay() === 6; // Saturday
-  }
-  return true;
-}
-
-function isDateDisabled(date: Date): boolean {
-  const dateString = date.toISOString().split('T')[0];
-  
-  // Check if date is booked
-  if (bookedDates.value.includes(dateString)) {
-    return true;
-  }
-
-  // If it's a potential check-in date
-  if (!dates.value || dates.value.length === 0) {
-    return !isValidCheckInDay(date);
-  }
-
-  // If start date is selected, enforce minimum stay and Saturday check-out in high season
-  if (dates.value.length === 1) {
-    const startDate = dates.value[0];
-    const season = getSeason(startDate);
-    const config = seasonConfigs[season];
-    
-    const diffDays = Math.ceil((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-    
-    if (diffDays < config.minNights) {
-      return true;
-    }
-
-    if (config.requiresSaturday && date.getDay() !== 6) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-function getCellClassName(cell: CalendarCell): string {
-  if (isDateDisabled(cell.value)) {
-    return 'dp__disabled';
-  }
-  if (isValidCheckInDay(cell.value) && (!dates.value || dates.value.length === 0)) {
-    return 'checkin-available';
-  }
-  return '';
-}
-
-const showLongStayMessage = computed(() => {
-  if (!dates.value || dates.value.length !== 2) return false;
-  const diffTime = Math.abs(dates.value[1].getTime() - dates.value[0].getTime());
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  return diffDays > 28;
-});
 
 // Watch for date changes and announce to screen readers
 watch(dates, (newDates) => {
@@ -244,30 +254,6 @@ watch(() => props.modelValue, (newDates) => {
   dates.value = newDates;
 });
 
-const handleDateSelect = (modelData: Date[] | null) => {
-  if (modelData && modelData.length === 2) {
-    const startDate = modelData[0];
-    const endDate = modelData[1];
-    const season = getSeason(startDate);
-    const config = seasonConfigs[season];
-    
-    const diffDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-    
-    if (diffDays < config.minNights) {
-      calendarAnnouncement.value = `Minimum verblijf van ${config.minNights} nachten niet behaald. Selecteer een langere periode.`;
-      $q.notify({
-        type: 'warning',
-        message: `In ${config.name.toLowerCase()} geldt een minimum verblijf van ${config.minNights} nachten.`,
-        position: 'top',
-        timeout: 3000
-      });
-      return;
-    }
-  }
-  
-  emit('update:modelValue', modelData);
-};
-
 onMounted(async () => {
   try {
     calendarAnnouncement.value = 'Beschikbaarheid wordt geladen...';
@@ -290,14 +276,15 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .calendar-wrapper {
   background: white;
-  padding: 2rem;
+  padding: 2.5rem;
   width: 100%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  background-color: #f8f9fa;
-  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(231, 111, 81, 0.1);
   
   &.mobile {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .calendar-container {
@@ -314,20 +301,38 @@ onMounted(async () => {
     :deep(.dp__main) {
       width: fit-content;
       margin: 0 auto;
+      
+      // Make calendar larger on desktop/tablet
+      @media (min-width: 768px) {
+        transform: scale(1.15);
+        transform-origin: center;
+        margin: 2rem auto;
+      }
+      
+      @media (min-width: 1024px) {
+        transform: scale(1.25);
+        margin: 3rem auto;
+      }
     }
   }
 
   .calendar-legend {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 12px;
+    border: 1px solid rgba(231, 111, 81, 0.1);
     
     @media (max-width: 768px) {
       gap: 1rem;
+      margin-top: 1rem;
+      padding: 1rem;
       .legend-item {
         font-size: 0.9rem;
       }
@@ -344,58 +349,143 @@ onMounted(async () => {
   
   :deep(.dp__main) {
     font-size: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(231, 111, 81, 0.15);
   }
   
+  // Calendar header styling
   :deep(.dp__calendar_header) {
     font-weight: 600;
     color: var(--cms-deep-terracotta);
+    background: linear-gradient(135deg, #fdf2f0 0%, #fcf8f7 100%);
+    padding: 1rem;
+    border-bottom: 2px solid rgba(231, 111, 81, 0.1);
+  }
+  
+  :deep(.dp__calendar_header_item) {
+    color: var(--cms-deep-terracotta);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 0;
+  }
+  
+  // Month navigation
+  :deep(.dp__month_year_select) {
+    color: var(--cms-deep-terracotta);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  
+  :deep(.dp__prev),
+  :deep(.dp__next) {
+    color: var(--cms-deep-terracotta);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: rgba(231, 111, 81, 0.1);
+      transform: scale(1.1);
+    }
+  }
+  
+  // Day cells
+  :deep(.dp__calendar) {
+    background: white;
+  }
+  
+  :deep(.dp__calendar_row) {
+    margin: 0;
   }
   
   :deep(.dp__day_num) {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
     text-align: center;
+    border-radius: 8px;
+    margin: 2px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    
+    &:hover:not(.dp__disabled) {
+      background: rgba(231, 111, 81, 0.1);
+      transform: scale(1.05);
+    }
   }
   
+  // Selected range styling
   :deep(.dp__range_start),
   :deep(.dp__range_end) {
-    background: var(--cms-deep-terracotta) !important;
+    background: linear-gradient(135deg, var(--cms-deep-terracotta) 0%, #d63031 100%) !important;
     color: white !important;
-    border-radius: 50%;
+    border-radius: 8px !important;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+    transform: scale(1.05);
   }
 
   :deep(.dp__range_between) {
-    background: rgba(231, 111, 81, 0.1) !important;
-    border-radius: 0;
+    background: linear-gradient(135deg, rgba(231, 111, 81, 0.15) 0%, rgba(231, 111, 81, 0.1) 100%) !important;
+    border-radius: 0 !important;
+    color: var(--cms-deep-terracotta);
   }
 
   :deep(.dp__active_date) {
     background: var(--cms-deep-terracotta);
     color: white;
+    border-radius: 8px;
+    font-weight: 600;
   }
 
+  // Today indicator
   :deep(.dp__today) {
     border: 2px solid var(--cms-light-terracotta);
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--cms-deep-terracotta);
+    background: rgba(231, 111, 81, 0.05);
   }
 
+  // Disabled dates (booked)
   :deep(.dp__disabled) {
-    color: #dcdcdc !important;
-    background-color: #f5f5f5 !important;
+    color: #bbb !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%) !important;
     text-decoration: line-through;
     cursor: not-allowed;
+    border-radius: 8px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background: #ff6b6b;
+      border-radius: 50%;
+    }
   }
 
-  :deep(.checkin-available) {
-    border: 2px dashed var(--cms-deep-terracotta);
-    border-radius: 50%;
+  // Weekend highlighting
+  :deep(.dp__calendar_item:nth-child(7n)),
+  :deep(.dp__calendar_item:nth-child(7n-1)) {
+    .dp__day_num:not(.dp__disabled):not(.dp__range_start):not(.dp__range_end):not(.dp__range_between) {
+      background: rgba(74, 144, 226, 0.05);
+      color: #4a90e2;
+    }
   }
 }
 
 .calendar-legend {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   margin-top: 1rem;
   flex-wrap: wrap;
 }
@@ -403,36 +493,64 @@ onMounted(async () => {
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .legend-color {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .today-dot {
   border: 2px solid var(--cms-light-terracotta);
+  background: rgba(231, 111, 81, 0.05);
 }
 
 .selected-range {
-  background-color: var(--cms-deep-terracotta);
+  background: linear-gradient(135deg, var(--cms-deep-terracotta) 0%, #d63031 100%);
+  border: none;
 }
 
 .booked-day-legend {
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%);
   border: 1px solid #dcdcdc;
-  text-decoration: line-through;
-}
-
-.checkin-day {
-  border: 2px dashed var(--cms-deep-terracotta);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: #ff6b6b;
+    border-radius: 50%;
+  }
 }
 
 .season-info {
+  margin-bottom: 1.5rem;
+  
   :deep(.q-chip) {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -450,16 +568,27 @@ onMounted(async () => {
 
 // Branded loading spinner for calendar
 .branded-calendar-spinner {
-  width: 48px;
-  height: 48px;
-  border: 4px solid var(--cms-sand);
+  width: 64px;
+  height: 64px;
+  border: 5px solid rgba(231, 111, 81, 0.1);
   border-radius: 50%;
   border-top-color: var(--cms-deep-terracotta);
   animation: spin 1s ease-in-out infinite;
   margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(231, 111, 81, 0.2);
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .calendar-wrapper {
+    .airbnb-style-calendar :deep(.dp__main) {
+      transform: none !important;
+      margin: 1rem auto !important;
+    }
+  }
 }
 </style> 

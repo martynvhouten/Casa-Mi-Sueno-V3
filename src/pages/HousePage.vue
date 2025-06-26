@@ -5,18 +5,18 @@
       image="/images/Woonkamer_tafel_stoelen.jpg"
       alt-text="Eettafel en stoelen in de woonkamer"
       title="Ons tweede thuis"
-      subtitle="Waar comfort en karakter elkaar ontmoeten"
+      subtitle="Comfortabel en sfeervol ingericht"
     />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Meer dan vier muren</h2>
+        <h2 class="font-playfair q-mb-lg">Een thuis vol karakter</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Casa Mi Sueño voelt niet als een vakantiehuis - het voelt als thuiskomen. Elke kamer heeft zijn 
-          eigen verhaal, elke hoek is met liefde ingericht. Van de gezellige woonkamer waar je 's avonds 
-          ontspant tot het zwembad waar je overdag afkoelt. Dit is niet zomaar een huis; dit is de plek 
-          waar mooie herinneringen ontstaan.
+          Dit is het huis waar wij zelf graag onze vakanties doorbrengen. Je vindt hier 
+          geen standaard vakantiehuisinrichting, maar onze persoonlijke smaak en voorkeuren. 
+          Van de comfortabele woonkamer waar we 's avonds ontspannen tot de veranda waar we 
+          genieten van de Spaanse zonsondergangen.
         </p>
       </div>
     </section>

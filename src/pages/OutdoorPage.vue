@@ -4,19 +4,19 @@
     <HeroSection
       image="/images/Tuin_zwembad.jpg"
       alt-text="Zwembad en tuin van het vakantiehuis"
-      title="Hier leef je écht"
-      subtitle="Waar elke dag voelt als vakantie"
+      title="Ons buitenparadijs"
+      subtitle="Waar het Spaanse leven zich afspeelt"
     />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">Ontbijt in de zon, diner onder de sterren</h2>
+        <h2 class="font-playfair q-mb-lg">Van ochtendkoffie tot sterrenhemel</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Hier begrijp je pas waarom Spanjaarden zo van het buitenleven houden. Je dag begint met 
-          koffie op de veranda, gaat over in luie middagen bij het zwembad, en eindigt met een barbecue 
-          terwijl de zon ondergaat. Dit is niet gewoon een tuin - dit is jouw privé-oase waar tijd 
-          even stilstaat en je gewoon kunt zijn.
+          De tuin en het zwembad zijn het kloppende hart van Casa Mi Sueño. Hier brengen we 
+          zelf het grootste deel van onze tijd door - van de eerste koffie op de veranda tot 
+          de laatste borrel onder de sterren. De verschillende terrassen en zithoeken zorgen 
+          ervoor dat er altijd wel een perfect plekje is, of je nu zoekt naar zon of schaduw.
         </p>
       </div>
     </section>
@@ -116,9 +116,9 @@
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">BBQ & Buitenkoken</h2>
             <p class="text-body1 q-mb-lg">
-              De keramische Bastard BBQ staat klaar voor heerlijke barbecues. Hoewel eenvoudig 
-              opgesteld op een houten plank, is deze hoogwaardige BBQ perfect voor het bereiden 
-              van de lekkerste gerechten in de buitenlucht.
+              De keramische Bastard BBQ staat klaar voor heerlijke barbecues. Deze hoogwaardige 
+              keramische BBQ geeft perfecte resultaten en is ideaal voor het bereiden van 
+              heerlijke gerechten in de buitenlucht.
             </p>
             <ul class="feature-list q-mb-xl">
               <li>Keramische Bastard BBQ</li>

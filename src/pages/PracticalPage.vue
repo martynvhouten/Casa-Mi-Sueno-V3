@@ -66,21 +66,25 @@
               <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
               <div class="season-pricing q-mb-xl">
                 <div v-for="season in pricing" :key="season.period" class="season-row q-py-md">
-                  <div class="row items-center justify-between">
+                  <div class="row items-center justify-between q-mb-sm">
                     <div class="col-8">
                       <h4 class="q-mb-sm">{{ season.name }}</h4>
                       <p class="text-grey-8 q-mb-none">{{ season.period }}</p>
+                      <p v-if="season.note" class="text-caption text-orange q-mb-none q-mt-xs">
+                        <q-icon name="info" size="xs" class="q-mr-xs" />
+                        {{ season.note }}
+                      </p>
                     </div>
                     <div class="col-4 text-right">
                       <p class="text-h6 q-mb-none">{{ season.price }}</p>
+                      <p class="text-body2 text-grey-7 q-mb-none">{{ season.weekly }}</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-grey-8">
-                <p class="q-mb-sm">Prijzen zijn inclusief:</p>
+                <p class="q-mb-sm">Inclusieven:</p>
                 <ul class="feature-list q-mb-lg">
-                  <li>Professionele eindschoonmaak</li>
                   <li>Luxe bed- en badlinnen</li>
                   <li>Welkomstpakket</li>
                   <li>Energiekosten & WiFi</li>
@@ -88,8 +92,14 @@
                   <li>Tuinverzorging</li>
                   <li>24/7 lokale ondersteuning</li>
                 </ul>
-                <p class="text-caption">* Minimaal verblijf: 5-7 nachten (seizoensafhankelijk)</p>
-                <p class="text-caption">* Langere verblijven (3+ weken): vraag naar speciale tarieven</p>
+                <p class="q-mb-sm">Extra kosten:</p>
+                <ul class="feature-list q-mb-lg">
+                  <li>Eindschoonmaak: €100 (éénmalig)</li>
+                  <li>Borg: €300 (wordt teruggestort)</li>
+                  <li>Toeristenbelasting: €2,50 p.p.p.n.</li>
+                </ul>
+                <p class="text-caption">* Korting bij langere verblijven: 2+ weken 10%, 4+ weken 15%</p>
+                <p class="text-caption">* Verblijven langer dan 3 weken: neem contact op</p>
               </div>
             </div>
           </div>
@@ -99,12 +109,13 @@
               <div class="q-mb-xl">
                 <h4 class="q-mb-md">Voorwaarden</h4>
                 <ul class="feature-list">
-                  <li>Minimaal verblijf laag/middenseizoen: 5 nachten</li>
+                  <li>Minimaal verblijf laagseizoen: 7 nachten</li>
+                  <li>Minimaal verblijf middenseizoen: 5 nachten</li>
                   <li>Minimaal verblijf hoogseizoen: 7 nachten</li>
                   <li>Geen korte weekendverblijven mogelijk</li>
                   <li>Aanbetaling: 30% bij boeking</li>
                   <li>Restbetaling: 8 weken voor aankomst</li>
-                  <li>Waarborg: €500 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
+                  <li>Borg: €300 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
                   <li>Toeristenbelasting: €2,50 p.p.p.n.</li>
                 </ul>
               </div>
@@ -322,18 +333,28 @@ const facilities = [
 const pricing = ref([
   {
     name: 'Hoogseizoen',
-    period: 'Juli - Augustus',
-    price: '€220 per nacht'
+    period: 'Juni - September',
+    price: '€160 per nacht',
+    weekly: '€1.120 per week'
   },
   {
     name: 'Middenseizoen',
-    period: 'April - Juni, September',
-    price: '€180 per nacht'
+    period: 'Maart - Mei, Oktober',
+    price: '€135 per nacht',
+    weekly: '€945 per week'
   },
   {
     name: 'Laagseizoen',
-    period: 'Oktober - Maart',
-    price: '€150 per nacht'
+    period: 'Januari, Februari, November, December',
+    price: '€110 per nacht',
+    weekly: '€770 per week'
+  },
+  {
+    name: 'Vakantieperiodes',
+    period: 'Kerst, Nieuwjaar, Pasen',
+    price: '€170 per nacht',
+    weekly: '€1.190 per week',
+    note: 'Vaak bezet door familie'
   }
 ]);
 
@@ -389,15 +410,15 @@ const faqCategories = ref([
     items: [
       {
         question: 'Hoe werkt de betaling?',
-        answer: 'De betaling verloopt in twee delen:<br>• 30% aanbetaling bij reservering<br>• Resterende 70% uiterlijk 8 weken voor aankomst<br><br>Daarnaast vragen we een borg van €500, die binnen 5-7 werkdagen na vertrek wordt teruggestort.'
+        answer: 'De betaling verloopt in twee delen:<br>• 30% aanbetaling bij reservering<br>• Resterende 70% uiterlijk 8 weken voor aankomst<br><br>Daarnaast vragen we een borg van €300, die binnen 5-7 werkdagen na vertrek wordt teruggestort.'
       },
       {
         question: 'Wat is het minimale verblijf?',
-        answer: 'Het minimale verblijf is afhankelijk van het seizoen:<br>• Laag- en middenseizoen: 5 nachten<br>• Hoogseizoen: 7 nachten<br><br>Voor langere verblijven (3+ weken) kunnen we een speciaal tarief aanbieden.'
+        answer: 'Het minimale verblijf is afhankelijk van het seizoen:<br>• Laagseizoen: 7 nachten<br>• Middenseizoen: 5 nachten<br>• Hoogseizoen: 7 nachten<br>• Vakantieperiodes: 7 nachten<br><br>Voor langere verblijven (3+ weken) kunnen we een speciale prijsafspraak maken.'
       },
       {
         question: 'Welke kosten zijn inbegrepen in de huurprijs?',
-        answer: 'In de huurprijs zijn inbegrepen:<br>• Eindschoonmaak<br>• Bed- en badlinnen<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud<br>• Tuinverzorging<br><br>Niet inbegrepen is de toeristenbelasting (€2,50 p.p.p.n.).'
+        answer: 'In de huurprijs zijn inbegrepen:<br>• Bed- en badlinnen<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud<br>• Tuinverzorging<br><br>Extra kosten:<br>• Eindschoonmaak: €100 (eenmalig)<br>• Borg: €300 (refundeerbaar)<br>• Toeristenbelasting: €2,50 p.p.p.n.<br><br>Kortingen bij langer verblijf:<br>• 2+ weken: 10% korting<br>• 4+ weken: 15% korting'
       }
     ]
   }

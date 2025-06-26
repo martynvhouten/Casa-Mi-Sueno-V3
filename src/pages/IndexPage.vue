@@ -4,8 +4,8 @@
     <HeroSection
       image="/images/Tuin_zwembad.jpg"
       alt-text="Zwembad en tuin van Casa Mi Sueño"
-      title="Waar dromen werkelijkheid worden"
-      subtitle="Jouw mediterrane verhaal begint hier"
+      title="Welkom bij Casa Mi Sueño"
+      subtitle="Ons stukje paradijs tussen bergen en zee"
     >
       <template #extra>
         <q-btn
@@ -22,10 +22,10 @@
       <div class="container text-center">
         <h2 class="q-mb-lg font-playfair">Hallo! Wij zijn Esther en Milco</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
-          Toen we dit huis vonden, wisten we het meteen: dit is het. Ons tweede thuis waar we onze 
-          liefde voor Spanje en het mediterrane leven delen. Casa Mi Sueño is meer dan een vakantiehuis - 
-          het is de plek waar we rust vinden, waar onze volwassen kinderen ook graag komen met hun vrienden, en waar 
-          elke dag voelt als een kleine vakantie. Nu nodigen we jou uit om onze droom te delen.
+          Casa Mi Sueño is ons tweede thuis geworden - een plek waar we zelf het liefst zijn 
+          en waar we helemaal tot rust komen. Het rustige L'Alfàs del Pi heeft ons hart gestolen 
+          met zijn perfecte ligging tussen de bergen en zee. Als we er zelf niet zijn, delen we 
+          ons huis graag met gasten die net zoals wij van rust, natuur en het echte Spanje houden.
         </p>
       </div>
     </section>

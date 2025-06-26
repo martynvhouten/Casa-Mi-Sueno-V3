@@ -4,18 +4,18 @@
     <HeroSection
       image="/images/Tuin_veranda.jpg"
       alt-text="De veranda van het vakantiehuis"
-      :title="isBookingInquiry ? 'Heb je vragen over je verblijf?' : 'Laten we kennis maken'"
-      :subtitle="isBookingInquiry ? 'We helpen je graag met al je vragen over Casa Mi Sueño' : 'Persoonlijk contact voor een persoonlijke ervaring'"
+      :title="isBookingInquiry ? 'Vragen over je verblijf?' : 'We helpen je graag'"
+      :subtitle="isBookingInquiry ? 'Laat ons weten waar we je mee kunnen helpen' : 'Voor alle vragen over Casa Mi Sueño'"
     />
 
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
-        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'We zijn er voor je' : 'Zeg maar gewoon hallo' }}</h2>
+        <h2 class="font-playfair q-mb-lg">{{ isBookingInquiry ? 'We staan voor je klaar' : 'Neem gerust contact op' }}</h2>
         <p class="text-body1 q-mb-xl" style="max-width: 600px; margin: 0 auto;">
           {{ isBookingInquiry 
-            ? 'Twijfel je nog over data, heb je speciale wensen of gewoon een vraag? Stuur ons een berichtje en we zorgen dat alles perfect geregeld wordt.' 
-            : 'Nieuwsgierig naar Casa Mi Sueño? Wil je meer weten over de omgeving? Of heb je gewoon een vraag? We horen graag van je!' }}
+            ? 'Vragen over beschikbaarheid, speciale wensen, of tips over de omgeving? We beantwoorden ze graag zodat je verblijf perfect wordt.' 
+            : 'Benieuwd naar ons huis, de omgeving of heb je andere vragen? We delen graag onze kennis en ervaring met je.' }}
         </p>
       </div>
     </section>
@@ -193,19 +193,22 @@ a {
 
 .social-link {
   color: var(--cms-gray-800);
-  background: white;
   padding: 8px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  .q-icon {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
 
   &:hover {
     color: var(--cms-deep-terracotta);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 }
 

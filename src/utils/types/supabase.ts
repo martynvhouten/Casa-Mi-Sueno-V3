@@ -66,6 +66,19 @@ export interface PriceDetails {
   totalNights: number;
   basePrice: number;
   cleaningFee: number;
-  shortStaySurcharge?: number;
+  securityDeposit: number;
+  touristTax?: {
+    perPersonPerNight: number;
+    totalGuests: number;
+    totalAmount: number;
+  };
+  discount?: {
+    percentage: number;
+    amount: number;
+    reason: string;
+  };
   totalPrice: number;
+  totalPriceWithTax?: number;
+  season: 'low' | 'mid' | 'high' | 'holiday';
+  showLongStayMessage?: boolean;
 } 

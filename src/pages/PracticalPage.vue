@@ -134,7 +134,8 @@
                   We kijken graag samen naar een passend tarief.
                 </p>
                 <q-btn
-                  class="cms-btn cms-btn-primary full-width"
+                  class="cms-btn cms-btn-primary full-width q-py-xs"
+                  size="sm"
                   to="/contact"
                   label="Neem contact op"
                 />
@@ -214,6 +215,7 @@
                 <div class="row justify-center q-gutter-md q-mt-md">
                   <q-btn
                     flat
+                    size="sm"
                     color="primary"
                     icon="map"
                     label="Open in Google Maps"
@@ -223,6 +225,7 @@
                   />
                   <q-btn
                     flat
+                    size="sm"
                     color="primary"
                     icon="map"
                     label="Open in Apple Maps"
@@ -253,7 +256,8 @@
           Heb je nog vragen of wil je direct reserveren? Neem contact met ons op.
         </p>
         <q-btn
-          class="cms-btn cms-btn-primary q-px-xl q-py-sm text-subtitle1"
+          class="cms-btn cms-btn-primary q-px-md q-py-xs text-body1"
+          size="sm"
           to="/contact"
           label="Neem contact op"
         />

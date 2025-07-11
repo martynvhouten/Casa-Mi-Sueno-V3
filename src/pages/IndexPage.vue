@@ -430,9 +430,31 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-.cms-img-container {
+/* Specifieke styling voor de feature cards (eerste sectie) */
+.section:nth-child(3) .cms-card .cms-img-container {
   @media (max-width: 768px) {
     height: 200px !important;
+  }
+}
+
+/* Specifieke styling voor de "Een thuis in Spanje" sectie - zorg dat afbeeldingen goed passen */
+.section:nth-child(5) .cms-img-container {
+  @media (max-width: 768px) {
+    height: 250px !important;
+  }
+}
+
+/* Zorg ervoor dat q-img binnen containers correct schaalt */
+.cms-img-container .q-img {
+  @media (max-width: 768px) {
+    height: 100% !important;
+  }
+}
+
+.cms-img-container .cms-img {
+  @media (max-width: 768px) {
+    height: 100% !important;
+    object-fit: cover !important;
   }
 }
 

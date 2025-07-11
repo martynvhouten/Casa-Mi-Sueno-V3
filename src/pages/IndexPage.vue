@@ -430,27 +430,24 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-/* Mobile image fixes - subtle approach to fix white space under images */
+/* Mobile image fixes - remove border-radius causing white space */
 @media (max-width: 768px) {
-  /* Target the specific section with the image issues */
+  /* Target the specific "Een thuis in Spanje" section */
   .section:nth-child(5) .cms-img-container {
     height: 250px !important;
-    overflow: hidden;
+    border-radius: 0 !important;
   }
   
   .section:nth-child(5) .cms-img-container .q-img {
     height: 100% !important;
+    border-radius: 0 !important;
     
     :deep(.q-img__content) {
+      border-radius: 0 !important;
       height: 100% !important;
-      display: flex !important;
-      align-items: stretch !important;
       
       > div {
-        height: 100% !important;
-        width: 100% !important;
-        background-size: cover !important;
-        background-position: center !important;
+        border-radius: 0 !important;
       }
     }
     
@@ -459,28 +456,26 @@ const locationHighlights = [
       width: 100% !important;
       object-fit: cover !important;
       object-position: center !important;
+      border-radius: 0 !important;
     }
   }
   
   /* Also fix the first feature section */
   .section:nth-child(3) .cms-card .cms-img-container {
     height: 200px !important;
-    overflow: hidden;
+    border-radius: 0 !important;
   }
   
   .section:nth-child(3) .cms-card .cms-img-container .q-img {
     height: 100% !important;
+    border-radius: 0 !important;
     
     :deep(.q-img__content) {
+      border-radius: 0 !important;
       height: 100% !important;
-      display: flex !important;
-      align-items: stretch !important;
       
       > div {
-        height: 100% !important;
-        width: 100% !important;
-        background-size: cover !important;
-        background-position: center !important;
+        border-radius: 0 !important;
       }
     }
     
@@ -489,6 +484,7 @@ const locationHighlights = [
       width: 100% !important;
       object-fit: cover !important;
       object-position: center !important;
+      border-radius: 0 !important;
     }
   }
 }

@@ -430,29 +430,45 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-/* Mobile image fixes - remove border-radius causing white space */
+/* Mobile image fixes - force exact height and remove border-radius */
 @media (max-width: 768px) {
-  /* Target the specific "Een thuis in Spanje" section */
+  /* Target the "Een thuis in Spanje" section cards */
+  .section:nth-child(5) .cms-card {
+    height: auto !important;
+  }
+  
   .section:nth-child(5) .cms-img-container {
     height: 250px !important;
     border-radius: 0 !important;
+    overflow: hidden;
+    position: relative;
   }
   
   .section:nth-child(5) .cms-img-container .q-img {
-    height: 100% !important;
+    height: 250px !important;
+    width: 100% !important;
     border-radius: 0 !important;
+    
+    :deep(.q-img__container) {
+      height: 250px !important;
+      width: 100% !important;
+    }
     
     :deep(.q-img__content) {
       border-radius: 0 !important;
-      height: 100% !important;
+      height: 250px !important;
+      width: 100% !important;
+      position: relative;
       
       > div {
         border-radius: 0 !important;
+        height: 250px !important;
+        width: 100% !important;
       }
     }
     
     :deep(img) {
-      height: 100% !important;
+      height: 250px !important;
       width: 100% !important;
       object-fit: cover !important;
       object-position: center !important;
@@ -461,26 +477,42 @@ const locationHighlights = [
   }
   
   /* Also fix the first feature section */
+  .section:nth-child(3) .cms-card {
+    height: auto !important;
+  }
+  
   .section:nth-child(3) .cms-card .cms-img-container {
     height: 200px !important;
     border-radius: 0 !important;
+    overflow: hidden;
+    position: relative;
   }
   
   .section:nth-child(3) .cms-card .cms-img-container .q-img {
-    height: 100% !important;
+    height: 200px !important;
+    width: 100% !important;
     border-radius: 0 !important;
+    
+    :deep(.q-img__container) {
+      height: 200px !important;
+      width: 100% !important;
+    }
     
     :deep(.q-img__content) {
       border-radius: 0 !important;
-      height: 100% !important;
+      height: 200px !important;
+      width: 100% !important;
+      position: relative;
       
       > div {
         border-radius: 0 !important;
+        height: 200px !important;
+        width: 100% !important;
       }
     }
     
     :deep(img) {
-      height: 100% !important;
+      height: 200px !important;
       width: 100% !important;
       object-fit: cover !important;
       object-position: center !important;

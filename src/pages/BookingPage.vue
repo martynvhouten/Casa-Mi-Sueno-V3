@@ -41,7 +41,7 @@
       <div class="container">
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-7 col-lg-8">
-            <BookingCalendar v-model="selectedDates" @long-stay="handleLongStay" />
+            <BookingCalendar v-model="selectedDates" @long-stay="handleLongStay" @minimum-nights-error="handleMinimumNightsError" />
           </div>
           <div class="col-12 col-md-5 col-lg-4">
             <CostSummary :price-details="priceDetails" @show-booking-form="scrollToBookingForm" />
@@ -324,6 +324,16 @@ const handleLongStay = () => {
     message: 'Lange verblijven: bekijk het kostenoverzicht voor meer informatie over speciale tarieven.',
       position: 'top',
     timeout: 5000,
+    actions: [{ label: 'OK', color: 'white', handler: () => {} }]
+  });
+};
+
+const handleMinimumNightsError = (errorDetails: { selected: number; minimum: number; season: string; }) => {
+  $q.notify({
+    type: 'negative',
+    message: `${errorDetails.season}: minimaal ${errorDetails.minimum} nachten vereist. Je hebt ${errorDetails.selected} ${errorDetails.selected === 1 ? 'nacht' : 'nachten'} geselecteerd.`,
+    position: 'top',
+    timeout: 6000,
     actions: [{ label: 'OK', color: 'white', handler: () => {} }]
   });
 };

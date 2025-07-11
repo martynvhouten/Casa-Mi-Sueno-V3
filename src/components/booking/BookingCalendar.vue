@@ -198,6 +198,23 @@ function handleDateSelect(value: Date[] | null) {
   
   if (value && value.length === 2) {
     const totalNights = Math.ceil((value[1].getTime() - value[0].getTime()) / (1000 * 60 * 60 * 24));
+    
+    // Check for minimum nights validation
+    const season = getSeason(value[0]);
+    const config = seasonConfigs[season];
+    
+    if (totalNights < config.minNights) {
+      emit('minimum-nights-error', {
+        selected: totalNights,
+        minimum: config.minNights,
+        season: config.name
+      });
+      // Reset the selection to only the start date
+      dates.value = [value[0]];
+      emit('update:modelValue', [value[0]]);
+      return;
+    }
+    
     if (totalNights > 21) {
       emit('long-stay');
     }
@@ -208,7 +225,7 @@ const props = defineProps<{
   modelValue: Date[] | null;
 }>();
 
-const emit = defineEmits(['update:modelValue', 'long-stay']);
+const emit = defineEmits(['update:modelValue', 'long-stay', 'minimum-nights-error']);
 
 const dates = ref<Date[] | null>(props.modelValue);
 const loading = ref(true);

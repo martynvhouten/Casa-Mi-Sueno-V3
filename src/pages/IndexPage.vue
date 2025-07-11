@@ -430,42 +430,66 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-/* Mobile image fixes - simple and targeted approach */
+/* Mobile image fixes - subtle approach to fix white space under images */
 @media (max-width: 768px) {
-  /* Remove any bottom padding/margin that might cause white space */
-  .cms-img-container {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+  /* Target the specific section with the image issues */
+  .section:nth-child(5) .cms-img-container {
+    height: 250px !important;
+    overflow: hidden;
   }
   
-  /* Ensure q-img fills container height completely */
-  .cms-img-container .q-img {
-    height: 100%;
+  .section:nth-child(5) .cms-img-container .q-img {
+    height: 100% !important;
     
     :deep(.q-img__content) {
-      height: 100%;
-      display: flex;
-      align-items: stretch;
-    }
-    
-    :deep(.q-img__content > div) {
-      height: 100%;
-      flex: 1;
+      height: 100% !important;
+      display: flex !important;
+      align-items: stretch !important;
+      
+      > div {
+        height: 100% !important;
+        width: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
+      }
     }
     
     :deep(img) {
-      height: 100%;
-      object-fit: cover;
+      height: 100% !important;
+      width: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
     }
   }
   
-  /* Specific heights for different sections */
+  /* Also fix the first feature section */
   .section:nth-child(3) .cms-card .cms-img-container {
-    height: 200px;
+    height: 200px !important;
+    overflow: hidden;
   }
   
-  .section:nth-child(5) .cms-img-container {
-    height: 250px;
+  .section:nth-child(3) .cms-card .cms-img-container .q-img {
+    height: 100% !important;
+    
+    :deep(.q-img__content) {
+      height: 100% !important;
+      display: flex !important;
+      align-items: stretch !important;
+      
+      > div {
+        height: 100% !important;
+        width: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
+      }
+    }
+    
+    :deep(img) {
+      height: 100% !important;
+      width: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
   }
 }
 

@@ -430,31 +430,54 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-/* Specifieke styling voor de feature cards (eerste sectie) */
-.section:nth-child(3) .cms-card .cms-img-container {
-  @media (max-width: 768px) {
+/* Mobile image fixes - target all image containers and their q-img components */
+@media (max-width: 768px) {
+  /* Force q-img to fill container completely */
+  .cms-img-container {
+    display: flex !important;
+    
+    .q-img {
+      height: 100% !important;
+      width: 100% !important;
+      flex: 1 !important;
+      border-radius: 0 !important; /* Override global border-radius on mobile */
+      
+      :deep(.q-img__container) {
+        height: 100% !important;
+        width: 100% !important;
+      }
+      
+      :deep(.q-img__content) {
+        height: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important; /* Override global border-radius */
+        
+        > div {
+          height: 100% !important;
+          width: 100% !important;
+          background-size: cover !important;
+          background-position: center !important;
+          border-radius: 0 !important; /* Override global border-radius */
+        }
+      }
+      
+      :deep(img) {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 0 !important; /* Override global border-radius */
+      }
+    }
+  }
+  
+  /* Specific heights for different sections */
+  .section:nth-child(3) .cms-card .cms-img-container {
     height: 200px !important;
   }
-}
-
-/* Specifieke styling voor de "Een thuis in Spanje" sectie - zorg dat afbeeldingen goed passen */
-.section:nth-child(5) .cms-img-container {
-  @media (max-width: 768px) {
+  
+  .section:nth-child(5) .cms-img-container {
     height: 250px !important;
-  }
-}
-
-/* Zorg ervoor dat q-img binnen containers correct schaalt */
-.cms-img-container .q-img {
-  @media (max-width: 768px) {
-    height: 100% !important;
-  }
-}
-
-.cms-img-container .cms-img {
-  @media (max-width: 768px) {
-    height: 100% !important;
-    object-fit: cover !important;
   }
 }
 

@@ -467,6 +467,15 @@ const locationHighlights = [
       }
     }
     
+    /* Ensure text overlay is visible */
+    .absolute-bottom {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 10 !important;
+    }
+    
     :deep(img) {
       height: 250px !important;
       width: 100% !important;
@@ -509,6 +518,15 @@ const locationHighlights = [
         height: 200px !important;
         width: 100% !important;
       }
+    }
+    
+    /* Ensure text overlay is visible */
+    .absolute-bottom {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 10 !important;
     }
     
     :deep(img) {

@@ -145,7 +145,7 @@
             :label="isBookingInquiry ? 'Verstuur aanvraag' : 'Verstuur bericht'"
             color="primary"
             :loading="loading"
-            class="cms-btn cms-btn-cta"
+            class="cms-btn cms-btn-primary"
             :aria-label="loading ? 'Bezig met versturen...' : (isBookingInquiry ? 'Verstuur Aanvraag' : 'Verstuur Bericht')"
             unelevated
           >

@@ -100,7 +100,7 @@
     <q-btn
       color="primary"
       :label="`Reserveer voor €${(priceDetails.totalPriceWithTax || priceDetails.totalPrice).toLocaleString('nl-NL')}`"
-      class="cms-btn cms-btn-cta full-width q-mt-md"
+                  class="cms-btn cms-btn-primary full-width q-mt-md"
       @click="scrollToBookingForm"
       unelevated
       size="md"

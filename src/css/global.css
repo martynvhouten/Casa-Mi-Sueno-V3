@@ -481,15 +481,15 @@ p, .text-body1 {
 
   /* Enhanced mobile touch targets */
   .cms-btn {
-    min-height: 48px;
-    padding: 0.875rem 1.25rem;
-    font-size: var(--text-base);
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    font-size: var(--text-sm);
   }
 
   .cms-btn-cta {
-    min-height: 52px;
-    padding: 1.25rem 2rem;
-    font-size: 1.125rem;
+    min-height: 46px;
+    padding: 0.875rem 1.5rem;
+    font-size: var(--text-base);
     font-weight: 600;
   }
 

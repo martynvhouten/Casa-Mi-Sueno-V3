@@ -10,7 +10,7 @@
       <template #extra>
         <q-btn
           flat
-          class="cms-btn cms-btn-cta q-mt-xl"
+          class="cms-btn cms-btn-primary q-mt-xl"
           to="/reserveren"
           label="Bekijk beschikbaarheid"
         />
@@ -145,7 +145,7 @@
           Hier kun je echt even tot rust komen en het Spaanse leven ervaren.
         </p>
         <q-btn
-          class="cms-btn cms-btn-cta"
+          class="cms-btn cms-btn-primary"
           to="/reserveren"
           label="Plan je verblijf"
         />

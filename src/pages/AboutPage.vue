@@ -138,7 +138,7 @@
           Laat je verrassen door de charme van ons tweede thuis en de schoonheid van de Costa Blanca.
         </p>
         <q-btn
-          class="cms-btn cms-btn-cta"
+          class="cms-btn cms-btn-primary"
           to="/het-huis"
           label="Bekijk het vakantiehuis"
         />

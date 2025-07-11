@@ -60,6 +60,7 @@ defineProps({
   width: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 0 !important;
 }
 
 .hero-image :deep(img) {
@@ -67,6 +68,14 @@ defineProps({
   object-position: center !important;
   min-height: 100% !important;
   min-width: 100% !important;
+}
+
+.hero-image :deep(.q-img__content) {
+  border-radius: 0 !important;
+}
+
+.hero-image :deep(.q-img__content > div) {
+  border-radius: 0 !important;
 }
 
 .hero-overlay {

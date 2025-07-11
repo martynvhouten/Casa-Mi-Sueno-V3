@@ -302,7 +302,7 @@
             :disable="totalGuests > 4"
             color="primary"
             label="Bevestig reservering"
-            class="cms-btn cms-btn-cta"
+            class="cms-btn cms-btn-primary"
             unelevated
           >
             <template v-slot:loading>

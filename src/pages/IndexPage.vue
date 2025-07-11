@@ -430,54 +430,42 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-/* Mobile image fixes - target all image containers and their q-img components */
+/* Mobile image fixes - simple and targeted approach */
 @media (max-width: 768px) {
-  /* Force q-img to fill container completely */
+  /* Remove any bottom padding/margin that might cause white space */
   .cms-img-container {
-    display: flex !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Ensure q-img fills container height completely */
+  .cms-img-container .q-img {
+    height: 100%;
     
-    .q-img {
-      height: 100% !important;
-      width: 100% !important;
-      flex: 1 !important;
-      border-radius: 0 !important; /* Override global border-radius on mobile */
-      
-      :deep(.q-img__container) {
-        height: 100% !important;
-        width: 100% !important;
-      }
-      
-      :deep(.q-img__content) {
-        height: 100% !important;
-        width: 100% !important;
-        border-radius: 0 !important; /* Override global border-radius */
-        
-        > div {
-          height: 100% !important;
-          width: 100% !important;
-          background-size: cover !important;
-          background-position: center !important;
-          border-radius: 0 !important; /* Override global border-radius */
-        }
-      }
-      
-      :deep(img) {
-        height: 100% !important;
-        width: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-        border-radius: 0 !important; /* Override global border-radius */
-      }
+    :deep(.q-img__content) {
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+    
+    :deep(.q-img__content > div) {
+      height: 100%;
+      flex: 1;
+    }
+    
+    :deep(img) {
+      height: 100%;
+      object-fit: cover;
     }
   }
   
   /* Specific heights for different sections */
   .section:nth-child(3) .cms-card .cms-img-container {
-    height: 200px !important;
+    height: 200px;
   }
   
   .section:nth-child(5) .cms-img-container {
-    height: 250px !important;
+    height: 250px;
   }
 }
 

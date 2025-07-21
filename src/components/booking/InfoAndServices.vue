@@ -53,7 +53,7 @@
             <div class="payment-items">
               <div class="payment-item q-mb-md">
                 <div class="text-body2 text-weight-medium q-mb-sm">Borg</div>
-                <div class="text-body2">€500 (teruggestort binnen 5-7 werkdagen na vertrek)</div>
+                <div class="text-body2">€400 (teruggestort binnen 5-7 werkdagen na vertrek)</div>
               </div>
               <div class="payment-item q-mb-md">
                 <div class="text-body2 text-weight-medium q-mb-sm">Aanbetaling</div>
@@ -61,7 +61,7 @@
               </div>
               <div class="payment-item">
                 <div class="text-body2 text-weight-medium q-mb-sm">Restbetaling</div>
-                <div class="text-body2">8 weken voor aankomst</div>
+                <div class="text-body2">6 weken voor aankomst</div>
               </div>
             </div>
           </div>
@@ -83,12 +83,12 @@ const importantInfo = ref([
   {
     icon: 'date_range',
     title: 'Minimaal verblijf per seizoen',
-    description: 'Hoogseizoen (jul-aug): 7 nachten, za-za<br>Middenseizoen (apr-jun, sep): 5 nachten<br>Laagseizoen (okt-mrt): 3 nachten'
+    description: 'Hoogseizoen (jun-sep): 7 nachten<br>Middenseizoen (apr-mei, okt): 5 nachten<br>Laagseizoen (jan-feb, nov): 7 nachten<br>Overwinteren (nov, jan-mrt): 1 maand'
   },
   {
     icon: 'pets',
-    title: 'Huisdieren welkom',
-    description: 'Huisdieren zijn toegestaan in overleg. Laat het ons weten bij je boeking.'
+    title: 'Honden welkom',
+    description: 'Honden zijn toegestaan in overleg. Laat het ons weten bij je boeking.'
   },
   {
     icon: 'smoke_free',

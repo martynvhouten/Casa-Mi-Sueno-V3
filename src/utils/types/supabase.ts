@@ -61,24 +61,26 @@ export interface Database {
   }
 }
 
+export interface SeasonBreakdown {
+  season: 'regular' | 'winter' | 'unavailable';
+  nights: number;
+  pricePerNight: number;
+  totalPrice: number;
+  name: string;
+}
+
 export interface PriceDetails {
   pricePerNight: number;
   totalNights: number;
   basePrice: number;
   cleaningFee: number;
   securityDeposit: number;
-  touristTax?: {
-    perPersonPerNight: number;
-    totalGuests: number;
-    totalAmount: number;
-  };
   discount?: {
     percentage: number;
     amount: number;
     reason: string;
   };
   totalPrice: number;
-  totalPriceWithTax?: number;
-  season: 'low' | 'mid' | 'high' | 'holiday';
-  showLongStayMessage?: boolean;
+  season: 'regular' | 'winter' | 'unavailable' | 'mixed';
+  seasonBreakdown?: SeasonBreakdown[];
 } 

@@ -75,10 +75,9 @@ interface CalendarCell {
 }
 
 enum Season {
-  High = 'high',
-  Mid = 'mid',
-  Low = 'low',
-  Holiday = 'holiday'
+  Regular = 'regular',
+  Winter = 'winter',
+  Unavailable = 'unavailable'
 }
 
 interface SeasonConfig {
@@ -87,71 +86,61 @@ interface SeasonConfig {
 }
 
 const seasonConfigs: Record<Season, SeasonConfig> = {
-  [Season.High]: {
-    minNights: 7,
-    name: 'Hoogseizoen'
+  [Season.Regular]: {
+    minNights: 10,
+    name: 'Reguliere verhuur'
   },
-  [Season.Mid]: {
-    minNights: 5,
-    name: 'Middenseizoen'
+  [Season.Winter]: {
+    minNights: 28,
+    name: 'Overwinteren'
   },
-  [Season.Low]: {
-    minNights: 7,
-    name: 'Laagseizoen'
-  },
-  [Season.Holiday]: {
-    minNights: 7,
-    name: 'Vakantieperiode'
+  [Season.Unavailable]: {
+    minNights: 0,
+    name: 'Niet beschikbaar'
   }
 };
 
-// Holiday periods (Christmas, New Year's, Easter)
-const holidayPeriods = [
-  // Christmas/New Year period
-  { start: new Date(2024, 11, 20), end: new Date(2025, 0, 6) }, // Dec 20 - Jan 6
-  { start: new Date(2025, 11, 20), end: new Date(2026, 0, 6) }, // Dec 20 - Jan 6
-  // Easter periods (approximate - would need to be updated yearly)
-  { start: new Date(2024, 2, 25), end: new Date(2024, 3, 8) }, // Easter 2024
-  { start: new Date(2025, 3, 14), end: new Date(2025, 3, 28) }, // Easter 2025
-];
 
-function isHolidayPeriod(date: Date): boolean {
-  return holidayPeriods.some(period => 
-    date >= period.start && date <= period.end
-  );
-}
 
 function getSeason(date: Date): Season {
-  // Check for holiday periods first
-  if (isHolidayPeriod(date)) {
-    return Season.Holiday;
-  }
-
   const month = date.getMonth();
   
-  // High season: June, July, August, September
-  if (month >= 5 && month <= 8) {
-    return Season.High;
+  // December: not available for rental
+  if (month === 11) {
+    return Season.Unavailable;
   }
   
-  // Mid season: March, April, May, October
-  if ((month >= 2 && month <= 4) || month === 9) {
-    return Season.Mid;
+  // Winter/Overwinteren season: November, January, February, March
+  if (month === 10 || month === 0 || month === 1 || month === 2) {
+    return Season.Winter;
   }
   
-  // Low season: January, February, November, December
-  return Season.Low;
+  // Regular rental: April through October  
+  if (month >= 3 && month <= 9) {
+    return Season.Regular;
+  }
+  
+  // Fallback
+  return Season.Unavailable;
 }
 
 const currentSeason = computed(() => getSeason(new Date()));
 
 const currentSeasonInfo = computed(() => {
   const config = seasonConfigs[currentSeason.value];
+  if (currentSeason.value === Season.Unavailable) {
+    return 'December: niet beschikbaar voor verhuur';
+  }
   return `${config.name}: minimaal ${config.minNights} nachten`;
 });
 
 function isDateDisabled(date: Date): boolean {
   const dateString = date.toISOString().split('T')[0];
+  
+  // December is not available for rental - disable all December dates
+  if (date.getMonth() === 11) {
+    return true;
+  }
   
   // Check if date is booked
   if (bookedDates.value.includes(dateString)) {
@@ -186,11 +175,7 @@ function getCellClassName(cell: CalendarCell): string {
   return '';
 }
 
-const showLongStayMessage = computed(() => {
-  if (!dates.value || dates.value.length !== 2) return false;
-  const totalNights = Math.ceil((dates.value[1].getTime() - dates.value[0].getTime()) / (1000 * 60 * 60 * 24));
-  return totalNights > 21;
-});
+
 
 function handleDateSelect(value: Date[] | null) {
   dates.value = value;
@@ -198,6 +183,22 @@ function handleDateSelect(value: Date[] | null) {
   
   if (value && value.length === 2) {
     const totalNights = Math.ceil((value[1].getTime() - value[0].getTime()) / (1000 * 60 * 60 * 24));
+    
+    // Check if either start date OR end date is in December (unavailable period)
+    const startMonth = value[0].getMonth();
+    const endMonth = value[1].getMonth();
+    
+    if (startMonth === 11 || endMonth === 11) {
+      emit('minimum-nights-error', {
+        selected: totalNights,
+        minimum: 0,
+        season: 'December niet beschikbaar'
+      });
+      // Reset the selection completely for December
+      dates.value = null;
+      emit('update:modelValue', null);
+      return;
+    }
     
     // Check for minimum nights validation
     const season = getSeason(value[0]);
@@ -214,10 +215,6 @@ function handleDateSelect(value: Date[] | null) {
       emit('update:modelValue', [value[0]]);
       return;
     }
-    
-    if (totalNights > 21) {
-      emit('long-stay');
-    }
   }
 }
 
@@ -225,7 +222,7 @@ const props = defineProps<{
   modelValue: Date[] | null;
 }>();
 
-const emit = defineEmits(['update:modelValue', 'long-stay', 'minimum-nights-error']);
+const emit = defineEmits(['update:modelValue', 'minimum-nights-error']);
 
 const dates = ref<Date[] | null>(props.modelValue);
 const loading = ref(true);
@@ -260,12 +257,7 @@ watch(dates, (newDates) => {
   }
 }, { immediate: true });
 
-watch(showLongStayMessage, (isLongStay) => {
-  if (isLongStay) {
-    emit('long-stay');
-    calendarAnnouncement.value = 'Verblijf langer dan 4 weken geselecteerd. Voor speciale prijzen neem contact op.';
-  }
-});
+// No long stay tracking needed
 
 watch(() => props.modelValue, (newDates) => {
   dates.value = newDates;

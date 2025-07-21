@@ -2,9 +2,22 @@
   <div class="cost-summary-card" v-if="priceDetails">
     <h4 class="text-h6 font-playfair q-mb-md">Kostenoverzicht</h4>
     
-    <!-- Season Badge -->
+    <!-- Season Badge(s) -->
     <div class="season-badge q-mb-md">
+      <div v-if="priceDetails.season === 'mixed' && priceDetails.seasonBreakdown" class="row q-col-gutter-sm justify-center">
+        <div v-for="breakdown in priceDetails.seasonBreakdown" :key="breakdown.season" class="col-auto">
+          <q-chip
+            :color="getSeasonColor(breakdown.season)"
+            text-color="white"
+            icon="schedule"
+            size="sm"
+          >
+            {{ breakdown.name }}
+          </q-chip>
+        </div>
+      </div>
       <q-chip
+        v-else
         :color="getSeasonColor(priceDetails.season)"
         text-color="white"
         icon="schedule"
@@ -14,22 +27,43 @@
       </q-chip>
     </div>
     
-    <!-- Base Price -->
-    <div class="price-row q-mb-sm">
-      <span class="text-body2">Basis prijs per nacht</span>
-      <span class="text-body2 text-weight-medium">€{{ priceDetails.pricePerNight.toLocaleString('nl-NL') }}</span>
+    <!-- Mixed Season Breakdown -->
+    <div v-if="priceDetails.season === 'mixed' && priceDetails.seasonBreakdown" class="mixed-season-breakdown q-mb-md">
+      <div v-for="breakdown in priceDetails.seasonBreakdown" :key="breakdown.season" class="season-breakdown q-mb-sm">
+        <div class="season-breakdown-header q-mb-xs">
+          <span class="text-body2 text-weight-medium text-grey-7">{{ breakdown.name }}</span>
+        </div>
+        <div class="price-row q-mb-xs">
+          <span class="text-body2">{{ breakdown.nights }} nachten × €{{ breakdown.pricePerNight }}</span>
+          <span class="text-body2 text-weight-medium">€{{ breakdown.totalPrice.toLocaleString('nl-NL') }}</span>
+        </div>
+      </div>
+      <q-separator class="q-my-md" />
+      <div class="price-row q-mb-sm">
+        <span class="text-body2 text-weight-medium">Totaal verblijf ({{ priceDetails.totalNights }} nachten)</span>
+        <span class="text-body2 text-weight-medium">€{{ calculateOriginalPrice().toLocaleString('nl-NL') }}</span>
+      </div>
     </div>
     
-    <!-- Number of Nights -->
-    <div class="price-row q-mb-sm">
-      <span class="text-body2">Aantal nachten</span>
-      <span class="text-body2 text-weight-medium">{{ priceDetails.totalNights }}</span>
-    </div>
+    <!-- Single Season Display -->
+    <div v-else>
+      <!-- Base Price -->
+      <div class="price-row q-mb-sm">
+        <span class="text-body2">Basis prijs per nacht</span>
+        <span class="text-body2 text-weight-medium">€{{ priceDetails.pricePerNight.toLocaleString('nl-NL') }}</span>
+      </div>
+      
+      <!-- Number of Nights -->
+      <div class="price-row q-mb-sm">
+        <span class="text-body2">Aantal nachten</span>
+        <span class="text-body2 text-weight-medium">{{ priceDetails.totalNights }}</span>
+      </div>
 
-    <!-- Base Total (before discount) -->
-    <div class="price-row q-mb-sm">
-      <span class="text-body2">Subtotaal verblijf</span>
-      <span class="text-body2 text-weight-medium">€{{ calculateOriginalPrice().toLocaleString('nl-NL') }}</span>
+      <!-- Base Total (before discount) -->
+      <div class="price-row q-mb-sm">
+        <span class="text-body2">Subtotaal verblijf</span>
+        <span class="text-body2 text-weight-medium">€{{ calculateOriginalPrice().toLocaleString('nl-NL') }}</span>
+      </div>
     </div>
 
     <!-- Discount (if applicable) -->
@@ -53,67 +87,23 @@
       <span class="text-body2 text-weight-medium">€{{ priceDetails.cleaningFee.toLocaleString('nl-NL') }}</span>
     </div>
 
-    <!-- Subtotal without tourist tax -->
-    <div class="price-row q-mb-sm" v-if="priceDetails.touristTax">
-      <span class="text-body2 text-weight-medium">Subtotaal</span>
-      <span class="text-body2 text-weight-medium">€{{ priceDetails.totalPrice.toLocaleString('nl-NL') }}</span>
-    </div>
-
-    <!-- Tourist Tax -->
-    <div v-if="priceDetails.touristTax" class="price-row q-mb-sm tourist-tax-row">
-      <span class="text-body2">
-        <q-icon name="location_city" size="sm" class="q-mr-xs" />
-        Toeristenbelasting ({{ priceDetails.touristTax.totalGuests }} {{ priceDetails.touristTax.totalGuests === 1 ? 'persoon' : 'personen' }})
-      </span>
-      <span class="text-body2 text-weight-medium">€{{ priceDetails.touristTax.totalAmount.toLocaleString('nl-NL') }}</span>
-    </div>
-
     <!-- Total -->
     <div class="price-row total-row q-mt-md q-pb-md">
-      <span class="text-subtitle1 text-weight-bold">{{ priceDetails.touristTax ? 'Totaal' : 'Totaal' }}</span>
-      <span class="text-subtitle1 text-weight-bold text-primary">€{{ (priceDetails.totalPriceWithTax || priceDetails.totalPrice).toLocaleString('nl-NL') }}</span>
-    </div>
-
-    <!-- Long Stay Message -->
-    <div v-if="priceDetails.showLongStayMessage" class="long-stay-note q-mb-md">
-      <q-banner class="bg-orange-1 text-orange-8" rounded>
-        <template v-slot:avatar>
-          <q-icon name="schedule" color="orange" />
-        </template>
-        <div class="text-body2">
-          <strong>Langer dan 3 weken?</strong><br>
-          <span class="text-body2">Voor speciale tarieven bij lange verblijven kun je direct contact opnemen.</span>
-        </div>
-        <template v-slot:action>
-          <q-btn 
-            flat 
-            color="orange" 
-            label="Contact" 
-            size="sm" 
-            @click="router.push('/contact')"
-            class="q-ml-sm"
-          />
-        </template>
-      </q-banner>
+      <span class="text-subtitle1 text-weight-bold">Totaal</span>
+      <span class="text-subtitle1 text-weight-bold text-primary">€{{ priceDetails.totalPrice.toLocaleString('nl-NL') }}</span>
     </div>
 
     <q-btn
       color="primary"
-      :label="`Reserveer voor €${(priceDetails.totalPriceWithTax || priceDetails.totalPrice).toLocaleString('nl-NL')}`"
-                  class="cms-btn cms-btn-primary full-width q-mt-md"
+      :label="`Reserveer voor €${priceDetails.totalPrice.toLocaleString('nl-NL')}`"
+      class="cms-btn cms-btn-primary full-width q-mt-md"
       @click="scrollToBookingForm"
       unelevated
       size="md"
     />
     
     <div class="text-caption text-grey-7 text-center q-mt-sm">
-      <div v-if="priceDetails.touristTax">
-        * Borg (€{{ priceDetails.securityDeposit.toLocaleString('nl-NL') }}) wordt bij aankomst betaald<br>
-        * Toeristenbelasting wordt ter plaatse in contanten betaald
-      </div>
-      <div v-else>
-        * Exclusief borg (€{{ priceDetails.securityDeposit.toLocaleString('nl-NL') }}) en toeristenbelasting (€2,50 p.p.p.n.)
-      </div>
+      * Borg (€{{ priceDetails.securityDeposit.toLocaleString('nl-NL') }}) wordt binnen 5-7 werkdagen na vertrek teruggestort
     </div>
   </div>
   <div v-else class="cost-summary-card text-center">
@@ -125,35 +115,33 @@
 
 <script setup lang="ts">
 import { PriceDetails } from 'src/utils/types/supabase';
-import { useRouter } from 'vue-router';
 
 const props = defineProps<{
   priceDetails: PriceDetails | null;
 }>();
 
 const emit = defineEmits(['show-booking-form']);
-const router = useRouter();
 
 const scrollToBookingForm = () => {
   emit('show-booking-form');
 };
 
-const getSeasonColor = (season: 'low' | 'mid' | 'high' | 'holiday'): string => {
+const getSeasonColor = (season: 'regular' | 'winter' | 'unavailable' | 'mixed'): string => {
   switch (season) {
-    case 'low': return 'blue-grey';
-    case 'mid': return 'orange';
-    case 'high': return 'red';
-    case 'holiday': return 'purple';
+    case 'regular': return 'primary';
+    case 'winter': return 'blue';
+    case 'unavailable': return 'grey';
+    case 'mixed': return 'purple';
     default: return 'primary';
   }
 };
 
-const getSeasonName = (season: 'low' | 'mid' | 'high' | 'holiday'): string => {
+const getSeasonName = (season: 'regular' | 'winter' | 'unavailable' | 'mixed'): string => {
   switch (season) {
-    case 'low': return 'Laagseizoen';
-    case 'mid': return 'Middenseizoen';
-    case 'high': return 'Hoogseizoen';
-    case 'holiday': return 'Vakantieperiode';
+    case 'regular': return 'Reguliere verhuur';
+    case 'winter': return 'Overwinteren';
+    case 'unavailable': return 'Niet beschikbaar';
+    case 'mixed': return 'Gecombineerd tarief';
     default: return '';
   }
 };
@@ -209,7 +197,17 @@ const calculateOriginalPrice = (): number => {
   text-align: center;
 }
 
-.long-stay-note {
-  margin-top: 0.5rem;
+.mixed-season-breakdown {
+  background: rgba(156, 39, 176, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(156, 39, 176, 0.1);
 }
+
+.season-breakdown-header {
+  font-weight: 500;
+  color: #666;
+}
+
+
 </style> 

@@ -290,7 +290,9 @@ const bedroomPhotos = [
 
 const bathroomPhotos = [
   { src: '/images/Badkamer.jpg', caption: 'Badkamer naast slaapkamer' },
-  { src: '/images/Badkamer2.jpg', caption: 'Badkamer in de hal' }
+  { src: '/images/Badkamer2.jpg', caption: 'Badkamer in de hal' },
+  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.jpg', caption: 'Douche in de hal-badkamer' },
+  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.jpg', caption: 'Toilet in de hal-badkamer' }
 ];
 
 const exteriorPhotos = [
@@ -308,7 +310,15 @@ const exteriorPhotos = [
   { src: '/images/Tuintafel_zitgedeelte.jpg', caption: 'Extra zitgedeelte in de tuin' },
   { src: '/images/Tuin_bbq.jpg', caption: 'BBQ-hoek' },
   { src: '/images/Tuin_zijpad.jpg', caption: 'Zijpad met mediterrane planten' },
-  { src: '/images/Tuinpad.jpg', caption: 'Sfeervol verlicht tuinpad' }
+  { src: '/images/Tuinpad.jpg', caption: 'Sfeervol verlicht tuinpad' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.jpg', caption: 'Ligstoelen bij het zwembad in de avond' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_pingpongtafel.jpg', caption: 'Pingpongtafel in de achtertuin' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_pingpong_uitgezoomd.jpg', caption: 'Pingponghoek overzicht' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.jpg', caption: 'Achtertuin gezien vanuit de woonkamer' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_nacht.jpg', caption: 'Achtertuin voorzijde in de avond' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.jpg', caption: 'Pad naar de achtertuin' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_zithoek_nacht.jpg', caption: 'Buitenzithoek in de avond' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.jpg', caption: 'Zwembad sfeervolle avondverlichting' }
 ];
 
 const allPhotos = computed(() => [

@@ -9,7 +9,7 @@
     />
 
     <!-- Introduction -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Van ochtendkoffie tot sterrenhemel</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
@@ -22,21 +22,22 @@
     </section>
 
     <!-- Swimming Pool -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
             <h2 class="font-playfair q-mb-lg">Het zwembad</h2>
             <p class="text-body1 q-mb-lg">
-              Het ruime ronde zwembad is een heerlijke verkoeling op warme dagen. Het zwembad
-              wordt wekelijks onderhouden en is niet verwarmd. In de zomermaanden heeft het water 
+              Het ruime ronde zwembad wordt onderhouden door de huurder zelf. Er is een automatische pomp/filter die in de schuur 
+              aangezet kan worden, plus een drijvend element voor chloortabletten en een robotstofzuiger 
+              voor de bodem. In het uiterste geval kan de sleutelbeheerder het zwembad schoonmaken. In de zomermaanden heeft het water
               een aangename temperatuur voor een verfrissende duik. De buitendouche is perfect voor een snelle verfrissing.
             </p>
             <ul class="feature-list q-mb-xl">
               <li>Ruim rond zwembad</li>
               <li>Comfortabele ligbedden en parasols</li>
               <li>Buitendouche</li>
-              <li>Wekelijks onderhoud</li>
+                              <li>Bij voorkeur zelf bijhouden</li>
               <li>Zonneterras rondom</li>
             </ul>
           </div>
@@ -53,7 +54,7 @@
     </section>
 
     <!-- Veranda -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
@@ -84,7 +85,7 @@
     </section>
 
     <!-- Garden Areas -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container">
         <h2 class="text-center font-playfair q-mb-xl">De tuin</h2>
         <div class="row q-col-gutter-xl">
@@ -110,7 +111,7 @@
     </section>
 
     <!-- BBQ Area -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
@@ -133,6 +134,39 @@
                 src="/images/Tuin_bbq.jpg"
                 class="cms-img rounded-borders"
               />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evening Atmosphere -->
+    <section class="section bg-sand">
+      <div class="container">
+        <div class="text-center q-mb-xl">
+          <h2 class="font-playfair q-mb-lg">Magische avondsfeer</h2>
+          <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
+            Als de zon ondergaat, tovert de sfeerverlichting de tuin om tot een waar paradijs. 
+            Dit zijn de momenten waar we zelf het meest van genieten - met een glas wijn in de hand, 
+            het zachte licht van de verlichting en de sterrenhemel boven ons.
+          </p>
+        </div>
+        
+        <div class="row q-col-gutter-lg">
+          <div class="col-12 col-md-6" v-for="evening in eveningMoments" :key="evening.title">
+            <div class="evening-card q-pa-none">
+              <div class="cms-img-container" style="height: 300px;">
+                <q-img
+                  :src="evening.image"
+                  :alt="evening.alt"
+                  class="cms-img rounded-borders"
+                  fit="cover"
+                />
+              </div>
+              <div class="q-pa-lg text-center">
+                <h3 class="font-playfair q-mb-md">{{ evening.title }}</h3>
+                <p class="text-body1">{{ evening.description }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -195,15 +229,49 @@ const gardenAreas = [
     ]
   }
 ];
+
+const eveningMoments = [
+  {
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.jpg',
+    alt: 'Zwembad met sfeerverlichting in de avond',
+    title: 'Zwembad bij nacht',
+    description: 'Het zwembad wordt \'s avonds prachtig verlicht en creëert een magische sfeer voor een ontspannende avondduik.'
+  },
+  {
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_zithoek_nacht.jpg',
+    alt: 'Gezellige zithoek met avondverlichting',
+    title: 'Avondlijke gezelligheid',
+    description: 'De zithoeken worden \'s avonds een intieme plek waar je kunt napraten onder de sterrenhemel.'
+  },
+  {
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.jpg',
+    alt: 'Ligbedden bij het zwembad in de avond',
+    title: 'Ontspanning pur sang',
+    description: 'De ligbedden nodigen uit voor een laatste borrel terwijl je naar de sterren kijkt en de dag laat bezinken.'
+  },
+  {
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_nacht.jpg',
+    alt: 'Voorzijde van de achtertuin in de avond',
+    title: 'Sfeervolle verlichting',
+    description: 'De doordachte verlichting maakt elke hoek van de tuin \'s avonds uitnodigend en romantisch.'
+  }
+];
 </script>
 
 <style scoped>
-.garden-card {
+.garden-card,
+.evening-card {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   height: 100%;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evening-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .cms-img {

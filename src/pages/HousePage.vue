@@ -111,13 +111,26 @@
       <div class="container">
         <h2 class="text-center font-playfair q-mb-xl">Badkamers</h2>
         <div class="row q-col-gutter-xl justify-center">
-          <div class="col-12 col-md-4" v-for="bathroom in bathrooms" :key="bathroom.title">
+          <div class="col-12 col-md-6" v-for="bathroom in bathrooms" :key="bathroom.title">
             <div class="bathroom-card q-pa-none">
-              <div class="cms-img-container" style="height: 250px;">
-                <q-img
-                  :src="bathroom.image"
-                  class="cms-img"
-                />
+              <!-- Photo Grid -->
+              <div class="bathroom-photos q-pa-md">
+                <div class="row q-col-gutter-md">
+                  <div 
+                    v-for="(photo, index) in bathroom.images" 
+                    :key="index"
+                    :class="getPhotoColumnClass(bathroom.images.length)"
+                  >
+                    <div class="cms-img-container bathroom-photo" style="height: 280px;">
+                      <q-img
+                        :src="photo.src"
+                        :alt="photo.alt"
+                        class="cms-img"
+                        fit="cover"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="q-pa-lg">
                 <h3 class="font-playfair q-mb-md">{{ bathroom.title }}</h3>
@@ -149,13 +162,13 @@
                 <h3 class="font-playfair q-mb-md">Zwembad & Tuin</h3>
                 <p class="text-body1 q-mb-md">
                   De mediterrane tuin biedt verschillende plekjes om te ontspannen. Het ruime ronde 
-                  zwembad is een heerlijke verkoeling op warme dagen. Wekelijks onderhoud zorgt 
-                  ervoor dat het zwembad altijd perfect is voor een verfrissende duik.
+                  zwembad is een heerlijke verkoeling op warme dagen. Het zwembad wordt bij voorkeur 
+                  zelf bijgehouden met automatische pomp/filter en chloortabletten voor optimale waterkwaliteit.
                 </p>
                 <ul class="feature-list">
                   <li>Ruim rond zwembad</li>
                   <li>Ligbedden en parasols</li>
-                  <li>Wekelijks zwembadonderhoud</li>
+                  <li>Automatische pomp/filter systeem</li>
                   <li>Buitendouche</li>
                 </ul>
               </div>
@@ -210,11 +223,28 @@
 <script setup lang="ts">
 import HeroSection from 'src/components/HeroSection.vue';
 
+// Function to determine column class based on number of photos
+const getPhotoColumnClass = (photoCount: number) => {
+  if (photoCount === 1) return 'col-12';
+  if (photoCount === 2) return 'col-6';
+  if (photoCount === 3) return 'col-4';
+  return 'col-3';
+};
+
 const bathrooms = [
   {
-    image: '/images/Badkamer.jpg',
     title: 'Badkamer bij slaapkamer',
     description: 'Praktische badkamer met douche, wastafel en toilet, gelegen naast de slaapkamer',
+    images: [
+      {
+        src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.jpg',
+        alt: 'Douche in badkamer bij slaapkamer'
+      },
+      {
+        src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.jpg',
+        alt: 'Toilet in badkamer bij slaapkamer'
+      }
+    ],
     features: [
       'Inloopdouche',
       'Wastafel',
@@ -223,9 +253,18 @@ const bathrooms = [
     ]
   },
   {
-    image: '/images/Badkamer2.jpg',
     title: 'Badkamer in de hal',
     description: 'Functionele badkamer met douche, wastafel en toilet, gelegen in de hal',
+    images: [
+      {
+        src: '/images/Badkamer.jpg',
+        alt: 'Badkamer in de hal'
+      },
+      {
+        src: '/images/Badkamer2.jpg',
+        alt: 'Badkamer in de hal overzicht'
+      }
+    ],
     features: [
       'Douche',
       'Wastafel',
@@ -245,6 +284,22 @@ const bathrooms = [
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   height: 100%;
   overflow: hidden;
+}
+
+.bathroom-photos .cms-img-container.bathroom-photo {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bathroom-photos .cms-img {
+  border-radius: 12px;
+}
+
+.bathroom-photos .cms-img-container.bathroom-photo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .cms-img {

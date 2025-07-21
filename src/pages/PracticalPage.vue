@@ -94,12 +94,11 @@
                 </ul>
                 <p class="q-mb-sm">Extra kosten:</p>
                 <ul class="feature-list q-mb-lg">
-                  <li>Eindschoonmaak: €100 (éénmalig)</li>
-                  <li>Borg: €300 (wordt teruggestort)</li>
-                  <li>Toeristenbelasting: €2,50 p.p.p.n.</li>
+                  <li>Eindschoonmaak: €150 (éénmalig)</li>
+                  <li>Borg: €400 (wordt teruggestort)</li>
+                  <li>Linnen pakket: €22 per slaapkamer (optioneel)</li>
                 </ul>
-                <p class="text-caption">* Korting bij langere verblijven: 2+ weken 10%, 4+ weken 15%</p>
-                <p class="text-caption">* Verblijven langer dan 3 weken: neem contact op</p>
+
               </div>
             </div>
           </div>
@@ -109,14 +108,13 @@
               <div class="q-mb-xl">
                 <h4 class="q-mb-md">Voorwaarden</h4>
                 <ul class="feature-list">
-                  <li>Minimaal verblijf laagseizoen: 7 nachten</li>
-                  <li>Minimaal verblijf middenseizoen: 5 nachten</li>
-                  <li>Minimaal verblijf hoogseizoen: 7 nachten</li>
-                  <li>Geen korte weekendverblijven mogelijk</li>
+                  <li>Reguliere verhuur (apr-okt): minimaal 10 dagen à €160/nacht</li>
+                  <li>Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200/maand</li>
+                  <li>December: niet beschikbaar voor verhuur</li>
                   <li>Aanbetaling: 30% bij boeking</li>
-                  <li>Restbetaling: 8 weken voor aankomst</li>
-                  <li>Borg: €300 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
-                  <li>Toeristenbelasting: €2,50 p.p.p.n.</li>
+                  <li>Restbetaling: 6 weken voor aankomst</li>
+                  <li>Borg: €400 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
+                  <li>Geen annulering mogelijk</li>
                 </ul>
               </div>
               <div class="q-mb-xl">
@@ -127,19 +125,7 @@
                   voor deze bijzondere plek delen. Het is geen feestlocatie of plek voor korte weekendverblijven.
                 </p>
               </div>
-              <div>
-                <h4 class="q-mb-md">Langer verblijf?</h4>
-                <p class="text-body1 q-mb-lg">
-                  Wil je langer blijven dan drie weken? Neem dan even contact met ons op. 
-                  We kijken graag samen naar een passend tarief.
-                </p>
-                <q-btn
-                  class="cms-btn cms-btn-primary full-width q-py-xs"
-                  size="sm"
-                  to="/contact"
-                  label="Neem contact op"
-                />
-              </div>
+
             </div>
           </div>
         </div>
@@ -274,12 +260,12 @@ const houseRules = ref([
   {
     icon: 'family_restroom',
     title: 'Gezinsvriendelijk',
-    description: 'Perfect voor families en kleine groepen tot 6 personen'
+    description: 'Perfect voor families en kleine groepen tot 4 personen'
   },
   {
     icon: 'pets',
-    title: 'Huisdieren welkom',
-    description: 'Huisdieren zijn toegestaan in overleg'
+    title: 'Honden welkom',
+    description: 'Honden zijn toegestaan in overleg'
   },
   {
     icon: 'smoke_free',
@@ -317,48 +303,44 @@ const facilities = [
       'Ligbedden en parasols',
       'Buitendouche',
       'Parkeerplaats voor 2 auto\'s',
-      'Wekelijks zwembadonderhoud'
+      'Zwembad: automatische pomp/filter'
     ]
   },
   {
     icon: 'support_agent',
     title: 'Service',
     items: [
-      'Professionele eindschoonmaak',
-      'Bed- en badlinnen inbegrepen',
-      'Strandlakens beschikbaar',
-      'Lokale contactpersoon voor sleuteloverdracht',
-      'Wekelijks zwembadonderhoud',
-      'Tuinonderhoud'
+      'Professionele eindschoonmaak (€150)',
+      'Sleutelbeheerder voor in-/uitchecken',
+      'Optioneel linnen pakket (€22/slaapkamer)',
+      'Tuinonderhoud (vanaf september)',
+      'Tussentijdse schoonmaak via sleutelbeheerder',
+      'Zwembad: bij voorkeur zelf bijhouden'
     ]
   }
 ];
 
 const pricing = ref([
   {
-    name: 'Hoogseizoen',
-    period: 'Juni - September',
+    name: 'Reguliere verhuur',
+    period: 'April - Oktober',
     price: '€160 per nacht',
-    weekly: '€1.120 per week'
+    weekly: '€1.600 per 10 dagen',
+    note: 'Minimaal 10 dagen'
   },
   {
-    name: 'Middenseizoen',
-    period: 'Maart - Mei, Oktober',
-    price: '€135 per nacht',
-    weekly: '€945 per week'
+    name: 'Overwinteren',
+    period: 'November, Januari - Maart',
+    price: '€1.200 per maand',
+    weekly: 'Minimaal 1 maand',
+    note: 'Speciale tarief voor lange verblijven'
   },
   {
-    name: 'Laagseizoen',
-    period: 'Januari, Februari, November, December',
-    price: '€110 per nacht',
-    weekly: '€770 per week'
-  },
-  {
-    name: 'Vakantieperiodes',
-    period: 'Kerst, Nieuwjaar, Pasen',
-    price: '€170 per nacht',
-    weekly: '€1.190 per week',
-    note: 'Vaak bezet door familie'
+    name: 'December',
+    period: 'December',
+    price: 'Niet beschikbaar',
+    weekly: 'Geen verhuur',
+    note: 'Familie periode'
   }
 ]);
 
@@ -367,8 +349,8 @@ const faqCategories = ref([
     title: 'Verblijf & Voorzieningen',
     items: [
       {
-        question: 'Zijn huisdieren toegestaan?',
-        answer: 'Ja, huisdieren zijn welkom in Casa Mi Sueño. Laat het ons wel even weten bij je boeking zodat we hier rekening mee kunnen houden.'
+        question: 'Zijn honden toegestaan?',
+        answer: 'Ja, honden zijn welkom in Casa Mi Sueño in overleg. Laat het ons wel even weten bij je boeking zodat we hier rekening mee kunnen houden.'
       },
       {
         question: 'Wat zijn de in- en uitchecktijden?',
@@ -379,8 +361,16 @@ const faqCategories = ref([
         answer: 'Ja, Casa Mi Sueño is zeer geschikt voor families met kinderen. We hebben diverse voorzieningen zoals kinderstoelen en een kinderbed (op aanvraag). Houd er wel rekening mee dat het zwembad geen apart kindergedeelte heeft en niet is omheind. Ouderlijk toezicht is daarom noodzakelijk.'
       },
       {
+        question: 'Hoe werkt het zwembadonderhoud?',
+        answer: 'Het zwembad wordt bij voorkeur door de huurder bijgehouden. Er is een automatische pomp/filter die in de schuur aangezet kan worden. Daarnaast zit er een drijvend element waarin chloortabletten gedaan kunnen worden die af en toe vervangen moeten worden. Ook is er een robotstofzuiger voor de bodem beschikbaar. In het uiterste geval kan de sleutelbeheerder het zwembad schoonmaken.'
+      },
+      {
+        question: 'Kan er tussentijdse schoonmaak geregeld worden?',
+        answer: 'Ja, tussentijdse schoonmaak kan geregeld worden via de sleutelbeheerder. Neem hiervoor contact op tijdens je verblijf.'
+      },
+      {
         question: 'Zijn handdoeken en beddengoed inbegrepen?',
-        answer: 'Ja, alle bed- en badlinnen is inbegrepen in de huurprijs. Dit omvat:<br>• Luxe beddengoed<br>• Badhanddoeken<br>• Badlakens voor bij het zwembad<br>• Keukenlinnen'
+        answer: 'Er is een optioneel linnen pakket beschikbaar voor €22 per slaapkamer. Dit omvat:<br>• Beddengoed<br>• Badhanddoeken<br>• Keukenlinnen<br><br>Je kunt ook je eigen linnen meenemen.'
       },
       {
         question: 'Is er airconditioning aanwezig?',
@@ -414,15 +404,15 @@ const faqCategories = ref([
     items: [
       {
         question: 'Hoe werkt de betaling?',
-        answer: 'De betaling verloopt in twee delen:<br>• 30% aanbetaling bij reservering<br>• Resterende 70% uiterlijk 8 weken voor aankomst<br><br>Daarnaast vragen we een borg van €300, die binnen 5-7 werkdagen na vertrek wordt teruggestort.'
+        answer: 'De betaling verloopt in twee delen:<br>• 30% aanbetaling bij reservering<br>• Resterende 70% uiterlijk 6 weken voor aankomst<br><br>Daarnaast vragen we een borg van €400, die binnen 5-7 werkdagen na vertrek wordt teruggestort.<br><br>Let op: geen annulering mogelijk.'
       },
       {
         question: 'Wat is het minimale verblijf?',
-        answer: 'Het minimale verblijf is afhankelijk van het seizoen:<br>• Laagseizoen: 7 nachten<br>• Middenseizoen: 5 nachten<br>• Hoogseizoen: 7 nachten<br>• Vakantieperiodes: 7 nachten<br><br>Voor langere verblijven (3+ weken) kunnen we een speciale prijsafspraak maken.'
+        answer: 'Het minimale verblijf is afhankelijk van de periode:<br>• Reguliere verhuur (apr-okt): minimaal 10 dagen à €160 per nacht<br>• Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200 per maand<br>• December: niet beschikbaar voor verhuur'
       },
       {
         question: 'Welke kosten zijn inbegrepen in de huurprijs?',
-        answer: 'In de huurprijs zijn inbegrepen:<br>• Bed- en badlinnen<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud<br>• Tuinverzorging<br><br>Extra kosten:<br>• Eindschoonmaak: €100 (eenmalig)<br>• Borg: €300 (refundeerbaar)<br>• Toeristenbelasting: €2,50 p.p.p.n.<br><br>Kortingen bij langer verblijf:<br>• 2+ weken: 10% korting<br>• 4+ weken: 15% korting'
+        answer: 'In de huurprijs zijn inbegrepen:<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud (of zelf bijhouden)<br>• Tuinonderhoud (vanaf september)<br><br>Extra kosten:<br>• Eindschoonmaak: €150 (eenmalig)<br>• Borg: €400 (refundeerbaar)<br>• Linnen pakket: €22 per slaapkamer (optioneel)'
       }
     ]
   }
@@ -432,7 +422,7 @@ const checkInInfo = {
   time: '16:00',
   checkout: '10:00',
   address: 'Carrer de les Petúnies 16\n03580 L\'Alfàs del Pi\nAlicante, Spanje',
-  instructions: 'Bij aankomst word je welkom geheten door onze lokale contactpersoon. Zij spreekt Engels en Spaans, regelt de sleuteloverdracht en geeft je een korte rondleiding door het huis. Ze legt uit hoe alles werkt en beantwoordt al je vragen.'
+  instructions: 'Bij aankomst word je welkom geheten door onze sleutelbeheerder. Deze regelt de inchecking en sleuteloverdracht om 16:00 uur en geeft je een korte rondleiding door het huis. Bij vertrek om 10:00 uur regelt de sleutelbeheerder ook de uitchecking. Andere tijden zijn in overleg mogelijk.'
 };
 
 onMounted(() => {

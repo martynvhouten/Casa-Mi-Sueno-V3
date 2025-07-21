@@ -12,33 +12,35 @@
         <div class="text-body2">
           <h2 class="text-h5 font-playfair q-mb-lg">Boekingsvoorwaarden</h2>
           <ul>
-            <li>Hoogseizoen (juli-augustus): minimaal 7 nachten, aankomst op zaterdag</li>
-            <li>Middenseizoen (april-juni, september): minimaal 5 nachten</li>
-            <li>Laagseizoen (oktober-maart): minimaal 3 nachten</li>
+            <li>Hoogseizoen (juni-september): minimaal 7 nachten</li>
+            <li>Middenseizoen (april-mei, oktober): minimaal 5 nachten</li>
+            <li>Laagseizoen (januari-februari, november): minimaal 7 nachten</li>
+            <li>Overwinteren (november, januari-maart): minimaal 1 maand, €1200 per maand</li>
+            <li>December niet beschikbaar voor verhuur</li>
             <li>Aanbetaling van 30% bij boeking</li>
-            <li>Restbetaling uiterlijk 8 weken voor aankomst</li>
-            <li>Borg van €500 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
-            <li>Toeristenbelasting €2,50 per persoon per nacht</li>
-            <li>Huisdieren zijn welkom in overleg bij de boeking</li>
+            <li>Restbetaling uiterlijk 6 weken voor aankomst</li>
+            <li>Borg van €400 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
+            <li>Eindschoonmaak €150</li>
+            <li>Linnen pakket €22 per slaapkamer (optioneel)</li>
+            <li>Honden zijn welkom in overleg bij de boeking</li>
           </ul>
 
           <h2 class="text-h5 font-playfair q-mb-lg">Annuleringsvoorwaarden</h2>
           <ul>
-            <li>Tot 8 weken voor aankomst: kosteloos annuleren</li>
-            <li>8-6 weken voor aankomst: 30% van de huursom</li>
-            <li>6-4 weken voor aankomst: 60% van de huursom</li>
-            <li>4-2 weken voor aankomst: 80% van de huursom</li>
-            <li>Minder dan 2 weken voor aankomst: 100% van de huursom</li>
+            <li>Geen annulering mogelijk na bevestiging</li>
+            <li>Aanbetaling en restbetaling zijn niet refundeerbaar</li>
           </ul>
 
           <h2 class="text-h5 font-playfair q-mb-lg">Huisregels</h2>
           <ul>
             <li>Inchecken vanaf 16:00 uur, uitchecken voor 10:00 uur</li>
-            <li>Maximaal 6 personen</li>
+            <li>Andere tijden in overleg met sleutelbeheerder</li>
+            <li>Maximaal 4 personen</li>
             <li>Roken alleen toegestaan buiten</li>
             <li>Geen feesten of evenementen</li>
             <li>Respecteer de rust van de buren</li>
-            <li>Huisdieren zijn welkom in overleg</li>
+            <li>Honden zijn welkom in overleg</li>
+            <li>Zwembad onderhoud bij voorkeur door huurder</li>
           </ul>
 
           <h2 class="text-h5 font-playfair q-mb-lg">Aansprakelijkheid</h2>

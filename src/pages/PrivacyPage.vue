@@ -30,7 +30,7 @@
             <li>Voor het versturen van praktische informatie over je verblijf</li>
             <li>Voor het versturen van de factuur</li>
             <li>Voor het verwerken van betalingen</li>
-            <li>Voor het voldoen aan wettelijke verplichtingen (zoals toeristenbelasting)</li>
+            <li>Voor het voldoen aan wettelijke verplichtingen</li>
             <li>Voor het versturen van een welkomstmail met aanvullende informatie</li>
           </ul>
 

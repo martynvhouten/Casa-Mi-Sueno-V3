@@ -321,6 +321,7 @@
 import { ref, computed, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import { PriceDetails } from 'src/utils/types/supabase';
+import { trackBookingInquiry } from 'src/utils/analytics';
 
 const props = defineProps<{
   priceDetails: PriceDetails | null;
@@ -479,7 +480,7 @@ const handleSubmit = async () => {
     
     // Check for honeypot (spam protection)
     if (honeypot.value) {
-      console.log('Spam detected');
+      
       return;
     }
     
@@ -541,8 +542,10 @@ const handleSubmit = async () => {
     try {
       result = JSON.parse(responseText);
     } catch (parseError) {
-      console.error('Failed to parse response as JSON:', parseError);
-      console.error('Raw response:', responseText);
+              // eslint-disable-next-line no-console
+        console.error('Failed to parse response as JSON:', parseError);
+        // eslint-disable-next-line no-console
+        console.error('Raw response:', responseText);
       throw new Error(`Server returned invalid response: ${responseText.substring(0, 100)}`);
     }
     
@@ -551,6 +554,20 @@ const handleSubmit = async () => {
     }
     
     liveAnnouncement.value = 'Je reservering is succesvol verzonden! Je ontvangt een bevestigingsmail.';
+    
+    // Track successful booking inquiry
+    if (props.priceDetails && props.selectedDates && props.selectedDates.length === 2) {
+      trackBookingInquiry({
+        check_in_date: props.selectedDates[0].toISOString().split('T')[0],
+        check_out_date: props.selectedDates[1].toISOString().split('T')[0],
+        nights: props.priceDetails.totalNights,
+        guests: totalGuests.value,
+        total_price: props.priceDetails.totalPrice,
+        season: props.priceDetails.season || 'unknown',
+        booking_type: props.priceDetails.season === 'mixed' ? 'mixed' : 
+                     props.priceDetails.season === 'winter' ? 'overwinter' : 'regular'
+      });
+    }
     
     $q.notify({
       type: 'positive',
@@ -584,7 +601,15 @@ const handleSubmit = async () => {
     
     emit('booking-submitted');
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error submitting booking:', error);
+    
+    // Track booking error
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    import('src/utils/analytics').then(({ trackBookingError }) => {
+      trackBookingError('submission_error', errorMessage);
+    });
+    
     liveAnnouncement.value = 'Er is een fout opgetreden bij het versturen van je reservering.';
     $q.notify({
       type: 'negative',

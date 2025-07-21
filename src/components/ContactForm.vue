@@ -335,6 +335,7 @@ const handleSubmit = async () => {
     formRef.value?.resetValidation();
 
   } catch (error: Error | unknown) {
+    // eslint-disable-next-line no-console
     console.error('Error sending form:', error);
     const errorMessage = error instanceof Error ? error.message : 'Er is een onverwachte fout opgetreden';
     $q.notify({
@@ -373,6 +374,7 @@ onMounted(() => {
         internalDates.value = [fromDate, toDate];
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error parsing dates from URL:', error);
     }
   }

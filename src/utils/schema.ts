@@ -1,5 +1,25 @@
 interface SchemaData {
-  [key: string]: any;
+  '@context': string;
+  '@type': string;
+  name: string;
+  image?: string;
+  description: string;
+  address?: {
+    '@type': string;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  geo?: {
+    '@type': string;
+    latitude: string;
+    longitude: string;
+  };
+  url: string;
+  telephone: string;
+  priceRange: string;
 }
 
 interface VacationRentalSchema {

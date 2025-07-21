@@ -108,6 +108,7 @@ import CostSummary from 'src/components/booking/CostSummary.vue';
 import InfoAndServices from 'src/components/booking/InfoAndServices.vue';
 import BookingForm from 'src/components/booking/BookingForm.vue';
 import { PriceDetails } from 'src/utils/types/supabase';
+import { trackPricingCalculation } from 'src/utils/analytics';
 
 const $q = useQuasar();
 const selectedDates = ref<Date[] | null>(null);
@@ -222,7 +223,6 @@ function calculateMixedSeasonPrice(startDate: Date, endDate: Date, totalNights: 
       const monthStart = new Date(currentYear, currentMonth, 1);
       
       // Check if this winter month part covers the complete available month
-      const monthEndDay = new Date(currentYear, currentMonth + 1, 0); // Last day of month
       
       // For a complete winter month overwinter price, we need:
       // 1. Overall booking starts on/before 1st of month  
@@ -406,7 +406,24 @@ function calculatePrice(startDate: Date, endDate: Date): PriceDetails | null {
 
 const priceDetails = computed<PriceDetails | null>(() => {
   if (!selectedDates.value || selectedDates.value.length !== 2) return null;
-  return calculatePrice(selectedDates.value[0], selectedDates.value[1]);
+  
+  const result = calculatePrice(selectedDates.value[0], selectedDates.value[1]);
+  
+  // Track pricing calculation when valid result is obtained
+  if (result) {
+    trackPricingCalculation({
+      check_in_date: selectedDates.value[0].toISOString().split('T')[0],
+      check_out_date: selectedDates.value[1].toISOString().split('T')[0],
+      nights: result.totalNights,
+      guests: 2, // Default value, actual guests selected in form
+      total_price: result.totalPrice,
+      season: result.season,
+      booking_type: result.season === 'mixed' ? 'mixed' : 
+                   result.season === 'winter' ? 'overwinter' : 'regular'
+    });
+  }
+  
+  return result;
 });
 
 

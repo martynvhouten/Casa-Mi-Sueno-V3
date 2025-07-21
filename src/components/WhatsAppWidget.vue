@@ -18,10 +18,14 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
 import { WHATSAPP_CONFIG } from '../utils/whatsapp';
+import { trackWhatsAppClick } from '../utils/analytics';
 
 const $q = useQuasar();
 
 const openWhatsApp = () => {
+  // Track WhatsApp click
+  trackWhatsAppClick(window.location.href);
+  
   const whatsappUrl = WHATSAPP_CONFIG.getWhatsAppUrl($q.platform.is.mobile);
   window.open(whatsappUrl, '_blank');
 };

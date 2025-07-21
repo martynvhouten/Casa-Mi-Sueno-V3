@@ -270,7 +270,8 @@ onMounted(async () => {
     bookedDates.value = fetchedBookedDates.map(d => d.geboekte_datum.toISOString().split('T')[0]);
     calendarAnnouncement.value = 'Kalender geladen. Selecteer je aankomst- en vertrekdatum.';
   } catch (error) {
-    console.error('Failed to load booked dates:', error);
+          // eslint-disable-next-line no-console
+      console.error('Failed to load booked dates:', error);
     calendarAnnouncement.value = 'Fout bij laden van beschikbaarheid. Probeer het later opnieuw.';
     $q.notify({
       type: 'negative',

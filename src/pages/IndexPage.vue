@@ -432,120 +432,66 @@ const locationHighlights = [
   transform: translateY(-4px);
 }
 
-/* Mobile image fixes - force exact height and remove border-radius */
-@media (max-width: 768px) {
-  /* Target the "Een thuis in Spanje" section cards */
-  .section:nth-child(5) .cms-card {
-    height: auto !important;
-  }
+/* Consistent styling for all feature cards - mobile and desktop */
+
+/* Features section - make images full width with rounded corners */
+.section:nth-child(3) .cms-card {
+  height: auto !important;
+  padding: 0 !important; /* Remove padding to make image full width */
+}
+
+.section:nth-child(3) .cms-card .cms-img-container {
+  height: 220px !important;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Only top corners rounded */
+  overflow: hidden;
+  position: relative;
+  margin: 0 !important; /* Remove margin to make full width */
+}
+
+.section:nth-child(3) .cms-card .cms-img-container .q-img {
+  height: 220px !important;
+  width: 100% !important;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Match container */
   
-  .section:nth-child(5) .cms-img-container {
-    height: 250px !important;
-    border-radius: 0 !important;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .section:nth-child(5) .cms-img-container .q-img {
-    height: 250px !important;
-    width: 100% !important;
-    border-radius: 0 !important;
-    
-    :deep(.q-img__container) {
-      height: 250px !important;
-      width: 100% !important;
-    }
-    
-    :deep(.q-img__content) {
-      border-radius: 0 !important;
-      height: 250px !important;
-      width: 100% !important;
-      position: relative;
-      
-      > div {
-        border-radius: 0 !important;
-        height: 250px !important;
-        width: 100% !important;
-      }
-    }
-    
-    /* Ensure text overlay is visible */
-    .absolute-bottom {
-      position: absolute !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      z-index: 10 !important;
-    }
-    
-    :deep(img) {
-      height: 250px !important;
-      width: 100% !important;
-      object-fit: cover !important;
-      object-position: center !important;
-      border-radius: 0 !important;
-    }
-  }
-  
-  /* Features section - make images full width with rounded corners */
-  .section:nth-child(3) .cms-card {
-    height: auto !important;
-    padding: 0 !important; /* Remove padding to make image full width */
-  }
-  
-  .section:nth-child(3) .cms-card .cms-img-container {
-    height: 220px !important;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Only top corners rounded */
-    overflow: hidden;
-    position: relative;
-    margin: 0 !important; /* Remove margin to make full width */
-  }
-  
-  .section:nth-child(3) .cms-card .cms-img-container .q-img {
+  :deep(.q-img__container) {
     height: 220px !important;
     width: 100% !important;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Match container */
+  }
+  
+  :deep(.q-img__content) {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+    height: 220px !important;
+    width: 100% !important;
+    position: relative;
     
-    :deep(.q-img__container) {
-      height: 220px !important;
-      width: 100% !important;
-    }
-    
-    :deep(.q-img__content) {
+    > div {
       border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
       height: 220px !important;
       width: 100% !important;
-      position: relative;
-      
-      > div {
-        border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
-        height: 220px !important;
-        width: 100% !important;
-      }
-    }
-    
-    :deep(img) {
-      height: 220px !important;
-      width: 100% !important;
-      object-fit: cover !important;
-      object-position: center !important;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
     }
   }
   
-  /* Add padding back to text content area */
-  .section:nth-child(3) .cms-card h3,
-  .section:nth-child(3) .cms-card p {
-    padding: 0 1rem !important;
+  :deep(img) {
+    height: 220px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
   }
-  
-  .section:nth-child(3) .cms-card h3 {
-    margin-top: 1rem !important;
-  }
-  
-  .section:nth-child(3) .cms-card p {
-    padding-bottom: 1rem !important;
-  }
+}
+
+/* Add padding back to text content area */
+.section:nth-child(3) .cms-card h3,
+.section:nth-child(3) .cms-card p {
+  padding: 0 1rem !important;
+}
+
+.section:nth-child(3) .cms-card h3 {
+  margin-top: 1rem !important;
+}
+
+.section:nth-child(3) .cms-card p {
+  padding-bottom: 1rem !important;
 }
 
 .location-card,

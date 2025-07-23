@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Omgeving/Albir_panorama.jpg"
+      image="/images/Omgeving/Albir_panorama.webp"
       alt-text="Panorama uitzicht van Albir"
       title="Ons stukje paradijs"
       subtitle="Ontdek waarom we hier ons hart verloren"
@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Omgeving/Casco_antiguo.jpg"
+                src="/images/Omgeving/Casco_antiguo.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -62,7 +62,7 @@
             <div class="location-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
               <q-img
-                  src="/images/Omgeving/Albir_lighthouse.jpg"
+                  src="/images/Omgeving/Albir_lighthouse.webp"
                   class="cms-img"
                 />
               </div>
@@ -81,7 +81,7 @@
             <div class="location-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Omgeving/Guadalest_mountain_view.jpg"
+                  src="/images/Omgeving/Guadalest_mountain_view.webp"
                   class="cms-img"
                 />
               </div>
@@ -222,7 +222,7 @@ const openInAppleMaps = () => {
 const culturalHighlights = [
   {
     title: 'Altea',
-    image: '/images/Omgeving/Casco_antiguo.jpg',
+    image: '/images/Omgeving/Casco_antiguo.webp',
     description: 'Een schilderachtig stadje met witte huisjes en de karakteristieke blauwe koepels van de kerk.',
     highlights: [
       'Historisch centrum met kunstgalerijen',
@@ -233,7 +233,7 @@ const culturalHighlights = [
   },
   {
     title: 'La Nucia',
-    image: '/images/Omgeving/la_nucia_panorama.jpg',
+    image: '/images/Omgeving/la_nucia_panorama.webp',
     description: 'Een moderne stad bekend om haar uitstekende sportfaciliteiten, natuurschoon en gezellige oude centrum.',
     highlights: [
       'Ciutat Esportiva Camilo Cano - modern sportcomplex',
@@ -244,7 +244,7 @@ const culturalHighlights = [
   },
   {
     title: 'Benidorm',
-    image: '/images/Omgeving/benidorm_skyline_night.jpg',
+    image: '/images/Omgeving/benidorm_skyline_night.webp',
     description: 'De bruisende badplaats van de Costa Blanca met haar iconische skyline, lange zandstranden en levendige uitgaansleven.',
     highlights: [
       'Prachtige zandstranden Levante en Poniente',
@@ -255,7 +255,7 @@ const culturalHighlights = [
   },
   {
     title: 'Guadalest',
-    image: '/images/Omgeving/Guadalest_castle.jpg',
+    image: '/images/Omgeving/Guadalest_castle.webp',
     description: 'Een spectaculair bergdorpje, gebouwd op een rotspunt met een kasteel en adembenemend uitzicht.',
     highlights: [
       'Middeleeuws kasteel op de rots',
@@ -266,7 +266,7 @@ const culturalHighlights = [
   },
   {
     title: 'Algar Watervallen',
-    image: '/images/Omgeving/Fuentes_del_algar.jpg',
+    image: '/images/Omgeving/Fuentes_del_algar.webp',
     description: 'Natuurlijke watervallen met kristalhelder water en natuurlijke zwembaden.',
     highlights: [
       'Verfrissende natuurlijke zwembaden',
@@ -277,7 +277,7 @@ const culturalHighlights = [
   },
   {
     title: 'Villajoyosa',
-    image: '/images/Omgeving/villajoyosa_colorful_houses.jpg',
+    image: '/images/Omgeving/villajoyosa_colorful_houses.webp',
     description: 'Een kleurrijk kuststadje bekend om zijn chocolade-industrie, gekleurde huizen en historische centrum.',
     highlights: [
       'Beroemde chocoladefabrieken met rondleidingen',

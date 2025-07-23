@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Veranda2.jpg"
+      image="/images/Veranda2.webp"
       alt-text="De veranda van het vakantiehuis"
       title="Alles geregeld"
       subtitle="Zodat jij je nergens zorgen over hoeft te maken"

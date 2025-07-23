@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <HeroSection
-      image="/images/Tuin_mediterraans.jpg"
+      image="/images/Tuin_mediterraans.webp"
       alt-text="De mediterrane tuin van Casa Mi Sueño"
       title="Sitemap"
       subtitle="Overzicht van alle pagina's"

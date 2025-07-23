@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_mediterraans.jpg"
+      image="/images/Tuin_mediterraans.webp"
       alt-text="Mediterrane tuin van het vakantiehuis"
       title="Foto impressie"
       subtitle="Een rondleiding door Casa Mi Sueño"

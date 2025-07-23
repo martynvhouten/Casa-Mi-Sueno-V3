@@ -45,8 +45,7 @@
     "types": [
       "vite/client",
       "node",
-      "@quasar/app-vite",
-      "vue-i18n"
+      "@quasar/app-vite"
     ]
   },
   "include": [

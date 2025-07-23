@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Woonkamer_tafel_stoelen.jpg"
+      image="/images/Woonkamer_tafel_stoelen.webp"
       alt-text="Eettafel en stoelen in de woonkamer"
       title="Ons tweede thuis"
       subtitle="Comfortabel en sfeervol ingericht"
@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Woonkamer_zithoek.jpg"
+                src="/images/Woonkamer_zithoek.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -62,7 +62,7 @@
             <div class="bedroom-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Slaapkamer2.jpg"
+                  src="/images/Slaapkamer2.webp"
                   class="cms-img"
                 />
               </div>
@@ -84,7 +84,7 @@
             <div class="bedroom-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Slaapkamer1_vooraanzicht.jpg"
+                  src="/images/Slaapkamer1_vooraanzicht.webp"
                   class="cms-img"
                 />
               </div>
@@ -154,7 +154,7 @@
             <div class="outdoor-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Tuin_zwembad.jpg"
+                  src="/images/Tuin_zwembad.webp"
                   class="cms-img"
                 />
               </div>
@@ -178,7 +178,7 @@
             <div class="outdoor-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Tuin_bbq.jpg"
+                  src="/images/Tuin_bbq.webp"
                   class="cms-img"
                 />
               </div>
@@ -237,11 +237,11 @@ const bathrooms = [
     description: 'Praktische badkamer met douche, wastafel en toilet, gelegen naast de slaapkamer',
     images: [
       {
-        src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.jpg',
+        src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp',
         alt: 'Douche in badkamer bij slaapkamer'
       },
       {
-        src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.jpg',
+        src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.webp',
         alt: 'Toilet in badkamer bij slaapkamer'
       }
     ],
@@ -257,11 +257,11 @@ const bathrooms = [
     description: 'Functionele badkamer met douche, wastafel en toilet, gelegen in de hal',
     images: [
       {
-        src: '/images/Badkamer.jpg',
+        src: '/images/Badkamer.webp',
         alt: 'Badkamer in de hal'
       },
       {
-        src: '/images/Badkamer2.jpg',
+        src: '/images/Badkamer2.webp',
         alt: 'Badkamer in de hal overzicht'
       }
     ],

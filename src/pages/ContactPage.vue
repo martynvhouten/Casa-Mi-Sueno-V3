@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_veranda.jpg"
+      image="/images/Tuin_veranda.webp"
       alt-text="De veranda van het vakantiehuis"
       :title="isBookingInquiry ? 'Vragen over je verblijf?' : 'We helpen je graag'"
       :subtitle="isBookingInquiry ? 'Laat ons weten waar we je mee kunnen helpen' : 'Voor alle vragen over Casa Mi Sueño'"

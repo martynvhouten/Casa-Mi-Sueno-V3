@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_zwembad.jpg"
+      image="/images/Tuin_zwembad.webp"
       alt-text="Zwembad en tuin van Casa Mi Sueño"
       title="Welkom bij Casa Mi Sueño"
       subtitle="Ons stukje paradijs tussen bergen en zee"
@@ -36,10 +36,12 @@
         <div class="row q-col-gutter-lg">
           <div v-for="feature in features" :key="feature.title" class="col-12 col-md-4">
             <div class="cms-card q-pa-md text-center">
-              <div class="cms-img-container q-mb-lg" style="height: 200px;">
+              <div class="cms-img-container q-mb-lg" style="height: 280px;">
                 <q-img
                   :src="feature.image"
                   class="cms-img"
+                  fit="cover"
+                  position="center"
                 />
               </div>
               <h3 class="q-mb-md font-playfair">{{ feature.title }}</h3>
@@ -76,7 +78,7 @@
             <div class="cms-card">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Woonkamer_zithoek.jpg"
+                  src="/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.webp"
                   class="cms-img"
                 >
                   <div class="absolute-bottom text-center image-overlay">
@@ -91,7 +93,7 @@
             <div class="cms-card">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Tuin_mediterraans.jpg"
+                  src="/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp"
                   class="cms-img"
                 >
                   <div class="absolute-bottom text-center image-overlay">
@@ -159,17 +161,17 @@ import HeroSection from 'src/components/HeroSection.vue';
 
 const features = [
   {
-    image: '/images/Tuin_zwembad.jpg',
+    image: '/images/Woonkamer_zithoek.webp',
     title: 'Ons tweede thuis',
     description: 'Een persoonlijk huis voor gasten die houden van rust, natuur en een warme, huiselijke sfeer'
   },
   {
-    image: '/images/Tuin_mediterraans.jpg',
+    image: '/images/Tuin_zithoek.webp',
     title: 'Leven in de buitenlucht',
     description: 'Een fijne tuin met zwembad, verschillende terrassen en een gezellige buitenkeuken'
   },
   {
-    image: '/images/Omgeving/Albir_panorama.jpg',
+    image: '/images/Omgeving/Albir_panorama.webp',
     title: 'Fijne locatie',
     description: 'Rustig gelegen tussen de bergen en de zee, perfect voor natuurliefhebbers en rustzoekers'
   }

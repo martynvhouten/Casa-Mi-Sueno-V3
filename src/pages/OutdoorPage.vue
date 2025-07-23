@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_zwembad.jpg"
+      image="/images/Tuin_zwembad.webp"
       alt-text="Zwembad en tuin van het vakantiehuis"
       title="Ons buitenparadijs"
       subtitle="Waar het Spaanse leven zich afspeelt"
@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_zwembad-douche.jpg"
+                src="/images/Tuin_zwembad-douche.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -60,7 +60,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_veranda.jpg"
+                src="/images/Tuin_veranda.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -131,7 +131,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_bbq.jpg"
+                src="/images/Tuin_bbq.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -196,7 +196,7 @@ import HeroSection from 'src/components/HeroSection.vue';
 
 const gardenAreas = [
   {
-    image: '/images/Tuin_mediterraans.jpg',
+    image: '/images/Tuin_mediterraans.webp',
     title: 'Mediterrane tuin',
     description: 'Een verzorgde tuin met mediterrane beplanting die schaduw en kleur biedt',
     features: [
@@ -207,7 +207,7 @@ const gardenAreas = [
     ]
   },
   {
-    image: '/images/Tuin_zithoek.jpg',
+    image: '/images/Tuin_zithoek.webp',
     title: 'Zithoeken',
     description: 'Verschillende plekjes in de tuin om te zitten en te ontspannen',
     features: [
@@ -218,7 +218,7 @@ const gardenAreas = [
     ]
   },
   {
-    image: '/images/Tuin_eetgedeelte.jpg',
+    image: '/images/Tuin_eetgedeelte.webp',
     title: 'Praktische indeling',
     description: 'De tuin is praktisch ingedeeld met ruimte voor parkeren en ontspanning',
     features: [
@@ -232,25 +232,25 @@ const gardenAreas = [
 
 const eveningMoments = [
   {
-    image: '/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.jpg',
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.webp',
     alt: 'Zwembad met sfeerverlichting in de avond',
     title: 'Zwembad bij nacht',
     description: 'Het zwembad wordt \'s avonds prachtig verlicht en creëert een magische sfeer voor een ontspannende avondduik.'
   },
   {
-    image: '/images/Achtertuin_en_badkamer2/Achtertuin_zithoek_nacht.jpg',
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_zithoek_nacht.webp',
     alt: 'Gezellige zithoek met avondverlichting',
     title: 'Avondlijke gezelligheid',
     description: 'De zithoeken worden \'s avonds een intieme plek waar je kunt napraten onder de sterrenhemel.'
   },
   {
-    image: '/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.jpg',
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.webp',
     alt: 'Ligbedden bij het zwembad in de avond',
     title: 'Ontspanning pur sang',
     description: 'De ligbedden nodigen uit voor een laatste borrel terwijl je naar de sterren kijkt en de dag laat bezinken.'
   },
   {
-    image: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_nacht.jpg',
+    image: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_nacht.webp',
     alt: 'Voorzijde van de achtertuin in de avond',
     title: 'Sfeervolle verlichting',
     description: 'De doordachte verlichting maakt elke hoek van de tuin \'s avonds uitnodigend en romantisch.'

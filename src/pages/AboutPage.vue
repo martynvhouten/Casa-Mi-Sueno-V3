@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_vanaf_veranda.jpg"
+      image="/images/Tuin_vanaf_veranda.webp"
       alt-text="Uitzicht op de tuin vanaf de veranda"
       title="Dit zijn wij"
       subtitle="Esther & Milco - eigenaren van Casa Mi Sueño"
@@ -17,7 +17,7 @@
             <p class="text-body1 q-mb-lg">
               We waren direct enthousiast toen we dit huis voor het eerst zagen. De mediterrane tuin 
               en de ruime veranda waren precies wat we zochten. Later hebben we zelf het zwembad 
-              laten aanleggen om er een complete vakantie-ervaring van te maken. Een fijne plek om 
+              aangelegd om er een complete vakantie-ervaring van te maken. Een fijne plek om 
               te ontspannen en tijd door te brengen met familie en vrienden.
             </p>
             <p class="text-body1 q-mb-xl">
@@ -36,7 +36,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_vanaf_veranda.jpg"
+                src="/images/Tuin_vanaf_veranda.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -61,7 +61,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Woonkamer_zithoek.jpg"
+                src="/images/Woonkamer_zithoek.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -120,7 +120,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/omgeving/Albir_boulevard.jpg"
+                src="/images/omgeving/Albir_boulevard.webp"
                 class="cms-img rounded-borders"
               />
             </div>

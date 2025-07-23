@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_zwembad.jpg"
+      image="/images/Tuin_zwembad.webp"
       alt-text="Zwembad en tuin van het vakantiehuis"
       title="Plan je verblijf"
       subtitle="Ontdek wanneer Casa Mi Sueño beschikbaar is"

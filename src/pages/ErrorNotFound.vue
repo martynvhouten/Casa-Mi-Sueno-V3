@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <HeroSection
-      image="/images/Tuin_planten2.jpg"
+      image="/images/Tuin_planten2.webp"
       alt-text="De mediterrane tuin van Casa Mi Sueño"
       title="Pagina niet gevonden"
       subtitle="De pagina die je zoekt bestaat niet"

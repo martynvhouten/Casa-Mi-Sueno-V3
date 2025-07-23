@@ -126,22 +126,22 @@ const carouselAutoplay = ref(false);
 
 // Photo data
 const beachPhotos = [
-  { src: '/images/Omgeving/Albir_boulevard.jpg', caption: 'Boulevard van Albir' },
-  { src: '/images/Omgeving/Alicante_promenade.jpg', caption: 'Promenade van Alicante' },
-  { src: '/images/Omgeving/Alicante_sunrise.jpg', caption: 'Zonsopgang in Alicante' }
+  { src: '/images/Omgeving/Albir_boulevard.webp', caption: 'Boulevard van Albir' },
+  { src: '/images/Omgeving/Alicante_promenade.webp', caption: 'Promenade van Alicante' },
+  { src: '/images/Omgeving/Alicante_sunrise.webp', caption: 'Zonsopgang in Alicante' }
 ];
 
 const naturePhotos = [
-  { src: '/images/Omgeving/Guadalest_mountain_view.jpg', caption: 'Bergzicht bij Guadalest' },
-  { src: '/images/Omgeving/Guadalest_castle.jpg', caption: 'Kasteel van Guadalest' },
-  { src: '/images/Omgeving/Fuentes_del_algar.jpg', caption: 'Watervallen van Algar' },
-  { src: '/images/Omgeving/Albir_lighthouse.jpg', caption: 'Vuurtoren van Albir' }
+  { src: '/images/Omgeving/Guadalest_mountain_view.webp', caption: 'Bergzicht bij Guadalest' },
+  { src: '/images/Omgeving/Guadalest_castle.webp', caption: 'Kasteel van Guadalest' },
+  { src: '/images/Omgeving/Fuentes_del_algar.webp', caption: 'Watervallen van Algar' },
+  { src: '/images/Omgeving/Albir_lighthouse.webp', caption: 'Vuurtoren van Albir' }
 ];
 
 const attractionPhotos = [
-  { src: '/images/Omgeving/Casco_antiguo.jpg', caption: 'Historisch centrum' },
-  { src: '/images/Omgeving/Casco_antiguo2.jpg', caption: 'Oude stad' },
-  { src: '/images/Omgeving/Albir_panorama.jpg', caption: 'Panorama van Albir' }
+  { src: '/images/Omgeving/Casco_antiguo.webp', caption: 'Historisch centrum' },
+  { src: '/images/Omgeving/Casco_antiguo2.webp', caption: 'Oude stad' },
+  { src: '/images/Omgeving/Albir_panorama.webp', caption: 'Panorama van Albir' }
 ];
 
 const allSurroundingPhotos = computed(() => [

@@ -9,7 +9,6 @@ Een moderne website voor Casa Mi Sueño, een luxe vakantiehuis aan de Costa Blan
 - TypeScript
 - TailwindCSS
 - Vue Router
-- Vue i18n (voorbereid voor meertaligheid)
 
 ## Vereisten
 
@@ -61,7 +60,6 @@ src/
 ├── layouts/         # Layout componenten
 ├── pages/          # Pagina componenten
 ├── router/         # Vue Router configuratie
-├── i18n/           # Vertalingen
 └── styles/         # Globale styles
 ```
 
@@ -76,7 +74,6 @@ src/
 - Fotogalerij met lightbox
 - Google Maps integratie
 - Cookie consent
-- Meertalige ondersteuning (voorbereid)
 
 ## Contact
 

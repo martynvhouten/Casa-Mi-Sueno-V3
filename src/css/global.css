@@ -580,31 +580,31 @@ body .hover-terracotta:hover,
     font-size: var(--text-xs);
   }
 
-  /* Enhanced mobile touch targets */
+  /* Enhanced mobile touch targets - smaller buttons */
   .cms-btn.q-btn {
-    min-height: 48px;
-    padding: 0.875rem 1.5rem;
-    font-size: var(--text-base);
-    border-radius: var(--radius-lg);
-  }
-
-  .cms-btn-sm.q-btn {
     min-height: 44px;
     padding: 0.75rem 1.25rem;
     font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .cms-btn-sm.q-btn {
+    min-height: 40px;
+    padding: 0.625rem 1rem;
+    font-size: var(--text-xs);
   }
 
   .cms-btn-cta.q-btn {
-    min-height: 52px;
-    padding: 1rem 2rem;
-    font-size: var(--text-lg);
-    font-weight: 700;
+    min-height: 48px;
+    padding: 0.875rem 1.5rem;
+    font-size: var(--text-base);
+    font-weight: 600;
   }
 
   .cms-btn-lg.q-btn {
-    min-height: 56px;
-    padding: 1.25rem 2rem;
-    font-size: var(--text-xl);
+    min-height: 52px;
+    padding: 1rem 1.75rem;
+    font-size: var(--text-lg);
   }
 
   /* Form inputs with better specificity instead of !important */

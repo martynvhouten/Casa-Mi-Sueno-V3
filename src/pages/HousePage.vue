@@ -154,7 +154,7 @@
             <div class="outdoor-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.webp"
+                  src="/images/Tuin_zwembad.webp"
                   class="cms-img"
                 />
               </div>

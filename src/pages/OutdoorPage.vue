@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.webp"
+                src="/images/Tuin_zwembad-douche.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -235,7 +235,7 @@ const eveningMoments = [
     image: '/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.webp',
     alt: 'Zwembad met sfeerverlichting in de avond',
     title: 'Zwembad bij nacht',
-    description: 'Het zwembad wordt \'s avonds prachtig verlicht en creëert een magische sfeer voor een ontspannende avondduik.'
+    description: 'Het zonneterras bij het zwembad wordt \'s avonds prachtig verlicht en creëert een magische sfeer voor een ontspannende avondduik.'
   },
   {
     image: '/images/Achtertuin_en_badkamer2/Achtertuin_zithoek_nacht.webp',

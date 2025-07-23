@@ -34,9 +34,9 @@
               kunt proeven, geven je het échte Spaanse gevoel.
             </p>
             <ul class="feature-list q-mb-xl">
-              <li>Supermarkten op 5 minuten</li>
+              <li>Supermarkten op 5 minuten rijden</li>
               <li>Restaurants op loopafstand</li>
-              <li>Strand op 15 minuten lopen</li>
+              <li>Auto aangeraden voor optimale mobiliteit</li>
               <li>Medische voorzieningen in de buurt</li>
               <li>Wekelijkse markt in het dorp</li>
             </ul>
@@ -70,7 +70,7 @@
                 <h3 class="font-playfair q-mb-md">Stranden & Kust</h3>
                 <p class="text-body1 q-mb-md">
                   Het kiezelstrand van Albir, met zijn gezellige boulevard en blauwe vlag, ligt op 
-                  slechts 5 minuten rijden. Voor zandstranden kun je terecht in het nabijgelegen 
+                  13 minuten rijden. Voor zandstranden kun je terecht in het nabijgelegen 
                   Benidorm (15 minuten). De vuurtoren van Albir, bereikbaar via een mooie 
                   wandelroute door het natuurpark Sierra Helada, biedt prachtige uitzichten over de kust.
                 </p>
@@ -152,30 +152,63 @@
           <div class="col-12 col-md-10">
             <div class="map-container q-mb-lg">
               <iframe
+                v-if="API_KEY"
                 :src="mapUrl"
                 style="border:0;"
                 :allowfullscreen="true"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
+              <!-- Fallback for when Google Maps API is not available -->
+              <div v-else class="map-fallback">
+                <div class="map-placeholder">
+                  <q-icon name="map" size="48px" color="primary" class="q-mb-md" />
+                  <h4 class="text-primary q-mb-md">Google Maps</h4>
+                  <p class="text-grey-7 q-mb-lg">Kaart niet beschikbaar - gebruik de onderstaande knoppen om de locatie te bekijken</p>
+                  <div class="row justify-center q-gutter-sm">
+                    <q-btn
+                      outline
+                      color="primary"
+                      icon="map"
+                      :label="$q.screen.gt.xs ? 'Open in Google Maps' : 'Google Maps'"
+                      @click="openInGoogleMaps"
+                      class="cms-btn cms-btn-outline cms-btn-sm"
+                      size="sm"
+                    />
+                    <q-btn
+                      outline
+                      color="primary"
+                      icon="map"
+                      :label="$q.screen.gt.xs ? 'Open in Apple Maps' : 'Apple Maps'"
+                      @click="openInAppleMaps"
+                      class="cms-btn cms-btn-outline cms-btn-sm"
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="text-center">
-              <q-btn
-                outline
-                color="primary"
-                icon="place"
-                label="Open in Google Maps"
-                @click="openInGoogleMaps"
-                class="cms-btn cms-btn-outline q-mr-md"
-              />
-              <q-btn
-                outline
-                color="primary"
-                icon="place"
-                label="Open in Apple Maps"
-                @click="openInAppleMaps"
-                class="cms-btn cms-btn-outline"
-              />
+            <div class="text-center map-buttons-container">
+              <div class="row justify-center q-gutter-sm">
+                <q-btn
+                  outline
+                  color="primary"
+                  icon="place"
+                  :label="$q.screen.gt.xs ? 'Open in Google Maps' : 'Google Maps'"
+                  @click="openInGoogleMaps"
+                  class="cms-btn cms-btn-outline cms-btn-sm"
+                  size="sm"
+                />
+                <q-btn
+                  outline
+                  color="primary"
+                  icon="place"
+                  :label="$q.screen.gt.xs ? 'Open in Apple Maps' : 'Apple Maps'"
+                  @click="openInAppleMaps"
+                  class="cms-btn cms-btn-outline cms-btn-sm"
+                  size="sm"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -202,14 +235,19 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useQuasar } from 'quasar';
 import HeroSection from 'src/components/HeroSection.vue';
+
+const $q = useQuasar();
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const ADDRESS = 'Calle Petunias 16, 03580 L\'Alfàs del Pi, Alicante, Spain';
 const ENCODED_ADDRESS = encodeURIComponent(ADDRESS);
 
 const mapUrl = ref(
-  `https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${ENCODED_ADDRESS}&zoom=15`
+  API_KEY 
+    ? `https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${ENCODED_ADDRESS}&zoom=15`
+    : `https://www.google.com/maps/embed/v1/place?q=${ENCODED_ADDRESS}&zoom=15`
 );
 
 const openInGoogleMaps = () => {
@@ -229,7 +267,7 @@ const culturalHighlights = [
       'Historisch centrum met kunstgalerijen',
       'Traditionele markt op dinsdag',
       'Gezellige restaurants en terrassen',
-      'Op 10 minuten rijden'
+      'Op 15 minuten rijden'
     ]
   },
   {
@@ -262,7 +300,7 @@ const culturalHighlights = [
       'Middeleeuws kasteel op de rots',
       'Diverse kleine musea',
       'Panoramisch uitzicht over het stuwmeer',
-      'Op 30 minuten rijden'
+      'Op 25 minuten rijden'
     ]
   },
   {
@@ -315,7 +353,9 @@ const practicalInfo = [
     title: 'Transport',
     details: [
       'Alicante Airport (45 min)',
-      'Valencia Airport (75 min)',
+      'Valencia Airport (90 min)',
+      'Autoverhuur: vliegveld of lokaal in dorp',
+      'Eigen auto: ruime parkeerplaats aanwezig',
       'Busverbinding naar Benidorm',
       'Taxi\'s beschikbaar'
     ]
@@ -405,5 +445,37 @@ const practicalInfo = [
 
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.map-fallback {
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
+
+.map-placeholder {
+  text-align: center;
+  padding: 2rem;
+  max-width: 400px;
+}
+
+.map-buttons-container {
+  margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .map-buttons-container .q-btn {
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+  
+  .map-buttons-container .row {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
 }
 </style> 

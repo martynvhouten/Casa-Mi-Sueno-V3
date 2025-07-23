@@ -199,7 +199,7 @@ const locationHighlights = [
   {
     icon: 'beach_access',
     title: 'Strand & Zee',
-    description: 'Het strand van Albir met zijn gezellige boulevard ligt op 15 minuten wandelen'
+    description: 'Het strand van Albir met zijn gezellige boulevard op korte rijafstand'
   },
   {
     icon: 'landscape',

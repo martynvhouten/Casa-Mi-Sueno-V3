@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Veranda2.webp"
-      alt-text="De veranda van het vakantiehuis"
+      image="/images/Tuin_vanaf_veranda.webp"
+      alt-text="Mediterrane tuin met weelderige beplanting"
       title="Alles geregeld"
       subtitle="Zodat jij je nergens zorgen over hoeft te maken"
     />
@@ -208,6 +208,7 @@
                     href="https://maps.google.com/?q=Calle+Petunias+16+L'Alfàs+del+Pi"
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="cms-btn cms-btn-outline"
                   />
                   <q-btn
                     flat
@@ -218,6 +219,7 @@
                     href="https://maps.apple.com/?q=Carrer+de+les+Petúnies+16,+L'Alfàs+del+Pi"
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="cms-btn cms-btn-outline"
                   />
                 </div>
               </div>
@@ -242,8 +244,7 @@
           Heb je nog vragen of wil je direct reserveren? Neem contact met ons op.
         </p>
         <q-btn
-          class="cms-btn cms-btn-primary q-px-md q-py-xs text-body1"
-          size="sm"
+          class="cms-btn cms-btn-primary"
           to="/contact"
           label="Neem contact op"
         />

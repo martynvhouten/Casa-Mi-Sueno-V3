@@ -280,43 +280,36 @@ const interiorPhotos = [
 ];
 
 const bedroomPhotos = [
-  { src: '/images/Slaapkamer1_vooraanzicht.webp', caption: 'Slaapkamer met badkamer ernaast' },
-  { src: '/images/Slaapkamer1_bed.webp', caption: 'Comfortabel tweepersoonsbed in hoofdslaapkamer' },
-  { src: '/images/Slaapkamer1_zijaanzicht.webp', caption: 'Zijkant hoofdslaapkamer' },
-  { src: '/images/Slaapkamer2.webp', caption: 'Tweede gastenslaapkamer' },
-  { src: '/images/Slaapkamer2_bed.webp', caption: 'Tweepersoonsbed in tweede slaapkamer' },
-  { src: '/images/Slaapkamer2_kussens.webp', caption: 'Sfeervolle inrichting tweede slaapkamer' }
+  { src: '/images/Slaapkamer1_vooraanzicht.webp', caption: 'Eerste slaapkamer' },
+  { src: '/images/Slaapkamer1_bed.webp', caption: 'Comfortabel tweepersoonsbed in eerste slaapkamer' },
+  { src: '/images/Slaapkamer2.webp', caption: 'Tweede slaapkamer' },
+  { src: '/images/Slaapkamer2_kussens.webp', caption: 'Comfortabel tweepersoonsbed in tweede slaapkamer' }
 ];
 
 const bathroomPhotos = [
-  { src: '/images/Badkamer.webp', caption: 'Badkamer naast slaapkamer' },
+  { src: '/images/Badkamer.webp', caption: 'Badkamer in de hal' },
   { src: '/images/Badkamer2.webp', caption: 'Badkamer in de hal' },
-  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp', caption: 'Douche in de hal-badkamer' },
-  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.webp', caption: 'Toilet in de hal-badkamer' }
+  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp', caption: 'Douche slaapkamer badkamer' },
+  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.webp', caption: 'Toilet slaapkamer badkamer' }
 ];
 
 const exteriorPhotos = [
-  { src: '/images/Zwembadkant_volledig.webp', caption: 'Volledig zicht op het zwembad' },
-  { src: '/images/Tuin_zwembad.webp', caption: 'Het zwembad' },
-  { src: '/images/Tuin_zwembad-douche.webp', caption: 'Zwembad met buitendouche' },
+  { src: '/images/Tuin_zwembad.webp', caption: 'Het zwembad met buitendouche en zonneterras' },
   { src: '/images/Tuin_mediterraans.webp', caption: 'Mediterrane tuin' },
-  { src: '/images/Tuin_planten.webp', caption: 'Weelderige mediterrane beplanting' },
-  { src: '/images/Tuin_planten2.webp', caption: 'Kleurrijke tuinbeplanting' },
+  { src: '/images/Tuin_planten2.webp', caption: 'Weelderige mediterrane beplanting' },
   { src: '/images/Tuin_veranda.webp', caption: 'Overdekte veranda' },
-  { src: '/images/Veranda2.webp', caption: 'Loungeset op de veranda' },
-  { src: '/images/Tuin_eetgedeelte.webp', caption: 'Overdekt eetgedeelte in de tuin' },
+  { src: '/images/Veranda2.webp', caption: 'Overdekte veranda zijaanzicht' },
+  { src: '/images/Tuin_eetgedeelte.webp', caption: 'Overdekt eetgedeelte' },
   { src: '/images/Tuin_vanaf_veranda.webp', caption: 'Uitzicht vanaf de veranda' },
   { src: '/images/Tuin_zithoek.webp', caption: 'Gezellige buitenzithoek' },
-  { src: '/images/Tuintafel_zitgedeelte.webp', caption: 'Extra zitgedeelte in de tuin' },
+  { src: '/images/Tuintafel_zitgedeelte.webp', caption: 'Overdekt eetgedeelte' },
   { src: '/images/Tuin_bbq.webp', caption: 'BBQ-hoek' },
   { src: '/images/Tuin_zijpad.webp', caption: 'Zijpad met mediterrane planten' },
-  { src: '/images/Tuinpad.webp', caption: 'Sfeervol verlicht tuinpad' },
   { src: '/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.webp', caption: 'Ligstoelen bij het zwembad in de avond' },
-  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_pingpongtafel.webp', caption: 'Pingpongtafel in de achtertuin' },
-  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_pingpong_uitgezoomd.webp', caption: 'Pingponghoek overzicht' },
-  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.webp', caption: 'Achtertuin gezien vanuit de woonkamer' },
-  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_nacht.webp', caption: 'Achtertuin voorzijde in de avond' },
-  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp', caption: 'Pad naar de achtertuin' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_pingpongtafel.webp', caption: 'Pingpongtafel' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.webp', caption: 'Woonkamer met zicht op tuin' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_nacht.webp', caption: 'Sfeervol verlicht tuinpad' },
+  { src: '/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp', caption: 'Tuinpad voorzijde' },
   { src: '/images/Achtertuin_en_badkamer2/Achtertuin_zithoek_nacht.webp', caption: 'Buitenzithoek in de avond' },
   { src: '/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.webp', caption: 'Zwembad sfeervolle avondverlichting' }
 ];

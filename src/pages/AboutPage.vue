@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_vanaf_veranda.webp"
-      alt-text="Uitzicht op de tuin vanaf de veranda"
+      image="/images/Woonkamer_tafel_stoelen.webp"
+      alt-text="Zwembad met sfeervolle avondverlichting"
       title="Dit zijn wij"
       subtitle="Esther & Milco - eigenaren van Casa Mi Sueño"
     />
@@ -61,7 +61,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Woonkamer_zithoek.webp"
+                src="/images/Slaapkamer1_vooraanzicht.webp"
                 class="cms-img rounded-borders"
               />
             </div>

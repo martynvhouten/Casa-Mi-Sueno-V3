@@ -207,6 +207,25 @@ defineProps({
     font-size: 1.125rem !important;
     line-height: 1.3 !important;
   }
+
+  /* Light zoom for better mobile display */
+  .hero-image :deep(img) {
+    transform: scale(1.15) !important;
+    object-position: center !important;
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-image :deep(.q-img__container) {
+    transform: scale(1.15) !important;
+    transform-origin: center center;
+  }
+  
+  /* Reset text content to normal size */
+  .hero-content {
+    transform: scale(1) !important;
+    position: relative;
+    z-index: 10;
+  }
 }
 
 @media (max-width: 480px) {

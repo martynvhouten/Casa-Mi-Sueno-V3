@@ -145,7 +145,7 @@
               </q-item>
               <q-item>
                 <q-item-section class="text-center text-md-left">
-                  <q-item-label>03580 L'Alfàs del Pi, Alicante, Spain</q-item-label>
+                  <q-item-label>03580 L'Alfàs del Pi, Alicante, Spanje</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item clickable tag="a" href="tel:+31683645489">
@@ -208,7 +208,7 @@
         </div>
 
         <!-- Copyright -->
-        <div class="row justify-center q-mt-xl">
+        <div class="row justify-center q-mt-xl" style="padding-bottom: 2rem;">
           <div class="col-12 text-center text-caption">
               © {{ new Date().getFullYear() }} Casa Mi Sueño. Alle rechten voorbehouden.
           </div>

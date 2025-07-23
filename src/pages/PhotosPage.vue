@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_mediterraans.webp"
-      alt-text="Mediterrane tuin van het vakantiehuis"
+      image="/images/Tuin_zithoek.webp"
+      alt-text="Ligstoelen bij het zwembad in de avond"
       title="Foto impressie"
       subtitle="Een rondleiding door Casa Mi Sueño"
     />

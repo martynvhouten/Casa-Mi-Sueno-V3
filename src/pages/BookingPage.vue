@@ -2,10 +2,10 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_zwembad.webp"
-      alt-text="Zwembad en tuin van het vakantiehuis"
-      title="Plan je verblijf"
-      subtitle="Ontdek wanneer Casa Mi Sueño beschikbaar is"
+      image="/images/Zwembadkant_volledig.webp"
+      alt-text="Volledig overzicht van het zwembad en terras"
+      title="Reserveer je verblijf"
+      subtitle="Kies je perfecte data en maak direct een reservering"
     />
 
     <BookingIntro />
@@ -49,25 +49,14 @@
       </div>
     </section>
 
-    <!-- Collapsible Info & Services Section -->
+    <!-- Info & Services Section -->
     <section class="section bg-sand">
       <div class="container">
-        <div class="info-services-toggle">
-          <q-btn
-            flat
-            no-caps
-            :icon="showInfoServices ? 'expand_less' : 'expand_more'"
-            :label="showInfoServices ? 'Verberg aanvullende informatie' : 'Bekijk aanvullende informatie'"
-            class="full-width text-primary"
-            @click="showInfoServices = !showInfoServices"
-            size="lg"
-          />
+        <div class="text-center q-mb-xl">
+          <h2 class="font-playfair">Aanvullende informatie</h2>
+          <p class="text-body1 text-grey-7">Alles wat je moet weten voor je verblijf</p>
         </div>
-        <q-slide-transition>
-          <div v-show="showInfoServices">
-            <InfoAndServices />
-          </div>
-        </q-slide-transition>
+        <InfoAndServices />
       </div>
     </section>
 
@@ -113,7 +102,6 @@ import { trackPricingCalculation } from 'src/utils/analytics';
 const $q = useQuasar();
 const selectedDates = ref<Date[] | null>(null);
 const showBookingForm = ref(false);
-const showInfoServices = ref(false);
 const formIsActive = ref(false);
 const bookingFormRef = ref<InstanceType<typeof BookingForm> | null>(null);
 const bookingFormSection = ref<HTMLElement | null>(null);

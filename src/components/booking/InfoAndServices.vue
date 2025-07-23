@@ -83,7 +83,7 @@ const importantInfo = ref([
   {
     icon: 'date_range',
     title: 'Minimaal verblijf per seizoen',
-    description: 'Hoogseizoen (jun-sep): 7 nachten<br>Middenseizoen (apr-mei, okt): 5 nachten<br>Laagseizoen (jan-feb, nov): 7 nachten<br>Overwinteren (nov, jan-mrt): 1 maand'
+    description: 'Reguliere verhuur (apr-okt): minimaal 10 dagen à €160/nacht<br>Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200/maand<br>December: niet beschikbaar voor verhuur'
   },
   {
     icon: 'pets',

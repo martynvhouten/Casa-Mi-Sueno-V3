@@ -1,10 +1,10 @@
 <template>
   <q-page>
     <HeroSection
-      image="/images/Tuin_planten2.webp"
-      alt-text="De mediterrane tuin van Casa Mi Sueño"
+      image="/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp"
+      alt-text="Pad naar de achtertuin van het vakantiehuis"
       title="Pagina niet gevonden"
-      subtitle="De pagina die je zoekt bestaat niet"
+      subtitle="Deze pagina lijkt even zoek te zijn..."
     />
 
     <section class="section bg-white">
@@ -18,7 +18,7 @@
             to="/"
             color="primary"
             label="Terug naar home"
-            class="q-px-xl"
+            class="cms-btn cms-btn-primary"
             unelevated
           />
         </div>

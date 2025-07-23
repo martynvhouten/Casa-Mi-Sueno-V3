@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Woonkamer_tafel_stoelen.webp"
-      alt-text="Eettafel en stoelen in de woonkamer"
+      image="/images/Woonkamer_zithoek.webp"
+      alt-text="Achtertuin gezien vanuit de woonkamer"
       title="Ons tweede thuis"
       subtitle="Comfortabel en sfeervol ingericht"
     />
@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Woonkamer_zithoek.webp"
+                src="/images/Woonkamer_tafel_stoelen.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -154,7 +154,7 @@
             <div class="outdoor-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Tuin_zwembad.webp"
+                  src="/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.webp"
                   class="cms-img"
                 />
               </div>
@@ -262,7 +262,7 @@ const bathrooms = [
       },
       {
         src: '/images/Badkamer2.webp',
-        alt: 'Badkamer in de hal overzicht'
+        alt: 'Badkamer in de hal'
       }
     ],
     features: [

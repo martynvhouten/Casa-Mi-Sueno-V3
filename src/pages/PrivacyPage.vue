@@ -1,10 +1,10 @@
 <template>
   <q-page>
     <HeroSection
-      image="/images/Tuin_planten.webp"
-      alt-text="De mediterrane tuin van Casa Mi Sueño"
-      title="Privacyverklaring"
-      subtitle="Hoe wij omgaan met jouw gegevens"
+      image="/images/Tuin_zijpad.webp"
+      alt-text="Rustgevend zijpad met mediterrane planten"
+      title="Privacybeleid"
+      subtitle="Hoe wij omgaan met je gegevens"
     />
 
     <section class="section bg-white">

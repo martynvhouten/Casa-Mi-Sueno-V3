@@ -1,0 +1,53 @@
+{
+  "name": "Casa Mi Sueño - Vakantiehuis Costa Blanca",
+  "short_name": "Casa Mi Sueño",
+  "description": "Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L'Alfàs del Pi, Costa Blanca.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#E76F51",
+  "background_color": "#F8F6F3",
+  "lang": "nl",
+  "dir": "ltr",
+  "categories": ["travel", "vacation", "rental"],
+  "icons": [
+    {
+      "src": "/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/Tuin_zwembad.jpg",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Zwembad en terras"
+    },
+    {
+      "src": "/images/Woonkamer_zithoek.jpg",
+      "sizes": "1920x1080", 
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Gezellige woonkamer"
+    }
+  ],
+  "prefer_related_applications": false
+} 

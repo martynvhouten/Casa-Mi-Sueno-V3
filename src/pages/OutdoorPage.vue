@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_zwembad.webp"
-      alt-text="Zwembad en tuin van het vakantiehuis"
+      image="/images/Achtertuin_en_badkamer2/Achtertuin_pingpongtafel.webp"
+      alt-text="Pingpongtafel in de zonnige achtertuin"
       title="Ons buitenparadijs"
       subtitle="Waar het Spaanse leven zich afspeelt"
     />
@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_zwembad-douche.webp"
+                src="/images/Achtertuin_en_badkamer2/Achtertuin_zwembad_nacht.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -60,7 +60,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_veranda.webp"
+                src="/images/Veranda2.webp"
                 class="cms-img rounded-borders"
               />
             </div>

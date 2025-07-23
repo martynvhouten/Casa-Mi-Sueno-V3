@@ -1,10 +1,10 @@
 <template>
   <q-page>
     <HeroSection
-      image="/images/Tuin_mediterraans.webp"
-      alt-text="De mediterrane tuin van Casa Mi Sueño"
+      image="/images/Tuin_eetgedeelte.webp"
+      alt-text="Gezellig eetgedeelte in de tuin"
       title="Algemene voorwaarden"
-      subtitle="Onze voorwaarden voor een zorgeloos verblijf"
+      subtitle="Voor een helder en eerlijk verblijf"
     />
 
     <div class="section bg-white">
@@ -12,10 +12,8 @@
         <div class="text-body2">
           <h2 class="text-h5 font-playfair q-mb-lg">Boekingsvoorwaarden</h2>
           <ul>
-            <li>Hoogseizoen (juni-september): minimaal 7 nachten</li>
-            <li>Middenseizoen (april-mei, oktober): minimaal 5 nachten</li>
-            <li>Laagseizoen (januari-februari, november): minimaal 7 nachten</li>
-            <li>Overwinteren (november, januari-maart): minimaal 1 maand, €1200 per maand</li>
+            <li>Reguliere verhuur (april-oktober): minimaal 10 dagen à €160/nacht</li>
+            <li>Overwinteren (november, januari-maart): minimaal 1 maand à €1200/maand</li>
             <li>December niet beschikbaar voor verhuur</li>
             <li>Aanbetaling van 30% bij boeking</li>
             <li>Restbetaling uiterlijk 6 weken voor aankomst</li>
@@ -46,7 +44,7 @@
           <h2 class="text-h5 font-playfair q-mb-lg">Aansprakelijkheid</h2>
           <ul>
             <li>De huurder is aansprakelijk voor schade aan het huis of de inventaris</li>
-            <li>Wij zijn niet aansprakelijk voor verlies, diefstal of schade aan persoonlijke eigendommen</li>
+            <li>Wij zijn niet aansprakelijk voor verlies, diefstal of schade aan persoonlijk eigendommen</li>
             <li>Wij zijn niet aansprakelijk voor persoonlijk letsel ontstaan tijdens het verblijf</li>
             <li>Het zwembad wordt gebruikt op eigen risico</li>
           </ul>

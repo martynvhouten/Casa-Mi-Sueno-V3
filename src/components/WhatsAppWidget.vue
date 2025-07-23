@@ -36,7 +36,7 @@ const openWhatsApp = () => {
   position: fixed;
   right: 2rem;
   bottom: 2rem;
-  z-index: 1000;
+  z-index: 10000; /* Higher than any other element */
 
   &.mobile {
     right: 1rem;

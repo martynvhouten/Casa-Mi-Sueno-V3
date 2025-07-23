@@ -1,10 +1,10 @@
 <template>
   <q-page>
     <HeroSection
-      image="/images/Tuin_mediterraans.webp"
-      alt-text="De mediterrane tuin van Casa Mi Sueño"
+      image="/images/Tuinpad.webp"
+      alt-text="Sfeervol verlicht tuinpad in de avond"
       title="Sitemap"
-      subtitle="Overzicht van alle pagina's"
+      subtitle="Vind je weg door onze website"
     />
 
     <section class="section bg-white">

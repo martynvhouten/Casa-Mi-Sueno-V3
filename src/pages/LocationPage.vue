@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Omgeving/Albir_panorama.webp"
-      alt-text="Panorama uitzicht van Albir"
+      image="/images/Omgeving/Alicante_promenade.webp"
+      alt-text="Promenade van Alicante met prachtig uitzicht"
       title="Ons stukje paradijs"
       subtitle="Ontdek waarom we hier ons hart verloren"
     />
@@ -166,7 +166,7 @@
                 icon="place"
                 label="Open in Google Maps"
                 @click="openInGoogleMaps"
-                class="q-mr-md"
+                class="cms-btn cms-btn-outline q-mr-md"
               />
               <q-btn
                 outline
@@ -174,6 +174,7 @@
                 icon="place"
                 label="Open in Apple Maps"
                 @click="openInAppleMaps"
+                class="cms-btn cms-btn-outline"
               />
             </div>
           </div>

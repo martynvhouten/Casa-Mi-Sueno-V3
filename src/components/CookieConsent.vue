@@ -72,14 +72,14 @@
           label="Alleen Essentieel"
           color="primary"
           @click="savePreferences"
-          class="full-width-btn"
+          class="cms-btn cms-btn-outline full-width-btn"
         />
         <q-btn
           unelevated
           label="Alles Accepteren"
           color="primary"
           @click="acceptAll"
-          class="full-width-btn"
+          class="cms-btn cms-btn-primary full-width-btn"
         />
       </q-card-actions>
     </q-card>

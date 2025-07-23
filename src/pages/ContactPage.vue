@@ -2,8 +2,8 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Tuin_veranda.webp"
-      alt-text="De veranda van het vakantiehuis"
+      image="/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp"
+      alt-text="Pad naar de achtertuin met mediterrane beplanting"
       :title="isBookingInquiry ? 'Vragen over je verblijf?' : 'We helpen je graag'"
       :subtitle="isBookingInquiry ? 'Laat ons weten waar we je mee kunnen helpen' : 'Voor alle vragen over Casa Mi Sueño'"
     />

@@ -237,12 +237,12 @@ const bathrooms = [
     description: 'Praktische badkamer met douche, wastafel en toilet, gelegen naast de slaapkamer',
     images: [
       {
-        src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp',
-        alt: 'Douche in badkamer bij slaapkamer'
-      },
-      {
         src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.webp',
         alt: 'Toilet in badkamer bij slaapkamer'
+      },
+      {
+        src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp',
+        alt: 'Douche in badkamer bij slaapkamer'
       }
     ],
     features: [
@@ -257,11 +257,11 @@ const bathrooms = [
     description: 'Functionele badkamer met douche, wastafel en toilet, gelegen in de hal',
     images: [
       {
-        src: '/images/Badkamer2.webp',
+        src: '/images/Badkamer.webp',
         alt: 'Badkamer in de hal'
       },
       {
-        src: '/images/Badkamer.webp',
+        src: '/images/Badkamer2.webp',
         alt: 'Badkamer in de hal'
       }
     ],

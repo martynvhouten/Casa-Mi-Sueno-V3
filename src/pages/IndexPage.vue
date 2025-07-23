@@ -487,57 +487,64 @@ const locationHighlights = [
     }
   }
   
-  /* Also fix the first feature section */
+  /* Features section - make images full width with rounded corners */
   .section:nth-child(3) .cms-card {
     height: auto !important;
+    padding: 0 !important; /* Remove padding to make image full width */
   }
   
   .section:nth-child(3) .cms-card .cms-img-container {
-    height: 200px !important;
-    border-radius: 0 !important;
+    height: 220px !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Only top corners rounded */
     overflow: hidden;
     position: relative;
+    margin: 0 !important; /* Remove margin to make full width */
   }
   
   .section:nth-child(3) .cms-card .cms-img-container .q-img {
-    height: 200px !important;
+    height: 220px !important;
     width: 100% !important;
-    border-radius: 0 !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Match container */
     
     :deep(.q-img__container) {
-      height: 200px !important;
+      height: 220px !important;
       width: 100% !important;
     }
     
     :deep(.q-img__content) {
-      border-radius: 0 !important;
-      height: 200px !important;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+      height: 220px !important;
       width: 100% !important;
       position: relative;
       
       > div {
-        border-radius: 0 !important;
-        height: 200px !important;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+        height: 220px !important;
         width: 100% !important;
       }
     }
     
-    /* Ensure text overlay is visible */
-    .absolute-bottom {
-      position: absolute !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      z-index: 10 !important;
-    }
-    
     :deep(img) {
-      height: 200px !important;
+      height: 220px !important;
       width: 100% !important;
       object-fit: cover !important;
       object-position: center !important;
-      border-radius: 0 !important;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
     }
+  }
+  
+  /* Add padding back to text content area */
+  .section:nth-child(3) .cms-card h3,
+  .section:nth-child(3) .cms-card p {
+    padding: 0 1rem !important;
+  }
+  
+  .section:nth-child(3) .cms-card h3 {
+    margin-top: 1rem !important;
+  }
+  
+  .section:nth-child(3) .cms-card p {
+    padding-bottom: 1rem !important;
   }
 }
 

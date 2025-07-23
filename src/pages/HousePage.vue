@@ -257,11 +257,11 @@ const bathrooms = [
     description: 'Functionele badkamer met douche, wastafel en toilet, gelegen in de hal',
     images: [
       {
-        src: '/images/Badkamer.webp',
+        src: '/images/Badkamer2.webp',
         alt: 'Badkamer in de hal'
       },
       {
-        src: '/images/Badkamer2.webp',
+        src: '/images/Badkamer.webp',
         alt: 'Badkamer in de hal'
       }
     ],

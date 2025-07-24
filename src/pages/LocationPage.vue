@@ -9,7 +9,7 @@
     />
 
     <!-- Introduction -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container text-center">
         <h2 class="font-playfair q-mb-lg">Verliefd op L'Alfàs del Pi</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">

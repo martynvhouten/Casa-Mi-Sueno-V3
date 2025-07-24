@@ -128,7 +128,9 @@ const carouselAutoplay = ref(false);
 const beachPhotos = [
   { src: '/images/Omgeving/Albir_boulevard.webp', caption: 'Boulevard van Albir' },
   { src: '/images/Omgeving/Alicante_promenade.webp', caption: 'Promenade van Alicante' },
-  { src: '/images/Omgeving/Alicante_sunrise.webp', caption: 'Zonsopgang in Alicante' }
+  { src: '/images/Omgeving/Alicante_sunrise.webp', caption: 'Zonsopgang in Alicante' },
+  { src: '/images/Omgeving/Benidorm_beachview.webp', caption: 'Prachtig strand van Benidorm' },
+  { src: '/images/Omgeving/Calpe_beaches_mountains.webp', caption: 'Stranden en bergen van Calpe' }
 ];
 
 const naturePhotos = [

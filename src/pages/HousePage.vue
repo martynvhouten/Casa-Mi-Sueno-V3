@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Woonkamer_tafel_stoelen.webp"
+                src="/images/Woonkamer_zitgedeelte2.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -241,7 +241,7 @@ const bathrooms = [
         alt: 'Toilet in badkamer bij slaapkamer'
       },
       {
-        src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp',
+        src: '/images/Badkamer2_douche.webp',
         alt: 'Douche in badkamer bij slaapkamer'
       }
     ],

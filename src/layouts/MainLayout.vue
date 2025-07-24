@@ -53,7 +53,7 @@
             color="primary"
             :to="{ name: 'booking', replace: true }"
             label="Reserveren"
-            class="cms-btn cms-btn-primary"
+            class="cms-btn cms-btn-primary cms-btn-header"
             aria-label="Ga naar reserveringspagina"
           />
         </nav>

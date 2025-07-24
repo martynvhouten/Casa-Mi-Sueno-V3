@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Zwembadkant_volledig.webp"
+      image="/images/Tuin_eetgedeelte.webp"
       alt-text="Volledig overzicht van het zwembad en terras"
       title="Reserveer je verblijf"
       subtitle="Kies je perfecte data en maak direct een reservering"

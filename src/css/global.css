@@ -229,7 +229,7 @@ p, .text-body1 {
   text-decoration: none;
   cursor: pointer;
   border: none;
-  padding: 1rem 2rem;
+  padding: 0;
   min-height: 52px;
   font-size: var(--text-base);
   display: inline-flex;
@@ -238,10 +238,15 @@ p, .text-body1 {
   gap: 0.5rem;
   position: relative;
   overflow: hidden;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.015em;
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
   transform: translateY(0);
   white-space: nowrap;
+  line-height: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .cms-btn.q-btn::before {
@@ -315,7 +320,10 @@ p, .text-body1 {
   background: linear-gradient(135deg, var(--cms-deep-terracotta) 0%, var(--cms-light-terracotta) 50%, var(--cms-deep-terracotta) 100%);
   color: white;
   border: none;
-  padding: 1.25rem 2.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
   min-height: 56px;
   font-size: var(--text-lg);
   font-weight: 700;
@@ -368,14 +376,32 @@ p, .text-body1 {
 
 /* Size variants */
 .cms-btn-sm {
-  padding: 0.75rem 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   min-height: 44px;
   font-size: var(--text-sm);
   border-radius: var(--radius-lg);
 }
 
+/* Header button variant - smaller for header */
+.cms-btn-header {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  min-height: 40px;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+}
+
 .cms-btn-lg {
-  padding: 1.5rem 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   min-height: 60px;
   font-size: var(--text-xl);
   border-radius: var(--radius-2xl);
@@ -583,27 +609,48 @@ body .hover-terracotta:hover,
   /* Enhanced mobile touch targets - smaller buttons */
   .cms-btn.q-btn {
     min-height: 44px;
-    padding: 0.75rem 1.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     font-size: var(--text-sm);
     border-radius: var(--radius-md);
   }
 
   .cms-btn-sm.q-btn {
     min-height: 40px;
-    padding: 0.625rem 1rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: var(--text-xs);
+  }
+
+  .cms-btn-header.q-btn {
+    min-height: 36px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: var(--text-xs);
   }
 
   .cms-btn-cta.q-btn {
     min-height: 48px;
-    padding: 0.875rem 1.5rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     font-size: var(--text-base);
     font-weight: 600;
   }
 
   .cms-btn-lg.q-btn {
     min-height: 52px;
-    padding: 1rem 1.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
     font-size: var(--text-lg);
   }
 

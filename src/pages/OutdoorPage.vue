@@ -2,7 +2,7 @@
   <q-page>
     <!-- Hero Section -->
     <HeroSection
-      image="/images/Achtertuin_en_badkamer2/Achtertuin_pingpongtafel.webp"
+      image="/images/Achtertuin_en_badkamer2/Achtertuin_pingpong_uitgezoomd.webp"
       alt-text="Pingpongtafel in de zonnige achtertuin"
       title="Ons buitenparadijs"
       subtitle="Waar het Spaanse leven zich afspeelt"

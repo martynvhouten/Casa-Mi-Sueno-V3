@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Omgeving/Casco_antiguo.webp"
+                src="/images/Omgeving/la_nucia_waterfall.webp"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -283,7 +283,7 @@ const culturalHighlights = [
   },
   {
     title: 'Benidorm',
-    image: '/images/Omgeving/benidorm_skyline_night.webp',
+    image: '/images/Omgeving/Benidorm_beachview.webp',
     description: 'De bruisende badplaats van de Costa Blanca met haar iconische skyline, lange zandstranden en levendige uitgaansleven.',
     highlights: [
       'Prachtige zandstranden Levante en Poniente',

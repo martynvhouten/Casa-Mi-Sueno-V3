@@ -51,9 +51,9 @@
 
           <h2 class="text-h5 font-playfair q-mb-lg">Privacy</h2>
           <ul>
-            <li>Wij gaan zorgvuldig om met uw persoonsgegevens volgens onze <router-link to="/privacy" class="text-primary">privacyverklaring</router-link></li>
-            <li>Uw gegevens worden alleen gebruikt voor de afhandeling van uw boeking</li>
-            <li>Wij delen uw gegevens niet met derden zonder uw toestemming</li>
+            <li>Wij gaan zorgvuldig om met jouw persoonsgegevens volgens onze <router-link to="/privacy" class="text-primary">privacyverklaring</router-link></li>
+            <li>Jouw gegevens worden alleen gebruikt voor de afhandeling van je boeking</li>
+            <li>Wij delen jouw gegevens niet met derden zonder jouw toestemming</li>
           </ul>
         </div>
       </div>

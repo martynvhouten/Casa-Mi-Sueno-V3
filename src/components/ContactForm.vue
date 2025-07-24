@@ -291,7 +291,7 @@ const handleSubmit = async () => {
 
     // Validate dates for booking inquiries
     if (isBookingInquiry.value && (!internalDates.value[0] || !internalDates.value[1])) {
-      throw new Error('Selecteer alstublieft uw gewenste verblijfsdata');
+              throw new Error('Selecteer alsjeblieft je gewenste verblijfsdata');
     }
 
     // Get function URL from your Supabase project settings
@@ -317,7 +317,7 @@ const handleSubmit = async () => {
 
     const result = await response.json();
     if (!response.ok) {
-      throw new Error(result.message || 'Er is een fout opgetreden bij het verzenden van uw aanvraag');
+              throw new Error(result.message || 'Er is een fout opgetreden bij het verzenden van je aanvraag');
     }
 
     // Show success message

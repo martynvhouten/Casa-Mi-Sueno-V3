@@ -512,7 +512,7 @@ const handleSubmit = async () => {
     }
     
     if (!props.selectedDates || props.selectedDates.length !== 2) {
-      throw new Error('Selecteer alstublieft uw aankomst- en vertrekdatum');
+      throw new Error('Selecteer alsjeblieft je aankomst- en vertrekdatum');
     }
     
     // Combine name
@@ -556,7 +556,7 @@ const handleSubmit = async () => {
     }
     
     if (!response.ok) {
-      throw new Error(result.message || 'Er is een fout opgetreden bij het verzenden van uw reservering');
+      throw new Error(result.message || 'Er is een fout opgetreden bij het verzenden van je reservering');
     }
     
     liveAnnouncement.value = 'Je reservering is succesvol verzonden! Je ontvangt een bevestigingsmail.';

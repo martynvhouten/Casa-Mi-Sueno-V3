@@ -10,7 +10,7 @@
       <template #extra>
         <q-btn
           flat
-          class="cms-btn cms-btn-primary q-mt-xl"
+          class="cms-btn cms-btn-primary cms-btn-hero q-mt-xl"
           to="/reserveren"
           label="Bekijk beschikbaarheid"
         />

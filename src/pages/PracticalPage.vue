@@ -109,7 +109,7 @@
                 <h4 class="q-mb-md">Voorwaarden</h4>
                 <ul class="feature-list">
                   <li>Reguliere verhuur (apr-okt): minimaal 10 dagen à €160/nacht</li>
-                  <li>Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200/maand</li>
+                  <li><strong>Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200/maand</strong></li>
                   <li>December: niet beschikbaar voor verhuur</li>
                   <li>Aanbetaling: 30% bij boeking</li>
                   <li>Restbetaling: 6 weken voor aankomst</li>
@@ -117,12 +117,29 @@
                   <li>Geen annulering mogelijk</li>
                 </ul>
               </div>
+              
+              <div class="q-mb-xl">
+                <h4 class="q-mb-md">Waarom Overwinteren in Casa Mi Sueño?</h4>
+                <p class="text-body1 q-mb-md">
+                  Ontsnap aan de Nederlandse winter en geniet van het milde mediterrane klimaat. 
+                  L'Alfàs del Pi biedt het perfecte winterweer met temperaturen van 15-20°C en veel zonneschijn.
+                </p>
+                <ul class="feature-list">
+                  <li><strong>Mild klimaat:</strong> Gemiddeld 300 zonnige dagen per jaar</li>
+                  <li><strong>Voordelig:</strong> €1.200 per maand all-inclusive (water, gas, elektra, internet)</li>
+                  <li><strong>Volledig uitgerust:</strong> Wasmachine, vaatwasser, airco, verwarming</li>
+                  <li><strong>Gezond leven:</strong> Zwembad, wandel- en fietsroutes, verse markten</li>
+                  <li><strong>Goede bereikbaarheid:</strong> Vliegveld Alicante op 1 uur rijden</li>
+                  <li><strong>Nederlandse gemeenschap:</strong> Veel Nederlanders in de omgeving</li>
+                </ul>
+              </div>
+              
               <div class="q-mb-xl">
                 <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
                 <p class="text-body1 q-mb-lg">
                   Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
-                  We verhuren graag aan koppels, families of kleine groepen vrienden die onze liefde 
-                  voor deze bijzondere plek delen. Het is geen feestlocatie of plek voor korte weekendverblijven.
+                  We verhuren graag aan koppels, families, pensionados, digitale nomaden of kleine groepen vrienden 
+                  die onze liefde voor deze bijzondere plek delen. Het is geen feestlocatie.
                 </p>
               </div>
 

@@ -14,11 +14,11 @@ const BASE_URL = 'https://casamisueno.nl';
 
 export const DEFAULT_META: MetaInfo = {
   title: 'Casa Mi Sueño - Vakantiehuis in L\'Alfàs del Pi, Spanje',
-  description: 'Ontdek dit moderne vakantiehuis met privé zwembad en tuin in L\'Alfàs del Pi, Costa Blanca. Ideaal gelegen tussen strand en bergen voor een perfecte Spaanse vakantie.',
+  description: 'Ontdek dit moderne vakantiehuis met privé zwembad en tuin in L\'Alfàs del Pi, Costa Blanca. Ideaal gelegen tussen strand en bergen voor een perfecte Spaanse vakantie. Ook geschikt voor overwinteren (€1200/maand).',
   image: `${BASE_URL}/images/Tuin_zithoek.webp`,
   type: 'website',
   url: BASE_URL,
-  keywords: 'vakantiehuis, L\'Alfàs del Pi, Costa Blanca, Spanje, zwembad, vakantie, verhuur',
+  keywords: 'vakantiehuis, L\'Alfàs del Pi, Costa Blanca, Spanje, zwembad, vakantie, verhuur, overwinteren, langere termijn',
   author: 'Casa Mi Sueño',
   robots: 'index, follow'
 };

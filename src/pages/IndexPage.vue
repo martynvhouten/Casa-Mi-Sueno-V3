@@ -52,6 +52,68 @@
       </div>
     </section>
 
+    <!-- Winter & Long-term Stay Section -->
+    <section class="section bg-sand">
+      <div class="container">
+        <div class="text-center q-mb-xl">
+          <h2 class="font-playfair q-mb-md">Perfect voor Overwinteren & Langere Verblijven</h2>
+          <p class="text-subtitle1 text-grey-8" style="max-width: 800px; margin: 0 auto;">
+            Ontsnap aan de Nederlandse winter en geniet van het milde mediterrane klimaat van Costa Blanca. 
+            Casa Mi Sueño is ideaal voor langere verblijven van één maand of meer tijdens de overwinter maanden.
+          </p>
+        </div>
+        
+        <div class="row q-col-gutter-lg">
+          <div class="col-12 col-md-6">
+            <div class="cms-card q-pa-lg">
+              <div class="q-mb-md">
+                <q-icon name="wb_sunny" size="3rem" color="orange" />
+              </div>
+              <h3 class="font-playfair q-mb-md">Mild Winterklimaat</h3>
+              <p class="text-body1 q-mb-md">
+                Temperaturen van 15-20°C in de winter, veel zonneschijn en nauwelijks regen. 
+                Perfect om te ontsnappen aan de kou en genieten van buitenactiviteiten het hele jaar door.
+              </p>
+              <ul class="feature-list q-mt-md">
+                <li>Gemiddeld 300 zonnige dagen per jaar</li>
+                <li>Zwembad bruikbaar tot oktober/november</li>
+                <li>Ideaal voor wandelen en fietsen</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-6">
+            <div class="cms-card q-pa-lg">
+              <div class="q-mb-md">
+                <q-icon name="calendar_month" size="3rem" color="blue" />
+              </div>
+              <h3 class="font-playfair q-mb-md">Overwinteren</h3>
+              <p class="text-body1 q-mb-md">
+                Verblijf minimaal één maand tijdens de overwinter periode (november, januari-maart) 
+                voor een speciaal maandtarief. Ideaal voor pensionados, digitale nomaden of wie even wil ontsnappen.
+              </p>
+              <ul class="feature-list q-mt-md">
+                <li><strong>€1.200 per maand</strong> (all-inclusive)</li>
+                <li>November, januari, februari, maart</li>
+                <li>Volledig uitgerust voor langere verblijven</li>
+                <li>December: eigen gebruik (niet beschikbaar)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center q-mt-xl">
+          <q-btn
+            flat
+            class="cms-btn cms-btn-secondary"
+            to="/praktisch"
+            label="Meer over overwinteren"
+            icon="arrow_forward"
+          />
+        </div>
+      </div>
+    </section>
+
     <!-- Guest Experience Section -->
     <section class="section bg-sand">
       <div class="container text-center">

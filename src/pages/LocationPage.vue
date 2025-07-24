@@ -53,6 +53,80 @@
       </div>
     </section>
 
+    <!-- Winter Climate Section -->
+    <section class="section bg-sand">
+      <div class="container">
+        <div class="text-center q-mb-xl">
+          <h2 class="font-playfair q-mb-md">Ideaal Winterklimaat</h2>
+          <p class="text-subtitle1 text-grey-8" style="max-width: 800px; margin: 0 auto;">
+            L'Alfàs del Pi geniet van een van de beste winterklimaten van Europa. 
+            Ontsnap aan de Nederlandse winter en geniet van milde temperaturen en veel zonneschijn.
+          </p>
+        </div>
+        
+        <div class="row q-col-gutter-lg">
+          <div class="col-12 col-md-4">
+            <div class="cms-card q-pa-lg text-center">
+              <div class="q-mb-md">
+                <q-icon name="thermostat" size="3rem" color="orange" />
+              </div>
+              <h3 class="font-playfair q-mb-md">Milde Temperaturen</h3>
+              <p class="text-body1">
+                Gemiddelde temperaturen van 15-20°C in de winter. 
+                Perfect voor wandelen, fietsen en buiten ontspannen.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-4">
+            <div class="cms-card q-pa-lg text-center">
+              <div class="q-mb-md">
+                <q-icon name="wb_sunny" size="3rem" color="yellow" />
+              </div>
+              <h3 class="font-playfair q-mb-md">300 Zonnige Dagen</h3>
+              <p class="text-body1">
+                Meer zon dan waar ook in Europa. 
+                Zelfs in januari en februari veel heldere, zonnige dagen.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-4">
+            <div class="cms-card q-pa-lg text-center">
+              <div class="q-mb-md">
+                <q-icon name="water_drop" size="3rem" color="blue" />
+              </div>
+              <h3 class="font-playfair q-mb-md">Weinig Regen</h3>
+              <p class="text-body1">
+                De droogste winter van Spanje. 
+                Perfecte omstandigheden voor een actieve en gezonde levensstijl.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center q-mt-xl">
+          <div class="climate-stats bg-white q-pa-lg" style="border-radius: 16px; max-width: 600px; margin: 0 auto;">
+            <h4 class="font-playfair q-mb-md">Winterstatistieken L'Alfàs del Pi</h4>
+            <div class="row q-col-gutter-md text-center">
+              <div class="col-6">
+                <div class="stat-item">
+                  <div class="text-h4 text-primary font-weight-bold">18°C</div>
+                  <div class="text-body2 text-grey-7">Gemiddelde dagtemperatuur</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="stat-item">
+                  <div class="text-h4 text-primary font-weight-bold">7u</div>
+                  <div class="text-body2 text-grey-7">Zonneschijn per dag</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Beaches & Nature -->
     <section class="section bg-white">
       <div class="container">

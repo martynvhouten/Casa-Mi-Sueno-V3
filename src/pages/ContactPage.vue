@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <HeroSection
       image="/images/Omgeving/Calpe_beaches_mountains.webp"
-      alt-text="Pad naar de achtertuin met mediterrane beplanting"
+      alt-text="Calpe stranden en bergen, de prachtige omgeving van Casa Mi Sueño"
       :title="isBookingInquiry ? 'Vragen over je verblijf?' : 'We helpen je graag'"
       :subtitle="isBookingInquiry ? 'Laat ons weten waar we je mee kunnen helpen' : 'Voor alle vragen over Casa Mi Sueño'"
     />

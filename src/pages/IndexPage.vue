@@ -440,6 +440,19 @@ const locationHighlights = [
   padding: 0 !important; /* Remove padding to make image full width */
 }
 
+/* "Een thuis in Spanje" section - fix white border under images */
+.section:nth-child(5) .cms-card {
+  height: auto !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.section:nth-child(5) .cms-img-container {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+  display: block;
+}
+
 .section:nth-child(3) .cms-card .cms-img-container {
   height: 220px !important;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; /* Only top corners rounded */

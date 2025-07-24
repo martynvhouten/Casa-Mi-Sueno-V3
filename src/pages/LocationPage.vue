@@ -22,7 +22,7 @@
     </section>
 
     <!-- Local Area -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">

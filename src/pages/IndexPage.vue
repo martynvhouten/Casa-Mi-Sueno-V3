@@ -18,7 +18,7 @@
     </HeroSection>
 
     <!-- Introduction Section -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container text-center">
         <h2 class="q-mb-lg font-playfair">Hallo! Wij zijn Esther en Milco</h2>
         <p class="text-h6 text-grey-8 q-mx-auto" style="max-width: 800px;">
@@ -31,7 +31,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="section bg-white">
+    <section class="section bg-sand">
       <div class="container">
         <div class="row q-col-gutter-lg">
           <div v-for="feature in features" :key="feature.title" class="col-12 col-md-4">
@@ -53,7 +53,7 @@
     </section>
 
     <!-- Winter & Long-term Stay Section -->
-    <section class="section bg-sand">
+    <section class="section bg-white">
       <div class="container">
         <div class="text-center q-mb-xl">
           <h2 class="font-playfair q-mb-md">Perfect voor Overwinteren & Langere Verblijven</h2>

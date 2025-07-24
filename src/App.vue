@@ -53,7 +53,7 @@ const getMetaDescription = () => {
     case '/over-ons':
       return 'Maak kennis met de eigenaren van Casa Mi Sueño. Ontdek waarom wij verliefd werden op dit prachtige stukje Spanje en ons vakantiehuis met je willen delen.';
     case '/het-huis':
-      return 'Ontdek ons ruime vakantiehuis met 3 slaapkamers, 2 badkamers, volledig uitgeruste keuken en gezellige woonkamer. Perfect voor families en groepen tot 6 personen.';
+      return 'Ontdek ons ruime vakantiehuis met 3 slaapkamers, 2 badkamers, volledig uitgeruste keuken en gezellige woonkamer. Perfect voor families en groepen tot 4 personen.';
     case '/buiten-leven':
               return 'Geniet van het buitenleven in onze mediterrane tuin met privé zwembad, verschillende terrassen en BBQ setup. Perfect voor ontspannen dagen in de zon.';
     case '/omgeving':

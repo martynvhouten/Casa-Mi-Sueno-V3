@@ -362,13 +362,25 @@ const scrollToContent = () => {
 }
 
 .logo-link {
+  color: var(--cms-navy) !important;
+  text-decoration: none !important;
+  
   &:hover {
     text-decoration: none;
+    color: var(--cms-navy) !important;
     
     .logo-decoration {
       transform: scaleX(1);
       opacity: 1;
     }
+  }
+  
+  &:visited {
+    color: var(--cms-navy) !important;
+  }
+  
+  &:active {
+    color: var(--cms-navy) !important;
   }
 }
 

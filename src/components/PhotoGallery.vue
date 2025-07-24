@@ -294,7 +294,6 @@ const bathroomPhotos = [
   { src: '/images/Badkamer.webp', caption: 'Badkamer in de hal' },
   { src: '/images/Badkamer2.webp', caption: 'Badkamer in de hal' },
   { src: '/images/Badkamer2_douche.webp', caption: 'Douche in de badkamer' },
-  { src: '/images/Achtertuin_en_badkamer2/Badkamer2_douche.webp', caption: 'Douche slaapkamer badkamer' },
   { src: '/images/Achtertuin_en_badkamer2/Badkamer2_toilet.webp', caption: 'Toilet slaapkamer badkamer' }
 ];
 

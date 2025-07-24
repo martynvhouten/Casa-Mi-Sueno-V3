@@ -58,6 +58,7 @@
               <q-input
                 v-model="form.firstName"
                 label="Je voornaam"
+                autocomplete="given-name"
                 :rules="[val => !!val || 'Voornaam is verplicht']"
                 :aria-describedby="formErrors.firstName ? 'firstName-error' : undefined"
                 :aria-invalid="!!formErrors.firstName"
@@ -73,6 +74,7 @@
               <q-input
                 v-model="form.lastName"
                 label="Je achternaam"
+                autocomplete="family-name"
                 :rules="[val => !!val || 'Achternaam is verplicht']"
                 :aria-describedby="formErrors.lastName ? 'lastName-error' : undefined"
                 :aria-invalid="!!formErrors.lastName"
@@ -89,6 +91,7 @@
                 v-model="form.email"
                 label="Je e-mailadres"
                 type="email"
+                autocomplete="email"
                 hint="Voor de bevestiging van je boeking"
                 :rules="[
                   val => !!val || 'E-mailadres is verplicht',
@@ -109,6 +112,7 @@
                 v-model="form.emailConfirm"
                 label="Bevestig e-mailadres"
                 type="email"
+                autocomplete="off"
                 hint="Typ je e-mailadres opnieuw om typefouten te voorkomen"
                 :rules="[
                   val => !!val || 'Bevestiging e-mailadres is verplicht',
@@ -127,6 +131,8 @@
               <q-input
                 v-model="form.phone"
                 label="Je telefoonnummer"
+                type="tel"
+                autocomplete="tel"
                 placeholder="+31 6 1234 5678 of 06 1234 5678"
                 hint="Voor snelle communicatie over je boeking"
                 :rules="[val => !!val || 'Telefoonnummer is verplicht']"

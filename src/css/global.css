@@ -604,6 +604,22 @@ body .hover-terracotta:hover,
     font-size: var(--text-sm) !important;
     border-radius: var(--radius-md) !important;
     line-height: 1 !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Extra mobile webkit fix for perfect centering */
+  .cms-btn.q-btn .q-btn__content,
+  .cms-btn.q-btn.q-btn--unelevated .q-btn__content {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .cms-btn-sm.q-btn,

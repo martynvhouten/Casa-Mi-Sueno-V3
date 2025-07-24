@@ -220,7 +220,7 @@ p, .text-body1 {
   transition: all 0.3s ease;
 }
 
-/* Button System - Optimized specificity with minimal !important usage */
+/* Button System - Optimized specificity, relying on Quasar default centering */
 .q-page .cms-btn.q-btn, 
 .q-dialog .cms-btn.q-btn,
 .cms-btn.q-btn.q-btn--unelevated,
@@ -235,8 +235,6 @@ p, .text-body1 {
   min-height: 52px;
   font-size: var(--text-base);
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.5rem;
   position: relative;
   overflow: hidden;
@@ -244,7 +242,6 @@ p, .text-body1 {
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
   transform: translateY(0);
   white-space: nowrap;
-  line-height: 1;
   padding: 1rem 2rem;
 }
 
@@ -621,7 +618,7 @@ body .hover-terracotta:hover,
     font-size: var(--text-xs);
   }
 
-  /* Enhanced mobile touch targets - using higher specificity where possible */
+  /* Enhanced mobile touch targets - simplified centering, relying on Quasar defaults */
   .q-page .cms-btn.q-btn, 
   .q-dialog .cms-btn.q-btn,
   .cms-btn.q-btn.q-btn--unelevated,
@@ -630,27 +627,9 @@ body .hover-terracotta:hover,
     padding: 0.75rem 0.75rem !important;
     font-size: var(--text-sm) !important;
     border-radius: var(--radius-md) !important;
-    line-height: 1;
-    vertical-align: middle;
-    text-align: center;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     max-width: 300px !important;
     width: auto !important;
-  }
-  
-  /* Extra mobile webkit fix for perfect centering */
-  .q-page .cms-btn.q-btn .q-btn__content,
-  .q-dialog .cms-btn.q-btn .q-btn__content,
-  .cms-btn.q-btn.q-btn--unelevated .q-btn__content,
-  .cms-btn.q-btn.q-btn--standard .q-btn__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
   }
 
   .q-page .cms-btn-sm.q-btn,
@@ -722,12 +701,8 @@ body .hover-terracotta:hover,
     min-height: 48px;
   }
 
-  /* Center all cms buttons in their containers on mobile */
-  .text-center .cms-btn,
-  .q-pa-md .cms-btn,
-  .container .cms-btn {
-    margin-left: auto;
-    margin-right: auto;
+  /* Ensure buttons respect container centering */
+  .text-center .cms-btn {
     display: inline-flex;
   }
 

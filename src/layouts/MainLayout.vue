@@ -115,6 +115,9 @@
 
     <!-- Page Content -->
     <q-page-container>
+      <!-- Breadcrumb Navigation (not on homepage) -->
+      <BreadcrumbNav v-if="currentRoute !== '/'" />
+      
       <main id="main-content">
         <router-view v-slot="{ Component }">
           <transition
@@ -223,6 +226,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useQuasar } from 'quasar';
 import WhatsAppWidget from '../components/WhatsAppWidget.vue';
+import BreadcrumbNav from '../components/BreadcrumbNav.vue';
 import { WHATSAPP_CONFIG } from '../utils/whatsapp';
 import { setupVacationRentalSchema } from 'src/utils/schema';
 

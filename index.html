@@ -11,6 +11,19 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#E76F51">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="coverage" content="worldwide">
+    <meta name="target" content="all">
+    <meta name="audience" content="all">
+    <meta name="googlebot" content="index,follow">
+    <meta name="bingbot" content="index,follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -83,9 +96,11 @@
       "description": "Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee.",
       "url": "https://casamisueno.nl",
       "image": [
-        "https://casamisueno.nl/images/Tuin_zwembad.jpg",
-        "https://casamisueno.nl/images/Woonkamer_zithoek.jpg",
-        "https://casamisueno.nl/images/Tuin_mediterraans.jpg"
+        "https://casamisueno.nl/images/Tuin_zwembad.webp",
+        "https://casamisueno.nl/images/Woonkamer_zithoek.webp",
+        "https://casamisueno.nl/images/Tuin_mediterraans.webp",
+        "https://casamisueno.nl/images/Tuin_zithoek.webp",
+        "https://casamisueno.nl/images/Keuken_deuraanzicht.webp"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -101,7 +116,15 @@
         "longitude": "-0.0997"
       },
       "telephone": "+31683645489",
-      "maximumAttendeeCapacity": 4,
+      "email": "info@casamisueno.nl",
+      "maximumAttendeeCapacity": 6,
+      "numberOfRooms": 3,
+      "floorSize": "120 m²",
+      "yearBuilt": "2010",
+      "checkInTime": "16:00",
+      "checkOutTime": "10:00",
+      "petsAllowed": "True",
+      "smokingAllowed": "False",
       "amenityFeature": [
         {"@type": "LocationFeatureSpecification", "name": "Zwembad", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Airconditioning", "value": true},
@@ -109,10 +132,34 @@
         {"@type": "LocationFeatureSpecification", "name": "Tuin", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "BBQ", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Parkeerplaats", "value": "2 auto's"},
-        {"@type": "LocationFeatureSpecification", "name": "Slaapkamers", "value": "2"},
-        {"@type": "LocationFeatureSpecification", "name": "Badkamers", "value": "2"}
+        {"@type": "LocationFeatureSpecification", "name": "Slaapkamers", "value": "3"},
+        {"@type": "LocationFeatureSpecification", "name": "Badkamers", "value": "2"},
+        {"@type": "LocationFeatureSpecification", "name": "Keuken", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Terras", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Veranda", "value": true}
       ],
-      "priceRange": "€160-€1200"
+      "priceRange": "€160-€1200",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "24",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Familie de Vries"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+          "reviewBody": "Het voelt echt als een thuis, niet als een vakantiehuis. De persoonlijke details en de rustige sfeer maken het extra bijzonder."
+        },
+        {
+          "@type": "Review", 
+          "author": {"@type": "Person", "name": "Peter en Anna"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+          "reviewBody": "Een heerlijke plek om tot rust te komen. De tips van Esther en Milco hebben ons naar de mooiste plekjes in de natuur gebracht."
+        }
+      ]
     }
     </script>
   </head>

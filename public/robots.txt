@@ -1,12 +1,17 @@
 User-agent: *
 Allow: /
 
+# Disallow admin and build directories
+Disallow: /admin/
+Disallow: /.quasar/
+Disallow: /dist/
+Disallow: /node_modules/
+
+# Allow all crawlers to access images
+Allow: /images/
+
 # Sitemap location
 Sitemap: https://casamisueno.nl/sitemap.xml
 
-# Prevent indexing of admin or private areas if they exist in the future
-Disallow: /admin/
-Disallow: /private/
-
-# Rate limiting
-Crawl-delay: 10 
+# Crawl delay (optional)
+Crawl-delay: 1 

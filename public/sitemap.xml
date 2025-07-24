@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://casamisueno.nl/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://casamisueno.nl/images/Tuin_zithoek.webp</image:loc>
+      <image:caption>Zwembad en tuin van Casa Mi Sueño</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About/Over Ons -->
+  <url>
+    <loc>https://casamisueno.nl/over-ons</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Het Huis -->
+  <url>
+    <loc>https://casamisueno.nl/het-huis</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://casamisueno.nl/images/Woonkamer_zithoek.webp</image:loc>
+      <image:caption>Ruime woonkamer Casa Mi Sueño</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Buiten Leven -->
+  <url>
+    <loc>https://casamisueno.nl/buiten-leven</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://casamisueno.nl/images/Tuin_zwembad.webp</image:loc>
+      <image:caption>Zwembad en mediterrane tuin</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Omgeving -->
+  <url>
+    <loc>https://casamisueno.nl/omgeving</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Foto's -->
+  <url>
+    <loc>https://casamisueno.nl/fotos</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://casamisueno.nl/images/Keuken_deuraanzicht.webp</image:loc>
+      <image:caption>Keuken Casa Mi Sueño</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Praktisch -->
+  <url>
+    <loc>https://casamisueno.nl/praktisch</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://casamisueno.nl/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Reserveren -->
+  <url>
+    <loc>https://casamisueno.nl/reserveren</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Privacy -->
+  <url>
+    <loc>https://casamisueno.nl/privacy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Algemene Voorwaarden -->
+  <url>
+    <loc>https://casamisueno.nl/algemene-voorwaarden</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset> 

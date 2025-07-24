@@ -14,7 +14,7 @@ const BASE_URL = 'https://casamisueno.nl';
 
 export const DEFAULT_META: MetaInfo = {
   title: 'Casa Mi Sueño - Vakantiehuis in L\'Alfàs del Pi, Spanje',
-  description: 'Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee.',
+  description: 'Ontdek dit moderne vakantiehuis met privé zwembad en tuin in L\'Alfàs del Pi, Costa Blanca. Ideaal gelegen tussen strand en bergen voor een perfecte Spaanse vakantie.',
   image: `${BASE_URL}/images/Tuin_zithoek.webp`,
   type: 'website',
   url: BASE_URL,

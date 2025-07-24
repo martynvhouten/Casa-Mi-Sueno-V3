@@ -9,19 +9,41 @@ export interface MetaInfo {
   robots?: string;
 }
 
+// Base URL for absolute image paths
+const BASE_URL = 'https://casamisueno.nl';
+
 export const DEFAULT_META: MetaInfo = {
   title: 'Casa Mi Sueño - Vakantiehuis in L\'Alfàs del Pi, Spanje',
   description: 'Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee.',
-  image: '/images/Tuin_zithoek.webp',
+  image: `${BASE_URL}/images/Tuin_zithoek.webp`,
   type: 'website',
+  url: BASE_URL,
   keywords: 'vakantiehuis, L\'Alfàs del Pi, Costa Blanca, Spanje, zwembad, vakantie, verhuur',
   author: 'Casa Mi Sueño',
   robots: 'index, follow'
 };
 
+// Helper function to ensure absolute URLs for images
+const ensureAbsoluteUrl = (url: string): string => {
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  return `${BASE_URL}${url.startsWith('/') ? url : '/' + url}`;
+};
+
 export const setMetaTags = (meta: MetaInfo) => {
   // Combine with defaults
   const finalMeta = { ...DEFAULT_META, ...meta };
+  
+  // Ensure image URLs are absolute for social sharing
+  if (finalMeta.image) {
+    finalMeta.image = ensureAbsoluteUrl(finalMeta.image);
+  }
+  
+  // Ensure URL is absolute
+  if (finalMeta.url) {
+    finalMeta.url = ensureAbsoluteUrl(finalMeta.url);
+  }
   
   // Basic meta
   document.title = finalMeta.title;
@@ -33,24 +55,36 @@ export const setMetaTags = (meta: MetaInfo) => {
   if (finalMeta.author) updateMetaTag('author', finalMeta.author);
   if (finalMeta.robots) updateMetaTag('robots', finalMeta.robots);
   
-  // OpenGraph
+  // OpenGraph - using absolute URLs for WhatsApp compatibility
   updateMetaTag('og:title', finalMeta.title);
   updateMetaTag('og:description', finalMeta.description);
   updateMetaTag('og:type', finalMeta.type || 'website');
+  updateMetaTag('og:site_name', 'Casa Mi Sueño');
+  updateMetaTag('og:locale', 'nl_NL');
+  
   if (finalMeta.image) {
     updateMetaTag('og:image', finalMeta.image);
+    // Add additional image meta tags for better WhatsApp support
+    updateMetaTag('og:image:width', '1200');
+    updateMetaTag('og:image:height', '630');
+    updateMetaTag('og:image:type', 'image/webp');
+    updateMetaTag('og:image:alt', 'Casa Mi Sueño - Vakantiehuis met zwembad in L\'Alfàs del Pi');
   }
+  
   if (finalMeta.url) {
     updateMetaTag('og:url', finalMeta.url);
     updateMetaTag('canonical', finalMeta.url);
   }
 
-  // Twitter Card
+  // Twitter Card - using absolute URLs
   updateMetaTag('twitter:card', 'summary_large_image');
   updateMetaTag('twitter:title', finalMeta.title);
   updateMetaTag('twitter:description', finalMeta.description);
+  updateMetaTag('twitter:site', '@CasaMiSueno');
+  
   if (finalMeta.image) {
     updateMetaTag('twitter:image', finalMeta.image);
+    updateMetaTag('twitter:image:alt', 'Casa Mi Sueño - Vakantiehuis met zwembad in L\'Alfàs del Pi');
   }
 };
 

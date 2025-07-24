@@ -14,6 +14,7 @@
         >
           <q-tab name="all" label="Alles" />
           <q-tab name="interior" label="Interieur" />
+          <q-tab name="kitchen" label="Keuken" />
           <q-tab name="exterior" label="Exterieur" />
           <q-tab name="bedrooms" label="Slaapkamers" />
           <q-tab name="bathrooms" label="Badkamers" />
@@ -70,6 +71,39 @@
               <div 
                 class="cms-card cursor-pointer"
                 @click="openLightbox(interiorPhotos, index)"
+              >
+                <div class="cms-img-container">
+                  <picture>
+                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source :srcset="photo.src" :type="getImageType(photo.src)">
+                    <img 
+                      :src="photo.src" 
+                      :alt="photo.caption" 
+                      class="grid-img"
+                      loading="lazy"
+                      decoding="async"
+                      :fetchpriority="index < 4 ? 'high' : 'low'"
+                    >
+                  </picture>
+                  <div class="image-overlay">
+                    <div class="image-caption">{{ photo.caption }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </q-tab-panel>
+
+        <q-tab-panel name="kitchen" class="q-pa-none">
+          <div class="row q-col-gutter-md">
+            <div
+              v-for="(photo, index) in kitchenPhotos"
+              :key="index"
+              class="col-12 col-sm-6 col-md-4 q-mb-md"
+            >
+              <div 
+                class="cms-card cursor-pointer"
+                @click="openLightbox(kitchenPhotos, index)"
               >
                 <div class="cms-img-container">
                   <picture>
@@ -283,6 +317,13 @@ const interiorPhotos = [
   { src: '/images/Tuin_vanaf_woonkamer2.webp', caption: 'Uitzicht vanuit de woonkamer op de tuin' }
 ];
 
+const kitchenPhotos = [
+  { src: '/images/Keuken_deuraanzicht.webp', caption: 'Keuken met deur naar buiten' },
+  { src: '/images/Keuken_fornuis_koelkast.webp', caption: 'Keuken met fornuis en koelkast' },
+  { src: '/images/Keuken_gootsteen_kastjes.webp', caption: 'Gootsteen en keukenkastjes' },
+  { src: '/images/Keuken_gootsteen_kastjes2.webp', caption: 'Keuken werkblad en opbergruimte' }
+];
+
 const bedroomPhotos = [
   { src: '/images/Slaapkamer1_vooraanzicht.webp', caption: 'Eerste slaapkamer' },
   { src: '/images/Slaapkamer1_bed.webp', caption: 'Comfortabel tweepersoonsbed in eerste slaapkamer' },
@@ -320,6 +361,7 @@ const exteriorPhotos = [
 
 const allPhotos = computed(() => [
   ...interiorPhotos,
+  ...kitchenPhotos,
   ...bedroomPhotos,
   ...bathroomPhotos,
   ...exteriorPhotos

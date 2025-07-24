@@ -55,7 +55,7 @@ const getMetaDescription = () => {
     case '/het-huis':
       return 'Ontdek ons ruime vakantiehuis met 3 slaapkamers, 2 badkamers, volledig uitgeruste keuken en gezellige woonkamer. Perfect voor families en groepen tot 6 personen.';
     case '/buiten-leven':
-      return 'Geniet van het buitenleven in onze mediterrane tuin met privé zwembad, verschillende terrassen, buitenkeuken en BBQ. Perfect voor ontspannen dagen in de zon.';
+              return 'Geniet van het buitenleven in onze mediterrane tuin met privé zwembad, verschillende terrassen en BBQ setup. Perfect voor ontspannen dagen in de zon.';
     case '/omgeving':
       return 'Verken de prachtige omgeving van L\'Alfàs del Pi. Ontdek stranden, bergwandelingen, authentieke dorpjes en lokale markten. Alles binnen handbereik.';
     case '/fotos':

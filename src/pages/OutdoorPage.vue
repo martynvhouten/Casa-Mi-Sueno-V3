@@ -115,7 +115,7 @@
       <div class="container">
         <div class="row q-col-gutter-xl items-center">
           <div class="col-12 col-md-6">
-            <h2 class="font-playfair q-mb-lg">BBQ & Buitenkoken</h2>
+                            <h2 class="font-playfair q-mb-lg">BBQ & Barbecueën</h2>
             <p class="text-body1 q-mb-lg">
               De keramische Bastard BBQ staat klaar voor heerlijke barbecues. Deze hoogwaardige 
               keramische BBQ geeft perfecte resultaten en is ideaal voor het bereiden van 

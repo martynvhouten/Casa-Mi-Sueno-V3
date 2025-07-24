@@ -168,7 +168,7 @@ const features = [
   {
     image: '/images/Tuin_zithoek.webp',
     title: 'Leven in de buitenlucht',
-    description: 'Een fijne tuin met zwembad, verschillende terrassen en een gezellige buitenkeuken'
+    description: 'Een fijne tuin met zwembad, verschillende terrassen en een mooie BBQ plek'
   },
   {
     image: '/images/Omgeving/Albir_panorama.webp',

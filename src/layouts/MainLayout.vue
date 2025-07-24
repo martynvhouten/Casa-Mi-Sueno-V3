@@ -19,7 +19,7 @@
           aria-label="Casa Mi Sueño - Ga naar homepage"
         >
           <div class="logo-container">
-            <h1 class="font-playfair text-h4 q-my-none">Casa Mi Sueño</h1>
+            <h1 class="font-playfair text-h4 q-my-none notranslate" translate="no">Casa Mi Sueño</h1>
             <div class="logo-decoration" aria-hidden="true"></div>
           </div>
         </router-link>
@@ -210,7 +210,7 @@
         <!-- Copyright -->
         <div class="row justify-center q-mt-xl" style="padding-bottom: 2rem;">
           <div class="col-12 text-center text-caption">
-              © {{ new Date().getFullYear() }} Casa Mi Sueño. Alle rechten voorbehouden.
+              © {{ new Date().getFullYear() }} <span class="notranslate" translate="no">Casa Mi Sueño</span>. Alle rechten voorbehouden.
           </div>
         </div>
       </div>

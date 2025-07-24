@@ -12,7 +12,7 @@
       <div class="hero-overlay"></div>
       <div class="hero-content text-center">
         <div class="animate-fade-in-up">
-          <h1 class="text-h2 font-playfair text-sand text-shadow-strong q-mb-md">{{ title }}</h1>
+          <h1 class="text-h2 font-playfair text-sand text-shadow-strong q-mb-md notranslate" translate="no">{{ title }}</h1>
           <p v-if="subtitle" class="text-h5 text-shadow-light text-sand">{{ subtitle }}</p>
           <slot name="extra"></slot>
         </div>

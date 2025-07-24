@@ -627,15 +627,17 @@ body .hover-terracotta:hover,
   .cms-btn.q-btn.q-btn--unelevated,
   .cms-btn.q-btn.q-btn--standard {
     min-height: 44px !important;
-    padding: 0.75rem 1.25rem !important;
+    padding: 0.75rem 0.75rem !important;
     font-size: var(--text-sm) !important;
     border-radius: var(--radius-md) !important;
     line-height: 1;
     vertical-align: middle;
     text-align: center;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    max-width: 300px !important;
+    width: auto !important;
   }
   
   /* Extra mobile webkit fix for perfect centering */
@@ -656,8 +658,10 @@ body .hover-terracotta:hover,
   .cms-btn-sm.q-btn.q-btn--unelevated,
   .cms-btn-sm.q-btn.q-btn--standard {
     min-height: 40px !important;
-    padding: 0.625rem 1rem !important;
+    padding: 0.625rem 0.75rem !important;
     font-size: var(--text-xs) !important;
+    max-width: 250px !important;
+    width: auto !important;
   }
 
   .q-page .cms-btn-header.q-btn,
@@ -665,8 +669,10 @@ body .hover-terracotta:hover,
   .cms-btn-header.q-btn.q-btn--unelevated,
   .cms-btn-header.q-btn.q-btn--standard {
     min-height: 36px !important;
-    padding: 0.5rem 1rem !important;
+    padding: 0.5rem 0.75rem !important;
     font-size: var(--text-xs) !important;
+    max-width: 200px !important;
+    width: auto !important;
   }
 
   .q-page .cms-btn-hero.q-btn,
@@ -687,9 +693,11 @@ body .hover-terracotta:hover,
   .cms-btn-cta.q-btn.q-btn--unelevated,
   .cms-btn-cta.q-btn.q-btn--standard {
     min-height: 48px !important;
-    padding: 0.875rem 1.5rem !important;
+    padding: 0.875rem 1rem !important;
     font-size: var(--text-base) !important;
     font-weight: 600 !important;
+    max-width: 320px !important;
+    width: auto !important;
   }
 
   .q-page .cms-btn-lg.q-btn,
@@ -697,8 +705,10 @@ body .hover-terracotta:hover,
   .cms-btn-lg.q-btn.q-btn--unelevated,
   .cms-btn-lg.q-btn.q-btn--standard {
     min-height: 52px !important;
-    padding: 1rem 1.75rem !important;
+    padding: 1rem 1rem !important;
     font-size: var(--text-lg) !important;
+    max-width: 350px !important;
+    width: auto !important;
   }
 
   /* Form inputs with better specificity instead of !important */
@@ -710,6 +720,15 @@ body .hover-terracotta:hover,
   /* Better spacing for touch interactions */
   .q-btn {
     min-height: 48px;
+  }
+
+  /* Center all cms buttons in their containers on mobile */
+  .text-center .cms-btn,
+  .q-pa-md .cms-btn,
+  .container .cms-btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex;
   }
 
   /* Calendar legend mobile improvements */

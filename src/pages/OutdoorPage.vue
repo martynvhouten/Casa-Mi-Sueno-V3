@@ -92,7 +92,7 @@
         <h2 class="text-center font-playfair q-mb-xl">De tuin</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-4" v-for="area in gardenAreas" :key="area.title">
-            <div class="garden-card q-pa-none">
+            <div class="garden-card cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 250px;">
                 <q-img
                   :src="area.image"
@@ -156,7 +156,7 @@
         
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6" v-for="evening in eveningMoments" :key="evening.title">
-            <div class="evening-card q-pa-none">
+            <div class="evening-card cms-card-premium cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   :src="evening.image"

@@ -41,10 +41,15 @@
       <div class="container">
         <h2 class="text-center font-playfair q-mb-xl">Faciliteiten</h2>
         <div class="row q-col-gutter-xl">
-          <div v-for="facility in facilities" :key="facility.title" class="col-12 col-md-4">
-            <div class="facility-card q-pa-lg">
+          <div v-for="(facility, index) in facilities" :key="facility.title" class="col-12 col-md-4">
+            <div class="facility-card cms-card-subtle q-pa-lg">
               <div class="text-center q-mb-lg">
-                <q-icon :name="facility.icon" size="48px" class="text-terracotta q-mb-md" />
+                <q-icon 
+                  :name="facility.icon" 
+                  size="48px" 
+                  class="text-terracotta q-mb-md floating-icon" 
+                  :style="`animation-delay: ${index * 0.3}s;`"
+                />
                 <h3 class="font-playfair text-center">{{ facility.title }}</h3>
               </div>
               <ul class="feature-list">
@@ -62,7 +67,7 @@
         <h2 class="text-center font-playfair q-mb-xl">Prijzen & Beschikbaarheid</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
-            <div class="pricing-card q-pa-lg">
+            <div class="pricing-card cms-card-subtle q-pa-lg">
               <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
               <div class="season-pricing q-mb-xl">
                 <div v-for="season in pricing" :key="season.period" class="season-row q-py-md">
@@ -103,7 +108,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="booking-info q-pa-lg">
+            <div class="booking-info cms-card-subtle q-pa-lg">
               <h3 class="font-playfair q-mb-lg">Boekingsinformatie</h3>
               <div class="q-mb-xl">
                 <h4 class="q-mb-md">Voorwaarden</h4>

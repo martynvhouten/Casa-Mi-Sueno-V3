@@ -35,7 +35,7 @@
       <div class="container">
         <div class="row q-col-gutter-lg">
           <div v-for="feature in features" :key="feature.title" class="col-12 col-md-4">
-            <div class="cms-card q-pa-md text-center">
+            <div class="cms-card cms-card-subtle q-pa-md text-center">
               <div class="cms-img-container q-mb-lg" style="height: 280px;">
                 <q-img
                   :src="feature.image"
@@ -65,9 +65,9 @@
         
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
-            <div class="cms-card q-pa-lg">
+            <div class="cms-card cms-card-premium cms-card-subtle q-pa-lg">
               <div class="q-mb-md">
-                <q-icon name="wb_sunny" size="3rem" color="orange" />
+                <q-icon name="wb_sunny" size="3rem" color="orange" class="floating-icon" />
               </div>
               <h3 class="font-playfair q-mb-md">Mild Winterklimaat</h3>
               <p class="text-body1 q-mb-md">
@@ -83,9 +83,9 @@
           </div>
           
           <div class="col-12 col-md-6">
-            <div class="cms-card q-pa-lg">
+            <div class="cms-card cms-card-premium cms-card-subtle q-pa-lg">
               <div class="q-mb-md">
-                <q-icon name="calendar_month" size="3rem" color="blue" />
+                <q-icon name="calendar_month" size="3rem" color="blue" class="floating-icon" style="animation-delay: 1.5s;" />
               </div>
               <h3 class="font-playfair q-mb-md">Overwinteren</h3>
               <p class="text-body1 q-mb-md">
@@ -137,8 +137,8 @@
         <h2 class="text-center q-mb-xl font-playfair">Een thuis in Spanje</h2>
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
-            <div class="cms-card">
-              <div class="cms-img-container" style="height: 300px;">
+            <div class="cms-card cms-card-subtle">
+              <div class="cms-img-container">
                 <q-img
                   src="/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.webp"
                   class="cms-img"
@@ -152,8 +152,8 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="cms-card">
-              <div class="cms-img-container" style="height: 300px;">
+            <div class="cms-card cms-card-subtle">
+              <div class="cms-img-container">
                 <q-img
                   src="/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp"
                   class="cms-img"
@@ -182,9 +182,14 @@
       <div class="container">
         <h2 class="text-center q-mb-xl font-playfair">Tussen bergen en zee</h2>
         <div class="row q-col-gutter-lg">
-          <div class="col-12 col-md-4" v-for="highlight in locationHighlights" :key="highlight.title">
-            <div class="location-card q-pa-lg text-center">
-              <q-icon :name="highlight.icon" size="48px" class="text-terracotta q-mb-md" />
+          <div class="col-12 col-md-4" v-for="(highlight, index) in locationHighlights" :key="highlight.title">
+            <div class="location-card cms-card-subtle q-pa-lg text-center">
+              <q-icon 
+                :name="highlight.icon" 
+                size="48px" 
+                class="text-terracotta q-mb-md floating-icon" 
+                :style="`animation-delay: ${index * 0.5}s;`"
+              />
               <h3 class="q-mb-md font-playfair">{{ highlight.title }}</h3>
               <p class="text-grey-8">{{ highlight.description }}</p>
             </div>
@@ -513,6 +518,64 @@ const locationHighlights = [
   border-radius: var(--radius-lg) !important;
   overflow: hidden;
   display: block;
+  height: 300px !important;
+}
+
+.section:nth-child(5) .cms-img-container .q-img {
+  height: 300px !important;
+  width: 100% !important;
+  
+  :deep(.q-img__container) {
+    height: 300px !important;
+    width: 100% !important;
+  }
+  
+  :deep(.q-img__content) {
+    height: 300px !important;
+    width: 100% !important;
+    border-radius: var(--radius-lg);
+    
+    > div {
+      height: 300px !important;
+      width: 100% !important;
+      border-radius: var(--radius-lg);
+    }
+  }
+  
+  :deep(img) {
+    height: 300px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* Mobile responsive fix for container height */
+@media (max-width: 768px) {
+  .section:nth-child(5) .cms-img-container {
+    height: 250px !important;
+  }
+  
+  .section:nth-child(5) .cms-img-container .q-img {
+    height: 250px !important;
+    
+    :deep(.q-img__container) {
+      height: 250px !important;
+    }
+    
+    :deep(.q-img__content) {
+      height: 250px !important;
+      
+      > div {
+        height: 250px !important;
+      }
+    }
+    
+    :deep(img) {
+      height: 250px !important;
+    }
+  }
 }
 
 .section:nth-child(3) .cms-card .cms-img-container {

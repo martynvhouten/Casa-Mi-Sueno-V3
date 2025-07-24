@@ -206,18 +206,89 @@ p, .text-body1 {
   padding: 2rem 0;
 }
 
-/* Card Styles */
+/* Modern Card Styles */
 .cms-card {
-  background: var(--cms-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cms-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(231, 111, 81, 0.3) 25%, 
+    rgba(244, 162, 97, 0.4) 50%, 
+    rgba(231, 111, 81, 0.3) 75%, 
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .cms-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
+  border-color: rgba(231, 111, 81, 0.15);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(231, 111, 81, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.cms-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced card variants */
+.cms-card-premium {
+  background: linear-gradient(145deg, 
+    rgba(250, 243, 224, 0.95), 
+    rgba(255, 255, 255, 0.9)
+  );
+  border: 1px solid rgba(231, 111, 81, 0.1);
+  box-shadow: 
+    0 12px 40px rgba(231, 111, 81, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.cms-card-premium::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(231, 111, 81, 0.4) 25%, 
+    rgba(244, 162, 97, 0.5) 50%, 
+    rgba(231, 111, 81, 0.4) 75%, 
+    transparent 100%
+  );
+}
+
+.cms-card-premium:hover {
+  background: linear-gradient(145deg, 
+    rgba(250, 243, 224, 1), 
+    rgba(255, 255, 255, 0.95)
+  );
+  border-color: rgba(231, 111, 81, 0.2);
+  box-shadow: 
+    0 24px 70px rgba(231, 111, 81, 0.15),
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(231, 111, 81, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Button System - Optimized specificity, relying on Quasar default centering */
@@ -461,6 +532,158 @@ p, .text-body1 {
   color: var(--cms-gray-600);
 }
 
+/* Specific Modern Card Types */
+.location-card,
+.facility-card,
+.bedroom-card,
+.bathroom-card,
+.outdoor-card,
+.garden-card,
+.evening-card,
+.pricing-card,
+.booking-info,
+.rules-card,
+.review-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.88));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+}
+
+.location-card::before,
+.facility-card::before,
+.bedroom-card::before,
+.bathroom-card::before,
+.outdoor-card::before,
+.garden-card::before,
+.evening-card::before,
+.pricing-card::before,
+.booking-info::before,
+.rules-card::before,
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(139, 90, 60, 0.2) 25%, 
+    rgba(231, 111, 81, 0.3) 50%, 
+    rgba(139, 90, 60, 0.2) 75%, 
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.location-card:hover,
+.facility-card:hover,
+.bedroom-card:hover,
+.bathroom-card:hover,
+.outdoor-card:hover,
+.garden-card:hover,
+.evening-card:hover,
+.pricing-card:hover,
+.booking-info:hover,
+.rules-card:hover,
+.review-card:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.93));
+  border-color: rgba(231, 111, 81, 0.12);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(231, 111, 81, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-6px) scale(1.01);
+}
+
+.location-card:hover::before,
+.facility-card:hover::before,
+.bedroom-card:hover::before,
+.bathroom-card:hover::before,
+.outdoor-card:hover::before,
+.garden-card:hover::before,
+.evening-card:hover::before,
+.pricing-card:hover::before,
+.booking-info:hover::before,
+.rules-card:hover::before,
+.review-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced climate stats card styling */
+.climate-stats {
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.98), 
+    rgba(250, 243, 224, 0.9)
+  ) !important;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(231, 111, 81, 0.1) !important;
+  border-radius: var(--radius-2xl) !important;
+  box-shadow: 
+    0 15px 50px rgba(231, 111, 81, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.climate-stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    rgba(231, 111, 81, 0.3), 
+    rgba(244, 162, 97, 0.4), 
+    rgba(231, 111, 81, 0.3)
+  );
+}
+
+/* Special winter feature cards with gradient backgrounds */
+.winter-feature-card {
+  background: linear-gradient(145deg, 
+    rgba(255, 248, 240, 0.95), 
+    rgba(255, 255, 255, 0.9)
+  );
+  border: 1px solid rgba(244, 162, 97, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.winter-feature-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(244, 162, 97, 0.03) 0%, 
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.winter-feature-card:hover::after {
+  opacity: 1;
+}
+
 /* Grid Utilities */
 .cms-grid {
   display: grid;
@@ -510,6 +733,149 @@ body .hover-terracotta:hover,
 
 .zoom-effect:hover {
   transform: scale(1.05);
+}
+
+/* Modern Icon Animations & Effects */
+.cms-card .q-icon,
+.location-card .q-icon,
+.facility-card .q-icon {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.cms-card:hover .q-icon,
+.location-card:hover .q-icon,
+.facility-card:hover .q-icon {
+  transform: translateY(-2px) scale(1.05);
+  filter: drop-shadow(0 4px 12px rgba(231, 111, 81, 0.2));
+}
+
+/* Floating animation for special elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.floating-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow effect for premium cards */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 
+      0 15px 50px rgba(231, 111, 81, 0.08),
+      0 8px 24px rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
+
+.cms-card-premium {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Subtle glow effect for cards */
+.cms-card-subtle {
+  position: relative;
+  overflow: hidden;
+}
+
+.cms-card-subtle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, 
+    rgba(231, 111, 81, 0.02) 0%, 
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.cms-card-subtle:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced image hover effects */
+.cms-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--cms-gray-100);
+  width: 100%;
+  height: 100%;
+}
+
+.cms-img-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(231, 111, 81, 0.05) 0%, 
+    transparent 50%, 
+    rgba(244, 162, 97, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cms-card:hover .cms-img-container::before {
+  opacity: 1;
+}
+
+/* Text enhancement effects */
+.cms-card h3,
+.location-card h3,
+.facility-card h3 {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cms-card:hover h3,
+.location-card:hover h3,
+.facility-card:hover h3 {
+  color: var(--cms-deep-terracotta);
+  transform: translateY(-1px);
+}
+
+/* Feature list enhancements */
+.feature-list li {
+  transition: all 0.2s ease;
+  opacity: 0.9;
+}
+
+.cms-card:hover .feature-list li,
+.location-card:hover .feature-list li,
+.facility-card:hover .feature-list li {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.feature-list li::before {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.cms-card:hover .feature-list li::before,
+.location-card:hover .feature-list li::before,
+.facility-card:hover .feature-list li::before {
+  transform: scale(1.1);
+  color: var(--cms-deep-terracotta);
 }
 
 /* Transitions */

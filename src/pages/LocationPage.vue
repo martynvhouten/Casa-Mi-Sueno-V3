@@ -66,9 +66,9 @@
         
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-4">
-            <div class="cms-card q-pa-lg text-center">
+            <div class="cms-card cms-card-premium cms-card-subtle winter-feature-card q-pa-lg text-center">
               <div class="q-mb-md">
-                <q-icon name="thermostat" size="3rem" color="orange" />
+                <q-icon name="thermostat" size="3rem" color="orange" class="floating-icon" />
               </div>
               <h3 class="font-playfair q-mb-md">Milde Temperaturen</h3>
               <p class="text-body1">
@@ -79,9 +79,9 @@
           </div>
           
           <div class="col-12 col-md-4">
-            <div class="cms-card q-pa-lg text-center">
+            <div class="cms-card cms-card-premium cms-card-subtle winter-feature-card q-pa-lg text-center">
               <div class="q-mb-md">
-                <q-icon name="wb_sunny" size="3rem" color="yellow" />
+                <q-icon name="wb_sunny" size="3rem" color="yellow" class="floating-icon" style="animation-delay: 1s;" />
               </div>
               <h3 class="font-playfair q-mb-md">300 Zonnige Dagen</h3>
               <p class="text-body1">
@@ -92,9 +92,9 @@
           </div>
           
           <div class="col-12 col-md-4">
-            <div class="cms-card q-pa-lg text-center">
+            <div class="cms-card cms-card-premium cms-card-subtle winter-feature-card q-pa-lg text-center">
               <div class="q-mb-md">
-                <q-icon name="water_drop" size="3rem" color="blue" />
+                <q-icon name="water_drop" size="3rem" color="blue" class="floating-icon" style="animation-delay: 2s;" />
               </div>
               <h3 class="font-playfair q-mb-md">Weinig Regen</h3>
               <p class="text-body1">
@@ -133,7 +133,7 @@
         <h2 class="text-center font-playfair q-mb-xl">Tussen strand en bergen</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
-            <div class="location-card q-pa-none">
+            <div class="location-card cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
               <q-img
                   src="/images/Omgeving/Albir_lighthouse.webp"
@@ -152,7 +152,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="location-card q-pa-none">
+            <div class="location-card cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Omgeving/Guadalest_mountain_view.webp"
@@ -180,7 +180,7 @@
         <h2 class="text-center font-playfair q-mb-xl">Culturele hoogtepunten</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-4" v-for="highlight in culturalHighlights" :key="highlight.title">
-            <div class="location-card q-pa-none">
+            <div class="location-card cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 250px;">
                 <q-img
                   :src="highlight.image"

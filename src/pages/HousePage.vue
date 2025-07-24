@@ -61,7 +61,7 @@
         <h2 class="text-center font-playfair q-mb-xl">Slaapkamers</h2>
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
-            <div class="bedroom-card q-pa-none">
+            <div class="bedroom-card cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Slaapkamer2.webp"
@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="bedroom-card q-pa-none">
+            <div class="bedroom-card cms-card-subtle q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Slaapkamer1_vooraanzicht.webp"
@@ -114,7 +114,7 @@
         <h2 class="text-center font-playfair q-mb-xl">Badkamers</h2>
         <div class="row q-col-gutter-xl justify-center">
           <div class="col-12 col-md-6" v-for="bathroom in bathrooms" :key="bathroom.title">
-            <div class="bathroom-card q-pa-none">
+            <div class="bathroom-card cms-card-subtle q-pa-none">
               <!-- Photo Grid -->
               <div class="bathroom-photos q-pa-md">
                 <div class="row q-col-gutter-md">

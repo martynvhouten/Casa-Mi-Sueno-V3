@@ -8,8 +8,7 @@
       subtitle="Comfortabel en sfeervol ingericht"
     />
 
-    <!-- Breadcrumb Navigation -->
-    <BreadcrumbNav />
+
 
     <!-- Introduction -->
     <section class="section bg-sand">
@@ -225,7 +224,7 @@
 
 <script setup lang="ts">
 import HeroSection from 'src/components/HeroSection.vue';
-import BreadcrumbNav from 'src/components/BreadcrumbNav.vue';
+
 
 // Function to determine column class based on number of photos
 const getPhotoColumnClass = (photoCount: number) => {

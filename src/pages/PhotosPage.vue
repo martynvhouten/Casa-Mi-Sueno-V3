@@ -8,8 +8,7 @@
       subtitle="Een rondleiding door Casa Mi Sueño"
     />
 
-    <!-- Breadcrumb Navigation -->
-    <BreadcrumbNav />
+
 
     <!-- Introduction -->
     <section class="section bg-white">
@@ -51,5 +50,5 @@
 <script setup lang="ts">
 import PhotoGallery from '../components/PhotoGallery.vue';
 import HeroSection from 'src/components/HeroSection.vue';
-import BreadcrumbNav from 'src/components/BreadcrumbNav.vue';
+
 </script> 

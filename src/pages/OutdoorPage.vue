@@ -8,8 +8,7 @@
       subtitle="Waar het Spaanse leven zich afspeelt"
     />
 
-    <!-- Breadcrumb Navigation -->
-    <BreadcrumbNav />
+
 
     <!-- Introduction -->
     <section class="section bg-white">
@@ -196,7 +195,7 @@
 
 <script setup lang="ts">
 import HeroSection from 'src/components/HeroSection.vue';
-import BreadcrumbNav from 'src/components/BreadcrumbNav.vue';
+
 
 const gardenAreas = [
   {

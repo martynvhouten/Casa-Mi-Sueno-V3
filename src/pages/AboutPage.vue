@@ -8,6 +8,9 @@
       subtitle="Esther & Milco - eigenaren van Casa Mi Sueño"
     />
 
+    <!-- Breadcrumb Navigation -->
+    <BreadcrumbNav />
+
     <!-- Our Story Section -->
     <section class="section bg-white">
       <div class="container">
@@ -149,6 +152,7 @@
 
 <script setup lang="ts">
 import HeroSection from 'src/components/HeroSection.vue';
+import BreadcrumbNav from 'src/components/BreadcrumbNav.vue';
 
 const personalTouches = [
   {

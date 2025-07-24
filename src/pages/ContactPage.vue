@@ -8,6 +8,9 @@
       :subtitle="isBookingInquiry ? 'Laat ons weten waar we je mee kunnen helpen' : 'Voor alle vragen over Casa Mi Sueño'"
     />
 
+    <!-- Breadcrumb Navigation -->
+    <BreadcrumbNav />
+
     <!-- Introduction -->
     <section class="section bg-sand">
       <div class="container text-center">
@@ -81,6 +84,7 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import ContactForm from '../components/ContactForm.vue';
 import HeroSection from 'src/components/HeroSection.vue';
+import BreadcrumbNav from 'src/components/BreadcrumbNav.vue';
 
 const route = useRoute();
 

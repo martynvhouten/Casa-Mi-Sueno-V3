@@ -95,45 +95,49 @@ const breadcrumbs = computed((): Breadcrumb[] => {
 
 <style scoped>
 .breadcrumb-nav {
-  background: var(--cms-sand);
-  border-bottom: 1px solid rgba(139, 90, 60, 0.1);
+  background: transparent;
+  padding: 0.75rem 0;
 }
 
 .breadcrumb-list {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.375rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .breadcrumb-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .breadcrumb-link {
   color: var(--cms-olive);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
 }
 
 .breadcrumb-link:hover {
   color: var(--cms-deep-terracotta);
-  text-decoration: underline;
+  opacity: 1;
 }
 
 .breadcrumb-current {
   color: var(--cms-navy);
-  font-weight: 500;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 .breadcrumb-separator {
   color: var(--cms-olive);
-  opacity: 0.6;
+  opacity: 0.4;
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {
@@ -142,12 +146,16 @@ const breadcrumbs = computed((): Breadcrumb[] => {
   }
   
   .breadcrumb-list {
-    font-size: 0.8rem;
-    gap: 0.375rem;
+    font-size: 0.75rem;
+    gap: 0.25rem;
   }
   
   .breadcrumb-item {
-    gap: 0.375rem;
+    gap: 0.25rem;
+  }
+  
+  .breadcrumb-separator {
+    font-size: 10px;
   }
 }
 </style> 

@@ -12,7 +12,7 @@ export interface MetaInfo {
 export const DEFAULT_META: MetaInfo = {
   title: 'Casa Mi Sueño - Vakantiehuis in L\'Alfàs del Pi, Spanje',
   description: 'Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee.',
-  image: '/images/Tuin_zwembad.jpg',
+  image: '/images/Tuin_zithoek.webp',
   type: 'website',
   keywords: 'vakantiehuis, L\'Alfàs del Pi, Costa Blanca, Spanje, zwembad, vakantie, verhuur',
   author: 'Casa Mi Sueño',

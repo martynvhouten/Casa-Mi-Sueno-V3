@@ -429,6 +429,18 @@ const handleMinimumNightsError = (errorDetails: { selected: number; minimum: num
     return;
   }
   
+  // Special handling for booked dates between selection
+  if (errorDetails.season === 'Er zijn geboekte datums binnen de geselecteerde periode') {
+    $q.notify({
+      type: 'negative',
+      message: 'De geselecteerde periode bevat al geboekte datums. Kies een andere periode zonder geboekte datums ertussen.',
+      position: 'top',
+      timeout: 6000,
+      actions: [{ label: 'OK', color: 'white', handler: () => {} }]
+    });
+    return;
+  }
+  
   $q.notify({
     type: 'negative',
     message: `${errorDetails.season}: minimaal ${errorDetails.minimum} nachten vereist. Je hebt ${errorDetails.selected} ${errorDetails.selected === 1 ? 'nacht' : 'nachten'} geselecteerd.`,

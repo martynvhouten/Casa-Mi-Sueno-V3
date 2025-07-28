@@ -124,6 +124,31 @@ function getSeason(date: Date): Season {
   return Season.Unavailable;
 }
 
+// Helper function to check if there are any booked dates between two dates (exclusive)
+function hasBookedDatesBetween(startDate: Date, endDate: Date): boolean {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  
+  // Ensure start is before end
+  if (start >= end) {
+    return false;
+  }
+  
+  // Check each date between start and end (exclusive)
+  const currentDate = new Date(start);
+  currentDate.setDate(currentDate.getDate() + 1); // Start from day after start date
+  
+  while (currentDate < end) {
+    const dateString = currentDate.toISOString().split('T')[0];
+    if (bookedDates.value.includes(dateString)) {
+      return true;
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+  
+  return false;
+}
+
 const currentSeason = computed(() => getSeason(new Date()));
 
 const currentSeasonInfo = computed(() => {
@@ -152,7 +177,7 @@ function isDateDisabled(date: Date): boolean {
     return false;
   }
 
-  // If start date is selected, enforce minimum stay
+  // If start date is selected, enforce minimum stay and check for booked dates between
   if (dates.value.length === 1) {
     const startDate = dates.value[0];
     const season = getSeason(startDate);
@@ -160,7 +185,13 @@ function isDateDisabled(date: Date): boolean {
     
     const diffDays = Math.ceil((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     
+    // Check minimum nights requirement
     if (diffDays < config.minNights) {
+      return true;
+    }
+    
+    // Check if there are any booked dates between start date and this potential end date
+    if (hasBookedDatesBetween(startDate, date)) {
       return true;
     }
   }
@@ -197,6 +228,19 @@ function handleDateSelect(value: Date[] | null) {
       // Reset the selection completely for December
       dates.value = null;
       emit('update:modelValue', null);
+      return;
+    }
+    
+    // Check if there are booked dates between the selected dates
+    if (hasBookedDatesBetween(value[0], value[1])) {
+      emit('minimum-nights-error', {
+        selected: totalNights,
+        minimum: 0,
+        season: 'Er zijn geboekte datums binnen de geselecteerde periode'
+      });
+      // Reset the selection to only the start date
+      dates.value = [value[0]];
+      emit('update:modelValue', [value[0]]);
       return;
     }
     

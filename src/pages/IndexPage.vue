@@ -137,7 +137,7 @@
         <h2 class="text-center q-mb-xl font-playfair">Een thuis in Spanje</h2>
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
-            <div class="cms-card cms-card-subtle">
+            <div class="cms-card cms-card-subtle mobile-photo-card">
               <div class="cms-img-container">
                 <q-img
                   src="/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.webp"
@@ -152,7 +152,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="cms-card cms-card-subtle">
+            <div class="cms-card cms-card-subtle mobile-photo-card">
               <div class="cms-img-container">
                 <q-img
                   src="/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp"
@@ -553,27 +553,64 @@ const locationHighlights = [
 
 /* Mobile responsive fix for container height */
 @media (max-width: 768px) {
+  .section:nth-child(5) .cms-card {
+    height: 200px !important;
+    min-height: 200px !important;
+  }
+  
   .section:nth-child(5) .cms-img-container {
-    height: 250px !important;
+    height: 200px !important;
   }
   
   .section:nth-child(5) .cms-img-container .q-img {
-    height: 250px !important;
+    height: 200px !important;
     
     :deep(.q-img__container) {
-      height: 250px !important;
+      height: 200px !important;
     }
     
     :deep(.q-img__content) {
-      height: 250px !important;
+      height: 200px !important;
       
       > div {
-        height: 250px !important;
+        height: 200px !important;
       }
     }
     
     :deep(img) {
-      height: 250px !important;
+      height: 200px !important;
+    }
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .section:nth-child(5) .cms-card {
+    height: 180px !important;
+    min-height: 180px !important;
+  }
+  
+  .section:nth-child(5) .cms-img-container {
+    height: 180px !important;
+  }
+  
+  .section:nth-child(5) .cms-img-container .q-img {
+    height: 180px !important;
+    
+    :deep(.q-img__container) {
+      height: 180px !important;
+    }
+    
+    :deep(.q-img__content) {
+      height: 180px !important;
+      
+      > div {
+        height: 180px !important;
+      }
+    }
+    
+    :deep(img) {
+      height: 180px !important;
     }
   }
 }
@@ -655,5 +692,57 @@ const locationHighlights = [
 .image-overlay {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
   padding: 8px;
+}
+
+/* Mobile photo card specific fixes */
+.mobile-photo-card {
+  overflow: hidden;
+}
+
+.mobile-photo-card .cms-img-container {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.mobile-photo-card .cms-img-container .q-img {
+  height: 300px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-photo-card {
+    height: 200px !important;
+    max-height: 200px !important;
+    min-height: 200px !important;
+  }
+  
+  .mobile-photo-card .cms-img-container {
+    height: 200px !important;
+    max-height: 200px !important;
+  }
+  
+  .mobile-photo-card .cms-img-container .q-img {
+    height: 200px !important;
+    max-height: 200px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-photo-card {
+    height: 180px !important;
+    max-height: 180px !important;
+    min-height: 180px !important;
+  }
+  
+  .mobile-photo-card .cms-img-container {
+    height: 180px !important;
+    max-height: 180px !important;
+  }
+  
+  .mobile-photo-card .cms-img-container .q-img {
+    height: 180px !important;
+    max-height: 180px !important;
+  }
 }
 </style> 

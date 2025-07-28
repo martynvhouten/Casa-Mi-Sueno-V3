@@ -1,11 +1,11 @@
 // Define static routes for sitemap generation
 const staticRoutes = [
-  { path: '/', images: ['/images/Tuin_zwembad.jpg'] },
+  { path: '/', images: ['/images/Tuin_zithoek.webp'] },
   { path: '/over-ons', images: [] },
-  { path: '/het-huis', images: ['/images/Woonkamer_zithoek.jpg', '/images/Woonkamer_tafel_stoelen.jpg'] },
-  { path: '/buiten', images: ['/images/Tuin_mediterraans.jpg', '/images/Tuin_zwembad.jpg'] },
-  { path: '/omgeving', images: ['/images/Omgeving/Albir_panorama.jpg'] },
-  { path: '/fotos', images: [] },
+  { path: '/het-huis', images: ['/images/Woonkamer_zithoek.webp'] },
+  { path: '/buiten-leven', images: ['/images/Tuin_zwembad.webp'] },
+  { path: '/omgeving', images: [] },
+  { path: '/fotos', images: ['/images/Keuken_deuraanzicht.webp'] },
   { path: '/praktisch', images: [] },
   { path: '/contact', images: [] },
   { path: '/reserveren', images: [] },
@@ -26,11 +26,13 @@ const BASE_URL = 'https://casamisueno.nl';
 
 export const generateSitemap = (): string => {
   const urls: SitemapUrl[] = [];
+  const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
   
   // Add static routes
   staticRoutes.forEach((route) => {
     urls.push({
       loc: `${BASE_URL}${route.path}`,
+      lastmod: currentDate,
       changefreq: getChangeFreq(route.path),
       priority: getPriority(route.path),
       images: route.images
@@ -45,7 +47,12 @@ const getChangeFreq = (path: string): string => {
     case '/':
       return 'weekly';
     case '/reserveren':
-      return 'daily';
+      return 'weekly';
+    case '/fotos':
+      return 'weekly';
+    case '/privacy':
+    case '/voorwaarden':
+      return 'yearly';
     default:
       return 'monthly';
   }
@@ -56,35 +63,47 @@ const getPriority = (path: string): string => {
     case '/':
       return '1.0';
     case '/reserveren':
+      return '0.95';
     case '/het-huis':
+    case '/buiten-leven':
+      return '0.9';
     case '/fotos':
-      return '0.8';
+    case '/over-ons':
     case '/contact':
+      return '0.8';
     case '/omgeving':
+    case '/praktisch':
       return '0.7';
+    case '/privacy':
+    case '/voorwaarden':
+      return '0.3';
+    case '/sitemap':
+      return '0.2';
     default:
       return '0.5';
   }
 };
 
 const generateXml = (urls: SitemapUrl[]): string => {
-  const urlElements = urls.map(url => `
-    <url>
-      <loc>${url.loc}</loc>
-      ${url.lastmod ? `<lastmod>${url.lastmod}</lastmod>` : ''}
-      ${url.changefreq ? `<changefreq>${url.changefreq}</changefreq>` : ''}
-      ${url.priority ? `<priority>${url.priority}</priority>` : ''}
-      ${url.images?.map(image => `
-        <image:image>
-          <image:loc>${BASE_URL}${image}</image:loc>
-        </image:image>
-      `).join('') || ''}
-    </url>
-  `).join('');
+  const urlElements = urls.map(url => {
+    const imageElements = url.images?.map(image => `
+      <image:image>
+        <image:loc>${BASE_URL}${image}</image:loc>
+        <image:caption>Casa Mi Sueño - Luxe vakantiewoning Costa Blanca</image:caption>
+      </image:image>
+    `).join('') || '';
+
+    return `
+  <url>
+    <loc>${url.loc}</loc>${url.lastmod ? `
+    <lastmod>${url.lastmod}</lastmod>` : ''}${url.changefreq ? `
+    <changefreq>${url.changefreq}</changefreq>` : ''}${url.priority ? `
+    <priority>${url.priority}</priority>` : ''}${imageElements}
+  </url>`;
+  }).join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  ${urlElements}
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${urlElements}
 </urlset>`;
 }; 

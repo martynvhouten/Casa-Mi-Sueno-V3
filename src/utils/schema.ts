@@ -26,7 +26,18 @@ interface VacationRentalSchema {
   name: string;
   description: string;
   url: string;
+  identifier: string;
   image: string[];
+  containsPlace: {
+    '@type': string;
+    name: string;
+    address: {
+      '@type': string;
+      addressLocality: string;
+      addressRegion: string;
+      addressCountry: string;
+    };
+  };
   address: {
     streetAddress: string;
     addressLocality: string;
@@ -47,11 +58,22 @@ const DEFAULT_SCHEMA: VacationRentalSchema = {
   name: 'Casa Mi Sueño',
   description: 'Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee.',
   url: 'https://casamisueno.nl',
+  identifier: 'https://casamisueno.nl/casa-mi-sueno',
   image: [
     'https://casamisueno.nl/images/Tuin_zwembad.jpg',
     'https://casamisueno.nl/images/Woonkamer_zithoek.jpg',
     'https://casamisueno.nl/images/Tuin_mediterraans.jpg'
   ],
+  containsPlace: {
+    '@type': 'Place',
+    name: 'L\'Alfàs del Pi',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'L\'Alfàs del Pi',
+      addressRegion: 'Alicante',
+      addressCountry: 'ES'
+    }
+  },
   address: {
     streetAddress: 'Carrer de les Petúnies 16',
     addressLocality: 'L\'Alfàs del Pi',

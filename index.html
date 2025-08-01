@@ -91,7 +91,7 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "VacationRental",
+      "@type": "House",
       "name": "Casa Mi Sueño",
       "identifier": "https://casamisueno.nl/casa-mi-sueno",
       "description": "Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee. Ook ideaal voor overwinteren met speciaal maandtarief van €1200.",
@@ -103,8 +103,8 @@
         "https://casamisueno.nl/images/Tuin_zithoek.webp",
         "https://casamisueno.nl/images/Keuken_deuraanzicht.webp"
       ],
-      "containsPlace": {
-        "@type": "Place",
+      "containedInPlace": {
+        "@type": "City",
         "name": "L'Alfàs del Pi",
         "address": {
           "@type": "PostalAddress",
@@ -123,19 +123,27 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "38.5785",
-        "longitude": "-0.0997"
+        "latitude": 38.5785,
+        "longitude": -0.0997
       },
       "telephone": "+31683645489",
       "email": "info@casamisueno.nl",
-      "maximumAttendeeCapacity": 4,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 4,
+        "unitText": "persons"
+      },
       "numberOfRooms": 2,
-      "floorSize": "120 m²",
-      "yearBuilt": "2010",
-      "checkInTime": "16:00",
-      "checkOutTime": "10:00",
-      "petsAllowed": "True",
-      "smokingAllowed": "False",
+      "numberOfBedrooms": 2,
+      "numberOfBathroomsTotal": 2,
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 120,
+        "unitCode": "MTK"
+      },
+      "yearBuilt": 2010,
+      "petsAllowed": true,
+      "smokingAllowed": false,
       "amenityFeature": [
         {"@type": "LocationFeatureSpecification", "name": "Zwembad", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Airconditioning", "value": true},
@@ -143,14 +151,28 @@
         {"@type": "LocationFeatureSpecification", "name": "Tuin", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "BBQ", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Parkeerplaats", "value": "2 auto's"},
-        {"@type": "LocationFeatureSpecification", "name": "Slaapkamers", "value": "2"},
-        {"@type": "LocationFeatureSpecification", "name": "Badkamers", "value": "2"},
         {"@type": "LocationFeatureSpecification", "name": "Keuken", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Terras", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Veranda", "value": true}
       ],
-      "priceRange": "€160-€1200",
+      "accommodationCategory": "vacation rental",
+      "tourBookingPage": "https://casamisueno.nl/reserveren",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue", 
+          "name": "Check-in tijd",
+          "value": "16:00"
+        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Check-out tijd",
+          "value": "10:00"
+        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Prijsrange regulier",
+          "value": "€160-€180 per nacht"
+        },
         {
           "@type": "PropertyValue", 
           "name": "Overwinter verblijf",

@@ -22,13 +22,13 @@ interface SchemaData {
   priceRange: string;
 }
 
-interface VacationRentalSchema {
+interface HouseSchema {
   name: string;
   description: string;
   url: string;
   identifier: string;
   image: string[];
-  containsPlace: {
+  containedInPlace: {
     '@type': string;
     name: string;
     address: {
@@ -45,27 +45,57 @@ interface VacationRentalSchema {
     postalCode: string;
     addressCountry: string;
   };
+  geo: {
+    '@type': string;
+    latitude: number;
+    longitude: number;
+  };
   telephone: string;
-  maximumAttendeeCapacity: number;
+  email: string;
+  occupancy: {
+    '@type': string;
+    maxValue: number;
+    unitText: string;
+  };
+  numberOfRooms: number;
+  numberOfBedrooms: number;
+  numberOfBathroomsTotal: number;
+  floorSize: {
+    '@type': string;
+    value: number;
+    unitCode: string;
+  };
+  yearBuilt: number;
+  petsAllowed: boolean;
+  smokingAllowed: boolean;
   amenityFeature: Array<{
+    '@type': string;
     name: string;
-    value?: boolean | string;
+    value: boolean | string;
   }>;
-  priceRange: string;
+  accommodationCategory: string;
+  tourBookingPage: string;
+  additionalProperty: Array<{
+    '@type': string;
+    name: string;
+    value: string;
+  }>;
 }
 
-const DEFAULT_SCHEMA: VacationRentalSchema = {
+const DEFAULT_SCHEMA: HouseSchema = {
   name: 'Casa Mi Sueño',
-  description: 'Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee.',
+  description: 'Geniet van een ontspannen vakantie in ons comfortabele vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca. Perfect gelegen tussen bergen en zee. Ook ideaal voor overwinteren met speciaal maandtarief van €1200.',
   url: 'https://casamisueno.nl',
   identifier: 'https://casamisueno.nl/casa-mi-sueno',
   image: [
-    'https://casamisueno.nl/images/Tuin_zwembad.jpg',
-    'https://casamisueno.nl/images/Woonkamer_zithoek.jpg',
-    'https://casamisueno.nl/images/Tuin_mediterraans.jpg'
+    'https://casamisueno.nl/images/Tuin_zwembad.webp',
+    'https://casamisueno.nl/images/Woonkamer_zithoek.webp',
+    'https://casamisueno.nl/images/Tuin_mediterraans.webp',
+    'https://casamisueno.nl/images/Tuin_zithoek.webp',
+    'https://casamisueno.nl/images/Keuken_deuraanzicht.webp'
   ],
-  containsPlace: {
-    '@type': 'Place',
+  containedInPlace: {
+    '@type': 'City',
     name: 'L\'Alfàs del Pi',
     address: {
       '@type': 'PostalAddress',
@@ -81,25 +111,75 @@ const DEFAULT_SCHEMA: VacationRentalSchema = {
     postalCode: '03580',
     addressCountry: 'ES'
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 38.5785,
+    longitude: -0.0997
+  },
   telephone: '+31683645489',
-  maximumAttendeeCapacity: 4,
+  email: 'info@casamisueno.nl',
+  occupancy: {
+    '@type': 'QuantitativeValue',
+    maxValue: 4,
+    unitText: 'persons'
+  },
+  numberOfRooms: 2,
+  numberOfBedrooms: 2,
+  numberOfBathroomsTotal: 2,
+  floorSize: {
+    '@type': 'QuantitativeValue',
+    value: 120,
+    unitCode: 'MTK'
+  },
+  yearBuilt: 2010,
+  petsAllowed: true,
+  smokingAllowed: false,
   amenityFeature: [
-    { name: 'Zwembad', value: true },
-    { name: 'Airconditioning', value: true },
-    { name: 'WiFi', value: true },
-    { name: 'Tuin', value: true },
-    { name: 'BBQ', value: true },
-    { name: 'Parkeerplaats', value: '2 auto\'s' },
-    { name: 'Slaapkamers', value: '2' },
-    { name: 'Badkamers', value: '2' }
+    { '@type': 'LocationFeatureSpecification', name: 'Zwembad', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Airconditioning', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'WiFi', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Tuin', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'BBQ', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Parkeerplaats', value: '2 auto\'s' },
+    { '@type': 'LocationFeatureSpecification', name: 'Keuken', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Terras', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Veranda', value: true }
   ],
-  priceRange: '€€'
+  accommodationCategory: 'vacation rental',
+  tourBookingPage: 'https://casamisueno.nl/reserveren',
+  additionalProperty: [
+    {
+      '@type': 'PropertyValue',
+      name: 'Check-in tijd',
+      value: '16:00'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Check-out tijd',
+      value: '10:00'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Prijsrange regulier',
+      value: '€160-€180 per nacht'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Overwinter verblijf',
+      value: '€1200 per maand (november, januari-maart)'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Minimaal verblijf overwinter',
+      value: '1 maand'
+    }
+  ]
 };
 
-export const generateVacationRentalSchema = (customData?: Partial<VacationRentalSchema>): string => {
+export const generateHouseSchema = (customData?: Partial<HouseSchema>): string => {
   const schemaData = {
     '@context': 'https://schema.org',
-    '@type': 'VacationRental',
+    '@type': 'House',
     ...DEFAULT_SCHEMA,
     ...customData
   };
@@ -121,10 +201,14 @@ export const injectStructuredData = (schema: string): void => {
   document.head.appendChild(script);
 };
 
-export const setupVacationRentalSchema = (customData?: Partial<VacationRentalSchema>): void => {
-  const schema = generateVacationRentalSchema(customData);
+export const setupHouseSchema = (customData?: Partial<HouseSchema>): void => {
+  const schema = generateHouseSchema(customData);
   injectStructuredData(schema);
 };
+
+// Backwards compatibility
+export const generateVacationRentalSchema = generateHouseSchema;
+export const setupVacationRentalSchema = setupHouseSchema;
 
 export const generateLocalBusinessSchema = (): SchemaData => {
   return {

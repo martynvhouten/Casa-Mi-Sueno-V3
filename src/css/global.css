@@ -1072,6 +1072,22 @@ body .hover-terracotta:hover,
     display: inline-flex;
   }
 
+  /* Mobile button centering for reservation buttons */
+  @media (max-width: 768px) {
+    .cms-btn.full-width {
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      width: 100%;
+    }
+    
+    .cms-btn.full-width .q-btn__content {
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
   /* Calendar legend mobile improvements */
   .q-page .calendar-legend,
   .q-dialog .calendar-legend {

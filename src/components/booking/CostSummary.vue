@@ -93,14 +93,16 @@
       <span class="text-subtitle1 text-weight-bold text-primary">€{{ priceDetails.totalPrice.toLocaleString('nl-NL') }}</span>
     </div>
 
-    <q-btn
-      color="primary"
-      :label="`Reserveer voor €${priceDetails.totalPrice.toLocaleString('nl-NL')}`"
-      class="cms-btn cms-btn-primary full-width q-mt-md"
-      @click="scrollToBookingForm"
-      unelevated
-      size="md"
-    />
+    <div class="text-center q-mt-md">
+      <q-btn
+        color="primary"
+        :label="`Reserveer voor €${priceDetails.totalPrice.toLocaleString('nl-NL')}`"
+        class="cms-btn cms-btn-primary full-width"
+        @click="scrollToBookingForm"
+        unelevated
+        size="md"
+      />
+    </div>
     
     <div class="text-caption text-grey-7 text-center q-mt-sm">
       * Borg (€{{ priceDetails.securityDeposit.toLocaleString('nl-NL') }}) wordt binnen 5-7 werkdagen na vertrek teruggestort

@@ -89,28 +89,32 @@ export const setMetaTags = (meta: MetaInfo) => {
 };
 
 const updateMetaTag = (name: string, content: string) => {
-  let element = document.querySelector(`meta[name="${name}"]`) || 
+  // Handle canonical separately: use <link rel="canonical"> and update it if it already exists
+  if (name === 'canonical') {
+    let linkEl = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!linkEl) {
+      linkEl = document.createElement('link');
+      linkEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(linkEl);
+    }
+    linkEl.setAttribute('href', content);
+    return;
+  }
+
+  // For all other meta tags (standard, OpenGraph, Twitter)
+  let element = document.querySelector(`meta[name="${name}"]`) ||
                 document.querySelector(`meta[property="${name}"]`);
-                
+
   if (!element) {
     element = document.createElement('meta');
     if (name.startsWith('og:')) {
       element.setAttribute('property', name);
-    } else if (name.startsWith('twitter:')) {
-      element.setAttribute('name', name);
-    } else if (name === 'canonical') {
-      element = document.createElement('link');
-      element.setAttribute('rel', 'canonical');
-      element.setAttribute('href', content);
     } else {
+      // Works for both standard and Twitter tags
       element.setAttribute('name', name);
     }
     document.head.appendChild(element);
   }
-  
-  if (name === 'canonical') {
-    (element as HTMLLinkElement).href = content;
-  } else {
-    element.setAttribute('content', content);
-  }
-}; 
+
+  element.setAttribute('content', content);
+};

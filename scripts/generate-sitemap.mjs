@@ -5,21 +5,37 @@ import path from 'node:path';
 
 const BASE_URL = 'https://casamisueno.nl';
 
-// Keep in sync with app routes
-const staticRoutes = [
-  { path: '/', images: ['/images/Tuin_zithoek.webp'] },
-  { path: '/over-ons', images: [] },
-  { path: '/het-huis', images: ['/images/Woonkamer_zithoek.webp'] },
-  { path: '/buiten-leven', images: ['/images/Tuin_zwembad.webp'] },
-  { path: '/omgeving', images: [] },
-  { path: '/fotos', images: ['/images/Keuken_deuraanzicht.webp'] },
-  { path: '/praktisch', images: [] },
-  { path: '/contact', images: [] },
-  { path: '/reserveren', images: [] },
-  { path: '/privacy', images: [] },
-  { path: '/voorwaarden', images: [] },
-  { path: '/sitemap', images: [] }
+// Required minimal routes (must be present)
+const requiredRoutes = [
+  '/', '/over', '/accommodatie', '/voorzieningen', '/omgeving', '/contact'
 ];
+
+// Full route set (union of required + current site routes)
+const fullRouteSet = Array.from(new Set([
+  '/',
+  '/over',
+  '/accommodatie',
+  '/voorzieningen',
+  '/omgeving',
+  '/contact',
+  // existing known routes
+  '/over-ons',
+  '/het-huis',
+  '/buiten-leven',
+  '/fotos',
+  '/praktisch',
+  '/reserveren',
+  '/privacy',
+  '/voorwaarden',
+  '/sitemap'
+]));
+
+const routeToImages = new Map([
+  ['/', ['/images/Tuin_zithoek.webp']],
+  ['/het-huis', ['/images/Woonkamer_zithoek.webp']],
+  ['/buiten-leven', ['/images/Tuin_zwembad.webp']],
+  ['/fotos', ['/images/Keuken_deuraanzicht.webp']]
+]);
 
 function getChangeFreq(p) {
   switch (p) {
@@ -86,12 +102,12 @@ function generateXml(urls) {
 
 function run() {
   const currentDate = new Date().toISOString().split('T')[0];
-  const urls = staticRoutes.map((r) => ({
-    loc: r.path === '/' ? `${BASE_URL}/` : `${BASE_URL}${r.path}`,
+  const urls = fullRouteSet.map((p) => ({
+    loc: p === '/' ? `${BASE_URL}/` : `${BASE_URL}${p}`,
     lastmod: currentDate,
-    changefreq: getChangeFreq(r.path),
-    priority: getPriority(r.path),
-    images: r.images
+    changefreq: getChangeFreq(p),
+    priority: getPriority(p),
+    images: routeToImages.get(p) || []
   }));
 
   const xml = generateXml(urls);

@@ -62,10 +62,15 @@
   status = 301
   force = true
 
-# Redirect /sitemap.xml to our sitemap function
+# Serve static sitemap and robots explicitly before SPA fallback
 [[redirects]]
   from = "/sitemap.xml"
-  to = "/.netlify/functions/sitemap"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
   status = 200
 
 [functions]

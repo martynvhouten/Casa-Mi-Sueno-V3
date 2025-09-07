@@ -40,27 +40,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-## Canonical host + scheme
-# Force HTTPS
-[[redirects]]
-  from = "http://casamisueno.nl/*"
-  to = "https://casamisueno.nl/:splat"
-  status = 301
-  force = true
-
-# Remove www
-[[redirects]]
-  from = "https://www.casamisueno.nl/*"
-  to = "https://casamisueno.nl/:splat"
-  status = 301
-  force = true
-
-# Remove trailing slash (except root)
-[[redirects]]
-  from = "/:path/"
-  to = "/:path"
-  status = 301
-  force = true
+## Trailing slash canonicalization handled by app; avoid host-level redirects to prevent loops
 
 # Static files (sitemap.xml, robots.txt) are served directly; keep SPA fallback last
 

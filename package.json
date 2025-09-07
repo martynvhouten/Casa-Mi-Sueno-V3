@@ -9,6 +9,7 @@
     "dev": "quasar dev",
     "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "quasar build",
+    "postbuild": "node scripts/copy-sitemaps.mjs",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",

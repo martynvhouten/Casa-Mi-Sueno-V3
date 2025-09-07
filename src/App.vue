@@ -33,14 +33,12 @@ const getMetaTitle = () => {
       return 'Contact - Casa Mi Sueño | Vakantiehuis Spanje';
     case '/reserveren':
       return 'Reserveren - Casa Mi Sueño | Plan je verblijf';
-    case 'about':
-      return 'Ontdek het verhaal achter Casa Mi Sueño en waarom we dit stukje Spanje en ons vakantiehuis met je willen delen.';
-    case 'practical':
-      return 'Alle praktische informatie over je verblijf in Casa Mi Sueño. Van aankomsttijden tot wifi-code en lokale tips.';
-    case 'contact':
-      return 'Heb je vragen over Casa Mi Sueño? Neem contact met ons op. We helpen je graag bij het plannen van je perfecte vakantie in Spanje.';
-    case 'booking':
-      return 'Boek direct je verblijf in Casa Mi Sueño. Bekijk de beschikbaarheid en prijzen voor je gewenste periode.';
+    case '/privacy':
+      return 'Privacyverklaring - Casa Mi Sueño';
+    case '/voorwaarden':
+      return 'Algemene Voorwaarden - Casa Mi Sueño';
+    case '/sitemap':
+      return 'Sitemap - Casa Mi Sueño';
     default:
       return 'Casa Mi Sueño - Vakantiehuis in L\'Alfàs del Pi';
   }
@@ -66,14 +64,12 @@ const getMetaDescription = () => {
       return 'Heb je vragen over Casa Mi Sueño? Neem contact met ons op. We helpen je graag bij het plannen van je perfecte vakantie of winterverblijf in Spanje.';
     case '/reserveren':
       return 'Boek direct je verblijf in Casa Mi Sueño. Bekijk de beschikbaarheid en prijzen voor je gewenste periode. Overwinteren mogelijk van €1200/maand.';
-    case 'about':
-      return 'Ontdek het verhaal achter Casa Mi Sueño en waarom we dit stukje Spanje en ons vakantiehuis met je willen delen.';
-    case 'practical':
-      return 'Alle praktische informatie over je verblijf in Casa Mi Sueño. Van aankomsttijden tot overwinter mogelijkheden en lokale tips.';
-    case 'contact':
-      return 'Heb je vragen over Casa Mi Sueño? Neem contact met ons op. We helpen je graag bij het plannen van je perfecte vakantie of winterverblijf in Spanje.';
-    case 'booking':
-      return 'Boek direct je verblijf in Casa Mi Sueño. Bekijk de beschikbaarheid en prijzen voor je gewenste periode. Overwinteren mogelijk van €1200/maand.';
+    case '/privacy':
+      return 'Lees hoe Casa Mi Sueño omgaat met jouw persoonsgegevens en privacy tijdens je bezoek en boeking.';
+    case '/voorwaarden':
+      return 'Bekijk de algemene voorwaarden van Casa Mi Sueño voor reserveringen, betalingen en verblijf.';
+    case '/sitemap':
+      return 'Overzicht van alle pagina\'s op casamisueno.nl voor makkelijke navigatie.';
     default:
       return 'Ontdek ons comfortabele vakantiehuis in L\'Alfàs del Pi, Costa Blanca. Geniet van zon, zee en bergen in een ontspannen omgeving. Ook geschikt voor overwinteren.';
   }

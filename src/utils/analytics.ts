@@ -42,7 +42,7 @@ const isGtagAvailable = (): boolean => {
 export const trackPageView = (data: PageViewData): void => {
   if (!isGtagAvailable()) return;
 
-  window.gtag!('config', 'G-XXXXXXXXXX', {
+  window.gtag!('config', 'G-KK47JYMKEJ', {
     page_title: data.page_title,
     page_location: data.page_location,
     content_group1: data.content_group || 'Vacation Rental'
@@ -73,7 +73,7 @@ export const trackBookingInquiry = (data: BookingEventData): void => {
 
   // Also track as conversion
   window.gtag!('event', 'conversion', {
-    send_to: 'G-XXXXXXXXXX/booking_inquiry',
+    send_to: 'G-KK47JYMKEJ/booking_inquiry',
     value: data.total_price,
     currency: 'EUR'
   });

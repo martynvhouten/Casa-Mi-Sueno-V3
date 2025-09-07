@@ -40,16 +40,39 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+## Canonical host + scheme
+# Force HTTPS
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "http://casamisueno.nl/*"
+  to = "https://casamisueno.nl/:splat"
+  status = 301
+  force = true
 
-[functions]
-  directory = "netlify/functions"
+# Remove www
+[[redirects]]
+  from = "https://www.casamisueno.nl/*"
+  to = "https://casamisueno.nl/:splat"
+  status = 301
+  force = true
+
+# Remove trailing slash (except root)
+[[redirects]]
+  from = "/:path/"
+  to = "/:path"
+  status = 301
+  force = true
 
 # Redirect /sitemap.xml to our sitemap function
 [[redirects]]
   from = "/sitemap.xml"
   to = "/.netlify/functions/sitemap"
-  status = 200 
+  status = 200
+
+[functions]
+  directory = "netlify/functions"
+
+# SPA fallback (last)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

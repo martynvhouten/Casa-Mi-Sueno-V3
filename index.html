@@ -42,14 +42,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Initialize GA4 with enhanced ecommerce for vacation rental
+      // Initialize GA4; SPA pageviews sent via router hook
       gtag('config', 'G-KK47JYMKEJ', {
-        page_title: 'Casa Mi Sueño - Vakantiehuis Costa Blanca',
-        page_location: window.location.href,
-        content_group1: 'Vacation Rental',
-        enhanced_conversions: true,
         allow_google_signals: true,
-        send_page_view: true
+        send_page_view: false
       });
     </script>
 

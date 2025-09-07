@@ -28,10 +28,11 @@ export const generateSitemap = (): string => {
   const urls: SitemapUrl[] = [];
   const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
   
-  // Add static routes
+  // Add static routes, normalize to no trailing slash (except root)
   staticRoutes.forEach((route) => {
+    const loc = route.path === '/' ? `${BASE_URL}/` : `${BASE_URL}${route.path}`;
     urls.push({
-      loc: `${BASE_URL}${route.path}`,
+      loc,
       lastmod: currentDate,
       changefreq: getChangeFreq(route.path),
       priority: getPriority(route.path),

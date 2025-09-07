@@ -62,16 +62,7 @@
   status = 301
   force = true
 
-# Serve static sitemap and robots explicitly before SPA fallback
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
+# Static files (sitemap.xml, robots.txt) are served directly; keep SPA fallback last
 
 [[headers]]
   for = "/sitemap.xml"

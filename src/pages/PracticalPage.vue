@@ -284,11 +284,55 @@
         />
       </div>
     </section>
+
+    <!-- Check-in Information -->
+    <section class="section bg-sand">
+      <div class="container">
+        <h2 class="text-center font-playfair q-mb-xl">Aankomst & Vertrek</h2>
+        <div class="row justify-center">
+          <div class="col-12 col-md-8">
+            <div class="arrival-card q-pa-xl bg-white rounded-borders">
+              <!-- Times -->
+              <div class="row q-col-gutter-xl q-mb-xl">
+                <div class="col-12 col-md-6">
+                  <div class="text-center">
+                    <q-icon name="access_time" size="48px" class="text-terracotta q-mb-md" />
+                    <h3 class="font-playfair q-mb-md">Aankomst</h3>
+                    <p class="text-body1">{{ checkInInfo.time }}</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="text-center">
+                    <q-icon name="logout" size="48px" class="text-terracotta q-mb-md" />
+                    <h3 class="font-playfair q-mb-md">Vertrek</h3>
+                    <p class="text-body1">{{ checkInInfo.checkout }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="text-center q-mb-xl">
+                <q-icon name="location_on" size="48px" class="text-terracotta q-mb-md" />
+                <h3 class="font-playfair q-mb-md">Adres</h3>
+                <p class="text-body1">{{ checkInInfo.address }}</p>
+              </div>
+
+              <!-- Instructions -->
+              <div class="text-center q-mb-xl">
+                <q-icon name="info" size="48px" class="text-terracotta q-mb-md" />
+                <h3 class="font-playfair q-mb-md">Instructies</h3>
+                <p class="text-body1">{{ checkInInfo.instructions }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import HeroSection from 'src/components/HeroSection.vue';
 
 const houseRules = ref([

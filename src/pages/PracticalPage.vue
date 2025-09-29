@@ -68,71 +68,70 @@
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
             <div class="pricing-card cms-card-subtle q-pa-lg">
-              <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
-              
-              <div class="season-pricing q-mb-xl">
-                <div v-for="(season, index) in pricing" :key="season.period" class="season-row q-py-md">
-                  <div class="season-header-simple q-mb-md">
-                    <div class="row items-center q-mb-sm">
-                      <q-chip 
-                        :color="getSeasonColor(index)" 
-                        text-color="white" 
-                        size="sm"
-                        class="season-chip-fixed q-mr-sm"
-                        :style="{ '--season-chip-icon-offset': getSeasonChipOffset(index), '--season-chip-padding-left': getSeasonChipPaddingLeft(index) }"
-                      >
-                        <q-icon :name="getSeasonIcon(index)" size="16px" class="season-chip-icon" />
-                        <span>{{ season.name }}</span>
-                      </q-chip>
-                    </div>
-                    <p class="text-body2 text-grey-7 q-mb-none">{{ season.period }}</p>
-                  </div>
-                  
-                  <div class="pricing-list">
-                    <div class="pricing-row">
-                      <div class="pricing-item-simple">
-                        <q-icon name="nights_stay" size="16px" class="pricing-icon" />
-                        <span class="pricing-label-simple">Per nacht</span>
-                        <span class="pricing-value-simple">{{ season.price }}</span>
+                
+                <div class="season-pricing q-mb-xl">
+                  <div v-for="(season, index) in pricing" :key="season.period" class="season-row q-py-md">
+                    <div class="season-header-simple q-mb-md">
+                      <div class="row items-center q-mb-sm">
+                        <q-chip 
+                          :color="getSeasonColor(index)" 
+                          text-color="white" 
+                          size="sm"
+                          class="season-chip q-mr-sm"
+                        >
+                          <q-icon :name="getSeasonIcon(index)" size="16px" class="season-chip__icon" />
+                          <span class="season-chip__label">{{ season.name }}</span>
+                        </q-chip>
                       </div>
+                      <p class="text-body2 text-grey-7 q-mb-none">{{ season.period }}</p>
                     </div>
                     
-                    <div class="pricing-row">
-                      <div class="pricing-item-simple">
-                        <q-icon name="calendar_view_week" size="16px" class="pricing-icon" />
-                        <span class="pricing-label-simple">Per week</span>
-                        <span class="pricing-value-simple">{{ season.weekly }}</span>
+                    <div class="pricing-list">
+                      <div class="pricing-row">
+                        <div class="pricing-item-simple">
+                          <q-icon name="nights_stay" size="16px" class="pricing-icon" />
+                          <span class="pricing-label-simple">Per nacht</span>
+                          <span class="pricing-value-simple">{{ season.price }}</span>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <div v-if="season.twoWeeks" class="pricing-row">
-                      <div class="pricing-item-simple">
-                        <q-icon name="date_range" size="16px" class="pricing-icon" />
-                        <span class="pricing-label-simple">2 weken</span>
-                        <span class="pricing-value-simple">{{ season.twoWeeks }}</span>
+                      
+                      <div class="pricing-row">
+                        <div class="pricing-item-simple">
+                          <q-icon name="calendar_view_week" size="16px" class="pricing-icon" />
+                          <span class="pricing-label-simple">Per week</span>
+                          <span class="pricing-value-simple">{{ season.weekly }}</span>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <div v-if="season.threeWeeks" class="pricing-row">
-                      <div class="pricing-item-simple">
-                        <q-icon name="event_note" size="16px" class="pricing-icon" />
-                        <span class="pricing-label-simple">3 weken</span>
-                        <span class="pricing-value-simple">{{ season.threeWeeks }}</span>
+                      
+                      <div v-if="season.twoWeeks" class="pricing-row">
+                        <div class="pricing-item-simple">
+                          <q-icon name="date_range" size="16px" class="pricing-icon" />
+                          <span class="pricing-label-simple">2 weken</span>
+                          <span class="pricing-value-simple">{{ season.twoWeeks }}</span>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <div v-if="season.monthly" class="pricing-row">
-                      <div class="pricing-item-simple">
-                        <q-icon name="calendar_month" size="16px" class="pricing-icon" />
-                        <span class="pricing-label-simple">Per maand</span>
-                        <span class="pricing-value-simple">{{ season.monthly }}</span>
+                      
+                      <div v-if="season.threeWeeks" class="pricing-row">
+                        <div class="pricing-item-simple">
+                          <q-icon name="event_note" size="16px" class="pricing-icon" />
+                          <span class="pricing-label-simple">3 weken</span>
+                          <span class="pricing-value-simple">{{ season.threeWeeks }}</span>
+                        </div>
+                      </div>
+                      
+                      <div v-if="season.monthly" class="pricing-row">
+                        <div class="pricing-item-simple">
+                          <q-icon name="calendar_month" size="16px" class="pricing-icon" />
+                          <span class="pricing-label-simple">Per maand</span>
+                          <span class="pricing-value-simple">{{ season.monthly }}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-grey-8">
-                <div class="q-mb-lg">
+                <div class="extras-block q-mb-lg">
                   <div class="row items-center q-mb-sm">
                     <q-icon name="check_circle" size="20px" class="text-positive q-mr-sm" />
                     <p class="text-subtitle2 text-positive q-mb-none">Inbegrepen:</p>
@@ -162,10 +161,10 @@
                       <q-icon name="support_agent" size="16px" class="feature-icon" />
                       <span>24/7 lokale ondersteuning</span>
                     </li>
-                </ul>
+                  </ul>
                 </div>
-                
-                <div class="q-mb-lg">
+
+                <div class="extras-block q-mb-lg">
                   <div class="row items-center q-mb-sm">
                     <q-icon name="euro" size="20px" class="text-orange q-mr-sm" />
                     <p class="text-subtitle2 text-orange q-mb-none">Extra kosten:</p>
@@ -175,10 +174,10 @@
                       <q-icon name="cleaning_services" size="16px" class="feature-icon" />
                       <span>Schoonmaak: <strong>€150</strong> (inclusief in- en uitchecken)</span>
                     </li>
-                </ul>
+                  </ul>
                 </div>
-                
-                <div>
+
+                <div class="extras-block">
                   <div class="row items-center q-mb-sm">
                     <q-icon name="pets" size="20px" class="text-primary q-mr-sm" />
                     <p class="text-subtitle2 text-primary q-mb-none">Huisdieren:</p>
@@ -196,90 +195,6 @@
           <div class="col-12 col-md-6">
             <div class="booking-info cms-card-subtle q-pa-lg">
               <h3 class="font-playfair q-mb-lg">Boekingsinformatie</h3>
-              <div class="q-mb-lg">
-                <h4 class="q-mb-md">Voorwaarden</h4>
-                <ul class="feature-list">
-                  <li>Aanbetaling: 30% bij boeking</li>
-                  <li>Restbetaling: 6 weken voor aankomst</li>
-                  <li>Borg: €400 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
-                  <li>Geen annulering mogelijk</li>
-                </ul>
-              </div>
-              
-              <div class="q-mb-lg">
-                <h4 class="q-mb-md">Waarom Overwinteren in Casa Mi Sueño?</h4>
-                <p class="text-body1 q-mb-md">
-                  Ontsnap aan de Nederlandse winter en geniet van het milde mediterrane klimaat. 
-                  L'Alfàs del Pi biedt het perfecte winterweer met temperaturen van 15-20°C en veel zonneschijn.
-                </p>
-                <ul class="feature-list">
-                  <li><strong>Mild klimaat:</strong> Gemiddeld 300 zonnige dagen per jaar</li>
-                  <li><strong>Voordelig:</strong> €1.200 per maand all-inclusive (water, gas, elektra, internet)</li>
-                  <li><strong>Volledig uitgerust:</strong> Wasmachine, vaatwasser, airco, verwarming</li>
-                  <li><strong>Gezond leven:</strong> Zwembad, wandel- en fietsroutes, verse markten</li>
-                  <li><strong>Goede bereikbaarheid:</strong> Vliegveld Alicante op 1 uur rijden</li>
-                  <li><strong>Nederlandse gemeenschap:</strong> Veel Nederlanders in de omgeving</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
-                <p class="text-body1 q-mb-none">
-                  Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
-                  We verhuren graag aan koppels, families, pensionados, digitale nomaden of kleine groepen vrienden 
-                  die onze liefde voor deze bijzondere plek delen. Het is geen feestlocatie.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section bg-white">
-      <div class="container">
-        <div class="text-center q-mb-xl">
-          <h2 class="font-playfair q-mb-md">Veelgestelde Vragen</h2>
-          <p class="text-subtitle1 text-grey-8" style="max-width: 600px; margin: 0 auto;">
-            Antwoorden op de meest gestelde vragen over je verblijf in Casa Mi Sueño
-          </p>
-        </div>
-        <div class="row justify-center">
-          <div class="col-12 col-md-10 col-lg-8">
-            <div class="faq-categories">
-              <div v-for="(category, index) in faqCategories" :key="index" class="q-mb-xl">
-                <h3 class="text-h5 font-playfair q-mb-lg text-primary">{{ category.title }}</h3>
-                <q-list padding class="rounded-borders">
-                  <q-expansion-item
-                    v-for="(item, itemIndex) in category.items"
-                    :key="itemIndex"
-                    expand-separator
-                    :label="item.question"
-                    header-class="text-subtitle1 text-weight-medium"
-                  >
-                    <q-card>
-                      <q-card-section class="text-body1">
-                        <div class="text-body1" v-html="item.answer"></div>
-                      </q-card-section>
-                    </q-card>
-                  </q-expansion-item>
-                </q-list>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Check-in Information -->
-    <section class="section bg-sand">
-      <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Aankomst & Vertrek</h2>
-        <div class="row justify-center">
-          <div class="col-12 col-md-8">
-            <div class="arrival-card q-pa-xl bg-white rounded-borders">
               <!-- Times -->
               <div class="row q-col-gutter-xl q-mb-xl">
                 <div class="col-12 col-sm-6">
@@ -334,6 +249,42 @@
                 <q-icon name="info" size="32px" class="text-terracotta q-mb-md" />
                 <h4 class="font-playfair q-mb-md">Aankomstinstructies</h4>
                 <p class="text-body1">{{ checkInInfo.instructions }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-white">
+      <div class="container">
+        <div class="text-center q-mb-xl">
+          <h2 class="font-playfair q-mb-md">Veelgestelde Vragen</h2>
+          <p class="text-subtitle1 text-grey-8" style="max-width: 600px; margin: 0 auto;">
+            Antwoorden op de meest gestelde vragen over je verblijf in Casa Mi Sueño
+          </p>
+        </div>
+        <div class="row justify-center">
+          <div class="col-12 col-md-10 col-lg-8">
+            <div class="faq-categories">
+              <div v-for="(category, index) in faqCategories" :key="index" class="q-mb-xl">
+                <h3 class="text-h5 font-playfair q-mb-lg text-primary">{{ category.title }}</h3>
+                <q-list padding class="rounded-borders">
+                  <q-expansion-item
+                    v-for="(item, itemIndex) in category.items"
+                    :key="itemIndex"
+                    expand-separator
+                    :label="item.question"
+                    header-class="text-subtitle1 text-weight-medium"
+                  >
+                    <q-card>
+                      <q-card-section class="text-body1">
+                        <div class="text-body1" v-html="item.answer"></div>
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+                </q-list>
               </div>
             </div>
           </div>
@@ -544,84 +495,31 @@ const getSeasonIcon = (index: number): string => {
   const icons = ['wb_sunny', 'partly_cloudy_day', 'ac_unit'];
   return icons[index] || 'schedule';
 };
-
-const getSeasonChipOffset = (index: number): string => {
-  const offsets = ['0px', '-10px', '0px'];
-  return offsets[index] || '0px';
-};
-
-const getSeasonChipPaddingLeft = (index: number): string => {
-  const paddings = ['12px', '24px', '12px'];
-  return paddings[index] || '12px';
-};
-
-onMounted(() => {
-  // Add FAQ Schema
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqCategories.value.map(category => ({
-      '@type': 'Question',
-      'name': category.title,
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': category.items.map(item => item.answer).join('<br>')
-      }
-    }))
-  };
-
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.text = JSON.stringify(faqSchema);
-  document.head.appendChild(script);
-});
 </script>
 
 <style scoped>
-.facility-card,
-.pricing-card,
-.rules-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  height: 100%;
-}
-
-.booking-info {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-  align-self: flex-start;
-}
-
-/* Simple aligned pricing styles */
-.season-header-simple {
-  margin-bottom: 1rem;
-}
-
-.season-chip-fixed {
-  --season-chip-padding-left-default: 12px;
-  --season-chip-padding-right-default: 12px;
-  padding: 6px var(--season-chip-padding-right, var(--season-chip-padding-right-default)) !important;
-  padding-left: var(--season-chip-padding-left, var(--season-chip-padding-left-default)) !important;
+.season-chip {
+  padding: 6px 16px !important;
   min-width: fit-content !important;
   font-size: 0.875rem !important;
 }
 
-.season-chip-fixed :deep(.q-chip__content) {
+.season-chip :deep(.q-chip__content) {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
   white-space: nowrap !important;
 }
 
-.season-chip-icon {
+.season-chip__icon {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  margin-right: 6px;
-  margin-left: var(--season-chip-icon-offset, 0px);
+  margin-left: -2px;
+}
+
+.season-chip__label {
+  font-weight: 600;
 }
 
 .pricing-list {
@@ -680,6 +578,37 @@ onMounted(() => {
   justify-content: center;
 }
 
+.extras-block {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.extras-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.facility-card,
+.pricing-card,
+.rules-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.booking-info {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  align-self: flex-start;
+}
+
+.season-header-simple {
+  margin-bottom: 1rem;
+}
+
 .season-row {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -698,19 +627,15 @@ onMounted(() => {
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     background: white;
-    
     &:hover {
       border-color: var(--cms-terracotta);
     }
-    
     .q-expansion-item__container {
       border-radius: 8px;
     }
-    
     .q-item {
       padding: 1rem 1.5rem;
     }
-    
     .q-card {
       box-shadow: none;
       background: #f8f9fa;

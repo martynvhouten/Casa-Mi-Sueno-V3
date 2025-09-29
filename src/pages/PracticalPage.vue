@@ -68,70 +68,71 @@
         <div class="row q-col-gutter-xl">
           <div class="col-12 col-md-6">
             <div class="pricing-card cms-card-subtle q-pa-lg">
-                
-                <div class="season-pricing q-mb-xl">
-                  <div v-for="(season, index) in pricing" :key="season.period" class="season-row q-py-md">
-                    <div class="season-header-simple q-mb-md">
-                      <div class="row items-center q-mb-sm">
-                        <q-chip 
-                          :color="getSeasonColor(index)" 
-                          text-color="white" 
-                          size="sm"
-                          class="season-chip q-mr-sm"
-                        >
-                          <q-icon :name="getSeasonIcon(index)" size="16px" class="season-chip__icon" />
-                          <span class="season-chip__label">{{ season.name }}</span>
-                        </q-chip>
+              <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
+              
+              <div class="season-pricing q-mb-xl">
+                <div v-for="(season, index) in pricing" :key="season.period" class="season-row q-py-md">
+                  <div class="season-header-simple q-mb-md">
+                    <div class="row items-center q-mb-sm">
+                      <q-chip 
+                        :color="getSeasonColor(index)" 
+                        text-color="white" 
+                        size="sm"
+                        class="season-chip-fixed q-mr-sm"
+                        :style="{ '--season-chip-icon-offset': getSeasonChipOffset(index), '--season-chip-padding-left': getSeasonChipPaddingLeft(index) }"
+                      >
+                        <q-icon :name="getSeasonIcon(index)" size="16px" class="season-chip-icon" />
+                        <span>{{ season.name }}</span>
+                      </q-chip>
+                    </div>
+                    <p class="text-body2 text-grey-7 q-mb-none">{{ season.period }}</p>
+                  </div>
+                  
+                  <div class="pricing-list">
+                    <div class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="nights_stay" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">Per nacht</span>
+                        <span class="pricing-value-simple">{{ season.price }}</span>
                       </div>
-                      <p class="text-body2 text-grey-7 q-mb-none">{{ season.period }}</p>
                     </div>
                     
-                    <div class="pricing-list">
-                      <div class="pricing-row">
-                        <div class="pricing-item-simple">
-                          <q-icon name="nights_stay" size="16px" class="pricing-icon" />
-                          <span class="pricing-label-simple">Per nacht</span>
-                          <span class="pricing-value-simple">{{ season.price }}</span>
-                        </div>
+                    <div class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="calendar_view_week" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">Per week</span>
+                        <span class="pricing-value-simple">{{ season.weekly }}</span>
                       </div>
-                      
-                      <div class="pricing-row">
-                        <div class="pricing-item-simple">
-                          <q-icon name="calendar_view_week" size="16px" class="pricing-icon" />
-                          <span class="pricing-label-simple">Per week</span>
-                          <span class="pricing-value-simple">{{ season.weekly }}</span>
-                        </div>
+                    </div>
+                    
+                    <div v-if="season.twoWeeks" class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="date_range" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">2 weken</span>
+                        <span class="pricing-value-simple">{{ season.twoWeeks }}</span>
                       </div>
-                      
-                      <div v-if="season.twoWeeks" class="pricing-row">
-                        <div class="pricing-item-simple">
-                          <q-icon name="date_range" size="16px" class="pricing-icon" />
-                          <span class="pricing-label-simple">2 weken</span>
-                          <span class="pricing-value-simple">{{ season.twoWeeks }}</span>
-                        </div>
+                    </div>
+                    
+                    <div v-if="season.threeWeeks" class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="event_note" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">3 weken</span>
+                        <span class="pricing-value-simple">{{ season.threeWeeks }}</span>
                       </div>
-                      
-                      <div v-if="season.threeWeeks" class="pricing-row">
-                        <div class="pricing-item-simple">
-                          <q-icon name="event_note" size="16px" class="pricing-icon" />
-                          <span class="pricing-label-simple">3 weken</span>
-                          <span class="pricing-value-simple">{{ season.threeWeeks }}</span>
-                        </div>
-                      </div>
-                      
-                      <div v-if="season.monthly" class="pricing-row">
-                        <div class="pricing-item-simple">
-                          <q-icon name="calendar_month" size="16px" class="pricing-icon" />
-                          <span class="pricing-label-simple">Per maand</span>
-                          <span class="pricing-value-simple">{{ season.monthly }}</span>
-                        </div>
+                    </div>
+                    
+                    <div v-if="season.monthly" class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="calendar_month" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">Per maand</span>
+                        <span class="pricing-value-simple">{{ season.monthly }}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-grey-8">
-                <div class="extras-block q-mb-lg">
+                <div class="q-mb-lg">
                   <div class="row items-center q-mb-sm">
                     <q-icon name="check_circle" size="20px" class="text-positive q-mr-sm" />
                     <p class="text-subtitle2 text-positive q-mb-none">Inbegrepen:</p>
@@ -161,10 +162,10 @@
                       <q-icon name="support_agent" size="16px" class="feature-icon" />
                       <span>24/7 lokale ondersteuning</span>
                     </li>
-                  </ul>
+                </ul>
                 </div>
-
-                <div class="extras-block q-mb-lg">
+                
+                <div class="q-mb-lg">
                   <div class="row items-center q-mb-sm">
                     <q-icon name="euro" size="20px" class="text-orange q-mr-sm" />
                     <p class="text-subtitle2 text-orange q-mb-none">Extra kosten:</p>
@@ -174,10 +175,10 @@
                       <q-icon name="cleaning_services" size="16px" class="feature-icon" />
                       <span>Schoonmaak: <strong>€150</strong> (inclusief in- en uitchecken)</span>
                     </li>
-                  </ul>
+                </ul>
                 </div>
-
-                <div class="extras-block">
+                
+                <div>
                   <div class="row items-center q-mb-sm">
                     <q-icon name="pets" size="20px" class="text-primary q-mr-sm" />
                     <p class="text-subtitle2 text-primary q-mb-none">Huisdieren:</p>
@@ -221,12 +222,14 @@
                 </ul>
               </div>
               
-              <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
-              <p class="text-body1 q-mb-none">
-                Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
-                We verhuren graag aan koppels, families, pensionados, digitale nomaden of kleine groepen vrienden 
-                die onze liefde voor deze bijzondere plek delen. Het is geen feestlocatie.
-              </p>
+              <div>
+                <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
+                <p class="text-body1 q-mb-none">
+                  Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
+                  We verhuren graag aan koppels, families, pensionados, digitale nomaden of kleine groepen vrienden 
+                  die onze liefde voor deze bijzondere plek delen. Het is geen feestlocatie.
+                </p>
+              </div>
 
             </div>
           </div>
@@ -270,6 +273,74 @@
       </div>
     </section>
 
+    <!-- Check-in Information -->
+    <section class="section bg-sand">
+      <div class="container">
+        <h2 class="text-center font-playfair q-mb-xl">Aankomst & Vertrek</h2>
+        <div class="row justify-center">
+          <div class="col-12 col-md-8">
+            <div class="arrival-card q-pa-xl bg-white rounded-borders">
+              <!-- Times -->
+              <div class="row q-col-gutter-xl q-mb-xl">
+                <div class="col-12 col-sm-6">
+                  <div class="text-center">
+                    <q-icon name="flight_takeoff" size="32px" class="text-terracotta q-mb-md" />
+                    <h4 class="font-playfair q-mb-sm">Aankomst vanaf</h4>
+                    <p class="text-h5 text-terracotta q-mb-none">{{ checkInInfo.time }}</p>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="text-center">
+                    <q-icon name="flight_land" size="32px" class="text-terracotta q-mb-md" />
+                    <h4 class="font-playfair q-mb-sm">Vertrek voor</h4>
+                    <p class="text-h5 text-terracotta q-mb-none">{{ checkInInfo.checkout }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="text-center q-mb-xl">
+                <q-icon name="place" size="32px" class="text-terracotta q-mb-md" />
+                <h4 class="font-playfair q-mb-md">Adres</h4>
+                <p class="text-body1 q-mb-none" style="white-space: pre-line">{{ checkInInfo.address }}</p>
+                <div class="row justify-center q-gutter-md q-mt-md">
+                  <q-btn
+                    flat
+                    size="sm"
+                    color="primary"
+                    icon="map"
+                    label="Open in Google Maps"
+                    href="https://maps.google.com/?q=Calle+Petunias+16+L'Alfàs+del+Pi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="cms-btn cms-btn-outline"
+                  />
+                  <q-btn
+                    flat
+                    size="sm"
+                    color="primary"
+                    icon="map"
+                    label="Open in Apple Maps"
+                    href="https://maps.apple.com/?q=Carrer+de+les+Petúnies+16,+L'Alfàs+del+Pi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="cms-btn cms-btn-outline"
+                  />
+                </div>
+              </div>
+
+              <!-- Instructions -->
+              <div class="text-center">
+                <q-icon name="info" size="32px" class="text-terracotta q-mb-md" />
+                <h4 class="font-playfair q-mb-md">Aankomstinstructies</h4>
+                <p class="text-body1">{{ checkInInfo.instructions }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Call to Action -->
     <section class="section bg-white">
       <div class="container text-center">
@@ -284,55 +355,11 @@
         />
       </div>
     </section>
-
-    <!-- Check-in Information -->
-    <section class="section bg-sand">
-      <div class="container">
-        <h2 class="text-center font-playfair q-mb-xl">Aankomst & Vertrek</h2>
-        <div class="row justify-center">
-          <div class="col-12 col-md-8">
-            <div class="arrival-card q-pa-xl bg-white rounded-borders">
-              <!-- Times -->
-              <div class="row q-col-gutter-xl q-mb-xl">
-                <div class="col-12 col-md-6">
-                  <div class="text-center">
-                    <q-icon name="access_time" size="48px" class="text-terracotta q-mb-md" />
-                    <h3 class="font-playfair q-mb-md">Aankomst</h3>
-                    <p class="text-body1">{{ checkInInfo.time }}</p>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6">
-                  <div class="text-center">
-                    <q-icon name="logout" size="48px" class="text-terracotta q-mb-md" />
-                    <h3 class="font-playfair q-mb-md">Vertrek</h3>
-                    <p class="text-body1">{{ checkInInfo.checkout }}</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Address -->
-              <div class="text-center q-mb-xl">
-                <q-icon name="location_on" size="48px" class="text-terracotta q-mb-md" />
-                <h3 class="font-playfair q-mb-md">Adres</h3>
-                <p class="text-body1">{{ checkInInfo.address }}</p>
-              </div>
-
-              <!-- Instructions -->
-              <div class="text-center q-mb-xl">
-                <q-icon name="info" size="48px" class="text-terracotta q-mb-md" />
-                <h3 class="font-playfair q-mb-md">Instructies</h3>
-                <p class="text-body1">{{ checkInInfo.instructions }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import HeroSection from 'src/components/HeroSection.vue';
 
 const houseRules = ref([
@@ -517,31 +544,84 @@ const getSeasonIcon = (index: number): string => {
   const icons = ['wb_sunny', 'partly_cloudy_day', 'ac_unit'];
   return icons[index] || 'schedule';
 };
+
+const getSeasonChipOffset = (index: number): string => {
+  const offsets = ['0px', '-10px', '0px'];
+  return offsets[index] || '0px';
+};
+
+const getSeasonChipPaddingLeft = (index: number): string => {
+  const paddings = ['12px', '24px', '12px'];
+  return paddings[index] || '12px';
+};
+
+onMounted(() => {
+  // Add FAQ Schema
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqCategories.value.map(category => ({
+      '@type': 'Question',
+      'name': category.title,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': category.items.map(item => item.answer).join('<br>')
+      }
+    }))
+  };
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.text = JSON.stringify(faqSchema);
+  document.head.appendChild(script);
+});
 </script>
 
 <style scoped>
-.season-chip {
-  padding: 6px 16px !important;
+.facility-card,
+.pricing-card,
+.rules-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.booking-info {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  align-self: flex-start;
+}
+
+/* Simple aligned pricing styles */
+.season-header-simple {
+  margin-bottom: 1rem;
+}
+
+.season-chip-fixed {
+  --season-chip-padding-left-default: 12px;
+  --season-chip-padding-right-default: 12px;
+  padding: 6px var(--season-chip-padding-right, var(--season-chip-padding-right-default)) !important;
+  padding-left: var(--season-chip-padding-left, var(--season-chip-padding-left-default)) !important;
   min-width: fit-content !important;
   font-size: 0.875rem !important;
 }
 
-.season-chip :deep(.q-chip__content) {
+.season-chip-fixed :deep(.q-chip__content) {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
   white-space: nowrap !important;
 }
 
-.season-chip__icon {
+.season-chip-icon {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  margin-left: -2px;
-}
-
-.season-chip__label {
-  font-weight: 600;
+  margin-right: 6px;
+  margin-left: var(--season-chip-icon-offset, 0px);
 }
 
 .pricing-list {
@@ -600,37 +680,6 @@ const getSeasonIcon = (index: number): string => {
   justify-content: center;
 }
 
-.extras-block {
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.extras-block:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.facility-card,
-.pricing-card,
-.rules-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  height: 100%;
-}
-
-.booking-info {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-  align-self: flex-start;
-}
-
-.season-header-simple {
-  margin-bottom: 1rem;
-}
-
 .season-row {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -649,15 +698,19 @@ const getSeasonIcon = (index: number): string => {
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     background: white;
+    
     &:hover {
       border-color: var(--cms-terracotta);
     }
+    
     .q-expansion-item__container {
       border-radius: 8px;
     }
+    
     .q-item {
       padding: 1rem 1.5rem;
     }
+    
     .q-card {
       box-shadow: none;
       background: #f8f9fa;

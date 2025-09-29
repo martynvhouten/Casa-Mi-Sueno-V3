@@ -195,61 +195,39 @@
           <div class="col-12 col-md-6">
             <div class="booking-info cms-card-subtle q-pa-lg">
               <h3 class="font-playfair q-mb-lg">Boekingsinformatie</h3>
-              <!-- Times -->
-              <div class="row q-col-gutter-xl q-mb-xl">
-                <div class="col-12 col-sm-6">
-                  <div class="text-center">
-                    <q-icon name="flight_takeoff" size="32px" class="text-terracotta q-mb-md" />
-                    <h4 class="font-playfair q-mb-sm">Aankomst vanaf</h4>
-                    <p class="text-h5 text-terracotta q-mb-none">{{ checkInInfo.time }}</p>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <div class="text-center">
-                    <q-icon name="flight_land" size="32px" class="text-terracotta q-mb-md" />
-                    <h4 class="font-playfair q-mb-sm">Vertrek voor</h4>
-                    <p class="text-h5 text-terracotta q-mb-none">{{ checkInInfo.checkout }}</p>
-                  </div>
-                </div>
+              <div class="q-mb-lg">
+                <h4 class="q-mb-md">Voorwaarden</h4>
+                <ul class="feature-list">
+                  <li>Aanbetaling: 30% bij boeking</li>
+                  <li>Restbetaling: 6 weken voor aankomst</li>
+                  <li>Borg: €400 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
+                  <li>Geen annulering mogelijk</li>
+                </ul>
               </div>
+              
+              <div class="q-mb-lg">
+                <h4 class="q-mb-md">Waarom Overwinteren in Casa Mi Sueño?</h4>
+                <p class="text-body1 q-mb-md">
+                  Ontsnap aan de Nederlandse winter en geniet van het milde mediterrane klimaat. 
+                  L'Alfàs del Pi biedt het perfecte winterweer met temperaturen van 15-20°C en veel zonneschijn.
+                </p>
+                <ul class="feature-list">
+                  <li><strong>Mild klimaat:</strong> Gemiddeld 300 zonnige dagen per jaar</li>
+                  <li><strong>Voordelig:</strong> €1.200 per maand all-inclusive (water, gas, elektra, internet)</li>
+                  <li><strong>Volledig uitgerust:</strong> Wasmachine, vaatwasser, airco, verwarming</li>
+                  <li><strong>Gezond leven:</strong> Zwembad, wandel- en fietsroutes, verse markten</li>
+                  <li><strong>Goede bereikbaarheid:</strong> Vliegveld Alicante op 1 uur rijden</li>
+                  <li><strong>Nederlandse gemeenschap:</strong> Veel Nederlanders in de omgeving</li>
+                </ul>
+              </div>
+              
+              <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
+              <p class="text-body1 q-mb-none">
+                Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
+                We verhuren graag aan koppels, families, pensionados, digitale nomaden of kleine groepen vrienden 
+                die onze liefde voor deze bijzondere plek delen. Het is geen feestlocatie.
+              </p>
 
-              <!-- Address -->
-              <div class="text-center q-mb-xl">
-                <q-icon name="place" size="32px" class="text-terracotta q-mb-md" />
-                <h4 class="font-playfair q-mb-md">Adres</h4>
-                <p class="text-body1 q-mb-none" style="white-space: pre-line">{{ checkInInfo.address }}</p>
-                <div class="row justify-center q-gutter-md q-mt-md">
-                  <q-btn
-                    flat
-                    size="sm"
-                    color="primary"
-                    icon="map"
-                    label="Open in Google Maps"
-                    href="https://maps.google.com/?q=Calle+Petunias+16+L'Alfàs+del+Pi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="cms-btn cms-btn-outline"
-                  />
-                  <q-btn
-                    flat
-                    size="sm"
-                    color="primary"
-                    icon="map"
-                    label="Open in Apple Maps"
-                    href="https://maps.apple.com/?q=Carrer+de+les+Petúnies+16,+L'Alfàs+del+Pi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="cms-btn cms-btn-outline"
-                  />
-                </div>
-              </div>
-
-              <!-- Instructions -->
-              <div class="text-center">
-                <q-icon name="info" size="32px" class="text-terracotta q-mb-md" />
-                <h4 class="font-playfair q-mb-md">Aankomstinstructies</h4>
-                <p class="text-body1">{{ checkInInfo.instructions }}</p>
-              </div>
             </div>
           </div>
         </div>

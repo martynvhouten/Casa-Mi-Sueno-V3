@@ -75,9 +75,9 @@ interface CalendarCell {
 }
 
 enum Season {
-  Regular = 'regular',
-  Winter = 'winter',
-  Unavailable = 'unavailable'
+  High = 'high',
+  Mid = 'mid',
+  Low = 'low'
 }
 
 interface SeasonConfig {
@@ -86,17 +86,17 @@ interface SeasonConfig {
 }
 
 const seasonConfigs: Record<Season, SeasonConfig> = {
-  [Season.Regular]: {
-    minNights: 10,
-    name: 'Reguliere verhuur'
+  [Season.High]: {
+    minNights: 1,
+    name: 'Hoogseizoen'
   },
-  [Season.Winter]: {
-    minNights: 28,
-    name: 'Overwinteren'
+  [Season.Mid]: {
+    minNights: 1,
+    name: 'Middenseizoen'
   },
-  [Season.Unavailable]: {
-    minNights: 0,
-    name: 'Niet beschikbaar'
+  [Season.Low]: {
+    minNights: 1,
+    name: 'Laagseizoen'
   }
 };
 
@@ -105,23 +105,18 @@ const seasonConfigs: Record<Season, SeasonConfig> = {
 function getSeason(date: Date): Season {
   const month = date.getMonth();
   
-  // December: not available for rental
-  if (month === 11) {
-    return Season.Unavailable;
+  // High season: July - August (months 6-7)
+  if (month === 6 || month === 7) {
+    return Season.High;
   }
   
-  // Winter/Overwinteren season: November, January, February, March
-  if (month === 10 || month === 0 || month === 1 || month === 2) {
-    return Season.Winter;
+  // Mid season: April, May, June, September (months 3, 4, 5, 8)
+  if (month === 3 || month === 4 || month === 5 || month === 8) {
+    return Season.Mid;
   }
   
-  // Regular rental: April through October  
-  if (month >= 3 && month <= 9) {
-    return Season.Regular;
-  }
-  
-  // Fallback
-  return Season.Unavailable;
+  // Low season: January, February, March, October, November, December (months 0, 1, 2, 9, 10, 11)
+  return Season.Low;
 }
 
 // Helper function to check if there are any booked dates between two dates (exclusive)
@@ -153,42 +148,25 @@ const currentSeason = computed(() => getSeason(new Date()));
 
 const currentSeasonInfo = computed(() => {
   const config = seasonConfigs[currentSeason.value];
-  if (currentSeason.value === Season.Unavailable) {
-    return 'December: niet beschikbaar voor verhuur';
-  }
-  return `${config.name}: minimaal ${config.minNights} nachten`;
+  return `${config.name}: geen minimum verblijf`;
 });
 
 function isDateDisabled(date: Date): boolean {
   const dateString = date.toISOString().split('T')[0];
-  
-  // December is not available for rental - disable all December dates
-  if (date.getMonth() === 11) {
-    return true;
-  }
   
   // Check if date is booked
   if (bookedDates.value.includes(dateString)) {
     return true;
   }
 
-  // If it's a potential check-in date, no special restrictions for check-in days
+  // If it's a potential check-in date, no restrictions
   if (!dates.value || dates.value.length === 0) {
     return false;
   }
 
-  // If start date is selected, enforce minimum stay and check for booked dates between
+  // If start date is selected, only check for booked dates between
   if (dates.value.length === 1) {
     const startDate = dates.value[0];
-    const season = getSeason(startDate);
-    const config = seasonConfigs[season];
-    
-    const diffDays = Math.ceil((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-    
-    // Check minimum nights requirement
-    if (diffDays < config.minNights) {
-      return true;
-    }
     
     // Check if there are any booked dates between start date and this potential end date
     if (hasBookedDatesBetween(startDate, date)) {
@@ -215,44 +193,12 @@ function handleDateSelect(value: Date[] | null) {
   if (value && value.length === 2) {
     const totalNights = Math.ceil((value[1].getTime() - value[0].getTime()) / (1000 * 60 * 60 * 24));
     
-    // Check if either start date OR end date is in December (unavailable period)
-    const startMonth = value[0].getMonth();
-    const endMonth = value[1].getMonth();
-    
-    if (startMonth === 11 || endMonth === 11) {
-      emit('minimum-nights-error', {
-        selected: totalNights,
-        minimum: 0,
-        season: 'December niet beschikbaar'
-      });
-      // Reset the selection completely for December
-      dates.value = null;
-      emit('update:modelValue', null);
-      return;
-    }
-    
     // Check if there are booked dates between the selected dates
     if (hasBookedDatesBetween(value[0], value[1])) {
       emit('minimum-nights-error', {
         selected: totalNights,
         minimum: 0,
         season: 'Er zijn geboekte datums binnen de geselecteerde periode'
-      });
-      // Reset the selection to only the start date
-      dates.value = [value[0]];
-      emit('update:modelValue', [value[0]]);
-      return;
-    }
-    
-    // Check for minimum nights validation
-    const season = getSeason(value[0]);
-    const config = seasonConfigs[season];
-    
-    if (totalNights < config.minNights) {
-      emit('minimum-nights-error', {
-        selected: totalNights,
-        minimum: config.minNights,
-        season: config.name
       });
       // Reset the selection to only the start date
       dates.value = [value[0]];

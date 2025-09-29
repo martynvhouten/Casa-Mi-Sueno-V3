@@ -62,7 +62,7 @@ export interface Database {
 }
 
 export interface SeasonBreakdown {
-  season: 'regular' | 'winter' | 'unavailable';
+  season: 'high' | 'mid' | 'low' | 'unavailable';
   nights: number;
   pricePerNight: number;
   totalPrice: number;
@@ -81,6 +81,6 @@ export interface PriceDetails {
     reason: string;
   };
   totalPrice: number;
-  season: 'regular' | 'winter' | 'unavailable' | 'mixed';
+  season: 'high' | 'mid' | 'low' | 'unavailable' | 'mixed';
   seasonBreakdown?: SeasonBreakdown[];
 } 

@@ -69,53 +69,136 @@
           <div class="col-12 col-md-6">
             <div class="pricing-card cms-card-subtle q-pa-lg">
               <h3 class="font-playfair q-mb-lg">Tarieven 2025</h3>
+              
               <div class="season-pricing q-mb-xl">
-                <div v-for="season in pricing" :key="season.period" class="season-row q-py-md">
-                  <div class="row items-center justify-between q-mb-sm">
-                    <div class="col-8">
-                      <h4 class="q-mb-sm">{{ season.name }}</h4>
-                      <p class="text-grey-8 q-mb-none">{{ season.period }}</p>
-                      <p v-if="season.note" class="text-caption text-orange q-mb-none q-mt-xs">
-                        <q-icon name="info" size="xs" class="q-mr-xs" />
-                        {{ season.note }}
-                      </p>
+                <div v-for="(season, index) in pricing" :key="season.period" class="season-row q-py-md">
+                  <div class="season-header-simple q-mb-md">
+                    <div class="row items-center q-mb-sm">
+                      <q-chip 
+                        :color="getSeasonColor(index)" 
+                        text-color="white" 
+                        size="sm"
+                        class="season-chip-fixed q-mr-sm"
+                        :style="{ '--season-chip-icon-offset': getSeasonChipOffset(index), '--season-chip-padding-left': getSeasonChipPaddingLeft(index) }"
+                      >
+                        <q-icon :name="getSeasonIcon(index)" size="16px" class="season-chip-icon" />
+                        <span>{{ season.name }}</span>
+                      </q-chip>
                     </div>
-                    <div class="col-4 text-right">
-                      <p class="text-h6 q-mb-none">{{ season.price }}</p>
-                      <p class="text-body2 text-grey-7 q-mb-none">{{ season.weekly }}</p>
+                    <p class="text-body2 text-grey-7 q-mb-none">{{ season.period }}</p>
+                  </div>
+                  
+                  <div class="pricing-list">
+                    <div class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="nights_stay" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">Per nacht</span>
+                        <span class="pricing-value-simple">{{ season.price }}</span>
+                      </div>
+                    </div>
+                    
+                    <div class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="calendar_view_week" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">Per week</span>
+                        <span class="pricing-value-simple">{{ season.weekly }}</span>
+                      </div>
+                    </div>
+                    
+                    <div v-if="season.twoWeeks" class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="date_range" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">2 weken</span>
+                        <span class="pricing-value-simple">{{ season.twoWeeks }}</span>
+                      </div>
+                    </div>
+                    
+                    <div v-if="season.threeWeeks" class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="event_note" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">3 weken</span>
+                        <span class="pricing-value-simple">{{ season.threeWeeks }}</span>
+                      </div>
+                    </div>
+                    
+                    <div v-if="season.monthly" class="pricing-row">
+                      <div class="pricing-item-simple">
+                        <q-icon name="calendar_month" size="16px" class="pricing-icon" />
+                        <span class="pricing-label-simple">Per maand</span>
+                        <span class="pricing-value-simple">{{ season.monthly }}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-grey-8">
-                <p class="q-mb-sm">Inclusieven:</p>
-                <ul class="feature-list q-mb-lg">
-                  <li>Luxe bed- en badlinnen</li>
-                  <li>Welkomstpakket</li>
-                  <li>Energiekosten & WiFi</li>
-                  <li>Zwembadonderhoud</li>
-                  <li>Tuinverzorging</li>
-                  <li>24/7 lokale ondersteuning</li>
+                <div class="q-mb-lg">
+                  <div class="row items-center q-mb-sm">
+                    <q-icon name="check_circle" size="20px" class="text-positive q-mr-sm" />
+                    <p class="text-subtitle2 text-positive q-mb-none">Inbegrepen:</p>
+                  </div>
+                  <ul class="feature-list-enhanced q-mb-none">
+                    <li class="feature-item">
+                      <q-icon name="bed" size="16px" class="feature-icon" />
+                      <span>Luxe bed- en badlinnen</span>
+                    </li>
+                    <li class="feature-item">
+                      <q-icon name="card_giftcard" size="16px" class="feature-icon" />
+                      <span>Welkomstpakket</span>
+                    </li>
+                    <li class="feature-item">
+                      <q-icon name="wifi" size="16px" class="feature-icon" />
+                      <span>Energiekosten & WiFi</span>
+                    </li>
+                    <li class="feature-item">
+                      <q-icon name="pool" size="16px" class="feature-icon" />
+                      <span>Zwembadonderhoud</span>
+                    </li>
+                    <li class="feature-item">
+                      <q-icon name="grass" size="16px" class="feature-icon" />
+                      <span>Tuinverzorging</span>
+                    </li>
+                    <li class="feature-item">
+                      <q-icon name="support_agent" size="16px" class="feature-icon" />
+                      <span>24/7 lokale ondersteuning</span>
+                    </li>
                 </ul>
-                <p class="q-mb-sm">Extra kosten:</p>
-                <ul class="feature-list q-mb-lg">
-                  <li>Eindschoonmaak: €150 (éénmalig)</li>
-                  <li>Borg: €400 (wordt teruggestort)</li>
-                  <li>Linnen pakket: €22 per slaapkamer (optioneel)</li>
+                </div>
+                
+                <div class="q-mb-lg">
+                  <div class="row items-center q-mb-sm">
+                    <q-icon name="euro" size="20px" class="text-orange q-mr-sm" />
+                    <p class="text-subtitle2 text-orange q-mb-none">Extra kosten:</p>
+                  </div>
+                  <ul class="feature-list-enhanced q-mb-none">
+                    <li class="feature-item">
+                      <q-icon name="cleaning_services" size="16px" class="feature-icon" />
+                      <span>Schoonmaak: <strong>€150</strong> (inclusief in- en uitchecken)</span>
+                    </li>
                 </ul>
-
+                </div>
+                
+                <div>
+                  <div class="row items-center q-mb-sm">
+                    <q-icon name="pets" size="20px" class="text-primary q-mr-sm" />
+                    <p class="text-subtitle2 text-primary q-mb-none">Huisdieren:</p>
+                  </div>
+                  <ul class="feature-list-enhanced q-mb-none">
+                    <li class="feature-item">
+                      <q-icon name="favorite" size="16px" class="feature-icon" />
+                      <span>Huisdieren zijn van harte welkom!</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-12 col-md-6">
             <div class="booking-info cms-card-subtle q-pa-lg">
               <h3 class="font-playfair q-mb-lg">Boekingsinformatie</h3>
-              <div class="q-mb-xl">
+              <div class="q-mb-lg">
                 <h4 class="q-mb-md">Voorwaarden</h4>
                 <ul class="feature-list">
-                  <li>Reguliere verhuur (apr-okt): minimaal 10 dagen à €160/nacht</li>
-                  <li><strong>Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200/maand</strong></li>
-                  <li>December: niet beschikbaar voor verhuur</li>
                   <li>Aanbetaling: 30% bij boeking</li>
                   <li>Restbetaling: 6 weken voor aankomst</li>
                   <li>Borg: €400 (wordt binnen 5-7 werkdagen na vertrek teruggestort)</li>
@@ -123,7 +206,7 @@
                 </ul>
               </div>
               
-              <div class="q-mb-xl">
+              <div class="q-mb-lg">
                 <h4 class="q-mb-md">Waarom Overwinteren in Casa Mi Sueño?</h4>
                 <p class="text-body1 q-mb-md">
                   Ontsnap aan de Nederlandse winter en geniet van het milde mediterrane klimaat. 
@@ -139,9 +222,9 @@
                 </ul>
               </div>
               
-              <div class="q-mb-xl">
+              <div>
                 <h4 class="q-mb-md">Voor wie is Casa Mi Sueño?</h4>
-                <p class="text-body1 q-mb-lg">
+                <p class="text-body1 q-mb-none">
                   Ons huis is perfect voor gasten die houden van rust, natuur en authenticiteit. 
                   We verhuren graag aan koppels, families, pensionados, digitale nomaden of kleine groepen vrienden 
                   die onze liefde voor deze bijzondere plek delen. Het is geen feestlocatie.
@@ -345,25 +428,28 @@ const facilities = [
 
 const pricing = ref([
   {
-    name: 'Reguliere verhuur',
-    period: 'April - Oktober',
-    price: '€160 per nacht',
-    weekly: '€1.600 per 10 dagen',
-    note: 'Minimaal 10 dagen'
+    name: 'Hoogseizoen',
+    period: 'Juli - Augustus',
+    price: '€165 per nacht',
+    weekly: '€1.150 per week',
+    twoWeeks: '€2.100 voor 2 weken'
   },
   {
-    name: 'Overwinteren',
-    period: 'November, Januari - Maart',
-    price: '€1.200 per maand',
-    weekly: 'Minimaal 1 maand',
-    note: 'Speciale tarief voor lange verblijven'
+    name: 'Middenseizoen',
+    period: 'April, Mei, Juni, September',
+    price: '€100 per nacht',
+    weekly: '€700 per week',
+    twoWeeks: '€1.300 voor 2 weken',
+    threeWeeks: '€1.900 voor 3 weken',
+    monthly: '€2.300 per maand'
   },
   {
-    name: 'December',
-    period: 'December',
-    price: 'Niet beschikbaar',
-    weekly: 'Geen verhuur',
-    note: 'Familie periode'
+    name: 'Laagseizoen',
+    period: 'Januari, Februari, Maart, Oktober, November, December',
+    price: '€85 per nacht',
+    weekly: '€600 per week',
+    twoWeeks: '€1.000 voor 2 weken',
+    monthly: '€1.300 per maand'
   }
 ]);
 
@@ -430,12 +516,12 @@ const faqCategories = ref([
         answer: 'De betaling verloopt in twee delen:<br>• 30% aanbetaling bij reservering<br>• Resterende 70% uiterlijk 6 weken voor aankomst<br><br>Daarnaast vragen we een borg van €400, die binnen 5-7 werkdagen na vertrek wordt teruggestort.<br><br>Let op: geen annulering mogelijk.'
       },
       {
-        question: 'Wat is het minimale verblijf?',
-        answer: 'Het minimale verblijf is afhankelijk van de periode:<br>• Reguliere verhuur (apr-okt): minimaal 10 dagen à €160 per nacht<br>• Overwinteren (nov, jan-mrt): minimaal 1 maand à €1200 per maand<br>• December: niet beschikbaar voor verhuur'
+        question: 'Wat zijn de tarieven?',
+        answer: 'Onze tarieven variëren per seizoen:<br>• <strong>Hoogseizoen (juli-augustus):</strong> €165/nacht, €1.150/week, €2.100/2 weken<br>• <strong>Middenseizoen (april-juni, september):</strong> €100/nacht, €700/week, €1.300/2 weken, €1.900/3 weken, €2.300/maand<br>• <strong>Laagseizoen (jan-maart, okt-dec):</strong> €85/nacht, €600/week, €1.000/2 weken, €1.300/maand<br><br>Schoonmaak: €150 (inclusief in- en uitchecken). Huisdieren zijn toegestaan.'
       },
       {
         question: 'Welke kosten zijn inbegrepen in de huurprijs?',
-        answer: 'In de huurprijs zijn inbegrepen:<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud (of zelf bijhouden)<br>• Tuinonderhoud (vanaf september)<br><br>Extra kosten:<br>• Eindschoonmaak: €150 (eenmalig)<br>• Borg: €400 (refundeerbaar)<br>• Linnen pakket: €22 per slaapkamer (optioneel)'
+        answer: 'In de huurprijs zijn inbegrepen:<br>• Energiekosten<br>• WiFi<br>• Zwembadonderhoud (of zelf bijhouden)<br>• Tuinonderhoud (vanaf september)<br><br>Extra kosten:<br>• Schoonmaak: €150 (inclusief in- en uitchecken)<br>• Borg: €400 (refundeerbaar)<br><br>Huisdieren zijn toegestaan.'
       }
     ]
   }
@@ -446,6 +532,27 @@ const checkInInfo = {
   checkout: '10:00',
   address: 'Carrer de les Petúnies 16\n03580 L\'Alfàs del Pi\nAlicante, Spanje',
   instructions: 'Bij aankomst word je welkom geheten door onze sleutelbeheerder. Deze regelt de inchecking en sleuteloverdracht om 16:00 uur en geeft je een korte rondleiding door het huis. Bij vertrek om 10:00 uur regelt de sleutelbeheerder ook de uitchecking. Andere tijden zijn in overleg mogelijk.'
+};
+
+// Helper functions for enhanced pricing card
+const getSeasonColor = (index: number): string => {
+  const colors = ['red', 'primary', 'green'];
+  return colors[index] || 'primary';
+};
+
+const getSeasonIcon = (index: number): string => {
+  const icons = ['wb_sunny', 'partly_cloudy_day', 'ac_unit'];
+  return icons[index] || 'schedule';
+};
+
+const getSeasonChipOffset = (index: number): string => {
+  const offsets = ['0px', '-10px', '0px'];
+  return offsets[index] || '0px';
+};
+
+const getSeasonChipPaddingLeft = (index: number): string => {
+  const paddings = ['12px', '24px', '12px'];
+  return paddings[index] || '12px';
 };
 
 onMounted(() => {
@@ -473,12 +580,104 @@ onMounted(() => {
 <style scoped>
 .facility-card,
 .pricing-card,
-.booking-info,
 .rules-card {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   height: 100%;
+}
+
+.booking-info {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  align-self: flex-start;
+}
+
+/* Simple aligned pricing styles */
+.season-header-simple {
+  margin-bottom: 1rem;
+}
+
+.season-chip-fixed {
+  --season-chip-padding-left-default: 12px;
+  --season-chip-padding-right-default: 12px;
+  padding: 6px var(--season-chip-padding-right, var(--season-chip-padding-right-default)) !important;
+  padding-left: var(--season-chip-padding-left, var(--season-chip-padding-left-default)) !important;
+  min-width: fit-content !important;
+  font-size: 0.875rem !important;
+}
+
+.season-chip-fixed :deep(.q-chip__content) {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+}
+
+.season-chip-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  margin-left: var(--season-chip-icon-offset, 0px);
+}
+
+.pricing-list {
+  margin-left: 1rem;
+}
+
+.pricing-row {
+  margin-bottom: 0.5rem;
+}
+
+.pricing-item-simple {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.pricing-icon {
+  color: var(--cms-terracotta);
+  min-width: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-label-simple {
+  min-width: 80px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pricing-value-simple {
+  font-weight: 600;
+  color: var(--cms-deep-terracotta);
+  margin-left: auto;
+}
+
+/* Enhanced feature lists with proper alignment */
+.feature-list-enhanced {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  margin-bottom: 0.25rem;
+}
+
+.feature-icon {
+  color: var(--cms-terracotta);
+  min-width: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .season-row {

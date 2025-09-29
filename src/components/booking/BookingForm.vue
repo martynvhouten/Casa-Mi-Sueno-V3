@@ -266,7 +266,7 @@
             
             <!-- Cleaning Fee -->
             <div class="price-row q-mb-sm">
-              <span>Eindschoonmaak</span>
+              <span>Schoonmaak (incl. in- en uitchecken)</span>
               <span>€{{ priceDetailsWithTax.cleaningFee.toLocaleString('nl-NL') }}</span>
             </div>
             
@@ -405,20 +405,22 @@ const handleFormInteraction = () => {
 const formIsActive = ref(false);
 
 // Helper functions for pricing display
-const getSeasonColor = (season: 'regular' | 'winter' | 'unavailable' | 'mixed'): string => {
+const getSeasonColor = (season: 'high' | 'mid' | 'low' | 'unavailable' | 'mixed'): string => {
   switch (season) {
-    case 'regular': return 'primary';
-    case 'winter': return 'blue';
+    case 'high': return 'red';
+    case 'mid': return 'primary';
+    case 'low': return 'green';
     case 'unavailable': return 'grey';
     case 'mixed': return 'purple';
     default: return 'primary';
   }
 };
 
-const getSeasonName = (season: 'regular' | 'winter' | 'unavailable' | 'mixed'): string => {
+const getSeasonName = (season: 'high' | 'mid' | 'low' | 'unavailable' | 'mixed'): string => {
   switch (season) {
-    case 'regular': return 'Reguliere verhuur';
-    case 'winter': return 'Overwinteren';
+    case 'high': return 'Hoogseizoen';
+    case 'mid': return 'Middenseizoen';
+    case 'low': return 'Laagseizoen';
     case 'unavailable': return 'Niet beschikbaar';
     case 'mixed': return 'Gecombineerd tarief';
     default: return '';
@@ -571,7 +573,8 @@ const handleSubmit = async () => {
         total_price: props.priceDetails.totalPrice,
         season: props.priceDetails.season || 'unknown',
         booking_type: props.priceDetails.season === 'mixed' ? 'mixed' : 
-                     props.priceDetails.season === 'winter' ? 'overwinter' : 'regular'
+                     props.priceDetails.season === 'high' ? 'high_season' : 
+                     props.priceDetails.season === 'mid' ? 'mid_season' : 'low_season'
       });
     }
     

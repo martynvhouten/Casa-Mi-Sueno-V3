@@ -110,34 +110,46 @@ const bookingFormSection = ref<HTMLElement | null>(null);
 // Uses existing formIsActive, selectedDates, and priceDetails
 
 enum Season {
-  Regular = 'regular',
-  Winter = 'winter',
+  High = 'high',
+  Mid = 'mid', 
+  Low = 'low',
   Unavailable = 'unavailable'
 }
 
 interface SeasonConfig {
   basePrice: number;
   weeklyPrice: number;
+  twoWeekPrice?: number;
+  threeWeekPrice?: number;
   monthlyPrice?: number;
   minNights: number;
-  minMonths?: number;
   name: string;
 }
 
 const seasonConfigs: Record<Season, SeasonConfig> = {
-  [Season.Regular]: {
-    basePrice: 160,
-    weeklyPrice: 1120, // 7 * 160
-    minNights: 10,
-    name: 'Reguliere verhuur'
+  [Season.High]: {
+    basePrice: 165,
+    weeklyPrice: 1150,
+    twoWeekPrice: 2100,
+    minNights: 1,
+    name: 'Hoogseizoen'
   },
-  [Season.Winter]: {
-    basePrice: 40, // €1200/month = €40/day
-    weeklyPrice: 280,
-    monthlyPrice: 1200,
-    minNights: 28, // Hele maand minimum (28 dagen = kortste maand)
-    minMonths: 1,
-    name: 'Overwinteren'
+  [Season.Mid]: {
+    basePrice: 100,
+    weeklyPrice: 700,
+    twoWeekPrice: 1300,
+    threeWeekPrice: 1900,
+    monthlyPrice: 2300,
+    minNights: 1,
+    name: 'Middenseizoen'
+  },
+  [Season.Low]: {
+    basePrice: 85,
+    weeklyPrice: 600,
+    twoWeekPrice: 1000,
+    monthlyPrice: 1300,
+    minNights: 1,
+    name: 'Laagseizoen'
   },
   [Season.Unavailable]: {
     basePrice: 0,
@@ -150,28 +162,67 @@ const seasonConfigs: Record<Season, SeasonConfig> = {
 const CLEANING_FEE = 150;
 const SECURITY_DEPOSIT = 400;
 
-
+// Helper function to calculate the most cost-effective price for a given number of nights
+function calculateOptimalPrice(nights: number, config: SeasonConfig): number {
+  if (nights === 0) return 0;
+  
+  // Try different pricing options and pick the cheapest
+  const options: number[] = [];
+  
+  // Daily rate
+  options.push(nights * config.basePrice);
+  
+  // Weekly combinations
+  if (nights >= 7) {
+    const fullWeeks = Math.floor(nights / 7);
+    const remainingDays = nights % 7;
+    options.push((fullWeeks * config.weeklyPrice) + (remainingDays * config.basePrice));
+  }
+  
+  // Two week combinations
+  if (nights >= 14 && config.twoWeekPrice) {
+    const fullTwoWeeks = Math.floor(nights / 14);
+    const remainingNights = nights % 14;
+    options.push((fullTwoWeeks * config.twoWeekPrice) + calculateOptimalPrice(remainingNights, config));
+  }
+  
+  // Three week combinations (only for mid season)
+  if (nights >= 21 && config.threeWeekPrice) {
+    const fullThreeWeeks = Math.floor(nights / 21);
+    const remainingNights = nights % 21;
+    options.push((fullThreeWeeks * config.threeWeekPrice) + calculateOptimalPrice(remainingNights, config));
+  }
+  
+  // Monthly combinations
+  if (nights >= 30 && config.monthlyPrice) {
+    const fullMonths = Math.floor(nights / 30);
+    const remainingNights = nights % 30;
+    options.push((fullMonths * config.monthlyPrice) + calculateOptimalPrice(remainingNights, config));
+  }
+  
+  return Math.min(...options);
+}
 
 function getSeason(date: Date): Season {
   const month = date.getMonth();
   
-  // December: not available for rental
-  if (month === 11) {
-    return Season.Unavailable;
+  // High season: July - August (months 6-7)
+  if (month === 6 || month === 7) {
+    return Season.High;
   }
   
-  // Winter/Overwinteren season: November, January, February, March
-  if (month === 10 || month === 0 || month === 1 || month === 2) {
-    return Season.Winter;
+  // Mid season: April, May, June, September (months 3, 4, 5, 8)
+  if (month === 3 || month === 4 || month === 5 || month === 8) {
+    return Season.Mid;
   }
   
-  // Regular rental: April through October
-  if (month >= 3 && month <= 9) {
-    return Season.Regular;
+  // Low season: January, February, March, October, November, December (months 0, 1, 2, 9, 10, 11)
+  if (month === 0 || month === 1 || month === 2 || month === 9 || month === 10 || month === 11) {
+    return Season.Low;
   }
   
   // Fallback (shouldn't happen)
-  return Season.Unavailable;
+  return Season.Low;
 }
 
 
@@ -198,44 +249,19 @@ function calculateMixedSeasonPrice(startDate: Date, endDate: Date, totalNights: 
       nightsInSeason++;
     }
     
-    // Calculate price for this season part
+    // Calculate price for this season part using new pricing structure
     let seasonPrice = 0;
     let isSpecialRate = false;
     
-    if (currentSeason === Season.Winter) {
-      // For winter parts in mixed seasons, check if this covers a complete winter month
-      const currentMonth = partStartDate.getMonth();
-      const currentYear = partStartDate.getFullYear();
-      
-      // Calculate the 1st and last day of this winter month
-      const monthStart = new Date(currentYear, currentMonth, 1);
-      
-      // Check if this winter month part covers the complete available month
-      
-      // For a complete winter month overwinter price, we need:
-      // 1. Overall booking starts on/before 1st of month  
-      // 2. For November: checkout on 30 Nov (since Dec unavailable) OR later 
-      // 3. For other winter months: checkout on 1st of next month OR later
-      
-             // For November: accept checkout on 30 Nov as complete month (since Dec unavailable)
-       // For other winter months: checkout on 1st of next month = complete month
-       const isCompleteMonth = currentMonth === 10 
-         ? (startDate.getTime() <= monthStart.getTime() && endDate.getTime() >= new Date(currentYear, 10, 30).getTime())
-         : (startDate.getTime() <= monthStart.getTime() && endDate.getTime() >= new Date(currentYear, currentMonth + 1, 1).getTime());
-      
-      if (isCompleteMonth) {
-        // Complete winter month covered: use special monthly rate
-        seasonPrice = currentConfig.monthlyPrice!;
-        isSpecialRate = true;
-      } else {
-        // Partial month: use regular daily rate (€160/night)
-        seasonPrice = nightsInSeason * seasonConfigs[Season.Regular].basePrice;
-      }
+    // Use the most cost-effective pricing option for the number of nights
+    if (nightsInSeason >= 30 && currentConfig.monthlyPrice) {
+      // Monthly rate (if available and >= 30 nights)
+      const fullMonths = Math.floor(nightsInSeason / 30);
+      const remainingNights = nightsInSeason % 30;
+      seasonPrice = (fullMonths * currentConfig.monthlyPrice) + calculateOptimalPrice(remainingNights, currentConfig);
+      isSpecialRate = fullMonths > 0;
     } else {
-      // Regular season calculation
-      const fullWeeks = Math.floor(nightsInSeason / 7);
-      const remainingDays = nightsInSeason % 7;
-      seasonPrice = (fullWeeks * currentConfig.weeklyPrice) + (remainingDays * currentConfig.basePrice);
+      seasonPrice = calculateOptimalPrice(nightsInSeason, currentConfig);
     }
     
     seasonParts.push({
@@ -259,20 +285,18 @@ function calculateMixedSeasonPrice(startDate: Date, endDate: Date, totalNights: 
     let displayName: string;
     let pricePerNight: number;
     const monthName = monthNames[part.month];
+    const config = seasonConfigs[part.season];
     
-    if (part.season === Season.Winter && part.isSpecialRate) {
-      displayName = `${monthName} (hele maand - overwinteren)`;
-      pricePerNight = Math.round(part.price / part.nights); // Show actual price per night
-    } else if (part.season === Season.Winter && !part.isSpecialRate) {
-      displayName = `${monthName} (gedeeltelijk - regulier tarief)`;
-      pricePerNight = seasonConfigs[Season.Regular].basePrice; // Show regular daily rate
+    if (part.isSpecialRate) {
+      displayName = `${monthName} (${config.name.toLowerCase()} - speciale tarieven)`;
+      pricePerNight = Math.round(part.price / part.nights);
     } else {
-      displayName = `${monthName} (regulier tarief)`;
-      pricePerNight = seasonConfigs[part.season].basePrice;
+      displayName = `${monthName} (${config.name.toLowerCase()})`;
+      pricePerNight = Math.round(part.price / part.nights);
     }
     
     return {
-      season: part.season as 'regular' | 'winter' | 'unavailable',
+      season: part.season as 'high' | 'mid' | 'low' | 'unavailable',
       nights: part.nights,
       pricePerNight,
       totalPrice: part.price,
@@ -322,41 +346,8 @@ function calculatePrice(startDate: Date, endDate: Date): PriceDetails | null {
   
   let basePrice = 0;
   
-  // Calculate pricing based on season
-  if (season === Season.Winter) {
-    // For winter season, check if it's a complete month for special pricing
-    const startMonth = startDate.getMonth();
-    const startYear = startDate.getFullYear();
-    
-    // Complete month: check based on which winter month this is
-    const monthStart = new Date(startYear, startMonth, 1);
-    
-         // For November: accept checkout on 30 Nov as complete month (since Dec unavailable)
-     // For other winter months: checkout on 1st of next month = complete month  
-     const isCompleteMonth = startMonth === 10 
-       ? (startDate.getTime() <= monthStart.getTime() && endDate.getTime() >= new Date(startYear, 10, 30).getTime())
-       : (startDate.getTime() <= monthStart.getTime() && endDate.getTime() >= new Date(startYear, startMonth + 1, 1).getTime());
-    
-    if (isCompleteMonth) {
-      // Complete winter month: use special monthly rate
-      basePrice = config.monthlyPrice!;
-    } else {
-      // Partial winter month: use regular daily rate
-      basePrice = totalNights * seasonConfigs[Season.Regular].basePrice;
-    }
-  } else {
-    // Regular season pricing
-    const fullWeeks = Math.floor(totalNights / 7);
-    const remainingDays = totalNights % 7;
-    
-    // Use weekly rate for full weeks, daily rate for remaining days
-    basePrice = (fullWeeks * config.weeklyPrice) + (remainingDays * config.basePrice);
-    
-    // If it's all daily pricing (less than 7 nights), use daily rate
-    if (fullWeeks === 0) {
-      basePrice = totalNights * config.basePrice;
-    }
-  }
+  // Calculate pricing using the most cost-effective option
+  basePrice = calculateOptimalPrice(totalNights, config);
 
   const pricePerNight = config.basePrice;
   
@@ -388,7 +379,7 @@ function calculatePrice(startDate: Date, endDate: Date): PriceDetails | null {
     securityDeposit: SECURITY_DEPOSIT,
     discount,
     totalPrice,
-    season: season as 'regular' | 'winter' | 'unavailable'
+    season: season as 'high' | 'mid' | 'low' | 'unavailable'
   };
 }
 
@@ -407,7 +398,8 @@ const priceDetails = computed<PriceDetails | null>(() => {
       total_price: result.totalPrice,
       season: result.season,
       booking_type: result.season === 'mixed' ? 'mixed' : 
-                   result.season === 'winter' ? 'overwinter' : 'regular'
+                   result.season === 'high' ? 'high_season' : 
+                   result.season === 'mid' ? 'mid_season' : 'low_season'
     });
   }
   
@@ -417,18 +409,6 @@ const priceDetails = computed<PriceDetails | null>(() => {
 
 
 const handleMinimumNightsError = (errorDetails: { selected: number; minimum: number; season: string; }) => {
-  // Special handling for December (unavailable period)
-  if (errorDetails.season === 'December niet beschikbaar') {
-    $q.notify({
-      type: 'negative',
-      message: 'December is niet beschikbaar voor verhuur. Kies een datum in een andere maand.',
-      position: 'top',
-      timeout: 6000,
-      actions: [{ label: 'OK', color: 'white', handler: () => {} }]
-    });
-    return;
-  }
-  
   // Special handling for booked dates between selection
   if (errorDetails.season === 'Er zijn geboekte datums binnen de geselecteerde periode') {
     $q.notify({

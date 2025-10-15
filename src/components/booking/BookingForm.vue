@@ -135,7 +135,13 @@
                 autocomplete="tel"
                 placeholder="+31 6 1234 5678 of 06 1234 5678"
                 hint="Voor snelle communicatie over je boeking"
-                :rules="[val => !!val || 'Telefoonnummer is verplicht']"
+                :rules="[
+                  val => !!val || 'Telefoonnummer is verplicht',
+                  val => {
+                    const error = getPhoneValidationError(val);
+                    return error === null || error;
+                  }
+                ]"
                 :aria-describedby="formErrors.phone ? 'phone-error' : undefined"
                 :aria-invalid="!!formErrors.phone"
                 outlined
@@ -328,6 +334,7 @@ import { ref, computed, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import { PriceDetails } from 'src/types/booking';
 import { trackBookingInquiry } from 'src/utils/analytics';
+import { validatePhoneNumber, getPhoneValidationError } from 'src/utils/phoneValidation';
 
 const props = defineProps<{
   priceDetails: PriceDetails | null;
@@ -473,6 +480,10 @@ const validateForm = () => {
   if (!form.value.emailConfirm) errors.emailConfirm = 'Bevestiging e-mailadres is verplicht';
   else if (form.value.email !== form.value.emailConfirm) errors.emailConfirm = 'E-mailadressen komen niet overeen';
   if (!form.value.phone) errors.phone = 'Telefoonnummer is verplicht';
+  else {
+    const phoneError = getPhoneValidationError(form.value.phone);
+    if (phoneError) errors.phone = phoneError;
+  }
   if (!form.value.adults || form.value.adults < 1) errors.adults = 'Minimaal 1 volwassene';
   if (form.value.children < 0) errors.children = 'Minimaal 0 kinderen';
   if (!form.value.termsAccepted) errors.termsAccepted = 'Je moet akkoord gaan met de voorwaarden';

@@ -199,6 +199,7 @@ import { ref, computed, onMounted, watch } from 'vue';
 import { useQuasar, QForm } from 'quasar';
 import { useRoute } from 'vue-router';
 import DOMPurify from 'dompurify';
+import { validatePhoneNumber, getPhoneValidationError } from 'src/utils/phoneValidation';
 
 interface FormData {
   name: string;
@@ -251,7 +252,10 @@ const emailRules = [
 ];
 
 const phoneRules = [
-  (val: string) => !val || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(val.trim()) || 'Ongeldig telefoonnummer'
+  (val: string) => {
+    const error = getPhoneValidationError(val);
+    return error === null || error;
+  }
 ];
 
 const messageRules = [

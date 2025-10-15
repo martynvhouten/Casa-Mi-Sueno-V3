@@ -4,8 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  # Exclude frontend API keys from secrets scanning (these are meant to be public)
-  SECRETS_SCAN_OMIT_KEYS = "VITE_GOOGLE_API_KEY,VITE_GOOGLE_MAPS_API_KEY"
+  # Exclude frontend API keys and public values from secrets scanning (these are meant to be public)
+  SECRETS_SCAN_OMIT_KEYS = "VITE_GOOGLE_API_KEY,VITE_GOOGLE_MAPS_API_KEY,VITE_GOOGLE_SHEET_ID,RESEND_FROM_EMAIL"
 
 # Security headers
 [[headers]]

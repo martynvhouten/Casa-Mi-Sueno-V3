@@ -334,7 +334,7 @@ import { ref, computed, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import { PriceDetails } from 'src/types/booking';
 import { trackBookingInquiry } from 'src/utils/analytics';
-import { validatePhoneNumber, getPhoneValidationError } from 'src/utils/phoneValidation';
+import { getPhoneValidationError } from 'src/utils/phoneValidation';
 
 const props = defineProps<{
   priceDetails: PriceDetails | null;

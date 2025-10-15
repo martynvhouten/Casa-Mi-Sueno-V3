@@ -1,4 +1,4 @@
-import { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
+import { Handler, HandlerEvent } from '@netlify/functions';
 import { Resend } from 'resend';
 
 interface BookingInquiry {
@@ -128,7 +128,7 @@ const validateFields = (body: BookingInquiry): string | null => {
   return null;
 };
 
-export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
+export const handler: Handler = async (event: HandlerEvent) => {
   // CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',

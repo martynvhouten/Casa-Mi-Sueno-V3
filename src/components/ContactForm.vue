@@ -199,7 +199,7 @@ import { ref, computed, onMounted, watch } from 'vue';
 import { useQuasar, QForm } from 'quasar';
 import { useRoute } from 'vue-router';
 import DOMPurify from 'dompurify';
-import { validatePhoneNumber, getPhoneValidationError } from 'src/utils/phoneValidation';
+import { getPhoneValidationError } from 'src/utils/phoneValidation';
 
 interface FormData {
   name: string;

@@ -326,7 +326,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { useQuasar } from 'quasar';
-import { PriceDetails } from 'src/utils/types/supabase';
+import { PriceDetails } from 'src/types/booking';
 import { trackBookingInquiry } from 'src/utils/analytics';
 
 const props = defineProps<{
@@ -504,15 +504,6 @@ const handleSubmit = async () => {
       return;
     }
     
-    // Check environment variables
-    if (!import.meta.env.VITE_SUPABASE_URL) {
-      throw new Error('VITE_SUPABASE_URL environment variable is missing');
-    }
-    
-    if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
-      throw new Error('VITE_SUPABASE_ANON_KEY environment variable is missing');
-    }
-    
     if (!props.selectedDates || props.selectedDates.length !== 2) {
       throw new Error('Selecteer alsjeblieft je aankomst- en vertrekdatum');
     }
@@ -520,15 +511,14 @@ const handleSubmit = async () => {
     // Combine name
     const fullName = `${form.value.firstName} ${form.value.lastName}`;
     
-    // Get function URL from Supabase
-    const functionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-booking-email`;
+    // Call Netlify Function
+    const functionUrl = '/.netlify/functions/send-contact-email';
     
     // Submit form data (send ISO strings for dates as backend expects)
     const response = await fetch(functionUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name: fullName,
@@ -539,7 +529,8 @@ const handleSubmit = async () => {
         adults: Number(form.value.adults || 0),
         children: Number(form.value.children || 0),
         startDate: props.selectedDates[0].toISOString(),
-        endDate: props.selectedDates[1].toISOString()
+        endDate: props.selectedDates[1].toISOString(),
+        honeypot: honeypot.value || ''
       })
     });
 

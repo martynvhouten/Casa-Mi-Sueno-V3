@@ -135,6 +135,18 @@
                 </template>
               </q-input>
             </div>
+
+            <!-- Honeypot field (hidden from users, prevents spam bots) -->
+            <div class="col-12 honeypot-field">
+              <q-input
+                v-model="form.honeypot"
+                label="Website"
+                outlined
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
+            </div>
           </div>
         </div>
 
@@ -194,6 +206,7 @@ interface FormData {
   phone: string;
   message: string;
   guests?: number;
+  honeypot?: string;
 }
 
 interface ValidationError {
@@ -221,7 +234,8 @@ const form = ref<FormData>({
   email: '',
   phone: '',
   message: '',
-  guests: undefined
+  guests: undefined,
+  honeypot: ''
 });
 
 // Validation rules
@@ -294,15 +308,14 @@ const handleSubmit = async () => {
               throw new Error('Selecteer alsjeblieft je gewenste verblijfsdata');
     }
 
-    // Get function URL from your Supabase project settings
-    const functionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-booking-email`;
+    // Call Netlify Function
+    const functionUrl = '/.netlify/functions/send-contact-email';
 
     // Submit form data
     const response = await fetch(functionUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name: sanitizedForm.name,
@@ -311,7 +324,8 @@ const handleSubmit = async () => {
         message: sanitizedForm.message,
         numberOfGuests: sanitizedForm.guests,
         startDate: internalDates.value[0],
-        endDate: internalDates.value[1]
+        endDate: internalDates.value[1],
+        honeypot: form.value.honeypot || ''
       })
     });
 
@@ -329,7 +343,8 @@ const handleSubmit = async () => {
       email: '',
       phone: '',
       message: '',
-      guests: undefined
+      guests: undefined,
+      honeypot: ''
     };
     internalDates.value = [null, null];
     formRef.value?.resetValidation();
@@ -508,5 +523,15 @@ onMounted(() => {
     color: #d32f2f;
     font-weight: 500;
   }
+}
+
+// Honeypot field - hidden from users
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 </style> 

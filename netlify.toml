@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "20"
   # Exclude frontend API keys from secrets scanning (these are meant to be public)
-  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_ANON_KEY,VITE_GOOGLE_API_KEY,VITE_GOOGLE_MAPS_API_KEY"
+  SECRETS_SCAN_OMIT_KEYS = "VITE_GOOGLE_API_KEY,VITE_GOOGLE_MAPS_API_KEY"
 
 # Security headers
 [[headers]]
@@ -17,7 +17,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://region1.google-analytics.com https://sheets.googleapis.com; frame-src https://www.google.com https://maps.google.com;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://sheets.googleapis.com; frame-src https://www.google.com https://maps.google.com;"
 
 # Cache optimization
 [[headers]]

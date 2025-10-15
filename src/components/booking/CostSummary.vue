@@ -116,7 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import { PriceDetails } from 'src/utils/types/supabase';
+import { PriceDetails } from 'src/types/booking';
 
 const props = defineProps<{
   priceDetails: PriceDetails | null;

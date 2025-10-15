@@ -96,7 +96,7 @@ import BookingCalendar from 'src/components/booking/BookingCalendar.vue';
 import CostSummary from 'src/components/booking/CostSummary.vue';
 import InfoAndServices from 'src/components/booking/InfoAndServices.vue';
 import BookingForm from 'src/components/booking/BookingForm.vue';
-import { PriceDetails } from 'src/utils/types/supabase';
+import { PriceDetails } from 'src/types/booking';
 import { trackPricingCalculation } from 'src/utils/analytics';
 
 const $q = useQuasar();

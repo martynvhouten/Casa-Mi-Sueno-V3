@@ -20,13 +20,13 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@quasar/extras": "^1.16.9",
-    "@supabase/supabase-js": "^2.50.0",
     "@types/dompurify": "^3.0.5",
     "@vuepic/vue-datepicker": "^11.0.2",
     "@vueuse/core": "^10.7.2",
     "axios": "^1.6.7",
     "dompurify": "^3.2.6",
     "quasar": "^2.14.3",
+    "resend": "^4.0.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
     "vue-screen-utils": "^1.0.0-beta.13"

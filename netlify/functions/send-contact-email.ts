@@ -116,10 +116,6 @@ const validateFields = (body: BookingInquiry): string | null => {
     return 'Bericht moet minimaal 10 karakters bevatten';
   }
 
-  if (body.message.trim().length > 1000) {
-    return 'Bericht mag maximaal 1000 karakters bevatten';
-  }
-
   // Validate phone if provided
   if (body.phone && !isValidPhone(body.phone)) {
     return 'Voer een geldig telefoonnummer in';

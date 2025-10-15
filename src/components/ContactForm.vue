@@ -260,8 +260,7 @@ const phoneRules = [
 
 const messageRules = [
   (val: string) => !!val.trim() || 'Bericht is verplicht',
-  (val: string) => val.trim().length >= 10 || 'Bericht moet minimaal 10 karakters bevatten',
-  (val: string) => val.trim().length <= 1000 || 'Bericht mag maximaal 1000 karakters bevatten'
+  (val: string) => val.trim().length >= 10 || 'Bericht moet minimaal 10 karakters bevatten'
 ];
 
 const guestsRules = [

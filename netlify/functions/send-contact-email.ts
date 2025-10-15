@@ -66,7 +66,7 @@ const normalizePhoneNumber = (phone: string): string => {
   return phone.replace(/[\s\-()]/g, '');
 };
 
-// Validate phone number (Dutch and international E.164 formats)
+// Validate phone number - permissive international format
 const isValidPhone = (phone: string): boolean => {
   if (!phone || phone.trim() === '') {
     return true; // Optional field
@@ -74,28 +74,17 @@ const isValidPhone = (phone: string): boolean => {
 
   const normalized = normalizePhoneNumber(phone.trim());
 
-  // Dutch mobile: 06 followed by 8 digits
-  const dutchMobilePattern = /^06\d{8}$/;
-  
-  // Dutch landline: 0 + area code (2-3 digits) + number (6-7 digits)
-  const dutchLandlinePattern = /^0[1-9]\d{7,9}$/;
-  
-  // International format: +31 followed by 9 digits (Dutch)
-  const intlDutchPattern = /^\+31[1-9]\d{8}$/;
-  
-  // International format with leading 00: 0031 followed by 9 digits
-  const intlDutch00Pattern = /^0031[1-9]\d{8}$/;
-  
-  // Generic international E.164: + followed by 1-3 digit country code and 4-14 digits
-  const intlGenericPattern = /^\+\d{1,3}\d{4,14}$/;
+  // Must contain at least some digits
+  if (!/\d/.test(normalized)) {
+    return false;
+  }
 
-  return (
-    dutchMobilePattern.test(normalized) ||
-    dutchLandlinePattern.test(normalized) ||
-    intlDutchPattern.test(normalized) ||
-    intlDutch00Pattern.test(normalized) ||
-    intlGenericPattern.test(normalized)
-  );
+  // Permissive pattern: optional + or 00 prefix, followed by digits
+  // Minimum 7 digits (shortest valid phone numbers)
+  // Maximum 15 digits (E.164 standard maximum)
+  const permissivePattern = /^(\+|00)?\d{7,15}$/;
+
+  return permissivePattern.test(normalized);
 };
 
 // Validate required fields

@@ -53,6 +53,17 @@ function run() {
   const robotsDest = path.join(publishDir, 'robots.txt');
   copyFile(sitemapSrc, sitemapDest);
   copyFile(robotsSrc, robotsDest);
+
+  // Create Netlify-compatible 404 page from the prerendered /404 route
+  const notFoundSrc = path.join(publishDir, '404', 'index.html');
+  const notFoundDest = path.join(publishDir, '404.html');
+  if (fs.existsSync(notFoundSrc)) {
+    copyFile(notFoundSrc, notFoundDest);
+    console.log(`Copied 404 page to: ${notFoundDest}`);
+  } else {
+    console.warn(`Prerendered 404 source not found: ${notFoundSrc}`);
+  }
+
   console.log(`Copied sitemap to: ${sitemapDest}`);
   console.log(`Copied robots to: ${robotsDest}`);
 }

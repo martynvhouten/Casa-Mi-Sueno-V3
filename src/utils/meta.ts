@@ -72,29 +72,16 @@ export const setMetaTags = (meta: MetaInfo) => {
   }
   
   if (finalMeta.url) {
-    // Normalize canonical to no trailing slash (except root)
     const urlObj = new URL(finalMeta.url);
-    // Strip query and hash
     urlObj.search = '';
     urlObj.hash = '';
-    const isRoot = urlObj.pathname === '/' || urlObj.pathname === '';
-    if (!isRoot && urlObj.pathname.endsWith('/')) {
+    if (urlObj.pathname !== '/' && urlObj.pathname.endsWith('/')) {
       urlObj.pathname = urlObj.pathname.replace(/\/+$/, '');
     }
 
     const normalizedUrl = urlObj.toString();
     updateMetaTag('og:url', normalizedUrl);
-
-    // Set canonical only for non-home pages
-    if (!isRoot) {
-      updateMetaTag('canonical', normalizedUrl);
-    } else {
-      // Remove canonical tag on homepage if present
-      const linkEl = document.querySelector('link[rel="canonical"]');
-      if (linkEl && linkEl.parentNode) {
-        linkEl.parentNode.removeChild(linkEl);
-      }
-    }
+    updateMetaTag('canonical', normalizedUrl);
   }
 
   // Twitter Card - using absolute URLs

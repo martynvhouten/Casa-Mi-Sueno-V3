@@ -5,30 +5,21 @@ import path from 'node:path';
 
 const BASE_URL = 'https://casamisueno.nl';
 
-// Required minimal routes (must be present)
-const requiredRoutes = [
-  '/', '/over', '/accommodatie', '/voorzieningen', '/omgeving', '/contact'
-];
-
-// Full route set (union of required + current site routes)
-const fullRouteSet = Array.from(new Set([
+// Full route set from src/router/routes.ts (only real routes)
+const fullRouteSet = [
   '/',
-  '/over',
-  '/accommodatie',
-  '/voorzieningen',
-  '/omgeving',
-  '/contact',
-  // existing known routes
   '/over-ons',
   '/het-huis',
   '/buiten-leven',
+  '/omgeving',
   '/fotos',
   '/praktisch',
+  '/contact',
   '/reserveren',
   '/privacy',
   '/voorwaarden',
   '/sitemap'
-]));
+];
 
 const routeToImages = new Map([
   ['/', ['/images/Tuin_zithoek.webp']],

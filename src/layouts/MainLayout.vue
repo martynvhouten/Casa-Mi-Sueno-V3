@@ -19,7 +19,7 @@
           aria-label="Casa Mi Sueño - Ga naar homepage"
         >
           <div class="logo-container">
-            <h1 class="font-playfair text-h4 q-my-none notranslate" translate="no">Casa Mi Sueño</h1>
+            <span class="font-playfair text-h4 q-my-none notranslate" translate="no">Casa Mi Sueño</span>
             <div class="logo-decoration" aria-hidden="true"></div>
           </div>
         </router-link>

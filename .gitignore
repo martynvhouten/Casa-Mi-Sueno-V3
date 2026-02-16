@@ -62,3 +62,9 @@ coverage
 
 # Cursor related files
 .cursor/mcp.json 
+
+# Cursor (IDE metadata)
+.cursor/
+
+# Local Netlify folder
+.netlify

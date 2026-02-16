@@ -692,30 +692,28 @@ onMounted(() => {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.faq-categories {
-  :deep(.q-expansion-item) {
-    margin-bottom: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    background: white;
-    
-    &:hover {
-      border-color: var(--cms-terracotta);
-    }
-    
-    .q-expansion-item__container {
-      border-radius: 8px;
-    }
-    
-    .q-item {
-      padding: 1rem 1.5rem;
-    }
-    
-    .q-card {
-      box-shadow: none;
-      background: #f8f9fa;
-    }
-  }
+.faq-categories :deep(.q-expansion-item) {
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  background: white;
+}
+
+.faq-categories :deep(.q-expansion-item:hover) {
+  border-color: var(--cms-terracotta);
+}
+
+.faq-categories :deep(.q-expansion-item__container) {
+  border-radius: 8px;
+}
+
+.faq-categories :deep(.q-item) {
+  padding: 1rem 1.5rem;
+}
+
+.faq-categories :deep(.q-card) {
+  box-shadow: none;
+  background: #f8f9fa;
 }
 
 .q-icon {

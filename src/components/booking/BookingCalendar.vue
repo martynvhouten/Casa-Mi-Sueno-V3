@@ -69,6 +69,7 @@ import { useQuasar } from 'quasar';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { fetchBookedDates } from 'src/utils/googleSheets';
+import { logger } from 'src/utils/logger';
 
 interface CalendarCell {
   value: Date;
@@ -260,8 +261,7 @@ onMounted(async () => {
     bookedDates.value = fetchedBookedDates.map(d => d.geboekte_datum.toISOString().split('T')[0]);
     calendarAnnouncement.value = 'Kalender geladen. Selecteer je aankomst- en vertrekdatum.';
   } catch (error) {
-          // eslint-disable-next-line no-console
-      console.error('Failed to load booked dates:', error);
+    logger.error('Failed to load booked dates:', error);
     calendarAnnouncement.value = 'Fout bij laden van beschikbaarheid. Probeer het later opnieuw.';
     $q.notify({
       type: 'negative',

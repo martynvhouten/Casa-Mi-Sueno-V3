@@ -384,7 +384,7 @@ const getImageType = (src: string): string => {
   }
 };
 
-const openLightbox = (photoSet: any[], index: number) => {
+const openLightbox = (photoSet: Photo[], index: number) => {
   currentPhotoSet.value = photoSet;
   lightboxSlide.value = index;
   lightboxOpen.value = true;

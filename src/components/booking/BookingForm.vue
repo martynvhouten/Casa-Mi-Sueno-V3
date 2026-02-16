@@ -335,6 +335,7 @@ import { useQuasar } from 'quasar';
 import { PriceDetails } from 'src/types/booking';
 import { trackBookingInquiry } from 'src/utils/analytics';
 import { getPhoneValidationError } from 'src/utils/phoneValidation';
+import { logger } from 'src/utils/logger';
 
 const props = defineProps<{
   priceDetails: PriceDetails | null;
@@ -552,10 +553,8 @@ const handleSubmit = async () => {
     try {
       result = JSON.parse(responseText);
     } catch (parseError) {
-              // eslint-disable-next-line no-console
-        console.error('Failed to parse response as JSON:', parseError);
-        // eslint-disable-next-line no-console
-        console.error('Raw response:', responseText);
+      logger.error('Failed to parse response as JSON:', parseError);
+      logger.error('Raw response:', responseText);
       throw new Error(`Server returned invalid response: ${responseText.substring(0, 100)}`);
     }
     
@@ -574,9 +573,7 @@ const handleSubmit = async () => {
         guests: totalGuests.value,
         total_price: props.priceDetails.totalPrice,
         season: props.priceDetails.season || 'unknown',
-        booking_type: props.priceDetails.season === 'mixed' ? 'mixed' : 
-                     props.priceDetails.season === 'high' ? 'high_season' : 
-                     props.priceDetails.season === 'mid' ? 'mid_season' : 'low_season'
+        booking_type: props.priceDetails.season === 'mixed' ? 'mixed' : 'regular'
       });
     }
     
@@ -612,8 +609,7 @@ const handleSubmit = async () => {
     
     emit('booking-submitted');
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error submitting booking:', error);
+    logger.error('Error submitting booking:', error);
     
     // Track booking error
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';

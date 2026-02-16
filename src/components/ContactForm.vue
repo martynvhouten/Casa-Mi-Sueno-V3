@@ -200,6 +200,7 @@ import { useQuasar, QForm } from 'quasar';
 import { useRoute } from 'vue-router';
 import DOMPurify from 'dompurify';
 import { getPhoneValidationError } from 'src/utils/phoneValidation';
+import { logger } from 'src/utils/logger';
 
 interface FormData {
   name: string;
@@ -353,8 +354,7 @@ const handleSubmit = async () => {
     formRef.value?.resetValidation();
 
   } catch (error: Error | unknown) {
-    // eslint-disable-next-line no-console
-    console.error('Error sending form:', error);
+    logger.error('Error sending form:', error);
     const errorMessage = error instanceof Error ? error.message : 'Er is een onverwachte fout opgetreden';
     $q.notify({
       type: 'negative',
@@ -392,8 +392,7 @@ onMounted(() => {
         internalDates.value = [fromDate, toDate];
       }
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error parsing dates from URL:', error);
+      logger.error('Error parsing dates from URL:', error);
     }
   }
 });

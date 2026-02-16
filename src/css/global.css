@@ -1073,19 +1073,17 @@ body .hover-terracotta:hover,
   }
 
   /* Mobile button centering for reservation buttons */
-  @media (max-width: 768px) {
-    .cms-btn.full-width {
-      text-align: center;
-      justify-content: center;
-      display: flex;
-      width: 100%;
-    }
-    
-    .cms-btn.full-width .q-btn__content {
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-    }
+  .cms-btn.full-width {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+  
+  .cms-btn.full-width .q-btn__content {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
   }
 
   /* Calendar legend mobile improvements */
@@ -1140,18 +1138,18 @@ body .hover-terracotta:hover,
   height: 100% !important;
 }
 
-.cms-img-container .q-img :deep(.q-img__container) {
+.cms-img-container .q-img .q-img__container {
   width: 100% !important;
   height: 100% !important;
 }
 
-.cms-img-container .q-img :deep(.q-img__content) {
+.cms-img-container .q-img .q-img__content {
   width: 100% !important;
   height: 100% !important;
   border-radius: var(--radius-lg);
 }
 
-.cms-img-container .q-img :deep(.q-img__content > div) {
+.cms-img-container .q-img .q-img__content > div {
   width: 100% !important;
   height: 100% !important;
   border-radius: var(--radius-lg);
@@ -1159,7 +1157,7 @@ body .hover-terracotta:hover,
   background-position: center !important;
 }
 
-.cms-img-container .q-img :deep(img) {
+.cms-img-container .q-img img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;

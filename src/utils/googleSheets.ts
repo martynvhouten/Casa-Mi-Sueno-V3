@@ -1,3 +1,5 @@
+import { logger } from './logger';
+
 export interface BookedDate {
   geboekte_datum: Date;
 }
@@ -53,7 +55,7 @@ function parseDate(dateStr: string): Date | null {
     }
   }
 
-  console.warn(`Could not parse date: ${dateStr}`);
+  logger.warn(`Could not parse date: ${dateStr}`);
   return null;
 }
 
@@ -64,7 +66,7 @@ function parseDate(dateStr: string): Date | null {
  */
 export async function fetchBookedDates(): Promise<BookedDate[]> {
   if (!SHEET_ID || !API_KEY) {
-    console.error('Missing Google Sheets configuration. Please check your .env file for VITE_GOOGLE_SHEET_ID and VITE_GOOGLE_API_KEY');
+    logger.error('Missing Google Sheets configuration. Please check your .env file for VITE_GOOGLE_SHEET_ID and VITE_GOOGLE_API_KEY');
     return [];
   }
 
@@ -75,7 +77,7 @@ export async function fetchBookedDates(): Promise<BookedDate[]> {
     const responseText = await response.text();
 
     if (!response.ok) {
-      console.error('Google Sheets API Error:', {
+      logger.error('Google Sheets API Error:', {
         status: response.status,
         statusText: response.statusText,
         response: responseText
@@ -86,7 +88,7 @@ export async function fetchBookedDates(): Promise<BookedDate[]> {
     const data: SheetResponse = JSON.parse(responseText);
     
     if (!data.values || data.values.length === 0) {
-      console.warn('No data found in sheet');
+      logger.warn('No data found in sheet');
       return [];
     }
 
@@ -95,7 +97,7 @@ export async function fetchBookedDates(): Promise<BookedDate[]> {
     
     // Validate header
     if (!header || !header[0] || header[0].toLowerCase() !== 'geboekte_datum') {
-      console.error('Invalid sheet format. First cell should contain "geboekte_datum"');
+      logger.error('Invalid sheet format. First cell should contain "geboekte_datum"');
       throw new Error('Invalid sheet format: missing geboekte_datum column');
     }
 
@@ -103,13 +105,13 @@ export async function fetchBookedDates(): Promise<BookedDate[]> {
     const bookedDates = rows
       .map(row => {
         if (!row[0]) {
-          console.warn('Empty row found');
+          logger.warn('Empty row found');
           return null;
         }
         
         const date = parseDate(row[0]);
         if (!date) {
-          console.warn(`Invalid date found in sheet: ${row[0]}`);
+          logger.warn(`Invalid date found in sheet: ${row[0]}`);
           return null;
         }
 
@@ -124,7 +126,7 @@ export async function fetchBookedDates(): Promise<BookedDate[]> {
 
     return bookedDates;
   } catch (error) {
-    console.error('Error fetching booked dates:', error);
+    logger.error('Error fetching booked dates:', error);
     if (import.meta.env.DEV) {
       // Return mock data in development
       const mockDates = [];
@@ -133,7 +135,7 @@ export async function fetchBookedDates(): Promise<BookedDate[]> {
         date.setUTCHours(0, 0, 0, 0);
         mockDates.push({ geboekte_datum: date });
       }
-      console.log('Using mock data:', mockDates);
+      logger.log('Using mock data:', mockDates);
       return mockDates;
     }
     return [];

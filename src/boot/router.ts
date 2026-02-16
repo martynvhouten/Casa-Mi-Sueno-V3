@@ -2,6 +2,7 @@ import { boot } from 'quasar/wrappers';
 import { Router } from 'vue-router';
 import { trackPageView } from 'src/utils/analytics';
 import { DEFAULT_META } from 'src/utils/meta';
+import { logger } from 'src/utils/logger';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
@@ -12,8 +13,7 @@ declare module '@vue/runtime-core' {
 export default boot(({ router }) => {
   // Handle navigation errors
   router.onError((error) => {
-    // eslint-disable-next-line no-console
-    console.error('Navigation error:', error);
+    logger.error('Navigation error:', error);
   });
 
   // Add navigation guards

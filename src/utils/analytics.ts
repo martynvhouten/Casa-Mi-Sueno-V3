@@ -28,7 +28,7 @@ export interface PageViewData {
 // Check if gtag is available
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 

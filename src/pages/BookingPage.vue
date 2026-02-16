@@ -397,9 +397,7 @@ const priceDetails = computed<PriceDetails | null>(() => {
       guests: 2, // Default value, actual guests selected in form
       total_price: result.totalPrice,
       season: result.season,
-      booking_type: result.season === 'mixed' ? 'mixed' : 
-                   result.season === 'high' ? 'high_season' : 
-                   result.season === 'mid' ? 'mid_season' : 'low_season'
+      booking_type: result.season === 'mixed' ? 'mixed' : 'regular'
     });
   }
   

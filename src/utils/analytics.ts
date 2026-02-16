@@ -3,6 +3,10 @@
  * Tracks important events for vacation rental business insights
  */
 
+import { getConsent } from './cookieConsent';
+
+const GA_MEASUREMENT_ID = 'G-KK47JYMKEJ';
+
 // GA4 Event Types for vacation rental business
 export interface BookingEventData {
   check_in_date: string;
@@ -28,21 +32,72 @@ export interface PageViewData {
 // Check if gtag is available
 declare global {
   interface Window {
+    dataLayer?: unknown[][];
     gtag?: (...args: unknown[]) => void;
   }
 }
 
+let analyticsConfigured = false;
+
 const isGtagAvailable = (): boolean => {
   return typeof window !== 'undefined' && typeof window.gtag === 'function';
+};
+
+const hasAnalyticsConsent = (): boolean => Boolean(getConsent()?.analytics);
+
+const bootstrapGtag = (): void => {
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = (...args: unknown[]) => {
+      window.dataLayer?.push(args);
+    };
+  }
+};
+
+const loadGtagScript = (): void => {
+  const existingScript = document.querySelector<HTMLScriptElement>(
+    `script[data-ga4="${GA_MEASUREMENT_ID}"]`
+  );
+
+  if (existingScript) return;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  script.setAttribute('data-ga4', GA_MEASUREMENT_ID);
+  document.head.appendChild(script);
+};
+
+export const initializeAnalytics = (): void => {
+  if (typeof window === 'undefined' || !hasAnalyticsConsent()) return;
+
+  bootstrapGtag();
+  loadGtagScript();
+
+  if (analyticsConfigured) return;
+
+  window.gtag!('js', new Date());
+  window.gtag!('config', GA_MEASUREMENT_ID, {
+    allow_google_signals: true,
+    send_page_view: false
+  });
+
+  analyticsConfigured = true;
+};
+
+const prepareTracking = (): boolean => {
+  if (!hasAnalyticsConsent()) return false;
+  initializeAnalytics();
+  return isGtagAvailable();
 };
 
 /**
  * Track page views with enhanced data
  */
 export const trackPageView = (data: PageViewData): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
-  window.gtag!('config', 'G-KK47JYMKEJ', {
+  window.gtag!('config', GA_MEASUREMENT_ID, {
     page_title: data.page_title,
     page_location: data.page_location,
     content_group1: data.content_group || 'Vacation Rental'
@@ -53,7 +108,7 @@ export const trackPageView = (data: PageViewData): void => {
  * Track booking inquiry submissions
  */
 export const trackBookingInquiry = (data: BookingEventData): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   // Track as enhanced ecommerce event
   window.gtag!('event', 'booking_inquiry', {
@@ -73,7 +128,7 @@ export const trackBookingInquiry = (data: BookingEventData): void => {
 
   // Also track as conversion
   window.gtag!('event', 'conversion', {
-    send_to: 'G-KK47JYMKEJ/booking_inquiry',
+    send_to: `${GA_MEASUREMENT_ID}/booking_inquiry`,
     value: data.total_price,
     currency: 'EUR'
   });
@@ -83,7 +138,7 @@ export const trackBookingInquiry = (data: BookingEventData): void => {
  * Track contact form submissions
  */
 export const trackContactForm = (data: ContactEventData): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'contact_form_submit', {
     event_category: 'engagement',
@@ -97,7 +152,7 @@ export const trackContactForm = (data: ContactEventData): void => {
  * Track WhatsApp clicks
  */
 export const trackWhatsAppClick = (page_location: string): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'whatsapp_click', {
     event_category: 'engagement',
@@ -111,7 +166,7 @@ export const trackWhatsAppClick = (page_location: string): void => {
  * Track photo gallery interactions
  */
 export const trackPhotoView = (photo_name: string, gallery_type: 'house' | 'surroundings'): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'photo_view', {
     event_category: 'engagement',
@@ -125,7 +180,7 @@ export const trackPhotoView = (photo_name: string, gallery_type: 'house' | 'surr
  * Track pricing calculator usage
  */
 export const trackPricingCalculation = (data: Partial<BookingEventData>): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'pricing_calculation', {
     event_category: 'engagement',
@@ -141,7 +196,7 @@ export const trackPricingCalculation = (data: Partial<BookingEventData>): void =
  * Track PDF downloads (if any)
  */
 export const trackPdfDownload = (pdf_name: string): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'file_download', {
     event_category: 'engagement',
@@ -155,7 +210,7 @@ export const trackPdfDownload = (pdf_name: string): void => {
  * Track external link clicks
  */
 export const trackExternalLink = (url: string, link_text: string): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'click', {
     event_category: 'outbound',
@@ -169,7 +224,7 @@ export const trackExternalLink = (url: string, link_text: string): void => {
  * Track scroll depth (useful for engagement)
  */
 export const trackScrollDepth = (percentage: number, page: string): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'scroll', {
     event_category: 'engagement',
@@ -183,7 +238,7 @@ export const trackScrollDepth = (percentage: number, page: string): void => {
  * Track seasonal interest (which months users are looking at)
  */
 export const trackSeasonalInterest = (month: string, season: string): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'seasonal_interest', {
     event_category: 'engagement',
@@ -197,7 +252,7 @@ export const trackSeasonalInterest = (month: string, season: string): void => {
  * Track booking errors/issues
  */
 export const trackBookingError = (error_type: string, error_message: string): void => {
-  if (!isGtagAvailable()) return;
+  if (!prepareTracking()) return;
 
   window.gtag!('event', 'booking_error', {
     event_category: 'error',
@@ -208,6 +263,7 @@ export const trackBookingError = (error_type: string, error_message: string): vo
 };
 
 export default {
+  initializeAnalytics,
   trackPageView,
   trackBookingInquiry,
   trackContactForm,

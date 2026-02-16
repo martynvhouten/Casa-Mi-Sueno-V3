@@ -1,7 +1,6 @@
 <template>
   <q-dialog
     v-model="showConsent"
-    persistent
     seamless
     transition-show="scale"
     transition-hide="scale"
@@ -17,7 +16,7 @@
               flat
               round
               icon="close"
-              @click="acceptAll"
+              @click="rejectAll"
               color="grey-7"
             />
           </div>
@@ -69,14 +68,21 @@
       <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm text-center' : 'row q-gutter-sm justify-end'" class="bg-white q-pa-md">
         <q-btn
           outline
-          label="Alleen Essentieel"
+          label="Reject"
           color="primary"
-          @click="savePreferences"
+          @click="rejectAll"
           class="cms-btn cms-btn-outline full-width-btn"
         />
         <q-btn
+          flat
+          label="Save preferences"
+          color="primary"
+          @click="savePreferences"
+          class="cms-btn full-width-btn"
+        />
+        <q-btn
           unelevated
-          label="Alles Accepteren"
+          label="Accept"
           color="primary"
           @click="acceptAll"
           class="cms-btn cms-btn-primary full-width-btn"
@@ -89,67 +95,54 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
+import { getConsent, saveConsent } from 'src/utils/cookieConsent';
+import { initializeAnalytics } from 'src/utils/analytics';
 
 const $q = useQuasar();
 const showConsent = ref(false);
 const essentialCookies = ref(true);
 const analyticsCookies = ref(false);
 
-interface CookiePreferences {
-  essential: boolean;
-  analytics: boolean;
-  timestamp: string;
-}
-
-const savePreferences = () => {
-  const preferences: CookiePreferences = {
-    essential: essentialCookies.value,
-    analytics: analyticsCookies.value,
-    timestamp: new Date().toISOString()
-  };
-  
-  localStorage.setItem('cookie_preferences', JSON.stringify(preferences));
+const persistAndClose = (analytics: boolean) => {
   showConsent.value = false;
-  
+  analyticsCookies.value = analytics;
+
+  saveConsent({
+    essential: essentialCookies.value,
+    analytics: analytics
+  });
+
+  if (analytics) {
+    initializeAnalytics();
+  }
+
   $q.notify({
     type: 'positive',
     message: 'Je cookie voorkeuren zijn opgeslagen',
     position: 'top',
     timeout: 2000
   });
+};
 
-  if (analyticsCookies.value) {
-    // Initialize analytics here if needed
-  }
+const savePreferences = () => {
+  persistAndClose(analyticsCookies.value);
 };
 
 const acceptAll = () => {
-  analyticsCookies.value = true;
-  savePreferences();
+  persistAndClose(true);
 };
 
-const checkCookieConsent = () => {
-  const savedPreferences = localStorage.getItem('cookie_preferences');
-  if (!savedPreferences) {
-    showConsent.value = true;
-    return;
-  }
-
-  const preferences = JSON.parse(savedPreferences) as CookiePreferences;
-  analyticsCookies.value = preferences.analytics;
-  
-  // Check if preferences are older than 12 months
-  const timestamp = new Date(preferences.timestamp);
-  const twelveMonthsAgo = new Date();
-  twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
-  
-  if (timestamp < twelveMonthsAgo) {
-    showConsent.value = true;
-  }
+const rejectAll = () => {
+  persistAndClose(false);
 };
 
 onMounted(() => {
-  checkCookieConsent();
+  const existingConsent = getConsent();
+  if (existingConsent) {
+    analyticsCookies.value = existingConsent.analytics;
+  }
+
+  showConsent.value = !existingConsent;
 });
 </script>
 

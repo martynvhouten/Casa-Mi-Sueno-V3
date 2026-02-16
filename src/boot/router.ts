@@ -1,6 +1,7 @@
 import { boot } from 'quasar/wrappers';
 import { Router } from 'vue-router';
-import { trackPageView } from 'src/utils/analytics';
+import { initializeAnalytics, trackPageView } from 'src/utils/analytics';
+import { getConsent } from 'src/utils/cookieConsent';
 import { DEFAULT_META } from 'src/utils/meta';
 import { logger } from 'src/utils/logger';
 
@@ -25,6 +26,10 @@ export default boot(({ router }) => {
 
   // Send GA4 page_view on every route change complete
   router.afterEach((to) => {
+    if (!getConsent()?.analytics) return;
+
+    initializeAnalytics();
+
     const path = to.fullPath;
     const pageTitle = document.title || DEFAULT_META.title;
     const pageLocation = `https://casamisueno.nl${path}`;

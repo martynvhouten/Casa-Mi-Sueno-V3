@@ -180,7 +180,7 @@
             <div class="outdoor-card q-pa-none">
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
-                  src="/images/Tuin_bbq.webp"
+                  src="/images/Tuin_bbq.jpg"
                   class="cms-img"
                 />
               </div>

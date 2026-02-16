@@ -133,7 +133,7 @@
           <div class="col-12 col-md-6">
             <div class="cms-img-container" style="height: 400px;">
               <q-img
-                src="/images/Tuin_bbq.webp"
+                src="/images/Tuin_bbq.jpg"
                 class="cms-img rounded-borders"
               />
             </div>

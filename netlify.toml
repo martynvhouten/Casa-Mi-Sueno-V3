@@ -4,8 +4,12 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  # Exclude frontend API keys and public values from secrets scanning (these are meant to be public)
-  SECRETS_SCAN_OMIT_KEYS = "VITE_GOOGLE_API_KEY,VITE_GOOGLE_MAPS_API_KEY,VITE_GOOGLE_SHEET_ID,RESEND_FROM_EMAIL"
+  # Secrets scanning whitelist (see docs/DEPLOYMENT_TROUBLESHOOTING.md):
+  # VITE_*            – public client API keys, intentionally in the browser bundle
+  # ADMIN_EMAIL       – value appears on the public privacy page (contact email)
+  # RESEND_API_KEY    – server-only; NOT in build output, but listed defensively
+  # RESEND_FROM_EMAIL – public sender address
+  SECRETS_SCAN_OMIT_KEYS = "VITE_GOOGLE_API_KEY,VITE_GOOGLE_MAPS_API_KEY,VITE_GOOGLE_SHEET_ID,ADMIN_EMAIL,RESEND_API_KEY,RESEND_FROM_EMAIL"
 
 # Security headers
 [[headers]]

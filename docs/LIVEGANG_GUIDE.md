@@ -73,21 +73,20 @@ In `index.html` lijn 37 vervangen:
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JE_ECHTE_ID_HIER"></script>
 ```
 
-**2. Netlify Environment Variables**
+**2. Netlify Environment Variables (Frontend - public)**
 Ga naar Netlify → Site settings → Environment variables:
 ```
-VITE_SUPABASE_URL=https://jouw-project.supabase.co
-VITE_SUPABASE_ANON_KEY=jouw_anon_key
+VITE_GOOGLE_MAPS_API_KEY=<jouw-google-maps-key>
+VITE_GOOGLE_SHEET_ID=<jouw-google-sheet-id>
+VITE_GOOGLE_API_KEY=<jouw-google-api-key>
 ```
 
-**3. Supabase Edge Function Secrets**
-Ga naar Supabase → Edge Functions → Secrets:
+**3. Netlify Environment Variables (Backend - server-only)**
 ```
-ADMIN_EMAIL=esversteeg@hotmail.com
-RESEND_API_KEY=re_jouw_resend_key
-SUPABASE_URL=https://jouw-project.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=jouw_service_role_key
+ADMIN_EMAIL=<jouw-admin-email>
+RESEND_API_KEY=<jouw-resend-api-key>
 ```
+> **Let op:** Commit nooit echte waarden in de repository. Stel deze uitsluitend in via het Netlify dashboard.
 
 ---
 

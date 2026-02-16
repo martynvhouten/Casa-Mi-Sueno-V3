@@ -19,7 +19,7 @@ The following environment variables must be configured in your Netlify dashboard
      2. Sign up or log in
      3. Navigate to API Keys section
      4. Create a new API key
-   - **Example**: `re_123abc456def789ghi`
+   - The key starts with `re_` followed by a long alphanumeric string
 
 2. **ADMIN_EMAIL**
    - **Purpose**: Email address that receives contact form submissions

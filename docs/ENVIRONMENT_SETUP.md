@@ -6,50 +6,56 @@
 Create a `.env` file with:
 
 ```bash
-VITE_SUPABASE_URL=https://your-project-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
+VITE_GOOGLE_MAPS_API_KEY=<your-google-maps-api-key>
+VITE_GOOGLE_SHEET_ID=<your-google-sheet-id>
+VITE_GOOGLE_API_KEY=<your-google-api-key>
 ```
 
-### Backend (Supabase Edge Function Secrets)
-In your Supabase dashboard → Edge Functions → Secrets, add:
+> **Note:** These are public client-side keys. They are embedded in the browser bundle by Vite.
+> Never place server-only secrets (like `RESEND_API_KEY`) in the `.env` file with a `VITE_` prefix.
+
+### Backend (Netlify Environment Variables)
+In your Netlify dashboard → Site settings → Environment variables, add:
 
 ```bash
-ADMIN_EMAIL=your-email@domain.com
-RESEND_API_KEY=your_resend_api_key
-SUPABASE_URL=https://your-project-id.supabase.co  
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+ADMIN_EMAIL=<your-admin-email>
+RESEND_API_KEY=<your-resend-api-key>
 ```
 
-## How to Find Your Supabase Values
+> **Important:** Never commit real secret values to the repository.
+> These variables are only accessible server-side in Netlify Functions via `process.env`.
 
-1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
+## How to Find Your Google API Values
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Select your project
-3. Go to Settings → API
+3. Go to APIs & Services → Credentials
 4. Copy:
-   - **Project URL** → Use for `VITE_SUPABASE_URL` and `SUPABASE_URL`
-   - **anon public** → Use for `VITE_SUPABASE_ANON_KEY`
-   - **service_role** → Use for `SUPABASE_SERVICE_ROLE_KEY`
+   - **Maps API key** → Use for `VITE_GOOGLE_MAPS_API_KEY`
+   - **Sheets API key** → Use for `VITE_GOOGLE_API_KEY`
+5. Go to Google Sheets and copy the sheet ID from the URL → Use for `VITE_GOOGLE_SHEET_ID`
 
 ## Testing Environment Setup
 
 Run this in browser console after starting dev server:
 ```javascript
 console.log({
-  supabaseUrl: import.meta.env.VITE_SUPABASE_URL,
-  hasAnonKey: !!import.meta.env.VITE_SUPABASE_ANON_KEY
+  hasMapsKey: !!import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+  hasSheetId: !!import.meta.env.VITE_GOOGLE_SHEET_ID,
+  hasApiKey: !!import.meta.env.VITE_GOOGLE_API_KEY
 });
 ```
 
 ## Common Issues
 
-- **404 Error**: Wrong Supabase URL
-- **401 Error**: Wrong anon key
-- **Environment variables not loading**: Restart dev server after creating .env
-- **Headers constructor error**: Usually indicates environment variables not loaded
+- **Google Maps not loading**: Wrong or missing `VITE_GOOGLE_MAPS_API_KEY`
+- **Booking dates not loading**: Wrong or missing `VITE_GOOGLE_SHEET_ID` or `VITE_GOOGLE_API_KEY`
+- **Environment variables not loading**: Restart dev server after creating `.env`
+- **Contact form errors**: Check that `RESEND_API_KEY` and `ADMIN_EMAIL` are set in Netlify dashboard
 
 ## Next Steps
 
-1. Create `.env` file with the values above
-2. Restart your development server (`npm run dev`)
-3. Try the booking form again
-4. Check browser console for debug logs 
+1. Create `.env` file with the frontend values above
+2. Set backend variables in Netlify dashboard
+3. Restart your development server (`npm run dev`)
+4. Test the booking form and contact form

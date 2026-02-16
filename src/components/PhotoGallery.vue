@@ -349,7 +349,7 @@ const exteriorPhotos = [
   { src: '/images/Tuin_vanaf_veranda.webp', caption: 'Uitzicht vanaf de veranda' },
   { src: '/images/Tuin_zithoek.webp', caption: 'Gezellige buitenzithoek' },
   { src: '/images/Tuintafel_zitgedeelte.webp', caption: 'Overdekt eetgedeelte' },
-  { src: '/images/Tuin_bbq.webp', caption: 'BBQ-hoek' },
+  { src: '/images/Tuin_bbq.jpg', caption: 'BBQ-hoek' },
   { src: '/images/Tuin_zijpad.webp', caption: 'Zijpad met mediterrane planten' },
   { src: '/images/Achtertuin_en_badkamer2/Achtertuin_ligstoelen_nacht.webp', caption: 'Ligstoelen bij het zwembad in de avond' },
   { src: '/images/Achtertuin_en_badkamer2/Achtertuin_pingpongtafel.webp', caption: 'Pingpongtafel' },

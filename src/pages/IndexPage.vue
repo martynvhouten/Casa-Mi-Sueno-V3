@@ -39,6 +39,8 @@
               <div class="cms-img-container q-mb-lg" style="height: 280px;">
                 <q-img
                   :src="feature.image"
+                  :alt="feature.alt"
+                  loading="lazy"
                   class="cms-img"
                   fit="cover"
                   position="center"
@@ -141,6 +143,8 @@
               <div class="cms-img-container">
                 <q-img
                   src="/images/Achtertuin_en_badkamer2/Achtertuin_vanaf_huiskamer.webp"
+                  alt="Lichte leefruimte met zicht op de achtertuin"
+                  loading="lazy"
                   class="cms-img"
                 >
                   <div class="absolute-bottom text-center image-overlay">
@@ -156,6 +160,8 @@
               <div class="cms-img-container">
                 <q-img
                   src="/images/Achtertuin_en_badkamer2/Achtertuin_voorzijde_pad.webp"
+                  alt="Pad langs de mediterrane voortuin van Casa Mi Sueño"
+                  loading="lazy"
                   class="cms-img"
                 >
                   <div class="absolute-bottom text-center image-overlay">
@@ -229,16 +235,19 @@ import HeroSection from 'src/components/HeroSection.vue';
 const features = [
   {
     image: '/images/Woonkamer_zithoek.webp',
+    alt: 'Gezellige zithoek in de woonkamer',
     title: 'Ons tweede thuis',
     description: 'Een persoonlijk huis voor gasten die houden van rust, natuur en een warme, huiselijke sfeer'
   },
   {
     image: '/images/Tuin_zithoek.webp',
+    alt: 'Sfeervolle zithoek in de tuin met schaduw',
     title: 'Leven in de buitenlucht',
     description: 'Een fijne tuin met zwembad, verschillende terrassen en een mooie BBQ plek'
   },
   {
     image: '/images/Omgeving/Albir_panorama.webp',
+    alt: 'Panorama van Albir en de kustlijn aan de Costa Blanca',
     title: 'Fijne locatie',
     description: 'Rustig gelegen tussen de bergen en de zee, perfect voor natuurliefhebbers en rustzoekers'
   }

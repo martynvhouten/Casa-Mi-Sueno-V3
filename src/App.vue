@@ -8,7 +8,7 @@ import { onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import CookieConsent from './components/CookieConsent.vue';
 import { setMetaTags } from './utils/meta';
-import { setupVacationRentalSchema } from './utils/schema';
+import { setupRouteStructuredData } from './utils/schema';
 import { preloadCriticalResources } from './utils/preload';
 
 const route = useRoute();
@@ -82,6 +82,7 @@ const updateMetaTags = () => {
     url: `https://casamisueno.nl${route.path}`
   };
   setMetaTags(meta);
+  setupRouteStructuredData(route.path);
 };
 
 // Update meta tags on route change
@@ -91,9 +92,6 @@ watch(() => route.path, () => {
 
 // Initialize on mount
 onMounted(() => {
-  // Add schema markup
-  setupVacationRentalSchema();
-  
   // Preload critical resources
   preloadCriticalResources();
 });

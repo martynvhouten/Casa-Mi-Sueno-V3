@@ -224,7 +224,6 @@ import { useRoute } from 'vue-router';
 import { useQuasar } from 'quasar';
 import WhatsAppWidget from '../components/WhatsAppWidget.vue';
 import { WHATSAPP_CONFIG } from '../utils/whatsapp';
-import { setupVacationRentalSchema } from 'src/utils/schema';
 
 const route = useRoute();
 const $q = useQuasar();
@@ -269,9 +268,6 @@ const handleScroll = () => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
   handleScroll();
-  
-  // Initialize structured data
-  setupVacationRentalSchema();
 });
 
 onUnmounted(() => {

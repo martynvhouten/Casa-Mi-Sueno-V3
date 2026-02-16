@@ -39,6 +39,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Tuin_vanaf_veranda.webp"
+                alt="Uitzicht vanaf de veranda op de mediterrane tuin"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -64,6 +66,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Slaapkamer2.webp"
+                alt="Comfortabele slaapkamer met tweepersoonsbed"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -123,6 +127,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/omgeving/Albir_boulevard.webp"
+                alt="Boulevard van Albir langs de kust"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>

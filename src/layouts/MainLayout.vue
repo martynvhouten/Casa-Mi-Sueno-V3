@@ -19,7 +19,7 @@
           aria-label="Casa Mi Sueño - Ga naar homepage"
         >
           <div class="logo-container">
-            <span class="font-playfair text-h4 q-my-none notranslate" translate="no">Casa Mi Sueño</span>
+            <span class="logo-title font-playfair text-h4 q-my-none notranslate" translate="no">Casa Mi Sueño</span>
             <div class="logo-decoration" aria-hidden="true"></div>
           </div>
         </router-link>
@@ -341,6 +341,11 @@ const scrollToContent = () => {
   position: relative;
   display: inline-block;
   padding-bottom: 8px; /* Space for the decoration */
+}
+
+.logo-title {
+  display: block;
+  line-height: 1.1;
 }
 
 .logo-decoration {

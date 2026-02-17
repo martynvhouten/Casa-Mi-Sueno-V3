@@ -1,3 +1,47 @@
+# HIGH Priority SEO + AI Discoverability (H1-H7)
+
+## Summary
+
+Implements all high-priority SEO and AI discoverability fixes from the audit in one PR:
+- Added `llms.txt` for AI crawler discoverability.
+- Centralized JSON-LD to one injection path with route-aware `@graph`.
+- Added `WebSite`, `Organization`, `House`, `BreadcrumbList`, and route-specific `FAQPage`.
+- Removed duplicate schema injection points and fixed viewport accessibility.
+- Added descriptive Dutch `alt` text and `loading="lazy"` for page-level `q-img` content images.
+
+## Files changed (H1-H7)
+
+- `public/llms.txt`
+- `src/utils/schema.ts`
+- `src/App.vue`
+- `src/layouts/MainLayout.vue`
+- `src/pages/PracticalPage.vue`
+- `index.html`
+- `src/pages/IndexPage.vue`
+- `src/pages/AboutPage.vue`
+- `src/pages/HousePage.vue`
+- `src/pages/OutdoorPage.vue`
+- `src/pages/LocationPage.vue`
+
+## Build result
+
+- [x] `npm run build` completed successfully
+
+## Quick manual checklist
+
+- [x] `/llms.txt` exists in `public` and is shipped by the app
+- [x] Zoom-blocking viewport params removed (`user-scalable=no`, `maximum-scale=1`)
+- [x] Static JSON-LD removed from `index.html`
+- [x] Duplicate House schema calls removed from layout/page-level paths
+- [x] Single centralized JSON-LD injection path active via `src/utils/schema.ts`
+- [x] Route-aware `BreadcrumbList` generation added
+- [x] `WebSite` and `Organization` schema nodes added in `@graph`
+- [x] FAQ schema moved from `PracticalPage.vue` into centralized schema flow
+- [x] All `q-img` instances in pages have descriptive Dutch `alt`
+- [x] All below-the-fold `q-img` instances in pages use `loading=\"lazy\"`
+
+---
+
 # Replace Supabase Contact Form with Netlify Function + Resend
 
 ## Summary

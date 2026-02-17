@@ -45,6 +45,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Omgeving/la_nucia_waterfall.webp"
+                alt="Waterval in de omgeving van La Nucia"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -137,6 +139,8 @@
               <div class="cms-img-container" style="height: 300px;">
               <q-img
                   src="/images/Omgeving/Albir_lighthouse.webp"
+                  alt="Vuurtorenroute van Albir met uitzicht op zee"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -156,6 +160,8 @@
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Omgeving/Guadalest_mountain_view.webp"
+                  alt="Berglandschap bij Guadalest"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -184,6 +190,8 @@
               <div class="cms-img-container" style="height: 250px;">
                 <q-img
                   :src="highlight.image"
+                  :alt="highlight.alt"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -336,6 +344,7 @@ const culturalHighlights = [
   {
     title: 'Altea',
     image: '/images/Omgeving/Casco_antiguo.webp',
+    alt: 'Historisch centrum van Altea met witte huizen',
     description: 'Een schilderachtig stadje met witte huisjes en de karakteristieke blauwe koepels van de kerk.',
     highlights: [
       'Historisch centrum met kunstgalerijen',
@@ -347,6 +356,7 @@ const culturalHighlights = [
   {
     title: 'La Nucia',
     image: '/images/Omgeving/la_nucia_panorama.webp',
+    alt: 'Panorama van La Nucia met heuvelachtig landschap',
     description: 'Een moderne stad bekend om haar uitstekende sportfaciliteiten, natuurschoon en gezellige oude centrum.',
     highlights: [
       'Ciutat Esportiva Camilo Cano - modern sportcomplex',
@@ -358,6 +368,7 @@ const culturalHighlights = [
   {
     title: 'Benidorm',
     image: '/images/Omgeving/Benidorm_beachview.webp',
+    alt: 'Uitzicht op het strand en de skyline van Benidorm',
     description: 'De bruisende badplaats van de Costa Blanca met haar iconische skyline, lange zandstranden en levendige uitgaansleven.',
     highlights: [
       'Prachtige zandstranden Levante en Poniente',
@@ -369,6 +380,7 @@ const culturalHighlights = [
   {
     title: 'Guadalest',
     image: '/images/Omgeving/Guadalest_castle.webp',
+    alt: 'Kasteel van Guadalest op de rotspartij',
     description: 'Een spectaculair bergdorpje, gebouwd op een rotspunt met een kasteel en adembenemend uitzicht.',
     highlights: [
       'Middeleeuws kasteel op de rots',
@@ -380,6 +392,7 @@ const culturalHighlights = [
   {
     title: 'Algar Watervallen',
     image: '/images/Omgeving/Fuentes_del_algar.webp',
+    alt: 'Natuurlijke watervallen van Fuentes del Algar',
     description: 'Natuurlijke watervallen met kristalhelder water en natuurlijke zwembaden.',
     highlights: [
       'Verfrissende natuurlijke zwembaden',
@@ -391,6 +404,7 @@ const culturalHighlights = [
   {
     title: 'Villajoyosa',
     image: '/images/Omgeving/villajoyosa_colorful_houses.webp',
+    alt: 'Kleurrijke huizen aan de kust van Villajoyosa',
     description: 'Een kleurrijk kuststadje bekend om zijn chocolade-industrie, gekleurde huizen en historische centrum.',
     highlights: [
       'Beroemde chocoladefabrieken met rondleidingen',

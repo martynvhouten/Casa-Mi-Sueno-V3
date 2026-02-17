@@ -47,6 +47,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Tuin_zwembad-douche.webp"
+                alt="Zwembad met buitendouche in de tuin"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -63,6 +65,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Veranda2.webp"
+                alt="Overdekte veranda met eettafel"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -96,6 +100,8 @@
               <div class="cms-img-container" style="height: 250px;">
                 <q-img
                   :src="area.image"
+                  :alt="area.alt"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -134,6 +140,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Tuin_bbq.jpg"
+                alt="Bastard BBQ in de tuin naast de veranda"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -161,6 +169,7 @@
                 <q-img
                   :src="evening.image"
                   :alt="evening.alt"
+                  loading="lazy"
                   class="cms-img rounded-borders"
                   fit="cover"
                 />
@@ -200,6 +209,7 @@ import HeroSection from 'src/components/HeroSection.vue';
 const gardenAreas = [
   {
     image: '/images/Tuin_mediterraans.webp',
+    alt: 'Mediterrane tuin met palmen en groene beplanting',
     title: 'Mediterrane tuin',
     description: 'Een verzorgde tuin met mediterrane beplanting die schaduw en kleur biedt',
     features: [
@@ -211,6 +221,7 @@ const gardenAreas = [
   },
   {
     image: '/images/Tuin_zithoek.webp',
+    alt: 'Comfortabele zithoek in de tuin met schaduw',
     title: 'Zithoeken',
     description: 'Verschillende plekjes in de tuin om te zitten en te ontspannen',
     features: [
@@ -222,6 +233,7 @@ const gardenAreas = [
   },
   {
     image: '/images/Tuin_eetgedeelte.webp',
+    alt: 'Praktisch ingedeelde tuin met eetgedeelte en loopruimte',
     title: 'Praktische indeling',
     description: 'De tuin is praktisch ingedeeld met ruimte voor parkeren en ontspanning',
     features: [

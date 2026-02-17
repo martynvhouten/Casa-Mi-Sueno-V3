@@ -359,7 +359,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import HeroSection from 'src/components/HeroSection.vue';
 
 const houseRules = ref([
@@ -555,26 +555,6 @@ const getSeasonChipPaddingLeft = (index: number): string => {
   return paddings[index] || '12px';
 };
 
-onMounted(() => {
-  // Add FAQ Schema
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqCategories.value.map(category => ({
-      '@type': 'Question',
-      'name': category.title,
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': category.items.map(item => item.answer).join('<br>')
-      }
-    }))
-  };
-
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.text = JSON.stringify(faqSchema);
-  document.head.appendChild(script);
-});
 </script>
 
 <style scoped>

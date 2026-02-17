@@ -47,6 +47,8 @@
             <div class="cms-img-container" style="height: 400px;">
               <q-img
                 src="/images/Woonkamer_zitgedeelte2.webp"
+                alt="Ruime woonkamer met comfortabele zithoek"
+                loading="lazy"
                 class="cms-img rounded-borders"
               />
             </div>
@@ -65,6 +67,8 @@
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Slaapkamer2.webp"
+                  alt="Slaapkamer met tweepersoonsbed en veel daglicht"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -87,6 +91,8 @@
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Slaapkamer1_vooraanzicht.webp"
+                  alt="Tweede slaapkamer met tweepersoonsbed"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -127,6 +133,7 @@
                       <q-img
                         :src="photo.src"
                         :alt="photo.alt"
+                        loading="lazy"
                         class="cms-img"
                         fit="cover"
                       />
@@ -157,6 +164,8 @@
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Tuin_zwembad.webp"
+                  alt="Rond zwembad in de tuin van Casa Mi Sueño"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>
@@ -181,6 +190,8 @@
               <div class="cms-img-container" style="height: 300px;">
                 <q-img
                   src="/images/Tuin_bbq.jpg"
+                  alt="Overdekte veranda met keramische BBQ"
+                  loading="lazy"
                   class="cms-img"
                 />
               </div>

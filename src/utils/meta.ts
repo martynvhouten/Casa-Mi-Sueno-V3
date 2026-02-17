@@ -67,7 +67,6 @@ export const setMetaTags = (meta: MetaInfo) => {
     // Add additional image meta tags for better WhatsApp support
     updateMetaTag('og:image:width', '1200');
     updateMetaTag('og:image:height', '630');
-    updateMetaTag('og:image:type', 'image/webp');
     updateMetaTag('og:image:alt', 'Casa Mi Sueño - Vakantiehuis met zwembad in L\'Alfàs del Pi');
   }
   
@@ -88,7 +87,6 @@ export const setMetaTags = (meta: MetaInfo) => {
   updateMetaTag('twitter:card', 'summary_large_image');
   updateMetaTag('twitter:title', finalMeta.title);
   updateMetaTag('twitter:description', finalMeta.description);
-  updateMetaTag('twitter:site', '@CasaMiSueno');
   
   if (finalMeta.image) {
     updateMetaTag('twitter:image', finalMeta.image);

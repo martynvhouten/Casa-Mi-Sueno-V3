@@ -41,7 +41,7 @@
               >
                 <div class="cms-img-container">
                   <picture>
-                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source v-if="hasWebPVariant(photo.src)" :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
                     <img 
                       :src="photo.src" 
@@ -74,7 +74,7 @@
               >
                 <div class="cms-img-container">
                   <picture>
-                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source v-if="hasWebPVariant(photo.src)" :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
                     <img 
                       :src="photo.src" 
@@ -107,7 +107,7 @@
               >
                 <div class="cms-img-container">
                   <picture>
-                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source v-if="hasWebPVariant(photo.src)" :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
                     <img 
                       :src="photo.src" 
@@ -140,7 +140,7 @@
               >
                 <div class="cms-img-container">
                   <picture>
-                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source v-if="hasWebPVariant(photo.src)" :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
                     <img 
                       :src="photo.src" 
@@ -173,7 +173,7 @@
               >
                 <div class="cms-img-container">
                   <picture>
-                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source v-if="hasWebPVariant(photo.src)" :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
                     <img 
                       :src="photo.src" 
@@ -206,7 +206,7 @@
               >
                 <div class="cms-img-container">
                   <picture>
-                    <source :srcset="getWebPPath(photo.src)" type="image/webp">
+                    <source v-if="hasWebPVariant(photo.src)" :srcset="getWebPPath(photo.src)" type="image/webp">
                     <source :srcset="photo.src" :type="getImageType(photo.src)">
                     <img 
                       :src="photo.src" 
@@ -275,6 +275,7 @@
             >
               <q-img
                 :src="photo.src"
+                :alt="photo.caption"
                 spinner-color="white"
                 style="max-height: 90vh; max-width: 90vw;"
                 fit="contain"
@@ -370,6 +371,12 @@ const allPhotos = computed(() => [
 const getWebPPath = (src: string): string => {
   return src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
 };
+
+const NO_WEBP_VARIANT = new Set<string>([
+  '/images/Tuin_bbq.jpg'
+]);
+
+const hasWebPVariant = (src: string): boolean => !NO_WEBP_VARIANT.has(src);
 
 const getImageType = (src: string): string => {
   const ext = src.split('.').pop()?.toLowerCase();

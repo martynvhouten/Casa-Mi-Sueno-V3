@@ -12,6 +12,3 @@ Allow: /images/
 
 # Sitemap location
 Sitemap: https://casamisueno.nl/sitemap.xml
-
-# Crawl delay (optional)
-Crawl-delay: 1 

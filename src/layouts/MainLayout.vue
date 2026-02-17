@@ -346,6 +346,7 @@ const scrollToContent = () => {
 .logo-title {
   display: block;
   line-height: 1.1;
+  font-size: 1.85rem;
 }
 
 .logo-decoration {
@@ -386,6 +387,10 @@ const scrollToContent = () => {
 }
 
 @media (max-width: 768px) {
+  .logo-title {
+    font-size: 1.5rem;
+  }
+
   .q-footer {
     .q-item {
       min-height: 32px;

@@ -65,7 +65,7 @@
         </div>
       </q-card-section>
 
-      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm text-center' : 'row q-gutter-sm justify-end'" class="bg-white q-pa-md">
+      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm text-center' : 'row q-gutter-sm justify-end cookie-actions'" class="bg-white q-pa-md">
         <q-btn
           outline
           label="Alleen essentieel"
@@ -175,8 +175,20 @@ onMounted(() => {
       width: 100%;
     }
     @media (min-width: 600px) {
-      min-width: 140px;
+      min-width: 116px;
+      min-height: 36px;
+      padding: 0 12px;
     }
+  }
+
+  .full-width-btn .q-btn__content {
+    font-size: 0.7rem !important;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .cookie-actions {
+    flex-wrap: nowrap;
   }
 
   @media (max-width: 599px) {

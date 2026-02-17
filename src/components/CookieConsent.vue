@@ -49,7 +49,7 @@
           <!-- Analytics Cookies -->
           <q-item tag="label" class="rounded-borders cursor-pointer">
             <q-item-section>
-              <q-item-label class="text-weight-medium">Analytics Cookies</q-item-label>
+              <q-item-label class="text-weight-medium">Analytische cookies</q-item-label>
               <q-item-label caption class="text-grey-7">
                 Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken, 
                 zodat we de gebruikerservaring kunnen verbeteren. Alle gegevens worden anoniem verzameld.
@@ -65,24 +65,24 @@
         </div>
       </q-card-section>
 
-      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm text-center' : 'row q-gutter-sm justify-end'" class="bg-white q-pa-md">
+      <q-card-actions :class="$q.screen.lt.sm ? 'column q-gutter-y-sm text-center' : 'row q-gutter-sm justify-end cookie-actions'" class="bg-white q-pa-md">
         <q-btn
           outline
-          label="Reject"
+          label="Alleen essentieel"
           color="primary"
           @click="rejectAll"
           class="cms-btn cms-btn-outline full-width-btn"
         />
         <q-btn
           flat
-          label="Save preferences"
+          label="Voorkeuren opslaan"
           color="primary"
           @click="savePreferences"
           class="cms-btn full-width-btn"
         />
         <q-btn
           unelevated
-          label="Accept"
+          label="Alles accepteren"
           color="primary"
           @click="acceptAll"
           class="cms-btn cms-btn-primary full-width-btn"
@@ -175,8 +175,20 @@ onMounted(() => {
       width: 100%;
     }
     @media (min-width: 600px) {
-      min-width: 140px;
+      min-width: 116px;
+      min-height: 36px;
+      padding: 0 12px;
     }
+  }
+
+  .full-width-btn .q-btn__content {
+    font-size: 0.7rem !important;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .cookie-actions {
+    flex-wrap: nowrap;
   }
 
   @media (max-width: 599px) {

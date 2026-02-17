@@ -94,6 +94,20 @@ function getOutputPathForRoute(route) {
 async function prerenderRoutes(baseUrl) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
+  await page.evaluateOnNewDocument(() => {
+    try {
+      localStorage.setItem(
+        'cookie_preferences',
+        JSON.stringify({
+          essential: true,
+          analytics: false,
+          timestamp: new Date().toISOString()
+        })
+      );
+    } catch {
+      // Ignore storage failures during prerender.
+    }
+  });
 
   try {
     for (const route of ROUTES) {

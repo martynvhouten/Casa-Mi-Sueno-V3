@@ -1,27 +1,3 @@
-interface SchemaData {
-  '@context': string;
-  '@type': string;
-  name: string;
-  image?: string;
-  description: string;
-  address?: {
-    '@type': string;
-    streetAddress: string;
-    addressLocality: string;
-    addressRegion: string;
-    postalCode: string;
-    addressCountry: string;
-  };
-  geo?: {
-    '@type': string;
-    latitude: string;
-    longitude: string;
-  };
-  url: string;
-  telephone: string;
-  priceRange: string;
-}
-
 interface HouseSchema {
   name: string;
   description: string;
@@ -390,29 +366,3 @@ export const setupHouseSchema = (customData?: Partial<HouseSchema>): void => {
 // Backwards compatibility
 export const generateVacationRentalSchema = generateHouseSchema;
 export const setupVacationRentalSchema = () => setupRouteStructuredData('/');
-
-export const generateLocalBusinessSchema = (): SchemaData => {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    'name': 'Casa Mi Sueño',
-    'image': 'https://casamisueno.nl/images/Tuin_zwembad.jpg',
-    'description': 'Een comfortabel vakantiehuis met zwembad in L\'Alfàs del Pi, Costa Blanca',
-    'address': {
-      '@type': 'PostalAddress',
-      'streetAddress': 'Carrer de les Petúnies 16',
-      'addressLocality': 'L\'Alfàs del Pi',
-      'addressRegion': 'Alicante',
-      'postalCode': '03580',
-      'addressCountry': 'ES'
-    },
-    'geo': {
-      '@type': 'GeoCoordinates',
-      'latitude': '38.5785',
-      'longitude': '-0.0997'
-    },
-    'url': 'https://casamisueno.nl',
-    'telephone': '+31683645489',
-    'priceRange': '€€'
-  };
-}; 

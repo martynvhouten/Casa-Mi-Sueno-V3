@@ -35,16 +35,16 @@
   ],
   "screenshots": [
     {
-      "src": "/images/Tuin_zwembad.jpg",
+      "src": "/images/Tuin_zwembad.webp",
       "sizes": "1920x1080",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Zwembad en terras"
     },
     {
-      "src": "/images/Woonkamer_zithoek.jpg",
+      "src": "/images/Woonkamer_zithoek.webp",
       "sizes": "1920x1080", 
-      "type": "image/jpeg",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Gezellige woonkamer"
     }

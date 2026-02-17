@@ -256,9 +256,7 @@ const footerLinks = [
 ];
 
 // Social Media Links
-const socialLinks = [
-  { icon: 'fab fa-instagram', link: 'https://instagram.com/' }
-];
+const socialLinks: Array<{ icon: string; link: string }> = [];
 
 // Scroll handler
 const handleScroll = () => {
